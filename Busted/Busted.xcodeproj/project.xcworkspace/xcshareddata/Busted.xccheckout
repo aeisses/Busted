@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9CE5C327-4E2E-48A6-A5E5-6E8D8608BA59</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Busted</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>19386DD4-E29F-45F8-8F91-477596036AC3</key>
+		<string>https://github.com/aeisses/Busted.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Busted/Busted.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>19386DD4-E29F-45F8-8F91-477596036AC3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aeisses/Busted.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>19386DD4-E29F-45F8-8F91-477596036AC3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>19386DD4-E29F-45F8-8F91-477596036AC3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Busted</string>
+		</dict>
+	</array>
+</dict>
+</plist>
