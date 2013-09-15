@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BustedNavigationController.h"
 
 @class ViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (strong, nonatomic) BustedNavigationController *navController;
 @property (strong, nonatomic) ViewController *viewController;
 
 @end

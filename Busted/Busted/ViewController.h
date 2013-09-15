@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenuViewController.h"
+#import "DataReader.h"
+#import "TrackViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate>
+{
+    DataReader *dataReader;
+    UIActivityIndicatorView *activityIndicator;
+}
+
+@property (retain, nonatomic) MenuViewController *menuViewController;
+@property (retain, nonatomic) TrackViewController *trackVC;
 
 @end
