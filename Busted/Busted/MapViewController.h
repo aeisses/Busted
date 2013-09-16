@@ -21,9 +21,9 @@
 @interface MapViewController : ParentViewController <MKMapViewDelegate>
 {
     CADisplayLink *displayLink;
-    NSMutableArray *annotations;
 }
 
+@property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) IBOutlet UILabel *lattitude;
 @property (retain, nonatomic) IBOutlet UILabel *longitude;

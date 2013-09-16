@@ -79,28 +79,44 @@
 #pragma Private Methods
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
+    [self updatePoint];
+}
+
+- (void)updatePoint
+{
     if (isTracking) {
+        __block NSString *blockUudi = uudi;
+        __block CLLocation *blockCurrentLocation = _currentLocation;
         dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
         dispatch_async(networkQueue, ^{
             NSError *error = nil;
-            NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        uudi, @"uuid",
+            NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                        blockUudi, @"uuid",
                                         [NSNumber numberWithInt:80], @"busNumber",
-                                        [NSNumber numberWithFloat:_currentLocation.coordinate.latitude], @"latitude",
-                                        [NSNumber numberWithFloat:_currentLocation.coordinate.longitude], @"longitude",
+                                        [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"latitude",
+                                        [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"longitude",
                                         [NSNumber numberWithFloat:0.1], @"capacity", nil];
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+            [info release];
             NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/userlocation"];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [urlStr release];
             [request setHTTPMethod:@"POST"];
             [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
             [request setHTTPBody:jsonData];
-            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-            NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-            NSLog(@"Response: %@",json_string);
-            [json_string release];
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
+            if ([response statusCode] > 399) {
+                _trackButton.selected = NO;
+                _greenButton.hidden = YES;
+                isTracking = NO;
+            }
+            jsonData = nil;
+            request = nil;
+            response = nil;
         });
+        dispatch_release(networkQueue);
     }
 }
 
@@ -134,6 +150,7 @@
         [_currentLocation release]; _currentLocation = nil;
     }
     _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
+//    [self updatePoint];
     NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
 }
 

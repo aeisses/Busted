@@ -25,6 +25,7 @@
 
 - (void)dealloc
 {
+    if (_annotations) [_annotations release];
     [_mapView release]; _mapView = nil;
     [_lattitude release]; _lattitude = nil;
     [_longitude release]; _longitude = nil;
@@ -35,7 +36,6 @@
 
 - (void)viewDidLoad
 {
-    annotations = [[NSMutableArray alloc] initWithCapacity:0];
     _mapView.scrollEnabled = YES;
     _mapView.zoomEnabled = YES;
     [_mapView setShowsUserLocation:YES];
@@ -54,33 +54,57 @@
     [_mapView addSubview:_deltaLongitude];
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     [displayLink setFrameInterval:15];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
 //    NSError *error = nil;
-    NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/buslocation/80"];
-        //    NSURL *url = [[NSURL alloc] initWithString:urlStr];
-         //    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:urlStr]];
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-//    NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-//    NSLog(@"Json String: %@",json_string);
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-    NSLog(@"%@",json);
-    [_mapView removeAnnotations:annotations];
-    [annotations removeAllObjects];
-    for (NSDictionary *dic in json) {
-        Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
-                                            UUDID:[dic objectForKey:@"uuid"]
-                                         latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
-                                        longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
-                                   timeToNextStop:0];
-        [_mapView addAnnotation:bus];
-        [annotations addObject:bus];
-    }
+
+    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(networkQueue, ^{
+        NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/buslocation/80"];
+        NSURL *url = [[NSURL alloc] initWithString:urlStr];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+        NSLog(@"%@",json);
+        [urlStr release];
+        [url release];
+        NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
+        for (NSDictionary *dic in json) {
+            Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
+                                                UUDID:[dic objectForKey:@"uuid"]
+                                             latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
+                                            longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
+                                       timeToNextStop:0];
+            [myAnnotations addObject:bus];
+            [bus release];
+        }
+        json = nil;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (_annotations) {
+                [_mapView removeAnnotations:_annotations];
+                _annotations = nil;
+            }
+            _annotations = [[NSArray alloc] initWithArray:myAnnotations];
+            [_mapView addAnnotations:_annotations];
+            [myAnnotations release];
+            [_mapView setNeedsDisplay];
+        });
+    });
+    dispatch_release(networkQueue);
+
 }
 
 - (void)addRoute:(BusRoute*)route

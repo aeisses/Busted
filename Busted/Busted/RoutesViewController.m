@@ -30,10 +30,16 @@
 
 - (void)viewDidLoad
 {
+    homeButton.hidden = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    homeButton.hidden = YES;
+    [super viewDidAppear:animated];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -43,13 +43,14 @@
 {
     homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     homeButton.frame = (CGRect){0,0,40,40};
+    [homeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
     [homeButton addTarget:self action:@selector(touchedHomeButton) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:homeButton];
     [super viewDidLoad];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.view addSubview:homeButton];
     [self.view addGestureRecognizer:swipeRight];
     [self.view addGestureRecognizer:swipeLeft];
     [self.view addGestureRecognizer:swipeUp];
