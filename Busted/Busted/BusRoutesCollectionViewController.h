@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusRouteViewCell.h"
+#import "BusRoute.h"
 
 @protocol BusRouteCollectionViewControllerDelegate <NSObject>
 - (NSArray*)getBusRoutes;
+- (void)setBusRoute:(NSInteger)route;
 @end
 
 @interface BusRoutesCollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
-@property (retain, nonatomic) IBOutlet UICollectionView *myCollectionView;
+@property (retain, nonatomic) NSArray *routes;
+@property (retain, nonatomic) UICollectionView *collectionView;
 @property (retain, nonatomic) id <BusRouteCollectionViewControllerDelegate> delegate;
 
 @end

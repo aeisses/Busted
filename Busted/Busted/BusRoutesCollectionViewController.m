@@ -25,10 +25,28 @@
 
 - (void)viewDidLoad
 {
-    [_myCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"MyCell"];
-    [_myCollectionView reloadData];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"routeNum" ascending:YES];
+    _routes = [[[_delegate getBusRoutes] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] retain];
+    
+    UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];
+    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    [layout release];
+    [_collectionView setDataSource:self];
+    [_collectionView setDelegate:self];
+  
+    [_collectionView registerNib:[UINib nibWithNibName:@"BusRouteViewCell" bundle:nil] forCellWithReuseIdentifier:@"cellView"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tracking.png"]];
+    [_collectionView setBackgroundView:imageView];
+    [imageView release];
+    
+    [self.view addSubview:_collectionView];
+    [_collectionView release];
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,51 +57,44 @@
 
 - (void)dealloc
 {
-    [_myCollectionView release]; _myCollectionView = nil;
+//    [_collectionView release]; _collectionView = nil;
+    if (_routes) {
+        [_routes release];
+        _routes = nil;
+    }
     _delegate = nil;
     [super dealloc];
 }
 
 #pragma mark - UICollectionView Datasource
-- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
-    return 1;
+- (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section
+{
+    return [_routes count];
 }
-// 2
-- (NSInteger)numberOfSectionsInCollectionView: (UICollectionView *)collectionView {
-    NSLog(@"Count %i",[[_delegate getBusRoutes] count]);
-//    return [[_delegate getBusRoutes] count];
-    return 20;
-}
-// 3
-- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"MyCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor whiteColor];
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BusRouteViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
+    cell.number.text = [NSString stringWithFormat:@"%i",((BusRoute*)[_routes objectAtIndex:indexPath.row]).routeNum];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    // TODO: Select Item
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
+    BusRouteViewCell *cell = (BusRouteViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    [_delegate setBusRoute:[cell.number.text intValue]];
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout
-
-// 1
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *searchTerm = self.searches[indexPath.section]; FlickrPhoto *photo =
-//    self.searchResults[searchTerm][indexPath.row];
-    // 2
-    CGSize retval = CGSizeMake(40, 40);
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize retval = CGSizeMake(50, 50);
     return retval;
 }
 
-// 3
-- (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(50, 20, 50, 20);
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 @end

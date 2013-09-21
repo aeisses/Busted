@@ -21,9 +21,6 @@
         // Custom initialization
         _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
         _mapVC.delegate = self;
-        
-        _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
-        _collection.delegate = self;
     }
     return self;
 }
@@ -51,7 +48,6 @@
     [_submitButton release]; _submitButton = nil;
     [_routeButton release]; _routeButton = nil;
     [_collection release]; _collection = nil;
-    [_inputTextField release]; _inputTextField = nil;
     _delegate = nil;
     [_mapVC release]; _mapVC = nil;
     [super dealloc];
@@ -59,32 +55,41 @@
 
 -(IBAction)touchSubmitButton:(id)sender
 {
-//    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
-    if (![_inputTextField.text isEqualToString:@""]) {
+    if (!_routeButton.titleLabel.text && ![_routeButton.titleLabel.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please" message:@"You need to select a route before a map will be shown" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    } else {
         [_delegate loadMapViewController:_mapVC];
     }
-//    }
 }
 
 - (IBAction)touchRouteButton:(id)sender
 {
+    _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+    _collection.delegate = self;
     [self presentViewController:_collection animated:YES completion:^{}];
 }
 
 #pragma RoutesViewControllerDelegate
 - (void)mapFinishedLoading
 {
-//    if (![_routeButton.titleLabel.text isEqualToString:@""]) {
-    if (![_inputTextField.text isEqualToString:@""]) {
-        [_mapVC addRoute:[_delegate getRoute:[_inputTextField.text integerValue]]];
+    if (![_routeButton.titleLabel.text isEqualToString:@""]) {
+        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
     }
-//    }
 }
 
 #pragma BusRoutesCollectionViewController
 - (NSArray*)getBusRoutes
 {
     return [_delegate getRoutes];
+}
+
+- (void)setBusRoute:(NSInteger)route
+{
+    [_routeButton setTitle:[NSString stringWithFormat:@"%i",route] forState:UIControlStateNormal];
+    [_collection dismissViewControllerAnimated:YES completion:^{}];
+    [_collection release];
 }
 
 @end

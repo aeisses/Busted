@@ -25,6 +25,10 @@
 
 - (void)viewDidLoad
 {
+    self.swipeDown.enabled = NO;
+    self.swipeUp.enabled = YES;
+    self.swipeLeft.enabled = YES;
+    self.swipeRight.enabled = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

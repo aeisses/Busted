@@ -76,42 +76,46 @@
         NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/buslocation/80"];
         NSURL *url = [[NSURL alloc] initWithString:urlStr];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-        NSLog(@"%@",json);
+        NSError *error = nil;
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        if (!error) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+            if (!error) {
+                NSLog(@"%@",json);
+                NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
+                for (NSDictionary *dic in json) {
+                    Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
+                                                        UUDID:[dic objectForKey:@"uuid"]
+                                                     latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
+                                                    longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
+                                               timeToNextStop:0];
+                    [myAnnotations addObject:bus];
+                    [bus release];
+                }
+                json = nil;
+                __block NSMutableArray *blockMyAnnotations = myAnnotations;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (_annotations) {
+                        [_mapView removeAnnotations:_annotations];
+                        _annotations = nil;
+                    }
+                    _annotations = [[NSArray alloc] initWithArray:blockMyAnnotations];
+                    [_mapView addAnnotations:_annotations];
+                    [_mapView setNeedsDisplay];
+                });
+                [myAnnotations release];
+            }
+        }
         [urlStr release];
         [url release];
-        NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
-        for (NSDictionary *dic in json) {
-            Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
-                                                UUDID:[dic objectForKey:@"uuid"]
-                                             latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
-                                            longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
-                                       timeToNextStop:0];
-            [myAnnotations addObject:bus];
-            [bus release];
-        }
-        json = nil;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (_annotations) {
-                [_mapView removeAnnotations:_annotations];
-                _annotations = nil;
-            }
-            _annotations = [[NSArray alloc] initWithArray:myAnnotations];
-            [_mapView addAnnotations:_annotations];
-            [myAnnotations release];
-            [_mapView setNeedsDisplay];
-        });
+
     });
     dispatch_release(networkQueue);
-
 }
 
 - (void)addRoute:(BusRoute*)route
 {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        [_mapView addOverlays:route.lines];
-//    });
+    [_mapView addOverlays:route.lines];
 }
 
 - (void)didReceiveMemoryWarning

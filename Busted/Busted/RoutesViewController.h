@@ -20,7 +20,6 @@
 
 @property (retain, nonatomic) IBOutlet UIButton *submitButton;
 @property (retain, nonatomic) IBOutlet UIButton *routeButton;
-@property (retain, nonatomic) IBOutlet UITextField *inputTextField;
 @property (retain, nonatomic) id <RoutesViewControllerDelegate> delegate;
 @property (retain, nonatomic) MapViewController *mapVC;
 @property (retain, nonatomic) BusRoutesCollectionViewController *collection;

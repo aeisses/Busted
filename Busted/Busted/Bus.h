@@ -11,7 +11,7 @@
 
 @interface Bus : NSObject <MKAnnotation>
 
-@property (retain, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (retain, nonatomic) NSString *UUID;
 @property (readwrite) NSInteger *busNumber;

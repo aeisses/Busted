@@ -25,6 +25,9 @@
 		04239FE117E6389300D0AA34 /* menuBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE017E6389300D0AA34 /* menuBackGround@2x.png */; };
 		04239FE817E63B7F00D0AA34 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE617E63B7F00D0AA34 /* submit@2x.png */; };
 		04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE717E63B7F00D0AA34 /* home@2x.png */; };
+		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
+		048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */; };
+		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
 		04C7C27A17E3D7D9001A9981 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27917E3D7D9001A9981 /* UIKit.framework */; };
 		04C7C27C17E3D7D9001A9981 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27B17E3D7D9001A9981 /* Foundation.framework */; };
 		04C7C27E17E3D7D9001A9981 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27D17E3D7D9001A9981 /* CoreGraphics.framework */; };
@@ -93,6 +96,10 @@
 		04239FE017E6389300D0AA34 /* menuBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackGround@2x.png"; sourceTree = "<group>"; };
 		04239FE617E63B7F00D0AA34 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
 		04239FE717E63B7F00D0AA34 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
+		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
+		048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellBackGround@2x.png"; sourceTree = "<group>"; };
+		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
 		04C7C27617E3D7D9001A9981 /* Busted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C7C27917E3D7D9001A9981 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04C7C27B17E3D7D9001A9981 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -253,6 +260,7 @@
 				04C7C2B817E49F70001A9981 /* Nibs */,
 				04C7C29D17E3DFC3001A9981 /* MenuViewController.h */,
 				04C7C29E17E3DFC3001A9981 /* MenuViewController.m */,
+				04C7C2B917E49F8F001A9981 /* StopsViewController.h */,
 				04C7C2A217E3E383001A9981 /* BustedNavigationController.h */,
 				04C7C2A317E3E383001A9981 /* BustedNavigationController.m */,
 				04C7C2AB17E3E9C5001A9981 /* RoutesViewController.h */,
@@ -261,12 +269,13 @@
 				04C7C2B117E48B8D001A9981 /* ParentViewController.m */,
 				04C7C2B317E49CD5001A9981 /* TrackViewController.h */,
 				04C7C2B417E49CD5001A9981 /* TrackViewController.m */,
-				04C7C2B917E49F8F001A9981 /* StopsViewController.h */,
 				04C7C2BA17E49F8F001A9981 /* StopsViewController.m */,
 				04C7C2BE17E4A1B8001A9981 /* MapViewController.h */,
 				04C7C2BF17E4A1B9001A9981 /* MapViewController.m */,
 				04C7C2EC17E51BC8001A9981 /* BusRoutesCollectionViewController.h */,
 				04C7C2ED17E51BC8001A9981 /* BusRoutesCollectionViewController.m */,
+				048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */,
+				048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -291,6 +300,7 @@
 				04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */,
 				04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */,
 				04C7C2B517E49CD5001A9981 /* TrackViewController.xib */,
+				048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -314,6 +324,7 @@
 			children = (
 				04C7C2FC17E55346001A9981 /* IconLarge.png */,
 				04239FDE17E6366A00D0AA34 /* tracking@2x.png */,
+				048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */,
 				04C7C2FD17E55346001A9981 /* IconLarge@2x.png */,
 				04239FDA17E634F900D0AA34 /* trackButtonDown@2x.png */,
 				04239FDB17E634F900D0AA34 /* trackButtonUp@2x.png */,
@@ -434,6 +445,8 @@
 				04239FE117E6389300D0AA34 /* menuBackGround@2x.png in Resources */,
 				04239FE817E63B7F00D0AA34 /* submit@2x.png in Resources */,
 				04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */,
+				048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */,
+				048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +473,7 @@
 				04C7C2C117E4A1B9001A9981 /* MapViewController.m in Sources */,
 				04C7C2EF17E51BC9001A9981 /* BusRoutesCollectionViewController.m in Sources */,
 				04C7C2F317E53B8E001A9981 /* Bus.m in Sources */,
+				048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +556,7 @@
 		04C7C29A17E3D7D9001A9981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -554,6 +569,7 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

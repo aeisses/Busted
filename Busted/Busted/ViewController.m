@@ -34,14 +34,13 @@
     [activityIndicator hidesWhenStopped];
     dataReader = [[DataReader alloc] init];
     dataReader.delegate = self;
-    __block DataReader *blockDataReader = dataReader;
-    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
-    dispatch_async(loadDataQueue, ^{
-        [blockDataReader loadKMLData];
-    });
+//    __block DataReader *blockDataReader = dataReader;
+//    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
+//    dispatch_async(loadDataQueue, ^{
+//        [blockDataReader loadKMLData];
+//    });
 
-
-//    [self showMenuView];
+    [self showMenuView];
     [super viewDidLoad];    
 }
 
@@ -68,7 +67,11 @@
     } else if ([vc isKindOfClass:[TrackViewController class]]) {
         TrackViewController *trackVC = (TrackViewController*)vc;
         trackVC.superDelegate = self;
+        trackVC.view.alpha = 0;
         [[self navigationController] pushViewController:vc animated:NO];
+        [UIView animateWithDuration:0.25 animations:^{
+            trackVC.view.alpha = 1.0;
+        }];
     } else if ([vc isKindOfClass:[StopsViewController class]]) {
         StopsViewController *stopVC = (StopsViewController*)vc;
         stopVC.superDelegate = self;
@@ -104,20 +107,51 @@
 {
     switch (swipeGesture.direction) {
         case UISwipeGestureRecognizerDirectionLeft:
-            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]])
-                [[self navigationController] popViewControllerAnimated:NO];
+            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
+                [UIView animateWithDuration:0.75 animations:^{
+                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                    [[self navigationController] popViewControllerAnimated:NO];
+                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:[self navigationController].view cache:NO];
+                }];
+            }
             break;
         case UISwipeGestureRecognizerDirectionRight:
-            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]])
-                [[self navigationController] popViewControllerAnimated:NO];
+            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
+                [UIView animateWithDuration:0.75 animations:^{
+                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                    [[self navigationController] popViewControllerAnimated:NO];
+                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:[self navigationController].view cache:NO];
+                }];
+            }
             break;
         case UISwipeGestureRecognizerDirectionUp:
             if ([[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
-                [[self navigationController] popViewControllerAnimated:NO];
+/*            {
+                int numViewControllers = self.navigationController.viewControllers.count;
+                UIView *nextView = [[self.navigationController.viewControllers objectAtIndex:numViewControllers - 2] view];
+                [UIView transitionFromView:self.navigationController.topViewController.view toView:nextView duration:0.5 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
+                    [self.navigationController popViewControllerAnimated:false];
+                }];
+            }*/
+                [UIView animateWithDuration:0.5 animations:^{
+                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+                    [[self navigationController] popViewControllerAnimated:NO];
+                    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:[self navigationController].view cache:NO];
+                }];
             break;
         case UISwipeGestureRecognizerDirectionDown:
-            if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
-                  [[self navigationController] pushViewController:_trackVC animated:NO];
+/*            if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
+                [UIView transitionFromView:self.navigationController.topViewController.view toView:_trackVC.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
+                    [[self navigationController] pushViewController:_trackVC animated:NO];
+                }];
+ */
+                [UIView animateWithDuration:0.5 animations:^{
+                    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+                    [[self navigationController] pushViewController:_trackVC animated:NO];
+                    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:[self navigationController].view cache:NO];
+                }];
+ 
+//                  [[self navigationController] pushViewController:_trackVC animated:NO];
             break;
     }
 }

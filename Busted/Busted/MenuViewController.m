@@ -33,8 +33,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     homeButton.hidden = YES; homeButton.enabled = NO;
-    swipeRight.enabled = NO;
-    swipeLeft.enabled = NO;
+    self.swipeRight.enabled = NO;
+    self.swipeLeft.enabled = NO;
+    self.swipeUp.enabled = NO;
+    self.swipeDown.enabled = YES;
 }
 
 - (void)didReceiveMemoryWarning

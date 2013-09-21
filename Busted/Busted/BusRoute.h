@@ -31,12 +31,12 @@ typedef struct lineSegment {
 }
 
 @property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSArray *lines;
+@property (nonatomic, retain) NSArray *lines;
 @property (nonatomic, copy) NSString *description;
-@property (nonatomic, copy) NSString *routeTitle;
-@property (nonatomic, copy) NSDate *startDate;
-@property (nonatomic, copy) NSDate *revDate;
-@property (nonatomic, copy) NSString *socrateId;
+@property (nonatomic, retain) NSString *routeTitle;
+@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, retain) NSDate *revDate;
+@property (nonatomic, retain) NSString *socrateId;
 @property (readwrite) NSInteger routeNum;
 
 

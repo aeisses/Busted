@@ -20,21 +20,30 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        swipeLeft.numberOfTouchesRequired = 1;
-        swipeLeft.direction = (UISwipeGestureRecognizerDirectionLeft);
+        _swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        _swipeLeft.numberOfTouchesRequired = 1;
+        _swipeLeft.accessibilityLabel = @"Exit Screen";
+        _swipeLeft.isAccessibilityElement = YES;
+        _swipeLeft.direction = (UISwipeGestureRecognizerDirectionLeft);
         
-        swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        swipeRight.numberOfTouchesRequired = 1;
-        swipeRight.direction = (UISwipeGestureRecognizerDirectionRight);
+        _swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        _swipeRight.numberOfTouchesRequired = 1;
+        _swipeRight.accessibilityLabel = @"Exit Screen";
+        _swipeRight.isAccessibilityElement = YES;
+        _swipeRight.direction = (UISwipeGestureRecognizerDirectionRight);
         
-        swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        swipeUp.numberOfTouchesRequired = 1;
-        swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
+        _swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        _swipeUp.numberOfTouchesRequired = 1;
+        _swipeUp.accessibilityLabel = @"Close Tracking Window";
+        _swipeUp.isAccessibilityElement = YES;
+        _swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
+        _swipeUp.enabled = NO;
         
-        swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
-        swipeDown.numberOfTouchesRequired = 1;
-        swipeDown.direction = (UISwipeGestureRecognizerDirectionDown);
+        _swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+        _swipeDown.numberOfTouchesRequired = 1;
+        _swipeDown.accessibilityLabel = @"Show tracking window";
+        _swipeDown.isAccessibilityElement = YES;
+        _swipeDown.direction = (UISwipeGestureRecognizerDirectionDown);
     }
     return self;
 }
@@ -42,6 +51,7 @@
 - (void)viewDidLoad
 {
     homeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    homeButton.accessibilityLabel = @"Home Button";
     homeButton.frame = (CGRect){0,0,40,40};
     [homeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
     [homeButton addTarget:self action:@selector(touchedHomeButton) forControlEvents:UIControlEventTouchUpInside];
@@ -51,19 +61,19 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.view addGestureRecognizer:swipeRight];
-    [self.view addGestureRecognizer:swipeLeft];
-    [self.view addGestureRecognizer:swipeUp];
-    [self.view addGestureRecognizer:swipeDown];
+    [self.view addGestureRecognizer:_swipeRight];
+    [self.view addGestureRecognizer:_swipeLeft];
+    [self.view addGestureRecognizer:_swipeUp];
+    [self.view addGestureRecognizer:_swipeDown];
     [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.view removeGestureRecognizer:swipeRight];
-    [self.view removeGestureRecognizer:swipeLeft];
-    [self.view removeGestureRecognizer:swipeUp];
-    [self.view removeGestureRecognizer:swipeDown];
+    [self.view removeGestureRecognizer:_swipeRight];
+    [self.view removeGestureRecognizer:_swipeLeft];
+    [self.view removeGestureRecognizer:_swipeUp];
+    [self.view removeGestureRecognizer:_swipeDown];
     [super viewWillDisappear:animated];
 }
 
@@ -75,10 +85,10 @@
 
 - (void)dealloc
 {
-    [swipeRight release]; swipeRight = nil;
-    [swipeLeft release]; swipeLeft = nil;
-    [swipeUp release]; swipeUp = nil;
-    [swipeDown release]; swipeDown = nil;
+    [_swipeRight release]; _swipeRight = nil;
+    [_swipeLeft release]; _swipeLeft = nil;
+    [_swipeUp release]; _swipeUp = nil;
+    [_swipeDown release]; _swipeDown = nil;
     _superDelegate = nil;
     [super dealloc];
 }

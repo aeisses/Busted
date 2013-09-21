@@ -15,13 +15,13 @@
 
 @interface ParentViewController : UIViewController
 {
-    UISwipeGestureRecognizer *swipeLeft;
-    UISwipeGestureRecognizer *swipeRight;
-    UISwipeGestureRecognizer *swipeUp;
-    UISwipeGestureRecognizer *swipeDown;
     UIButton *homeButton;
 }
 
 @property (retain, nonatomic) id <ParentViewControllerDelegate> superDelegate;
+@property (retain, nonatomic) UISwipeGestureRecognizer *swipeLeft;
+@property (retain, nonatomic) UISwipeGestureRecognizer *swipeRight;
+@property (retain, nonatomic) UISwipeGestureRecognizer *swipeUp;
+@property (retain, nonatomic) UISwipeGestureRecognizer *swipeDown;
 
 @end

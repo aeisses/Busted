@@ -53,8 +53,10 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     homeButton.hidden = YES; homeButton.enabled = NO;
-    swipeRight.enabled = NO;
-    swipeLeft.enabled = NO;
+    self.swipeRight.enabled = NO;
+    self.swipeLeft.enabled = NO;
+    self.swipeDown.enabled = NO;
+    self.swipeUp.enabled = YES;
     [super viewDidAppear:animated];
 }
 
