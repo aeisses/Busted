@@ -25,10 +25,6 @@
 
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
-@property (retain, nonatomic) IBOutlet UILabel *lattitude;
-@property (retain, nonatomic) IBOutlet UILabel *longitude;
-@property (retain, nonatomic) IBOutlet UILabel *deltaLattutide;
-@property (retain, nonatomic) IBOutlet UILabel *deltaLongitude;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
 
 - (void)addRoute:(BusRoute*)route;

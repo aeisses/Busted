@@ -16,18 +16,18 @@
 		04239FCE17E62F5C00D0AA34 /* light button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC617E62F5C00D0AA34 /* light button2.png */; };
 		04239FCF17E62F5C00D0AA34 /* light button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC717E62F5C00D0AA34 /* light button3.png */; };
 		04239FD117E62F5C00D0AA34 /* menuBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC917E62F5C00D0AA34 /* menuBackGround@2x.png */; };
-		04239FD517E6327C00D0AA34 /* button1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FD217E6327C00D0AA34 /* button1@2x.png */; };
-		04239FD617E6327C00D0AA34 /* button2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FD317E6327C00D0AA34 /* button2@2x.png */; };
-		04239FD717E6327C00D0AA34 /* button3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FD417E6327C00D0AA34 /* button3@2x.png */; };
 		04239FDC17E634F900D0AA34 /* trackButtonDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FDA17E634F900D0AA34 /* trackButtonDown@2x.png */; };
 		04239FDD17E634F900D0AA34 /* trackButtonUp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FDB17E634F900D0AA34 /* trackButtonUp@2x.png */; };
 		04239FDF17E6366A00D0AA34 /* tracking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FDE17E6366A00D0AA34 /* tracking@2x.png */; };
-		04239FE117E6389300D0AA34 /* menuBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE017E6389300D0AA34 /* menuBackGround@2x.png */; };
-		04239FE817E63B7F00D0AA34 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE617E63B7F00D0AA34 /* submit@2x.png */; };
+		04239FE817E63B7F00D0AA34 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE617E63B7F00D0AA34 /* submit.png */; };
 		04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE717E63B7F00D0AA34 /* home@2x.png */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
+		04B0BD4B17EE5017009FC648 /* button1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B0BD4817EE5017009FC648 /* button1@2x.png */; };
+		04B0BD4C17EE5017009FC648 /* button2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B0BD4917EE5017009FC648 /* button2@2x.png */; };
+		04B0BD4D17EE5017009FC648 /* button3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B0BD4A17EE5017009FC648 /* button3@2x.png */; };
+		04B0BD4F17EE8353009FC648 /* submit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B0BD4E17EE8353009FC648 /* submit@2x.png */; };
 		04C7C27A17E3D7D9001A9981 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27917E3D7D9001A9981 /* UIKit.framework */; };
 		04C7C27C17E3D7D9001A9981 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27B17E3D7D9001A9981 /* Foundation.framework */; };
 		04C7C27E17E3D7D9001A9981 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27D17E3D7D9001A9981 /* CoreGraphics.framework */; };
@@ -87,19 +87,20 @@
 		04239FC617E62F5C00D0AA34 /* light button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light button2.png"; sourceTree = "<group>"; };
 		04239FC717E62F5C00D0AA34 /* light button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light button3.png"; sourceTree = "<group>"; };
 		04239FC917E62F5C00D0AA34 /* menuBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackGround@2x.png"; sourceTree = "<group>"; };
-		04239FD217E6327C00D0AA34 /* button1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1@2x.png"; sourceTree = "<group>"; };
-		04239FD317E6327C00D0AA34 /* button2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2@2x.png"; sourceTree = "<group>"; };
-		04239FD417E6327C00D0AA34 /* button3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button3@2x.png"; sourceTree = "<group>"; };
 		04239FDA17E634F900D0AA34 /* trackButtonDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackButtonDown@2x.png"; sourceTree = "<group>"; };
 		04239FDB17E634F900D0AA34 /* trackButtonUp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackButtonUp@2x.png"; sourceTree = "<group>"; };
 		04239FDE17E6366A00D0AA34 /* tracking@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tracking@2x.png"; sourceTree = "<group>"; };
 		04239FE017E6389300D0AA34 /* menuBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackGround@2x.png"; sourceTree = "<group>"; };
-		04239FE617E63B7F00D0AA34 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
+		04239FE617E63B7F00D0AA34 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		04239FE717E63B7F00D0AA34 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellBackGround@2x.png"; sourceTree = "<group>"; };
 		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
+		04B0BD4817EE5017009FC648 /* button1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1@2x.png"; sourceTree = "<group>"; };
+		04B0BD4917EE5017009FC648 /* button2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2@2x.png"; sourceTree = "<group>"; };
+		04B0BD4A17EE5017009FC648 /* button3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button3@2x.png"; sourceTree = "<group>"; };
+		04B0BD4E17EE8353009FC648 /* submit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submit@2x.png"; sourceTree = "<group>"; };
 		04C7C27617E3D7D9001A9981 /* Busted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C7C27917E3D7D9001A9981 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04C7C27B17E3D7D9001A9981 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -330,6 +331,9 @@
 				04239FDB17E634F900D0AA34 /* trackButtonUp@2x.png */,
 				04C7C2FA17E54CA4001A9981 /* dot15@2x.png */,
 				04239FE017E6389300D0AA34 /* menuBackGround@2x.png */,
+				04B0BD4817EE5017009FC648 /* button1@2x.png */,
+				04B0BD4917EE5017009FC648 /* button2@2x.png */,
+				04B0BD4A17EE5017009FC648 /* button3@2x.png */,
 				04239FC217E62F5C00D0AA34 /* button1.png */,
 				04239FC317E62F5C00D0AA34 /* button2.png */,
 				04239FC417E62F5C00D0AA34 /* button3.png */,
@@ -337,13 +341,11 @@
 				04239FC617E62F5C00D0AA34 /* light button2.png */,
 				04239FC717E62F5C00D0AA34 /* light button3.png */,
 				04239FC917E62F5C00D0AA34 /* menuBackGround@2x.png */,
-				04239FE617E63B7F00D0AA34 /* submit@2x.png */,
+				04239FE617E63B7F00D0AA34 /* submit.png */,
+				04B0BD4E17EE8353009FC648 /* submit@2x.png */,
 				04239FE717E63B7F00D0AA34 /* home@2x.png */,
 				04C7C2F817E54963001A9981 /* dot0.png */,
 				04C7C2F617E5495D001A9981 /* dot0@2x.png */,
-				04239FD217E6327C00D0AA34 /* button1@2x.png */,
-				04239FD317E6327C00D0AA34 /* button2@2x.png */,
-				04239FD417E6327C00D0AA34 /* button3@2x.png */,
 				04C7C2E017E5024C001A9981 /* Icon-Small.png */,
 				04C7C2E117E5024C001A9981 /* Icon-Small@2x.png */,
 				04C7C2D517E4BE5E001A9981 /* Bus Stops.kml */,
@@ -379,7 +381,7 @@
 		04C7C26E17E3D7D9001A9981 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Aaron Eisses";
 			};
 			buildConfigurationList = 04C7C27117E3D7D9001A9981 /* Build configuration list for PBXProject "Busted" */;
@@ -416,10 +418,12 @@
 				04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */,
 				04C7C2D817E4BE5E001A9981 /* Bus Stops.kml in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
+				04B0BD4F17EE8353009FC648 /* submit@2x.png in Resources */,
 				04C7C2DA17E4BE5E001A9981 /* sample.plist in Resources */,
 				04C7C2E417E5024C001A9981 /* Icon-Small.png in Resources */,
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
+				04B0BD4B17EE5017009FC648 /* button1@2x.png in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
 				04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */,
@@ -435,15 +439,13 @@
 				04239FCD17E62F5C00D0AA34 /* light button1.png in Resources */,
 				04239FCE17E62F5C00D0AA34 /* light button2.png in Resources */,
 				04239FCF17E62F5C00D0AA34 /* light button3.png in Resources */,
+				04B0BD4D17EE5017009FC648 /* button3@2x.png in Resources */,
 				04239FD117E62F5C00D0AA34 /* menuBackGround@2x.png in Resources */,
-				04239FD517E6327C00D0AA34 /* button1@2x.png in Resources */,
-				04239FD617E6327C00D0AA34 /* button2@2x.png in Resources */,
-				04239FD717E6327C00D0AA34 /* button3@2x.png in Resources */,
+				04B0BD4C17EE5017009FC648 /* button2@2x.png in Resources */,
 				04239FDC17E634F900D0AA34 /* trackButtonDown@2x.png in Resources */,
 				04239FDD17E634F900D0AA34 /* trackButtonUp@2x.png in Resources */,
 				04239FDF17E6366A00D0AA34 /* tracking@2x.png in Resources */,
-				04239FE117E6389300D0AA34 /* menuBackGround@2x.png in Resources */,
-				04239FE817E63B7F00D0AA34 /* submit@2x.png in Resources */,
+				04239FE817E63B7F00D0AA34 /* submit.png in Resources */,
 				04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */,
 				048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */,
 				048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */,

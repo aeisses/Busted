@@ -69,6 +69,8 @@
 - (void)dealloc
 {
     [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [displayLink invalidate];
+    [displayLink release]; displayLink = nil;
     [_trackButton release]; _trackButton = nil;
     [_inputField release]; _inputField = nil;
     [_locationManager release]; _locationManager = nil;

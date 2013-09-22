@@ -34,13 +34,12 @@
     [activityIndicator hidesWhenStopped];
     dataReader = [[DataReader alloc] init];
     dataReader.delegate = self;
-//    __block DataReader *blockDataReader = dataReader;
-//    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
-//    dispatch_async(loadDataQueue, ^{
-//        [blockDataReader loadKMLData];
-//    });
-
-    [self showMenuView];
+    __block DataReader *blockDataReader = dataReader;
+    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
+    dispatch_async(loadDataQueue, ^{
+        [blockDataReader loadKMLData];
+    });
+    dispatch_release(loadDataQueue);
     [super viewDidLoad];    
 }
 
