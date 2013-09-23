@@ -18,13 +18,14 @@
 - (NSArray*)getRoutes;
 @end
 
-@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate>
+@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate>
 
 @property (retain, nonatomic) id <MenuViewControllerDelegate> delegate;
 @property (retain, nonatomic) IBOutlet UIButton *button1;
 @property (retain, nonatomic) IBOutlet UIButton *button2;
 @property (retain, nonatomic) IBOutlet UIButton *button3;
 @property (retain, nonatomic) IBOutlet UIButton *button4;
+@property (retain, nonatomic) MapViewController *mapVC;
 
 -(IBAction)touchButton:(id)sender;
 

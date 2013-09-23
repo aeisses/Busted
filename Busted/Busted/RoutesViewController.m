@@ -70,7 +70,7 @@
     [self presentViewController:_collection animated:YES completion:^{}];
 }
 
-#pragma RoutesViewControllerDelegate
+#pragma MapViewControllerDelegate
 - (void)mapFinishedLoading
 {
     if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {

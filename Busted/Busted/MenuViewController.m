@@ -54,12 +54,9 @@
         [_delegate loadViewController:rootsVC];
         [rootsVC release];
     } else if (button.tag == 2) {
-//        StopsViewController *stopsVC = [[StopsViewController alloc] initWithNibName:@"StopsViewController" bundle:nil];
-//        [_delegate loadViewController:stopsVC];
-//        [stopsVC release];
-//        MapViewController *mapVC = [[MapViewController alloc] initWithNibName:@"StopsViewController" bundle:nil];
-//        mapVC.delegate = self;
-        
+        _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        _mapVC.delegate = self;
+        [_delegate loadViewController:_mapVC];
     } else if (button.tag == 4) {
 //        TrackViewController *trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
 //        [_delegate loadViewController:trackVC];
@@ -91,4 +88,15 @@
 {
     return [_delegate getRoutes];
 }
+
+#pragma MapViewControllerDelegate
+- (void)mapFinishedLoading
+{
+//    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
+//        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
+//    }
+    _mapVC.delegate = nil;
+    [_mapVC release];
+}
+
 @end

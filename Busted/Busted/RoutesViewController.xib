@@ -66,6 +66,6 @@
     <resources>
         <image name="cellBackGround.png" width="50" height="50"/>
         <image name="menuBackGround.png" width="320" height="568"/>
-        <image name="submit.png" width="76" height="25"/>
+        <image name="submit.png" width="153" height="50"/>
     </resources>
 </document>
