@@ -52,7 +52,7 @@
 
 -(IBAction)touchSubmitButton:(id)sender
 {
-    if (!_routeButton.titleLabel.text && ![_routeButton.titleLabel.text isEqualToString:@"?"]) {
+    if (!_routeButton.titleLabel.text || [_routeButton.titleLabel.text isEqualToString:@"?"]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please" message:@"You need to select a route before a map will be shown" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
         [alert show];
         [alert release];

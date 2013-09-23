@@ -57,7 +57,6 @@
 
 - (void)dealloc
 {
-//    [_collectionView release]; _collectionView = nil;
     if (_routes) {
         [_routes release];
         _routes = nil;

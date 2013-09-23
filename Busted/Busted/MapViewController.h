@@ -13,6 +13,9 @@
 #import "RegionZoomData.h"
 #import "BusRoute.h"
 #import "Bus.h"
+#import "Reachability.h"
+
+#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
 @protocol MapViewControllerDelegate <NSObject>
 - (void)mapFinishedLoading;
@@ -23,6 +26,7 @@
     CADisplayLink *displayLink;
 }
 
+@property (assign) NSInteger route;
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;

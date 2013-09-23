@@ -20,6 +20,7 @@
 }
 - (void)showMenuView
 {
+    [[self navigationController] popViewControllerAnimated:NO];
     _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     _menuViewController.delegate = self;
     _menuViewController.superDelegate = self;
@@ -30,8 +31,11 @@
 {
     _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
     _trackVC.superDelegate = self;
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [activityIndicator hidesWhenStopped];
+    _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
+    [[self navigationController] pushViewController:_loadingScreen animated:NO];
+    [_loadingScreen release];
+//    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    [activityIndicator hidesWhenStopped];
     dataReader = [[DataReader alloc] init];
     dataReader.delegate = self;
     __block DataReader *blockDataReader = dataReader;

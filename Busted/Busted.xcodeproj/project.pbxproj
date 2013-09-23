@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0407036117E6111200FC5E4B /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407035F17E6111200FC5E4B /* 1.png */; };
-		0407036217E6111200FC5E4B /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407036017E6111200FC5E4B /* 1@2x.png */; };
 		04239FCA17E62F5C00D0AA34 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC217E62F5C00D0AA34 /* button1.png */; };
 		04239FCB17E62F5C00D0AA34 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC317E62F5C00D0AA34 /* button2.png */; };
 		04239FCC17E62F5C00D0AA34 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC417E62F5C00D0AA34 /* button3.png */; };
@@ -21,6 +19,14 @@
 		04239FDF17E6366A00D0AA34 /* tracking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FDE17E6366A00D0AA34 /* tracking@2x.png */; };
 		04239FE817E63B7F00D0AA34 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE617E63B7F00D0AA34 /* submit.png */; };
 		04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE717E63B7F00D0AA34 /* home@2x.png */; };
+		04602CE017EF6BBB002BE30D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CDF17EF6BBB002BE30D /* Reachability.m */; };
+		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
+		04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CE417EF809E002BE30D /* LoadingScreenViewController.m */; };
+		04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */; };
+		04602CEC17EF826C002BE30D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE817EF826C002BE30D /* 1.png */; };
+		04602CED17EF826C002BE30D /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE917EF826C002BE30D /* 1@2x.png */; };
+		04602CEE17EF826C002BE30D /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04602CEA17EF826C002BE30D /* 2.png */; };
+		04602CEF17EF826C002BE30D /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04602CEB17EF826C002BE30D /* 2@2x.png */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
@@ -78,8 +84,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0407035F17E6111200FC5E4B /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
-		0407036017E6111200FC5E4B /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
 		04239FC217E62F5C00D0AA34 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		04239FC317E62F5C00D0AA34 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		04239FC417E62F5C00D0AA34 /* button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3.png; sourceTree = "<group>"; };
@@ -93,6 +97,16 @@
 		04239FE017E6389300D0AA34 /* menuBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackGround@2x.png"; sourceTree = "<group>"; };
 		04239FE617E63B7F00D0AA34 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		04239FE717E63B7F00D0AA34 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		04602CDE17EF6BBB002BE30D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		04602CDF17EF6BBB002BE30D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		04602CE317EF809E002BE30D /* LoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewController.h; sourceTree = "<group>"; };
+		04602CE417EF809E002BE30D /* LoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScreenViewController.m; sourceTree = "<group>"; };
+		04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingScreenViewController.xib; sourceTree = "<group>"; };
+		04602CE817EF826C002BE30D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		04602CE917EF826C002BE30D /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		04602CEA17EF826C002BE30D /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		04602CEB17EF826C002BE30D /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellBackGround@2x.png"; sourceTree = "<group>"; };
@@ -174,6 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */,
 				04C7C2DF17E4F3D3001A9981 /* QuartzCore.framework in Frameworks */,
 				04C7C2C617E4A47C001A9981 /* CoreLocation.framework in Frameworks */,
 				04C7C2C417E4A474001A9981 /* MapKit.framework in Frameworks */,
@@ -192,8 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				04C7C2EA17E5029E001A9981 /* Icon@2x.png */,
-				0407035F17E6111200FC5E4B /* 1.png */,
-				0407036017E6111200FC5E4B /* 1@2x.png */,
 				04C7C2E817E50288001A9981 /* Icon.png */,
 				04C7C27F17E3D7D9001A9981 /* Busted */,
 				04C7C27817E3D7D9001A9981 /* Frameworks */,
@@ -212,6 +225,7 @@
 		04C7C27817E3D7D9001A9981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */,
 				04C7C2C917E4BB1E001A9981 /* libxml2.2.dylib */,
 				04C7C2C717E4BB16001A9981 /* KML.framework */,
 				04C7C2C517E4A47B001A9981 /* CoreLocation.framework */,
@@ -262,6 +276,7 @@
 				04C7C29D17E3DFC3001A9981 /* MenuViewController.h */,
 				04C7C29E17E3DFC3001A9981 /* MenuViewController.m */,
 				04C7C2B917E49F8F001A9981 /* StopsViewController.h */,
+				04C7C2BA17E49F8F001A9981 /* StopsViewController.m */,
 				04C7C2A217E3E383001A9981 /* BustedNavigationController.h */,
 				04C7C2A317E3E383001A9981 /* BustedNavigationController.m */,
 				04C7C2AB17E3E9C5001A9981 /* RoutesViewController.h */,
@@ -270,9 +285,10 @@
 				04C7C2B117E48B8D001A9981 /* ParentViewController.m */,
 				04C7C2B317E49CD5001A9981 /* TrackViewController.h */,
 				04C7C2B417E49CD5001A9981 /* TrackViewController.m */,
-				04C7C2BA17E49F8F001A9981 /* StopsViewController.m */,
 				04C7C2BE17E4A1B8001A9981 /* MapViewController.h */,
 				04C7C2BF17E4A1B9001A9981 /* MapViewController.m */,
+				04602CE317EF809E002BE30D /* LoadingScreenViewController.h */,
+				04602CE417EF809E002BE30D /* LoadingScreenViewController.m */,
 				04C7C2EC17E51BC8001A9981 /* BusRoutesCollectionViewController.h */,
 				04C7C2ED17E51BC8001A9981 /* BusRoutesCollectionViewController.m */,
 				048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */,
@@ -297,6 +313,7 @@
 			children = (
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
+				04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */,
 				04C7C2BB17E49F8F001A9981 /* StopsViewController.xib */,
 				04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */,
 				04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */,
@@ -309,6 +326,8 @@
 		04C7C2CC17E4BC1F001A9981 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				04602CDE17EF6BBB002BE30D /* Reachability.h */,
+				04602CDF17EF6BBB002BE30D /* Reachability.m */,
 				04C7C2CD17E4BC33001A9981 /* BusStop.h */,
 				04C7C2CE17E4BC33001A9981 /* BusStop.m */,
 				04C7C2CF17E4BC33001A9981 /* BusRoute.h */,
@@ -323,6 +342,10 @@
 		04C7C2D417E4BE43001A9981 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				04602CE817EF826C002BE30D /* 1.png */,
+				04602CE917EF826C002BE30D /* 1@2x.png */,
+				04602CEA17EF826C002BE30D /* 2.png */,
+				04602CEB17EF826C002BE30D /* 2@2x.png */,
 				04C7C2FC17E55346001A9981 /* IconLarge.png */,
 				04239FDE17E6366A00D0AA34 /* tracking@2x.png */,
 				048F13AA17ED14F80011ABC7 /* cellBackGround@2x.png */,
@@ -411,6 +434,7 @@
 				04C7C28E17E3D7D9001A9981 /* Default@2x.png in Resources */,
 				04C7C29017E3D7D9001A9981 /* Default-568h@2x.png in Resources */,
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
+				04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */,
 				04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */,
 				04C7C2AF17E3E9C5001A9981 /* RoutesViewController.xib in Resources */,
 				04C7C2B717E49CD5001A9981 /* TrackViewController.xib in Resources */,
@@ -424,15 +448,16 @@
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
 				04B0BD4B17EE5017009FC648 /* button1@2x.png in Resources */,
+				04602CEC17EF826C002BE30D /* 1.png in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
+				04602CED17EF826C002BE30D /* 1@2x.png in Resources */,
 				04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */,
 				04C7C2F917E54963001A9981 /* dot0.png in Resources */,
 				04C7C2FB17E54CA4001A9981 /* dot15@2x.png in Resources */,
 				04C7C2FE17E55347001A9981 /* IconLarge.png in Resources */,
+				04602CEF17EF826C002BE30D /* 2@2x.png in Resources */,
 				04C7C2FF17E55347001A9981 /* IconLarge@2x.png in Resources */,
-				0407036117E6111200FC5E4B /* 1.png in Resources */,
-				0407036217E6111200FC5E4B /* 1@2x.png in Resources */,
 				04239FCA17E62F5C00D0AA34 /* button1.png in Resources */,
 				04239FCB17E62F5C00D0AA34 /* button2.png in Resources */,
 				04239FCC17E62F5C00D0AA34 /* button3.png in Resources */,
@@ -447,6 +472,7 @@
 				04239FDF17E6366A00D0AA34 /* tracking@2x.png in Resources */,
 				04239FE817E63B7F00D0AA34 /* submit.png in Resources */,
 				04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */,
+				04602CEE17EF826C002BE30D /* 2.png in Resources */,
 				048F13AB17ED14F90011ABC7 /* cellBackGround@2x.png in Resources */,
 				048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */,
 			);
@@ -465,6 +491,7 @@
 				04C7C2CB17E4BB6B001A9981 /* DataReader.m in Sources */,
 				04C7C28617E3D7D9001A9981 /* main.m in Sources */,
 				04C7C28A17E3D7D9001A9981 /* AppDelegate.m in Sources */,
+				04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */,
 				04C7C29317E3D7D9001A9981 /* ViewController.m in Sources */,
 				04C7C2A017E3DFC3001A9981 /* MenuViewController.m in Sources */,
 				04C7C2A417E3E383001A9981 /* BustedNavigationController.m in Sources */,
@@ -475,6 +502,7 @@
 				04C7C2C117E4A1B9001A9981 /* MapViewController.m in Sources */,
 				04C7C2EF17E51BC9001A9981 /* BusRoutesCollectionViewController.m in Sources */,
 				04C7C2F317E53B8E001A9981 /* Bus.m in Sources */,
+				04602CE017EF6BBB002BE30D /* Reachability.m in Sources */,
 				048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

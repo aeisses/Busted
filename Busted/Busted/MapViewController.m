@@ -19,7 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
@@ -54,49 +53,58 @@
     [displayLink invalidate];
     [displayLink release];
     displayLink = nil;
+    [_mapView removeOverlays:_mapView.overlays];
+    [_mapView removeAnnotations:_mapView.annotations];
+    [_mapView removeFromSuperview];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
-// TODO: Might still have some memory issues here....
-    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-    dispatch_async(networkQueue, ^{
-        NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/buslocation/80"];
-        NSURL *url = [[NSURL alloc] initWithString:urlStr];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        NSError *error = nil;
-        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
-        if (!error) {
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:SERVERHOSTNAME];
+    if (remoteHostStatus.currentReachabilityStatus != NotReachable)
+    {
+        // TODO: Might still have some memory issues here....
+        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+        dispatch_async(networkQueue, ^{
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%i",SERVERHOSTNAME,_route];
+            NSURL *url = [[NSURL alloc] initWithString:urlStr];
+            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+            NSError *error = nil;
+            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
             if (!error) {
-                NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
-                for (NSDictionary *dic in json) {
-                    Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
-                                                        UUDID:[dic objectForKey:@"uuid"]
-                                                     latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
-                                                    longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
-                                               timeToNextStop:0];
-                    [myAnnotations addObject:bus];
-                    [bus release];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+                if (!error) {
+                    NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
+                    for (NSDictionary *dic in json) {
+                        Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
+                                                            UUDID:[dic objectForKey:@"uuid"]
+                                                         latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
+                                                        longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
+                                                   timeToNextStop:0];
+                        [myAnnotations addObject:bus];
+                        [bus release];
+                    }
+                    json = nil;
+                    if (_annotations) {
+                        [_mapView removeAnnotations:_annotations];
+                        _annotations = nil;
+                    }
+                    _annotations = [[NSArray alloc] initWithArray:myAnnotations];
+                    [myAnnotations release];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_mapView addAnnotations:_annotations];
+                        [_mapView setNeedsDisplay]; // This might not be needed
+                    });
                 }
-                json = nil;
-                if (_annotations) {
-                    [_mapView removeAnnotations:_annotations];
-                    _annotations = nil;
-                }
-                _annotations = [[NSArray alloc] initWithArray:myAnnotations];
-                [myAnnotations release];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [_mapView addAnnotations:_annotations];
-                    [_mapView setNeedsDisplay]; // This might not be needed
-                });
             }
-        }
-        [url release];
-        [urlStr release];
-    });
-    dispatch_release(networkQueue);
-    
+            [request release];
+            [url release];
+            [urlStr release];
+        });
+        dispatch_release(networkQueue);
+    } else {
+        // The internet connection is not valid
+    }
 }
 
 - (void)addRoute:(BusRoute*)route
@@ -104,6 +112,7 @@
     if (_mapView.overlays)
         [_mapView removeOverlays:_mapView.overlays];
     [_mapView addOverlays:route.lines];
+    _route = route.routeNum;
 }
 
 - (void)didReceiveMemoryWarning
@@ -132,39 +141,6 @@
         }
         return annotationView;
     }
-/*    if ([annotation isKindOfClass:[Bus class]]) {
-        NSString *identifier;
-        if (!showNumberOfRoutesStops && !showTerminals) {
-            identifier = @"BusStop";
-        } else if (!showNumberOfRoutesStops && showTerminals) {
-            BusStop *busStop = (BusStop*)annotation;
-            identifier = [NSString stringWithFormat:@"Terminal%i",busStop.fcode];
-        } else {
-            BusStop *busStop = (BusStop*)annotation;
-            identifier = [NSString stringWithFormat:@"BusStop%i",[busStop.routes count]];
-        }
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-        if (annotationView == nil) {
-            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier] autorelease];
-            annotationView.enabled = YES;
-            annotationView.canShowCallout = NO;
-            NSString *imageName;
-            if (!showNumberOfRoutesStops && !showTerminals) {
-                imageName = @"dot0.png";
-            } else if (!showNumberOfRoutesStops && showTerminals) {
-                BusStop *busStop = (BusStop*)annotation;
-                imageName = [NSString stringWithFormat:@"terminal%i",busStop.fcode];
-            } else {
-                BusStop *busStop = (BusStop*)annotation;
-                imageName = [NSString stringWithFormat:@"dot%i.png",[busStop.routes count]];
-            }
-            annotationView.image = [UIImage imageNamed:imageName];//here we use a nice image instead of the default pins
-        } else {
-            annotationView.annotation = annotation;
-        }
-        return annotationView;
-    }
- */
     return nil;
 }
 
@@ -189,6 +165,5 @@
     
     return polylineView;
 }
-
 
 @end

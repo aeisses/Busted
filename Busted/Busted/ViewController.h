@@ -10,6 +10,7 @@
 #import "MenuViewController.h"
 #import "DataReader.h"
 #import "TrackViewController.h"
+#import "LoadingScreenViewController.h"
 
 @interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate>
 {
@@ -19,5 +20,6 @@
 
 @property (retain, nonatomic) MenuViewController *menuViewController;
 @property (retain, nonatomic) TrackViewController *trackVC;
+@property (retain, nonatomic) LoadingScreenViewController *loadingScreen;
 
 @end

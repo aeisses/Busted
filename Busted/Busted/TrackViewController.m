@@ -137,15 +137,6 @@
         _trackButton.selected = NO;
         _greenButton.hidden = YES;
     }
-/*    NSString *urlStr = [[NSString alloc] initWithString:@"http://ertt.ca:8080/busted/buslocation/80"];
-//    NSURL *url = [[NSURL alloc] initWithString:urlStr];
-//    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[[NSURL alloc] initWithString:urlStr]];
-    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-    NSLog(@"Json String: %@",json_string);
- */
-    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -154,7 +145,6 @@
         [_currentLocation release]; _currentLocation = nil;
     }
     _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
-//    [self updatePoint];
     NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
 }
 
