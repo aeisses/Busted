@@ -12,7 +12,7 @@
 #import "TrackViewController.h"
 #import "LoadingScreenViewController.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate>
 {
     DataReader *dataReader;
     UIActivityIndicatorView *activityIndicator;

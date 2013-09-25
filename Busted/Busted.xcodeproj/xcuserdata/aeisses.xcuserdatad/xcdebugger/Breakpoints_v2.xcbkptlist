@@ -16,16 +16,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/TrackViewController.m"
-            timestampString = "401506756.414661"
+            timestampString = "401842341.42044"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-updatePoint"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

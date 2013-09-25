@@ -7,22 +7,29 @@
 //
 
 #import "ParentViewController.h"
+#import "BusRoutesCollectionViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface TrackViewController : ParentViewController <CLLocationManagerDelegate>
+@protocol TrackViewControllerDelegate <NSObject>
+- (NSArray*)getRoutes;
+@end
+
+@interface TrackViewController : ParentViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
 {
     CADisplayLink *displayLink;
     BOOL isTracking;
     NSString *uudi;
 }
 
-@property (retain, nonatomic) IBOutlet UIImageView *greenButton;
 @property (retain, nonatomic) IBOutlet UIButton *trackButton;
-@property (retain, nonatomic) IBOutlet UITextField *inputField;
+@property (retain, nonatomic) IBOutlet UIButton *routeButton;
+@property (retain, nonatomic) id <TrackViewControllerDelegate> delegate;
 @property (retain, nonatomic) CLLocationManager *locationManager;
 @property (retain, nonatomic) CLLocation *currentLocation;
+@property (retain, nonatomic) BusRoutesCollectionViewController *collection;
 
 - (IBAction)touchTrackButton:(id)sender;
+- (IBAction)touchRouteButton:(id)sender;
 
 @end

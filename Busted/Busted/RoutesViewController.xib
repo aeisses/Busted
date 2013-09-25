@@ -42,6 +42,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="70">
                     <rect key="frame" x="187" y="147" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="Touch this button to select the route to show on the map." label="Route Select Button">
+                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="?" backgroundImage="cellBackGround.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>

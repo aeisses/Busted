@@ -30,12 +30,11 @@
 - (void)viewDidLoad
 {
     _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
+    _trackVC.delegate = self;
     _trackVC.superDelegate = self;
     _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
     [_loadingScreen release];
-//    activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//    [activityIndicator hidesWhenStopped];
     dataReader = [[DataReader alloc] init];
     dataReader.delegate = self;
     __block DataReader *blockDataReader = dataReader;
@@ -67,14 +66,6 @@
         RoutesViewController *routesVC = (RoutesViewController*)vc;
         routesVC.superDelegate = self;
         [[self navigationController] pushViewController:vc animated:NO];
-    } else if ([vc isKindOfClass:[TrackViewController class]]) {
-        TrackViewController *trackVC = (TrackViewController*)vc;
-        trackVC.superDelegate = self;
-        trackVC.view.alpha = 0;
-        [[self navigationController] pushViewController:vc animated:NO];
-        [UIView animateWithDuration:0.25 animations:^{
-            trackVC.view.alpha = 1.0;
-        }];
     } else if ([vc isKindOfClass:[StopsViewController class]]) {
         StopsViewController *stopVC = (StopsViewController*)vc;
         stopVC.superDelegate = self;

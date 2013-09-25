@@ -46,7 +46,6 @@
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     [displayLink setFrameInterval:15];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    _greenButton.hidden = YES;
     [super viewDidLoad];
 }
 
@@ -72,9 +71,10 @@
     [displayLink invalidate];
     [displayLink release]; displayLink = nil;
     [_trackButton release]; _trackButton = nil;
-    [_inputField release]; _inputField = nil;
     [_locationManager release]; _locationManager = nil;
-    [_greenButton release]; _greenButton = nil;
+    [_routeButton release]; _routeButton = nil;
+    [_collection release]; _collection = nil;
+    _delegate = nil;
     if (uudi)
         [uudi release];
     [super dealloc];
@@ -96,7 +96,7 @@
             NSError *error = nil;
             NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
                                         blockUudi, @"uuid",
-                                        [NSNumber numberWithInt:80], @"busNumber",
+                                        [NSNumber numberWithInt:[_routeButton.titleLabel.text intValue]], @"busNumber",
                                         [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"latitude",
                                         [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"longitude",
                                         [NSNumber numberWithFloat:0.1], @"capacity", nil];
@@ -112,9 +112,15 @@
             [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             
             if ([response statusCode] > 399) {
-                _trackButton.selected = NO;
-                _greenButton.hidden = YES;
-                isTracking = NO;
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _trackButton.selected = NO;
+                    _routeButton.enabled = YES;
+                    isTracking = NO;
+                    [_trackButton setNeedsDisplay];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
+                });
             }
             jsonData = nil;
             request = nil;
@@ -126,17 +132,30 @@
 
 - (IBAction)touchTrackButton:(id)sender
 {
-    isTracking = !isTracking;
-    if (isTracking) {
-        _trackButton.selected = YES;
-        _greenButton.hidden = NO;
-        if (uudi)
-            [uudi release];
-        uudi = [[self uuidString] retain];
+    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
+        isTracking = !isTracking;
+        if (isTracking) {
+            _trackButton.selected = YES;
+            _routeButton.enabled = NO;
+            if (uudi)
+                [uudi release];
+            uudi = [[self uuidString] retain];
+        } else {
+            _trackButton.selected = NO;
+            _routeButton.enabled = YES;
+        }
     } else {
-        _trackButton.selected = NO;
-        _greenButton.hidden = YES;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please" message:@"You need to select a route you can activate the tracking GPS" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
     }
+}
+
+- (IBAction)touchRouteButton:(id)sender
+{
+    _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+    _collection.delegate = self;
+    [self presentViewController:_collection animated:YES completion:^{}];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -146,6 +165,20 @@
     }
     _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
     NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
+}
+
+#pragma BusRoutesCollectionViewController
+- (NSArray*)getBusRoutes
+{
+    return [_delegate getRoutes];
+}
+
+- (void)setBusRoute:(NSInteger)route
+{
+    [_routeButton setTitle:[NSString stringWithFormat:@"%i",route] forState:UIControlStateNormal];
+    [_collection dismissViewControllerAnimated:YES completion:^{}];
+    _collection.delegate = nil;
+    [_collection release];
 }
 
 @end
