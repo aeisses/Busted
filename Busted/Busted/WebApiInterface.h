@@ -7,6 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
+#import "AFJSONRequestOperation.h"
+#import "Stop.h"
+#import "Trip.h"
+#import "Route.h"
+#import "MapViewController.h"
+#import "BusStop.h"
 
 @interface WebApiInterface : NSObject
 
@@ -16,8 +24,17 @@
 //http://t2go-halifax.transittogo.com/api/v1/routes/motd?appversion=15
 
 #define BASEURL @"http://t2go-halifax.transittogo.com/api/v1/"
-#define STOPS   @"stop"
-#define PLACE   @"place"
-#define ROUTE   @"route"
+#define FILLER  @"/upcoming_stoptimes?time="
+#define ENDURL  @"&all_routes=yes"
+#define STOPS   @"stop/"
+#define PLACE   @"place/"
+#define ROUTE   @"route/"
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSMutableArray *busStops;
+
++ (WebApiInterface*)sharedInstance;
+- (void)requestStop:(NSInteger)stop;
+- (void)requestPlace:(CLLocationCoordinate2D)coordinate;
 
 @end

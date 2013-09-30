@@ -7,29 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KML/KML.h>
 #import <MapKit/MapKit.h>
+#import <CoreData/CoreData.h>
 #import "Enums.h"
 
 @interface BusStop : NSObject <MKAnnotation>
-{
-    NSInteger objectId;
-    SOURCE source;
-    SACC sacc;
-}
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (readonly) NSInteger goTime;
-@property (nonatomic, copy) NSArray *routes;
-@property (readonly) FCODE fcode;
-@property (nonatomic, copy) NSString *description;
-@property (nonatomic, copy) NSDate *date;
-@property (nonatomic, copy) NSString *address;
-@property (nonatomic, retain) NSString *street;
-@property (readonly) DIRECTION direction;
+@property (nonatomic, copy) NSNumber *code;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
-- (id)initWithTitle:(NSString *)title description:(NSString*)description andLocation:(KMLPoint*)location;
-- (void)addRouteNumber:(NSNumber*)route;
+- (id)initWithCode:(NSNumber*)code andContext:(NSManagedObjectContext*)context;
 
 @end

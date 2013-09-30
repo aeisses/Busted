@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _webApiInferface = [[WebApiInterface alloc] init];
     }
     return self;
 }
@@ -26,12 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    _webApiInferface.managedObjectContext = _managedObjectContext;
     homeButton.hidden = YES; homeButton.enabled = NO;
     self.swipeRight.enabled = NO;
     self.swipeLeft.enabled = NO;
@@ -57,6 +57,8 @@
         _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
         _mapVC.delegate = self;
         [_delegate loadViewController:_mapVC];
+        [_mapVC.mapView setRegion:(MKCoordinateRegion){_mapVC.currentLocation.coordinate.latitude,_mapVC.currentLocation.coordinate.longitude,0.014200, 0.011654}];
+        [_webApiInferface requestPlace:_mapVC.currentLocation.coordinate];
     } else if (button.tag == 4) {
 //        TrackViewController *trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
 //        [_delegate loadViewController:trackVC];
@@ -97,6 +99,11 @@
 //    }
     _mapVC.delegate = nil;
     [_mapVC release];
+}
+
+- (void)updateStops:(CLLocationCoordinate2D)mapCenter
+{
+    [_webApiInferface requestPlace:mapCenter];
 }
 
 @end

@@ -21,5 +21,6 @@
 @property (retain, nonatomic) MenuViewController *menuViewController;
 @property (retain, nonatomic) TrackViewController *trackVC;
 @property (retain, nonatomic) LoadingScreenViewController *loadingScreen;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

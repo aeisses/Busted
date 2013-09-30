@@ -15,5 +15,6 @@
 }
 
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
+@property (retain, nonatomic) IBOutlet UIImageView *animationImage;
 
 @end

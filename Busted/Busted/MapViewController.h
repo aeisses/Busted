@@ -19,6 +19,8 @@
 
 @protocol MapViewControllerDelegate <NSObject>
 - (void)mapFinishedLoading;
+@optional
+- (void)updateStops:(CLLocationCoordinate2D)mapCenter;
 @end
 
 @interface MapViewController : ParentViewController <MKMapViewDelegate>
@@ -30,7 +32,11 @@
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
+@property (retain, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
++ (MapViewController*)sharedInstance;
 - (void)addRoute:(BusRoute*)route;
+- (void)loadStopsForLocation;
 
 @end

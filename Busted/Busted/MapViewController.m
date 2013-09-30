@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "WebApiInterface.h"
 
 @interface MapViewController ()
 
@@ -14,13 +15,23 @@
 
 @implementation MapViewController
 
+static id instance;
+
++ (MapViewController*)sharedInstance
+{
+    if (!instance) {
+        return [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+    }
+    return instance;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    instance = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (instance) {
         // Custom initialization
     }
-    return self;
+    return instance;
 }
 
 - (void)dealloc
@@ -115,6 +126,11 @@
     _route = route.routeNum;
 }
 
+- (void)loadStopsForLocation
+{
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -164,6 +180,22 @@
     polylineView.lineJoin = kCGLineCapButt;
     
     return polylineView;
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
+{
+    [[WebApiInterface sharedInstance] requestPlace:mapView.region.center];
+}
+
+#pragma WebApiInterfaceDegelate Methods
+- (void)stopsLoaded:(NSArray*)stops
+{
+    [_mapView addAnnotations:stops];
+}
+
+- (void)stopLoaded:(NSNumber*)stop
+{
+
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "TrackViewController.h"
 #import "StopsViewController.h"
 #import "ParentViewController.h"
+#import "WebApiInterface.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;
@@ -26,6 +27,8 @@
 @property (retain, nonatomic) IBOutlet UIButton *button3;
 @property (retain, nonatomic) IBOutlet UIButton *button4;
 @property (retain, nonatomic) MapViewController *mapVC;
+@property (retain, nonatomic) WebApiInterface *webApiInferface;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction)touchButton:(id)sender;
 

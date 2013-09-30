@@ -59,6 +59,7 @@
     [_delegate endProgressIndicator];
 }
 
+/*
 - (void)pruneRoutesMetroX:(BOOL)metroX andMetroLink:(BOOL)metroLink andExpressRoute:(BOOL)expressRoute
 {
     [_delegate startProgressIndicator];
@@ -109,7 +110,7 @@
     [stops release];
     [_delegate endProgressIndicator];
 }
-
+*/
 - (void)dealloc
 {
     [super dealloc];
@@ -121,6 +122,7 @@
 }
 
 #pragma Private Methods
+/*
 - (void)loadStopDataAndShow:(BOOL)show withSet:(NSSet*)set
 {
     NSDictionary *dictonary = [[NSDictionary alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"sample" ofType:@"plist"]];
@@ -158,14 +160,14 @@
     }
     [dictonary release];
 }
-
+*/
 - (NSArray*)removeRoute:(NSNumber*)number FromBusRoutes:(NSMutableArray*)array
 {
     if ([array containsObject:number])
         [array removeObject:number];
     return array;
 }
-
+/*
 - (void)loadTerminalDataAndShow:(BOOL)show withSet:(NSSet*)set
 {
     for (BusStop *busStop in _stops) {
@@ -173,7 +175,7 @@
             [_delegate addBusStop:busStop];
     }
 }
-
+*/
 - (void)loadRouteDataAndShow:(BOOL)show
 {
     if (_routes != nil && show) {

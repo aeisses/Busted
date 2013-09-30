@@ -18,10 +18,12 @@
 {
     
 }
+
 - (void)showMenuView
 {
     [[self navigationController] popViewControllerAnimated:NO];
     _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    _menuViewController.managedObjectContext = _managedObjectContext;
     _menuViewController.delegate = self;
     _menuViewController.superDelegate = self;
     [[self navigationController] pushViewController:_menuViewController animated:NO];
@@ -74,6 +76,7 @@
         MapViewController *mapVC = (MapViewController*)vc;
         mapVC.superDelegate = self;
         [[self navigationController] pushViewController:vc animated:NO];
+        mapVC.currentLocation = _trackVC.currentLocation;
     }
 }
 

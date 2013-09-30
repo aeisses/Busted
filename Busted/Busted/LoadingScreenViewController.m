@@ -50,10 +50,10 @@
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
     if (isOne) {
-        _backGroundImage.image = [UIImage imageNamed:@"2.png"];
+        _animationImage.image = [UIImage imageNamed:@"2-01.png"];
         isOne = NO;
     } else {
-        _backGroundImage.image = [UIImage imageNamed:@"1.png"];
+        _animationImage.image = [UIImage imageNamed:@"1-01.png"];
         isOne = YES;
     }
 }
@@ -67,6 +67,7 @@
 - (void)dealloc
 {
     [_backGroundImage release]; _backGroundImage = nil;
+    [_animationImage release]; _animationImage = nil;
     [super dealloc];
 }
 @end
