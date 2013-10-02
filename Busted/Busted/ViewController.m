@@ -23,7 +23,6 @@
 {
     [[self navigationController] popViewControllerAnimated:NO];
     _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    _menuViewController.managedObjectContext = _managedObjectContext;
     _menuViewController.delegate = self;
     _menuViewController.superDelegate = self;
     [[self navigationController] pushViewController:_menuViewController animated:NO];
@@ -31,21 +30,29 @@
 
 - (void)viewDidLoad
 {
+    _webApiInterface = [[WebApiInterface alloc] init];
     _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
     _trackVC.delegate = self;
     _trackVC.superDelegate = self;
     _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
     [_loadingScreen release];
-    dataReader = [[DataReader alloc] init];
-    dataReader.delegate = self;
-    __block DataReader *blockDataReader = dataReader;
-    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
-    dispatch_async(loadDataQueue, ^{
-        [blockDataReader loadKMLData];
-    });
-    dispatch_release(loadDataQueue);
-    [super viewDidLoad];    
+//    dataReader = [[DataReader alloc] init];
+//    dataReader.delegate = self;
+//    __block DataReader *blockDataReader = dataReader;
+//    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
+//    dispatch_async(loadDataQueue, ^{
+//        [blockDataReader loadKMLData];
+//    });
+//    dispatch_release(loadDataQueue);
+    [self showMenuView];
+    [super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    _webApiInterface.managedObjectContext = _managedObjectContext;
+    [_webApiInterface requestAllRoutes];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +63,7 @@
 
 - (void)dealloc
 {
+    [_webApiInterface release]; _webApiInterface = nil;
     [dataReader release]; dataReader = nil;
     [activityIndicator release]; activityIndicator = nil;
     [super dealloc];
@@ -77,6 +85,9 @@
         mapVC.superDelegate = self;
         [[self navigationController] pushViewController:vc animated:NO];
         mapVC.currentLocation = _trackVC.currentLocation;
+    } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
+        StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
+        [[self navigationController] pushViewController:stopDisplayVC animated:NO];
     }
 }
 

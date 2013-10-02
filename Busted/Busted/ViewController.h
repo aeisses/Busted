@@ -11,6 +11,7 @@
 #import "DataReader.h"
 #import "TrackViewController.h"
 #import "LoadingScreenViewController.h"
+#import "WebApiInterface.h"
 
 @interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate>
 {
@@ -22,5 +23,6 @@
 @property (retain, nonatomic) TrackViewController *trackVC;
 @property (retain, nonatomic) LoadingScreenViewController *loadingScreen;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (retain, nonatomic) WebApiInterface *webApiInterface;
 
 @end

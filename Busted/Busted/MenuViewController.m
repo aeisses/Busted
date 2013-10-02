@@ -7,6 +7,7 @@
 //
 
 #import "MenuViewController.h"
+#import "WebApiInterface.h"
 
 @interface MenuViewController ()
 
@@ -19,7 +20,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _webApiInferface = [[WebApiInterface alloc] init];
     }
     return self;
 }
@@ -31,7 +31,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    _webApiInferface.managedObjectContext = _managedObjectContext;
     homeButton.hidden = YES; homeButton.enabled = NO;
     self.swipeRight.enabled = NO;
     self.swipeLeft.enabled = NO;
@@ -58,7 +57,11 @@
         _mapVC.delegate = self;
         [_delegate loadViewController:_mapVC];
         [_mapVC.mapView setRegion:(MKCoordinateRegion){_mapVC.currentLocation.coordinate.latitude,_mapVC.currentLocation.coordinate.longitude,0.014200, 0.011654}];
-        [_webApiInferface requestPlace:_mapVC.currentLocation.coordinate];
+        dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
+        dispatch_async(loadDataQueue, ^{
+            [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
+        });
+        dispatch_release(loadDataQueue);
     } else if (button.tag == 4) {
 //        TrackViewController *trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
 //        [_delegate loadViewController:trackVC];
@@ -103,7 +106,11 @@
 
 - (void)updateStops:(CLLocationCoordinate2D)mapCenter
 {
-    [_webApiInferface requestPlace:mapCenter];
+    [[WebApiInterface sharedInstance] requestPlace:mapCenter];
 }
 
+- (void)loadViewController:(UIViewController*)vc
+{
+    [_delegate loadViewController:vc];
+}
 @end

@@ -14,6 +14,7 @@
 #import "BusRoute.h"
 #import "Bus.h"
 #import "Reachability.h"
+#import "StopDisplayViewController.h"
 
 #define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -21,6 +22,7 @@
 - (void)mapFinishedLoading;
 @optional
 - (void)updateStops:(CLLocationCoordinate2D)mapCenter;
+- (void)loadViewController:(UIViewController*)vc;
 @end
 
 @interface MapViewController : ParentViewController <MKMapViewDelegate>

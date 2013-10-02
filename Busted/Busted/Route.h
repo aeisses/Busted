@@ -11,6 +11,7 @@
 
 @class Trip;
 @class Stop;
+@class Routes;
 
 @interface Route : NSManagedObject
 
@@ -19,5 +20,6 @@
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) Stop *stop;
 @property (nonatomic, retain) NSSet *trips;
+@property (nonatomic, retain) Routes *route;
 
 @end

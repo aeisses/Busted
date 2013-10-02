@@ -8,6 +8,7 @@
 
 #import "BusStop.h"
 #import "Stop.h"
+#import "Trip.h"
 
 @implementation BusStop
 
@@ -29,6 +30,7 @@
             Stop *stop = (Stop*)[fetchedObjects objectAtIndex:0];
             _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
             _title = [stop.name copy];
+            _routes = [stop.routes retain];
         }
         else
         {
@@ -47,6 +49,30 @@
         [fetchRequest release];
     }
     return self;
+}
+
+- (NSString*)subtitle
+{
+    NSTimeInterval lowestTime = -1;
+    NSString *routeShortName = nil;
+    for (Route *route in _routes)
+    {
+        for (Trip *trip in route.trips)
+        {
+            if (lowestTime == -1 || lowestTime < [trip.time doubleValue])
+            {
+                lowestTime = [trip.time doubleValue];
+                if (routeShortName) {
+                    [routeShortName release];
+                }
+                routeShortName = [[NSString alloc] initWithString:route.short_name];
+            }
+        }
+    }
+    if (routeShortName) {
+        [routeShortName autorelease];
+    }
+    return [NSString stringWithFormat:@"Next Bus:%@ - %i min",routeShortName,(int)(([[NSDate date] timeIntervalSince1970]-lowestTime)/3600)];
 }
 
 - (void)dealloc

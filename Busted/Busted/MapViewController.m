@@ -187,6 +187,15 @@ static id instance;
     [[WebApiInterface sharedInstance] requestPlace:mapView.region.center];
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
+{
+    BusStop *busStop = view.annotation;
+    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+    stopsVC.busStop = busStop;
+    [_delegate loadViewController:stopsVC];
+    [stopsVC release];
+}
+
 #pragma WebApiInterfaceDegelate Methods
 - (void)stopsLoaded:(NSArray*)stops
 {

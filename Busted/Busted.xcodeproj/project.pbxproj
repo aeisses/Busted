@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		041915A517F72C9100E68CC2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 041915A317F72C9100E68CC2 /* DataModel.xcdatamodeld */; };
+		041FACBA17FBA967004F21EF /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FACB917FBA967004F21EF /* Routes.m */; };
 		04239FCA17E62F5C00D0AA34 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC217E62F5C00D0AA34 /* button1.png */; };
 		04239FCB17E62F5C00D0AA34 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC317E62F5C00D0AA34 /* button2.png */; };
 		04239FCC17E62F5C00D0AA34 /* button3.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC417E62F5C00D0AA34 /* button3.png */; };
@@ -20,6 +21,10 @@
 		04239FDF17E6366A00D0AA34 /* tracking@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FDE17E6366A00D0AA34 /* tracking@2x.png */; };
 		04239FE817E63B7F00D0AA34 /* submit.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE617E63B7F00D0AA34 /* submit.png */; };
 		04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE717E63B7F00D0AA34 /* home@2x.png */; };
+		0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */; };
+		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
+		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
+		0447EBE617FA519600A91D60 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBE517FA519600A91D60 /* TableCell.m */; };
 		04602CE017EF6BBB002BE30D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CDF17EF6BBB002BE30D /* Reachability.m */; };
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CE417EF809E002BE30D /* LoadingScreenViewController.m */; };
@@ -107,6 +112,8 @@
 
 /* Begin PBXFileReference section */
 		041915A417F72C9100E68CC2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		041FACB817FBA967004F21EF /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
+		041FACB917FBA967004F21EF /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
 		04239FC217E62F5C00D0AA34 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
 		04239FC317E62F5C00D0AA34 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		04239FC417E62F5C00D0AA34 /* button3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button3.png; sourceTree = "<group>"; };
@@ -120,6 +127,12 @@
 		04239FE017E6389300D0AA34 /* menuBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menuBackGround@2x.png"; sourceTree = "<group>"; };
 		04239FE617E63B7F00D0AA34 /* submit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = submit.png; sourceTree = "<group>"; };
 		04239FE717E63B7F00D0AA34 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDisplayViewController.h; sourceTree = "<group>"; };
+		0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDisplayViewController.m; sourceTree = "<group>"; };
+		0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewController.xib; sourceTree = "<group>"; };
+		0447EBE117FA514300A91D60 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		0447EBE417FA519600A91D60 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		0447EBE517FA519600A91D60 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		04602CDE17EF6BBB002BE30D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		04602CDF17EF6BBB002BE30D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -263,6 +276,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0447EBE017FA512C00A91D60 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0447EBE317FA516F00A91D60 /* Nibs */,
+				0447EBE417FA519600A91D60 /* TableCell.h */,
+				0447EBE517FA519600A91D60 /* TableCell.m */,
+				048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */,
+				048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		0447EBE317FA516F00A91D60 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */,
+				0447EBE117FA514300A91D60 /* TableCell.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
 		04C7C26D17E3D7D9001A9981 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +337,7 @@
 		04C7C27F17E3D7D9001A9981 /* Busted */ = {
 			isa = PBXGroup;
 			children = (
+				0447EBE017FA512C00A91D60 /* Views */,
 				04E9586D17F6340900DD72AD /* AFNetworking */,
 				04C7C2D417E4BE43001A9981 /* Resources */,
 				04C7C2CC17E4BC1F001A9981 /* Objects */,
@@ -336,6 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				04C7C2B817E49F70001A9981 /* Nibs */,
+				0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */,
+				0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */,
 				04C7C29D17E3DFC3001A9981 /* MenuViewController.h */,
 				04C7C29E17E3DFC3001A9981 /* MenuViewController.m */,
 				04602CF017EFCE0D002BE30D /* StopsViewController.h */,
@@ -354,8 +391,6 @@
 				04602CE417EF809E002BE30D /* LoadingScreenViewController.m */,
 				04C7C2EC17E51BC8001A9981 /* BusRoutesCollectionViewController.h */,
 				04C7C2ED17E51BC8001A9981 /* BusRoutesCollectionViewController.m */,
-				048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */,
-				048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -377,6 +412,7 @@
 		04C7C2B817E49F70001A9981 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */,
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
 				04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */,
@@ -384,7 +420,6 @@
 				04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */,
 				04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */,
 				04C7C2B517E49CD5001A9981 /* TrackViewController.xib */,
-				048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -407,6 +442,8 @@
 				04C06E3717F734A900C120C7 /* Trip.m */,
 				04C06E3917F734B900C120C7 /* Route.h */,
 				04C06E3A17F734B900C120C7 /* Route.m */,
+				041FACB817FBA967004F21EF /* Routes.h */,
+				041FACB917FBA967004F21EF /* Routes.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -555,6 +592,7 @@
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
 				04B0BD4B17EE5017009FC648 /* button1@2x.png in Resources */,
 				04602CEC17EF826C002BE30D /* 1.png in Resources */,
+				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
 				04602CED17EF826C002BE30D /* 1@2x.png in Resources */,
@@ -568,6 +606,7 @@
 				047443F717F7A59C00436B4B /* Default-568h@2x.png in Resources */,
 				049C439917F8BB0F006D1A44 /* Default-568h@2x.jpg in Resources */,
 				04239FCA17E62F5C00D0AA34 /* button1.png in Resources */,
+				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
 				04239FCB17E62F5C00D0AA34 /* button2.png in Resources */,
 				04239FCC17E62F5C00D0AA34 /* button3.png in Resources */,
 				04239FCD17E62F5C00D0AA34 /* light button1.png in Resources */,
@@ -613,6 +652,7 @@
 				04C06E3B17F734B900C120C7 /* Route.m in Sources */,
 				04C7C2A017E3DFC3001A9981 /* MenuViewController.m in Sources */,
 				04E9588617F6340900DD72AD /* AFPropertyListRequestOperation.m in Sources */,
+				0447EBE617FA519600A91D60 /* TableCell.m in Sources */,
 				04E9588317F6340900DD72AD /* AFImageRequestOperation.m in Sources */,
 				04C7C2A417E3E383001A9981 /* BustedNavigationController.m in Sources */,
 				04E9588417F6340900DD72AD /* AFJSONRequestOperation.m in Sources */,
@@ -626,6 +666,8 @@
 				04C7C2F317E53B8E001A9981 /* Bus.m in Sources */,
 				04602CF217EFCE0D002BE30D /* StopsViewController.m in Sources */,
 				04602CE017EF6BBB002BE30D /* Reachability.m in Sources */,
+				0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */,
+				041FACBA17FBA967004F21EF /* Routes.m in Sources */,
 				048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */,
 				04E9588517F6340900DD72AD /* AFNetworkActivityIndicatorManager.m in Sources */,
 			);
