@@ -13,7 +13,7 @@
 #import "LoadingScreenViewController.h"
 #import "WebApiInterface.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate>
 {
     DataReader *dataReader;
     UIActivityIndicatorView *activityIndicator;
@@ -24,5 +24,6 @@
 @property (retain, nonatomic) LoadingScreenViewController *loadingScreen;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (retain, nonatomic) WebApiInterface *webApiInterface;
+@property (copy, nonatomic) NSArray *routes;
 
 @end

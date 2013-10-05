@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0419021F180082C500D79040 /* MyRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 0419021E180082C500D79040 /* MyRoute.m */; };
 		041915A517F72C9100E68CC2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 041915A317F72C9100E68CC2 /* DataModel.xcdatamodeld */; };
 		041FACBA17FBA967004F21EF /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FACB917FBA967004F21EF /* Routes.m */; };
 		04239FCA17E62F5C00D0AA34 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FC217E62F5C00D0AA34 /* button1.png */; };
@@ -111,6 +112,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0419021D180082C500D79040 /* MyRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyRoute.h; sourceTree = "<group>"; };
+		0419021E180082C500D79040 /* MyRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyRoute.m; sourceTree = "<group>"; };
 		041915A417F72C9100E68CC2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		041FACB817FBA967004F21EF /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
 		041FACB917FBA967004F21EF /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				04C06E3717F734A900C120C7 /* Trip.m */,
 				04C06E3917F734B900C120C7 /* Route.h */,
 				04C06E3A17F734B900C120C7 /* Route.m */,
+				0419021D180082C500D79040 /* MyRoute.h */,
+				0419021E180082C500D79040 /* MyRoute.m */,
 				041FACB817FBA967004F21EF /* Routes.h */,
 				041FACB917FBA967004F21EF /* Routes.m */,
 			);
@@ -643,6 +648,7 @@
 				04C7C28617E3D7D9001A9981 /* main.m in Sources */,
 				04E9588917F6340900DD72AD /* UIImageView+AFNetworking.m in Sources */,
 				04E9588117F6340900DD72AD /* AFHTTPClient.m in Sources */,
+				0419021F180082C500D79040 /* MyRoute.m in Sources */,
 				04C06E3517F7347F00C120C7 /* Stop.m in Sources */,
 				04B9202417F396C50063E384 /* WebApiInterface.m in Sources */,
 				04C7C28A17E3D7D9001A9981 /* AppDelegate.m in Sources */,

@@ -20,6 +20,6 @@
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) Stop *stop;
 @property (nonatomic, retain) NSSet *trips;
-@property (nonatomic, retain) Routes *route;
+@property (nonatomic, retain) Routes *routes;
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LoadingScreenViewControllerDelegate <NSObject>
+- (void)loadScreenLoaded;
+@end
+
 @interface LoadingScreenViewController : UIViewController
 {
     CADisplayLink *displayLink;
@@ -16,5 +20,6 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
 @property (retain, nonatomic) IBOutlet UIImageView *animationImage;
+@property (retain, nonatomic) id <LoadingScreenViewControllerDelegate> delegate;
 
 @end

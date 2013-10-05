@@ -15,5 +15,6 @@
 @dynamic type;
 @dynamic stop;
 @dynamic trips;
+@dynamic routes;
 
 @end

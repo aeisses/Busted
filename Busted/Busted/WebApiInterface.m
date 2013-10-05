@@ -13,7 +13,7 @@ static NSString *const JSONDirectoryPath = @"/RawJson";
 @interface WebApiInterface (PrivateMethods)
 - (NSArray*)createStopRecordWithStops:(NSArray*)stops context:(NSManagedObjectContext*)context;
 - (NSNumber*)createStopRecordWithStop:(NSDictionary*)stopJson context:(NSManagedObjectContext*)context;
-- (Routes*)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context;
+- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context;
 - (NSManagedObjectContext*)createNewManagedObjectContext;
 @end;
 
@@ -103,20 +103,20 @@ static id instance;
     return (NSNumber*)[stopJson valueForKey:@"code"];
 }
 
-- (Routes*)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context
+- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context
 {
     Routes *routes = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
-    routes.jsonString = nil;
+//    routes.jsonString = nil;
     NSMutableSet *routesSet = [[NSMutableSet alloc] init];
     for (NSDictionary *routeItem in routesArray) {
         Route *route = [NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext:context];
-        route.long_name = (NSString*)[routeItem valueForKey:@"long_name"];
-        route.short_name = (NSString*)[routeItem valueForKey:@"short_name"];
-        route.route = routes;
+        route.long_name = (NSString*)[routeItem valueForKey:@"title"];
+        route.short_name = [NSString stringWithFormat:@"%@",(NSNumber*)[routeItem valueForKey:@"busNumber"]];
+        route.routes = routes;
         [routesSet addObject:route];
     }
     routes.route = (NSSet*)routesSet;
-    return routes;
+//    return routes;
 }
 
 - (void)contextDidSave:(NSNotification *)notification
@@ -133,22 +133,42 @@ static id instance;
     return [moc autorelease];
 }
 
-- (void)requestAllRoutes
+- (NSArray*)requestAllRoutes
 {
-    NSManagedObjectContext *threadContext = [self createNewManagedObjectContext];
-    Routes *routes = (Routes*)[NSEntityDescription entityForName:@"Routes" inManagedObjectContext:threadContext];
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
+    if (entity)
+    {
+        NSError *error = nil;
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObject.count > 0)
+        {
+            Routes *routes = fetchedObject[0];
+            return [routes.route allObjects];
+        }
+    }
+    return nil;
+}
+
+- (void)fetchAllRoutes
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    Routes *routes = (Routes*)[NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
     if (routes) {
         
     }
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%@", BASEURL, ROUTES, ALL];
+    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@", SANGSTERBASEURL];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
-        NSManagedObjectContext *threadContext = [self createNewManagedObjectContext];
-        NSDictionary *data = (NSDictionary *)JSON;
-        Routes *routes = [self createRoutesRecordWithRoute:(NSArray*)[data valueForKey:@"routes"] context:threadContext];
+        NSError *error = nil;
+        [self createRoutesRecordWithRoute:(NSArray*)JSON context:context];
+        [context save:&error];
+        [_delegate receivedRoutes];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {

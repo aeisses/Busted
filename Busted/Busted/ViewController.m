@@ -31,10 +31,12 @@
 - (void)viewDidLoad
 {
     _webApiInterface = [[WebApiInterface alloc] init];
+    _webApiInterface.delegate = self;
     _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
     _trackVC.delegate = self;
     _trackVC.superDelegate = self;
     _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
+    _loadingScreen.delegate = self;
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
     [_loadingScreen release];
 //    dataReader = [[DataReader alloc] init];
@@ -45,14 +47,7 @@
 //        [blockDataReader loadKMLData];
 //    });
 //    dispatch_release(loadDataQueue);
-    [self showMenuView];
     [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    _webApiInterface.managedObjectContext = _managedObjectContext;
-    [_webApiInterface requestAllRoutes];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,7 +97,8 @@
 
 - (NSArray*)getRoutes
 {
-    return dataReader.routes;
+    NSArray *array = [_webApiInterface requestAllRoutes];
+    return array;
 }
 
 #pragma ParentViewControllerDelegate
@@ -189,4 +185,19 @@
  //   for (BusRoute *busRoute in dataReader.routes) {
 //    [mapViewController addRoute:route];
 }
+
+#pragma WebApiInterfaceDelegate
+- (void)receivedRoutes
+{
+//    _routes = [[routes.route allObjects] copy];
+    [self showMenuView];
+}
+
+#pragma LoadingScreenViewControllerDelegate
+- (void)loadScreenLoaded
+{
+    _webApiInterface.managedObjectContext = _managedObjectContext;
+    [_webApiInterface fetchAllRoutes];
+}
+
 @end

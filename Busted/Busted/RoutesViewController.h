@@ -9,6 +9,7 @@
 #import "ParentViewController.h"
 #import "MapViewController.h"
 #import "BusRoutesCollectionViewController.h"
+#import "myRoute.h"
 
 @protocol RoutesViewControllerDelegate <NSObject>
 - (void)loadMapViewController:(MapViewController*)mapViewController;

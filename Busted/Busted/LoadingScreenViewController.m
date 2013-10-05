@@ -35,6 +35,7 @@
     displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
     [displayLink setFrameInterval:15];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [_delegate loadScreenLoaded];
     [super viewDidAppear:animated];
 }
 

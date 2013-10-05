@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BusRouteViewCell.h"
-#import "BusRoute.h"
+#import "Route.h"
+#import "MyRoute.h"
 
 @protocol BusRouteCollectionViewControllerDelegate <NSObject>
 - (NSArray*)getBusRoutes;

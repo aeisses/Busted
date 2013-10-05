@@ -83,7 +83,16 @@
 #pragma BusRoutesCollectionViewController
 - (NSArray*)getBusRoutes
 {
-    return [_delegate getRoutes];
+    NSArray *routes = [_delegate getRoutes];
+    NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
+    for (Route *route in routes)
+    {
+        MyRoute *myRoute = [[MyRoute alloc] init];
+        myRoute.title = route.long_name;
+        myRoute.busNumber = (NSInteger)[route.short_name integerValue];
+        [routesM addObject:myRoute];
+    }
+    return (NSArray*)routesM;
 }
 
 - (void)setBusRoute:(NSInteger)route

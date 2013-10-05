@@ -17,8 +17,11 @@
 #import "BusStop.h"
 #import "Routes.h"
 
-@interface WebApiInterface : NSObject
+@protocol WebApiInterfaceDelegate <NSObject>
+- (void)receivedRoutes;
+@end
 
+@interface WebApiInterface : NSObject
 
 // Calls:
 //http://t2go-halifax.transittogo.com/api/v1/stop/6963/upcoming_stoptimes?time=1380145872&all_routes=yes
@@ -26,6 +29,7 @@
 //http://t2go-halifax.transittogo.com/api/v1/routes/motd?appversion=15
 
 #define BASEURL @"http://t2go-halifax.transittogo.com/api/v1/"
+#define SANGSTERBASEURL @"https://ertt.ca/buserver/routes/titles"
 #define FILLER  @"/upcoming_stoptimes?time="
 #define ENDURL  @"&all_routes=yes"
 #define STOPS   @"stop/"
@@ -36,9 +40,11 @@
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSMutableArray *busStops;
+@property (retain, nonatomic) id <WebApiInterfaceDelegate> delegate;
 
 + (WebApiInterface*)sharedInstance;
-- (void)requestAllRoutes;
+- (NSArray*)requestAllRoutes;
+- (void)fetchAllRoutes;
 - (void)requestStop:(NSInteger)stop;
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate;
 
