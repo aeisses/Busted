@@ -8,8 +8,11 @@
 
 #import "TrackViewController.h"
 
-@interface TrackViewController ()
-
+@interface TrackViewController (PrivateMethods)
+- (void)frameIntervalLoop:(CADisplayLink *)sender;
+- (void)updatePoint;
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
+- (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
 @end
 
 @implementation TrackViewController
@@ -34,6 +37,12 @@
 
 - (void)viewDidLoad
 {
+    _swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+    _swipeUp.numberOfTouchesRequired = 1;
+    _swipeUp.accessibilityLabel = @"Close Tracking Window";
+    _swipeUp.isAccessibilityElement = YES;
+    _swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
+    _swipeUp.enabled = NO;
     isTracking = NO;
     if (_locationManager == nil)
     {
@@ -51,12 +60,21 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    homeButton.hidden = YES; homeButton.enabled = NO;
-    self.swipeRight.enabled = NO;
-    self.swipeLeft.enabled = NO;
-    self.swipeDown.enabled = NO;
+    if (isTracking) {
+        _sendingImage.hidden = NO;
+    } else {
+        _sendingImage.hidden = YES;
+        currentRoute = 0;
+    }
+    [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
     [super viewDidAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.view removeGestureRecognizer:_swipeUp];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,12 +90,26 @@
     [displayLink release]; displayLink = nil;
     [_trackButton release]; _trackButton = nil;
     [_locationManager release]; _locationManager = nil;
-    [_routeButton release]; _routeButton = nil;
+    [_sendingImage release]; _sendingImage = nil;
     [_collection release]; _collection = nil;
+    [_homeButton release]; _homeButton = nil;
+    [_swipeUp release]; _swipeUp = nil;
     _delegate = nil;
     if (uudi)
         [uudi release];
     [super dealloc];
+}
+
+- (IBAction)touchTrackButton:(id)sender
+{
+    _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+    _collection.delegate = self;
+    [self presentViewController:_collection animated:YES completion:^{}];
+}
+
+- (IBAction)touchHomeButton:(id)sender
+{
+    [_delegate exitTransitionVC];
 }
 
 #pragma Private Methods
@@ -96,7 +128,7 @@
             NSError *error = nil;
             NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
                                         blockUudi, @"uuid",
-                                        [NSNumber numberWithInt:[_routeButton.titleLabel.text intValue]], @"busNumber",
+                                        [NSNumber numberWithInteger:currentRoute], @"busNumber",
                                         [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"latitude",
                                         [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"longitude",
                                         [NSNumber numberWithFloat:0.1], @"capacity", nil];
@@ -114,7 +146,6 @@
             if ([response statusCode] > 399) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _trackButton.selected = NO;
-                    _routeButton.enabled = YES;
                     isTracking = NO;
                     [_trackButton setNeedsDisplay];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -130,34 +161,6 @@
     }
 }
 
-- (IBAction)touchTrackButton:(id)sender
-{
-    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
-        isTracking = !isTracking;
-        if (isTracking) {
-            _trackButton.selected = YES;
-            _routeButton.enabled = NO;
-            if (uudi)
-                [uudi release];
-            uudi = [[self uuidString] retain];
-        } else {
-            _trackButton.selected = NO;
-            _routeButton.enabled = YES;
-        }
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please" message:@"You need to select a route you can activate the tracking GPS" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-        [alert show];
-        [alert release];
-    }
-}
-
-- (IBAction)touchRouteButton:(id)sender
-{
-    _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
-    _collection.delegate = self;
-    [self presentViewController:_collection animated:YES completion:^{}];
-}
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     if (_currentLocation) {
@@ -165,6 +168,11 @@
     }
     _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
     NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
+}
+
+- (void)swipe:(UISwipeGestureRecognizer*)swipeGesture
+{
+    [_delegate exitTransitionVC];
 }
 
 #pragma BusRoutesCollectionViewController
@@ -184,7 +192,9 @@
 
 - (void)setBusRoute:(NSInteger)route
 {
-    [_routeButton setTitle:[NSString stringWithFormat:@"%i",route] forState:UIControlStateNormal];
+    currentRoute = route;
+    _sendingImage.hidden = NO;
+    isTracking = YES;
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
     [_collection release];

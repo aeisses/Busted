@@ -13,23 +13,27 @@
 
 @protocol TrackViewControllerDelegate <NSObject>
 - (NSArray*)getRoutes;
+- (void)exitTransitionVC;
 @end
 
-@interface TrackViewController : ParentViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
+@interface TrackViewController : UIViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
 {
     CADisplayLink *displayLink;
     BOOL isTracking;
     NSString *uudi;
+    NSInteger currentRoute;
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *trackButton;
-@property (retain, nonatomic) IBOutlet UIButton *routeButton;
+@property (retain, nonatomic) IBOutlet UIButton *homeButton;
+@property (retain, nonatomic) IBOutlet UIImageView *sendingImage;
 @property (retain, nonatomic) id <TrackViewControllerDelegate> delegate;
 @property (retain, nonatomic) CLLocationManager *locationManager;
 @property (retain, nonatomic) CLLocation *currentLocation;
 @property (retain, nonatomic) BusRoutesCollectionViewController *collection;
+@property (retain, nonatomic) UISwipeGestureRecognizer *swipeUp;
 
 - (IBAction)touchTrackButton:(id)sender;
-- (IBAction)touchRouteButton:(id)sender;
+- (IBAction)touchHomeButton:(id)sender;
 
 @end

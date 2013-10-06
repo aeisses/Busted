@@ -19,6 +19,9 @@
 @end
 
 @interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate>
+{
+    BOOL isAboutScreenVisible;
+}
 
 @property (retain, nonatomic) id <MenuViewControllerDelegate> delegate;
 @property (retain, nonatomic) IBOutlet UIButton *button1;
@@ -26,7 +29,9 @@
 @property (retain, nonatomic) IBOutlet UIButton *button3;
 @property (retain, nonatomic) IBOutlet UIButton *button4;
 @property (retain, nonatomic) MapViewController *mapVC;
+@property (retain, nonatomic) UIView *aboutView;
+@property (retain, nonatomic) IBOutlet UIButton *trackButton;
 
--(IBAction)touchButton:(id)sender;
-
+- (IBAction)touchButton:(id)sender;
+- (IBAction)touchTrackButton:(id)sender;
 @end

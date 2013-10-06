@@ -35,7 +35,7 @@
     [_collectionView setDelegate:self];
   
     [_collectionView registerNib:[UINib nibWithNibName:@"BusRouteViewCell" bundle:nil] forCellWithReuseIdentifier:@"cellView"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tracking.png"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backGround.jpg"]];
     [_collectionView setBackgroundView:imageView];
     [imageView release];
     

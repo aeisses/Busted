@@ -13,7 +13,7 @@ static NSString *const JSONDirectoryPath = @"/RawJson";
 @interface WebApiInterface (PrivateMethods)
 - (NSArray*)createStopRecordWithStops:(NSArray*)stops context:(NSManagedObjectContext*)context;
 - (NSNumber*)createStopRecordWithStop:(NSDictionary*)stopJson context:(NSManagedObjectContext*)context;
-- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context;
+- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context entity:(NSEntityDescription*)entity;
 - (NSManagedObjectContext*)createNewManagedObjectContext;
 @end;
 
@@ -103,9 +103,9 @@ static id instance;
     return (NSNumber*)[stopJson valueForKey:@"code"];
 }
 
-- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context
+- (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context entity:(NSEntityDescription*)entity
 {
-    Routes *routes = [NSEntityDescription insertNewObjectForEntityForName:@"Routes" inManagedObjectContext:context];
+    Routes *routes = (Routes*)entity;
 //    routes.jsonString = nil;
     NSMutableSet *routesSet = [[NSMutableSet alloc] init];
     for (NSDictionary *routeItem in routesArray) {
@@ -116,7 +116,6 @@ static id instance;
         [routesSet addObject:route];
     }
     routes.route = (NSSet*)routesSet;
-//    return routes;
 }
 
 - (void)contextDidSave:(NSNotification *)notification
@@ -155,9 +154,17 @@ static id instance;
 - (void)fetchAllRoutes
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
-    Routes *routes = (Routes*)[NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
-    if (routes) {
-        
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
+    if (entity) {
+        NSError *error = nil;
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        fetchRequest.entity = entity;
+        NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:&error];
+        if (fetchedObject.count > 0)
+        {
+            [_delegate receivedRoutes];
+            return;
+        }
     }
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@", SANGSTERBASEURL];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
@@ -166,18 +173,19 @@ static id instance;
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         NSError *error = nil;
-        [self createRoutesRecordWithRoute:(NSArray*)JSON context:context];
+        [self createRoutesRecordWithRoute:(NSArray*)JSON context:context entity:entity];
         [context save:&error];
         [_delegate receivedRoutes];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
+//                                                     message:[NSString stringWithFormat:@"%@",error]
+//                                                    delegate:nil
+//                                           cancelButtonTitle:@"OK"
+//                                           otherButtonTitles:nil];
+//        [av show];
+        [_delegate receivedRoutes];
     }];
     [operation start];
     [url release];

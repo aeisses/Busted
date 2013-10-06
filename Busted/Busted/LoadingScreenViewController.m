@@ -51,10 +51,10 @@
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
     if (isOne) {
-        _animationImage.image = [UIImage imageNamed:@"2-01.png"];
+        _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
         isOne = NO;
     } else {
-        _animationImage.image = [UIImage imageNamed:@"1-01.png"];
+        _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
         isOne = YES;
     }
 }

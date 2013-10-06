@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIViewControllerTransitioningDelegate>
 
 @end
 
@@ -34,7 +34,6 @@
     _webApiInterface.delegate = self;
     _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
     _trackVC.delegate = self;
-    _trackVC.superDelegate = self;
     _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
     _loadingScreen.delegate = self;
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
@@ -70,7 +69,9 @@
     if ([vc isKindOfClass:[RoutesViewController class]]) {
         RoutesViewController *routesVC = (RoutesViewController*)vc;
         routesVC.superDelegate = self;
-        [[self navigationController] pushViewController:vc animated:NO];
+        [UIView transitionFromView:self.navigationController.topViewController.view toView:routesVC.view duration:0.5 options:UIViewAnimationOptionCurveEaseIn completion:^(BOOL finished) {
+            [[self navigationController] pushViewController:routesVC animated:NO];
+        }];
     } else if ([vc isKindOfClass:[StopsViewController class]]) {
         StopsViewController *stopVC = (StopsViewController*)vc;
         stopVC.superDelegate = self;
@@ -95,10 +96,16 @@
     return nil;
 }
 
+#pragma TranistionViewControllerDelegate
 - (NSArray*)getRoutes
 {
     NSArray *array = [_webApiInterface requestAllRoutes];
     return array;
+}
+
+- (void)exitTransitionVC
+{
+    [_trackVC dismissViewControllerAnimated:YES completion:^{}];
 }
 
 #pragma ParentViewControllerDelegate
@@ -128,36 +135,34 @@
                 }];
             }
             break;
-        case UISwipeGestureRecognizerDirectionUp:
-            if ([[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
-/*            {
-                int numViewControllers = self.navigationController.viewControllers.count;
-                UIView *nextView = [[self.navigationController.viewControllers objectAtIndex:numViewControllers - 2] view];
-                [UIView transitionFromView:self.navigationController.topViewController.view toView:nextView duration:0.5 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
-                    [self.navigationController popViewControllerAnimated:false];
-                }];
-            }*/
-                [UIView animateWithDuration:0.5 animations:^{
-                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-                    [[self navigationController] popViewControllerAnimated:NO];
-                    [UIView setAnimationTransition:UIViewAnimationTransitionCurlUp forView:[self navigationController].view cache:NO];
-                }];
+        case UISwipeGestureRecognizerDirectionUp: 
             break;
         case UISwipeGestureRecognizerDirectionDown:
-/*            if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
-                [UIView transitionFromView:self.navigationController.topViewController.view toView:_trackVC.view duration:0.5 options:UIViewAnimationOptionTransitionFlipFromTop completion:^(BOOL finished) {
-                    [[self navigationController] pushViewController:_trackVC animated:NO];
-                }];
- */
-                [UIView animateWithDuration:0.5 animations:^{
-                    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-                    [[self navigationController] pushViewController:_trackVC animated:NO];
-                    [UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:[self navigationController].view cache:NO];
-                }];
- 
-//                  [[self navigationController] pushViewController:_trackVC animated:NO];
+            if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
+            {
+                _trackVC.transitioningDelegate = self;
+                _trackVC.modalPresentationStyle = UIModalPresentationCustom;
+                [self presentViewController:_trackVC animated:YES completion:^{}];
+            }
             break;
     }
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate Methods
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
+                                                                  presentingController:(UIViewController *)presenting
+                                                                      sourceController:(UIViewController *)source {
+    
+    TLTransitionAnimator *animator = [TLTransitionAnimator new];
+    //Configure the animator
+    animator.presenting = YES;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    TLTransitionAnimator *animator = [TLTransitionAnimator new];
+    return animator;
 }
 
 #pragma DataReaderDelegate Methods

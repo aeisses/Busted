@@ -9,8 +9,9 @@
 #import "MenuViewController.h"
 #import "WebApiInterface.h"
 
-@interface MenuViewController ()
-
+@interface MenuViewController (PrivateMethods)
+- (void)disableButton;
+- (void)enableButton;
 @end
 
 @implementation MenuViewController
@@ -26,6 +27,11 @@
 
 - (void)viewDidLoad
 {
+    NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreen" owner:self options:nil]];
+    self.aboutView = [[nibObjects objectAtIndex:0] retain];
+    self.aboutView.frame = (CGRect){314,50,241,519};
+    [self.view addSubview:self.aboutView];
+    isAboutScreenVisible = NO;
     [super viewDidLoad];
 }
 
@@ -62,11 +68,33 @@
             [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
         });
         dispatch_release(loadDataQueue);
+    } else if (button.tag == 3) {
+    
     } else if (button.tag == 4) {
-//        TrackViewController *trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
-//        [_delegate loadViewController:trackVC];
-//        [trackVC release];
+        if (isAboutScreenVisible)
+        {
+            [UIView animateWithDuration:0.50 animations:^{
+                _aboutView.frame = (CGRect){314,49,241,519};
+                _button4.frame = (CGRect){265,73,50,50};
+            }completion:^(BOOL finished) {
+                [self enableButton];
+                isAboutScreenVisible = NO;
+            }];
+        } else {
+            [self disableButton];
+            [UIView animateWithDuration:0.50 animations:^{
+                _aboutView.frame = (CGRect){79,49,241,519};
+                _button4.frame = (CGRect){30,73,50,50};
+            } completion:^(BOOL finished) {
+                isAboutScreenVisible = YES;
+            }];
+        }
     }
+}
+
+- (IBAction)touchTrackButton:(id)sender
+{
+    [self.superDelegate swipe:self.swipeDown];
 }
 
 - (void)dealloc
@@ -75,7 +103,23 @@
     [_button2 release]; _button2 = nil;
     [_button3 release]; _button3 = nil;
     [_button4 release]; _button4 = nil;
+    [_aboutView release];
     [super dealloc];
+}
+
+#pragma PrivateMethods
+- (void)disableButton
+{
+    _button1.enabled = NO;
+    _button2.enabled = NO;
+    _button3.enabled = NO;
+}
+
+- (void)enableButton
+{
+    _button1.enabled = YES;
+    _button2.enabled = YES;
+    _button3.enabled = YES;
 }
 
 #pragma RoutesViewControllerDelegate Methods

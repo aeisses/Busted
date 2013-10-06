@@ -12,6 +12,7 @@
 #import "TrackViewController.h"
 #import "LoadingScreenViewController.h"
 #import "WebApiInterface.h"
+#import "TLTransitionAnimator.h"
 
 @interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate>
 {
