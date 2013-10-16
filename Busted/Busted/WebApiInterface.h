@@ -19,6 +19,7 @@
 
 @protocol WebApiInterfaceDelegate <NSObject>
 - (void)receivedRoutes;
+- (void)receivedStops;
 @end
 
 @interface WebApiInterface : NSObject
@@ -29,13 +30,14 @@
 //http://t2go-halifax.transittogo.com/api/v1/routes/motd?appversion=15
 
 #define BASEURL @"http://t2go-halifax.transittogo.com/api/v1/"
-#define SANGSTERBASEURL @"https://ertt.ca/buserver/routes/titles"
+#define SANGSTERBASEURL @"https://ertt.ca/api/alpha_1/"
 #define FILLER  @"/upcoming_stoptimes?time="
 #define ENDURL  @"&all_routes=yes"
-#define STOPS   @"stop/"
+#define STOP    @"stop/"
+#define STOPS   @"stops"
 #define PLACE   @"place/"
 #define ROUTE   @"route/"
-#define ROUTES  @"routes/"
+#define ROUTES  @"routes"
 #define ALL     @"all"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -45,7 +47,9 @@
 + (WebApiInterface*)sharedInstance;
 - (NSArray*)requestAllRoutes;
 - (void)fetchAllRoutes;
+- (void)fetchAllStops;
 - (void)requestStop:(NSInteger)stop;
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate;
+- (void)requestStopsForRegion:(MKCoordinateRegion)region;
 
 @end

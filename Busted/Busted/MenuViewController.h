@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "RoutesViewController.h"
 #import "TrackViewController.h"
-#import "StopsViewController.h"
+#import "FavoritesViewController.h"
 #import "ParentViewController.h"
+#import "FavoritesViewController.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;

@@ -36,9 +36,12 @@
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
 @property (retain, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (retain, nonatomic) IBOutlet UIButton *homeButton;
+@property (assign, nonatomic) BOOL isStops;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(BusRoute*)route;
 - (void)loadStopsForLocation;
+- (IBAction)touchHomeButton:(id)sender;
 
 @end

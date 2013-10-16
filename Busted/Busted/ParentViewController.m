@@ -45,12 +45,6 @@
         _swipeDown.isAccessibilityElement = YES;
         _swipeDown.direction = (UISwipeGestureRecognizerDirectionDown);
         
-        homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        homeButton.accessibilityLabel = @"Home Button";
-        homeButton.frame = (CGRect){0,0,40,40};
-        [homeButton setImage:[UIImage imageNamed:@"home.png"] forState:UIControlStateNormal];
-        [homeButton addTarget:self action:@selector(touchedHomeButton) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:homeButton];
     }
     return self;
 }
@@ -66,7 +60,6 @@
     [self.view addGestureRecognizer:_swipeLeft];
     [self.view addGestureRecognizer:_swipeUp];
     [self.view addGestureRecognizer:_swipeDown];
-    [self.view bringSubviewToFront:homeButton];
     [super viewWillAppear:animated];
 }
 
@@ -87,7 +80,6 @@
 
 - (void)dealloc
 {
-    [homeButton removeFromSuperview]; homeButton = nil;
     [_swipeRight release]; _swipeRight = nil;
     [_swipeLeft release]; _swipeLeft = nil;
     [_swipeUp release]; _swipeUp = nil;
@@ -97,11 +89,6 @@
 }
 
 #pragma Private Methods
-- (void)touchedHomeButton
-{
-    [_superDelegate touchedHomeButton];
-}
-
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture
 {
     [_superDelegate swipe:swipeGesture];

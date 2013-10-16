@@ -21,10 +21,15 @@
 
 @property (retain, nonatomic) IBOutlet UIButton *submitButton;
 @property (retain, nonatomic) IBOutlet UIButton *routeButton;
+@property (retain, nonatomic) IBOutlet UIButton *homeButton;
+@property (retain, nonatomic) IBOutlet UIButton *trackButton;
 @property (retain, nonatomic) id <RoutesViewControllerDelegate> delegate;
 @property (retain, nonatomic) MapViewController *mapVC;
 @property (retain, nonatomic) BusRoutesCollectionViewController *collection;
 
 - (IBAction)touchSubmitButton:(id)sender;
 - (IBAction)touchRouteButton:(id)sender;
+- (IBAction)touchHomeButton:(id)sender;
+- (IBAction)touchTrackButton:(id)sender;
+
 @end

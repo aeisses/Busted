@@ -41,23 +41,24 @@
 #pragma UITableViewDelegate Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Route *route = [[_busStop.routes allObjects] objectAtIndex:indexPath.row];
-    NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"MenuScreen" owner:self options:nil]];
-    TableCell *cell = [[nibObjects objectAtIndex:0] retain];
-    cell.route.text = route.short_name;
-    cell.timeOne.text = [NSString stringWithFormat:@"%f",[((Trip*)[[route.trips allObjects] objectAtIndex:0]).time doubleValue]];
-    cell.timeTwo.text = [[route.trips allObjects] objectAtIndex:1];
-    cell.timeThree.text = [[route.trips allObjects] objectAtIndex:2];
-    return cell;
-
+//    Route *route = [[_busStop.routes allObjects] objectAtIndex:indexPath.row];
+//    NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"MenuScreen" owner:self options:nil]];
+//    TableCell *cell = [[nibObjects objectAtIndex:0] retain];
+//    [nibObjects release];
+//    cell.route.text = route.short_name;
+//    cell.timeOne.text = [NSString stringWithFormat:@"%f",[((Trip*)[[route.trips allObjects] objectAtIndex:0]).time doubleValue]];
+//    cell.timeTwo.text = [[route.trips allObjects] objectAtIndex:1];
+//    cell.timeThree.text = [[route.trips allObjects] objectAtIndex:2];
+//    return [cell autorelease];
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger counter = 0;
-    for (Route *route in _busStop.routes) {
-        counter++;
-    }
+//    for (Route *route in _busStop.routes) {
+//        counter++;
+//    }
     return counter;
 }
 @end

@@ -38,14 +38,6 @@
     _loadingScreen.delegate = self;
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
     [_loadingScreen release];
-//    dataReader = [[DataReader alloc] init];
-//    dataReader.delegate = self;
-//    __block DataReader *blockDataReader = dataReader;
-//    dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
-//    dispatch_async(loadDataQueue, ^{
-//        [blockDataReader loadKMLData];
-//    });
-//    dispatch_release(loadDataQueue);
     [super viewDidLoad];
 }
 
@@ -69,17 +61,15 @@
     if ([vc isKindOfClass:[RoutesViewController class]]) {
         RoutesViewController *routesVC = (RoutesViewController*)vc;
         routesVC.superDelegate = self;
-        [UIView transitionFromView:self.navigationController.topViewController.view toView:routesVC.view duration:0.5 options:UIViewAnimationOptionCurveEaseIn completion:^(BOOL finished) {
-            [[self navigationController] pushViewController:routesVC animated:NO];
-        }];
-    } else if ([vc isKindOfClass:[StopsViewController class]]) {
-        StopsViewController *stopVC = (StopsViewController*)vc;
-        stopVC.superDelegate = self;
-        [[self navigationController] pushViewController:vc animated:NO];
+        [[self navigationController] pushViewController:routesVC animated:YES];
+    } else if ([vc isKindOfClass:[FavoritesViewController class]]) {
+        FavoritesViewController *favVC = (FavoritesViewController*)vc;
+        favVC.superDelegate = self;
+        [[self navigationController] pushViewController:favVC animated:YES];
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
         mapVC.superDelegate = self;
-        [[self navigationController] pushViewController:vc animated:NO];
+        [[self navigationController] pushViewController:vc animated:YES];
         mapVC.currentLocation = _trackVC.currentLocation;
     } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
         StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
@@ -109,9 +99,14 @@
 }
 
 #pragma ParentViewControllerDelegate
-- (void)touchedHomeButton
+- (void)touchedHomeButton:(BOOL)isAll
 {
-    [[self navigationController] popToViewController:_menuViewController animated:NO];
+    if (isAll)
+    {
+        [[self navigationController] popToViewController:_menuViewController animated:YES];
+    } else {
+        [[self navigationController] popViewControllerAnimated:YES];
+    }
 }
 
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture
@@ -119,20 +114,16 @@
     switch (swipeGesture.direction) {
         case UISwipeGestureRecognizerDirectionLeft:
             if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
-                [UIView animateWithDuration:0.75 animations:^{
-                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-                    [[self navigationController] popViewControllerAnimated:NO];
-                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:[self navigationController].view cache:NO];
-                }];
+//                [UIView animateWithDuration:0.75 animations:^{
+//                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//                    [[self navigationController] popViewControllerAnimated:YES];
+//                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:[self navigationController].view cache:NO];
+//                }];
             }
             break;
         case UISwipeGestureRecognizerDirectionRight:
             if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
-                [UIView animateWithDuration:0.75 animations:^{
-                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-                    [[self navigationController] popViewControllerAnimated:NO];
-                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:[self navigationController].view cache:NO];
-                }];
+                [[self navigationController] popViewControllerAnimated:YES];
             }
             break;
         case UISwipeGestureRecognizerDirectionUp: 
@@ -154,14 +145,14 @@
                                                                   presentingController:(UIViewController *)presenting
                                                                       sourceController:(UIViewController *)source {
     
-    TLTransitionAnimator *animator = [TLTransitionAnimator new];
+    TLTransitionAnimator *animator = [[TLTransitionAnimator new] autorelease];
     //Configure the animator
     animator.presenting = YES;
     return animator;
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    TLTransitionAnimator *animator = [TLTransitionAnimator new];
+    TLTransitionAnimator *animator = [[TLTransitionAnimator new] autorelease];
     return animator;
 }
 
@@ -195,6 +186,12 @@
 - (void)receivedRoutes
 {
 //    _routes = [[routes.route allObjects] copy];
+//    [self showMenuView];
+    [_webApiInterface fetchAllStops];
+}
+
+- (void)receivedStops
+{
     [self showMenuView];
 }
 

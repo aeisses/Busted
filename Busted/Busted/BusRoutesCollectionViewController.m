@@ -82,7 +82,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BusRouteViewCell *cell = (BusRouteViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    [_delegate setBusRoute:[cell.number.text intValue]];
+    [_delegate setBusRoute:cell.number.text];
 }
 
 #pragma mark – UICollectionViewDelegateFlowLayout

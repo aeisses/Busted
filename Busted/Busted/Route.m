@@ -12,6 +12,7 @@
 
 @dynamic long_name;
 @dynamic short_name;
+@dynamic ident;
 @dynamic type;
 @dynamic stop;
 @dynamic trips;

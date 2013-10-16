@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BusStop.h"
+//#import "BusStop.h"
 
 @interface StopDisplayViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
-@property (retain, nonatomic) BusStop *busStop;
+//@property (retain, nonatomic) BusStop *busStop;
 
 @end

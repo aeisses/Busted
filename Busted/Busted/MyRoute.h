@@ -11,6 +11,7 @@
 @interface MyRoute : NSObject
 
 @property (nonatomic, retain) NSString *title;
-@property (assign) NSInteger busNumber;
+@property (readwrite) NSInteger busNumber;
+@property (nonatomic, retain) NSString *ident;
 
 @end

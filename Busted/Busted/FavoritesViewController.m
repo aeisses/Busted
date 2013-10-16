@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Aaron Eisses. All rights reserved.
 //
 
-#import "StopsViewController.h"
+#import "FavoritesViewController.h"
 
-@interface StopsViewController ()
+@interface FavoritesViewController ()
 
 @end
 
-@implementation StopsViewController
+@implementation FavoritesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,9 +25,9 @@
 
 - (void)viewDidLoad
 {
-    self.swipeDown.enabled = NO;
-    self.swipeUp.enabled = YES;
-    self.swipeLeft.enabled = YES;
+    self.swipeDown.enabled = YES;
+    self.swipeUp.enabled = NO;
+    self.swipeLeft.enabled = NO;
     self.swipeRight.enabled = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -41,7 +41,14 @@
 
 - (void)dealloc
 {
+    [_backGroundImage release]; _backGroundImage = nil;
+    [_homeButton release]; _homeButton = nil;
     [super dealloc];
+}
+
+- (IBAction)touchHomeButton:(id)sender
+{
+    [self.superDelegate touchedHomeButton:YES];
 }
 
 @end

@@ -8,8 +8,8 @@
 
 #import "RoutesViewController.h"
 
-@interface RoutesViewController ()
-
+@interface RoutesViewController (PrivateMethods)
+- (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
 @end
 
 @implementation RoutesViewController
@@ -19,23 +19,26 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
-    homeButton.hidden = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    homeButton.hidden = YES;
+    self.swipeUp.enabled = YES;
     [super viewDidAppear:animated];
 }
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -46,6 +49,8 @@
 {
     [_submitButton release]; _submitButton = nil;
     [_routeButton release]; _routeButton = nil;
+    [_homeButton release]; _homeButton = nil;
+    [_trackButton release]; _trackButton = nil;
     _delegate = nil;
     [super dealloc];
 }
@@ -59,6 +64,7 @@
     } else {
         _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
         _mapVC.delegate = self;
+        _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
     }
 }
@@ -68,6 +74,16 @@
     _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
     _collection.delegate = self;
     [self presentViewController:_collection animated:YES completion:^{}];
+}
+
+- (IBAction)touchHomeButton:(id)sender
+{
+    [self.superDelegate touchedHomeButton:YES];
+}
+
+- (IBAction)touchTrackButton:(id)sender
+{
+    [self.superDelegate swipe:self.swipeDown];
 }
 
 #pragma MapViewControllerDelegate
@@ -88,16 +104,18 @@
     for (Route *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
+        myRoute.ident = route.ident;
         myRoute.title = route.long_name;
-        myRoute.busNumber = (NSInteger)[route.short_name integerValue];
+        myRoute.busNumber = [route.short_name integerValue];
         [routesM addObject:myRoute];
+        [myRoute release];
     }
-    return (NSArray*)routesM;
+    return [(NSArray*)routesM autorelease];
 }
 
-- (void)setBusRoute:(NSInteger)route
+- (void)setBusRoute:(NSString*)route
 {
-    [_routeButton setTitle:[NSString stringWithFormat:@"%i",route] forState:UIControlStateNormal];
+    [_routeButton setTitle:route forState:UIControlStateNormal];
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
     [_collection release];

@@ -25,28 +25,21 @@
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"code == %@", _code];
         fetchRequest.predicate = predicate;
         NSArray *fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        [fetchRequest release];
         if (fetchedObjects != nil && error == nil && [fetchedObjects count] == 1)
         {
             Stop *stop = (Stop*)[fetchedObjects objectAtIndex:0];
             _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
             _title = [stop.name copy];
             _routes = [stop.routes retain];
+            if ([_routes count] == 0)
+            {
+                [[WebApiInterface sharedInstance] requestStop:[_code integerValue]];
+            }
         }
         else
         {
-            if (error != nil) {
-                
-            }
-            else if (fetchedObjects == nil)
-            {
-                
-            }
-            else if ([fetchedObjects count] != 1)
-            {
-                
-           }
         }
-        [fetchRequest release];
     }
     return self;
 }
@@ -55,24 +48,36 @@
 {
     NSTimeInterval lowestTime = -1;
     NSString *routeShortName = nil;
+    NSString *routeLongName = nil;
     for (Route *route in _routes)
     {
         for (Trip *trip in route.trips)
         {
-            if (lowestTime == -1 || lowestTime < [trip.time doubleValue])
+            if([trip.time doubleValue] > 0)
             {
-                lowestTime = [trip.time doubleValue];
-                if (routeShortName) {
-                    [routeShortName release];
+//                double currentTime = [[NSDate date] timeIntervalSince1970];
+                if ((lowestTime == -1 || lowestTime < [trip.time doubleValue]))
+                {
+//                    if ([[NSDate date] timeIntervalSince1970] - [trip.time doubleValue] >= 0)
+//                    {
+                        lowestTime = [trip.time doubleValue];
+                        if (routeShortName) {
+                            [routeShortName release];
+                        }
+                        routeShortName = [[NSString alloc] initWithString:route.short_name];
+                        routeLongName = [[NSString alloc] initWithString:route.long_name];
+//                    }
                 }
-                routeShortName = [[NSString alloc] initWithString:route.short_name];
             }
         }
     }
     if (routeShortName) {
         [routeShortName autorelease];
     }
-    return [NSString stringWithFormat:@"Next Bus:%@ - %i min",routeShortName,(int)(([[NSDate date] timeIntervalSince1970]-lowestTime)/3600)];
+    if (lowestTime == -1) {
+        return [NSString stringWithFormat:@"Next Bus: %@ %@ - %@",routeShortName,routeLongName,@"unknown"];
+    }
+    return [NSString stringWithFormat:@"Next Bus: %@ %@ - %i min",routeShortName,routeLongName,(int)(([[NSDate date] timeIntervalSince1970]-lowestTime)/3600)];
 }
 
 - (void)dealloc

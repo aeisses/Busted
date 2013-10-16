@@ -144,9 +144,9 @@
             [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
             
             if ([response statusCode] > 399) {
+                _trackButton.selected = NO;
+                isTracking = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    _trackButton.selected = NO;
-                    isTracking = NO;
                     [_trackButton setNeedsDisplay];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                     [alert show];
@@ -184,15 +184,16 @@
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
         myRoute.title = route.long_name;
-        myRoute.busNumber = (NSInteger)[route.short_name integerValue];
+        myRoute.busNumber = [route.short_name integerValue];
         [routesM addObject:myRoute];
+        [myRoute release];
     }
-    return (NSArray*)routesM;
+    return [(NSArray*)routesM autorelease];
 }
 
-- (void)setBusRoute:(NSInteger)route
+- (void)setBusRoute:(NSString*)route
 {
-    currentRoute = route;
+    currentRoute = [route integerValue];
     _sendingImage.hidden = NO;
     isTracking = YES;
     [_collection dismissViewControllerAnimated:YES completion:^{}];

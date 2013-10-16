@@ -28,8 +28,9 @@
 - (void)viewDidLoad
 {
     NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreen" owner:self options:nil]];
-    self.aboutView = [[nibObjects objectAtIndex:0] retain];
-    self.aboutView.frame = (CGRect){314,50,241,519};
+    _aboutView = [[nibObjects objectAtIndex:0] retain];
+    [nibObjects release];
+    _aboutView.frame = (CGRect){314,50,241,519};
     [self.view addSubview:self.aboutView];
     isAboutScreenVisible = NO;
     [super viewDidLoad];
@@ -37,7 +38,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    homeButton.hidden = YES; homeButton.enabled = NO;
     self.swipeRight.enabled = NO;
     self.swipeLeft.enabled = NO;
     self.swipeUp.enabled = NO;
@@ -61,15 +61,25 @@
     } else if (button.tag == 2) {
         _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
         _mapVC.delegate = self;
+        _mapVC.isStops = NO;
         [_delegate loadViewController:_mapVC];
-        [_mapVC.mapView setRegion:(MKCoordinateRegion){_mapVC.currentLocation.coordinate.latitude,_mapVC.currentLocation.coordinate.longitude,0.014200, 0.011654}];
         dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
         dispatch_async(loadDataQueue, ^{
-            [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
+            if (_mapVC.currentLocation) {
+//                [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
+//                NSLog(@"Region: %f",_mapVC.mapView.region.center.latitude);
+//                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
+            } else {
+//                [[WebApiInterface sharedInstance] requestPlace:(CLLocationCoordinate2D){HALIFAX_LATITUDE,HALIFAX_LONGITUDE}];
+//                NSLog(@"Region: %f",_mapVC.mapView.region.center.longitude);
+//                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
+            }
         });
         dispatch_release(loadDataQueue);
     } else if (button.tag == 3) {
-    
+        FavoritesViewController *favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+        [_delegate loadViewController:favVC];
+        [favVC release];
     } else if (button.tag == 4) {
         if (isAboutScreenVisible)
         {
@@ -103,7 +113,7 @@
     [_button2 release]; _button2 = nil;
     [_button3 release]; _button3 = nil;
     [_button4 release]; _button4 = nil;
-    [_aboutView release];
+    [_aboutView release]; _aboutView = nil;
     [super dealloc];
 }
 

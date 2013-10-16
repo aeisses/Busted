@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoutesViewController">
             <connections>
+                <outlet property="homeButton" destination="S3g-or-X27" id="7Pu-vD-1Ug"/>
                 <outlet property="routeButton" destination="15" id="rWp-1A-ISA"/>
                 <outlet property="submitButton" destination="PEQ-Zv-jWT" id="XIk-rf-h5Q"/>
+                <outlet property="trackButton" destination="fdi-7b-9tN" id="7sh-s6-28H"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,14 +19,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="backGroundTrack.jpg" id="53">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="backGroundTrack.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="53">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="15">
-                    <rect key="frame" x="0.0" y="203" width="320" height="66"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15">
+                    <rect key="frame" x="0.0" y="198" width="320" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" label="Submit button">
+                    <accessibility key="accessibilityConfiguration" hint="Select a route" label="Route button">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                     </accessibility>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -39,9 +41,12 @@
                         <action selector="touchRouteButton:" destination="-1" eventType="touchUpInside" id="I3g-zR-Vh6"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PEQ-Zv-jWT">
-                    <rect key="frame" x="231" y="203" width="89" height="66"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEQ-Zv-jWT">
+                    <rect key="frame" x="231" y="198" width="89" height="66"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="Follow a route" label="Submit Button">
+                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                    </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" image="submitButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,21 +56,29 @@
                         <action selector="touchSubmitButton:" destination="-1" eventType="touchUpInside" id="ig4-ST-4Zy"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S3g-or-X27">
-                    <rect key="frame" x="-27" y="514" width="375" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3g-or-X27">
+                    <rect key="frame" x="-27" y="0.0" width="375" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="Return to menu screen" label="Home Button">
+                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
+                    </accessibility>
                     <state key="normal" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" image="homeButtonHighlighted.png"/>
+                    <connections>
+                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="hH8-S4-ft2"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fdi-7b-9tN">
-                    <rect key="frame" x="-27" y="0.0" width="375" height="49"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdi-7b-9tN">
+                    <rect key="frame" x="-27" y="519" width="375" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="upToDownButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" image="upToDownButtonHighlighted.png"/>
+                    <connections>
+                        <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="iOK-5l-yBY"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.059071220229999999" blue="0.084883680210000007" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,6 +93,5 @@
         <image name="submitButton.png" width="89" height="66"/>
         <image name="submitButtonHighlighted.png" width="89" height="66"/>
         <image name="upToDownButton.png" width="320" height="49"/>
-        <image name="upToDownButtonHighlighted.png" width="320" height="568"/>
     </resources>
 </document>

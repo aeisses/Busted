@@ -11,6 +11,7 @@
 #import <CoreData/CoreData.h>
 #import "Enums.h"
 #import "Route.h"
+#import "WebApiInterface.h"
 
 @interface BusStop : NSObject <MKAnnotation>
 

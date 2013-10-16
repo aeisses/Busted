@@ -15,6 +15,7 @@
 
 @property (retain, nonatomic) NSString *headsign;
 @property (retain, nonatomic) NSNumber *time;
+@property (retain, nonatomic) NSString *ident;
 @property (retain, nonatomic) Route *route;
 
 @end

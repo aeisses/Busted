@@ -12,6 +12,7 @@
 
 @dynamic headsign;
 @dynamic time;
+@dynamic ident;
 @dynamic route;
 
 @end

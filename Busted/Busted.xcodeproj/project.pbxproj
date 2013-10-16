@@ -29,7 +29,6 @@
 		0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0419023C1800C93C00D79040 /* homeButtonHighlighted@2x.png */; };
 		0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902401800C93C00D79040 /* routeButton@2x.png */; };
 		041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902411800C93C00D79040 /* routeButtonHighlighted@2x.png */; };
-		041902611800C93C00D79040 /* topBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902421800C93C00D79040 /* topBar@2x.png */; };
 		041902621800C93C00D79040 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902431800C93C00D79040 /* route@2x.png */; };
 		041902631800C93C00D79040 /* submitButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902441800C93C00D79040 /* submitButton@2x.png */; };
 		041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */; };
@@ -43,7 +42,6 @@
 		041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902751800FD5700D79040 /* onMyWayHighlighted@2x.png */; };
 		041915A517F72C9100E68CC2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 041915A317F72C9100E68CC2 /* DataModel.xcdatamodeld */; };
 		041FACBA17FBA967004F21EF /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FACB917FBA967004F21EF /* Routes.m */; };
-		04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04239FE717E63B7F00D0AA34 /* home@2x.png */; };
 		0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */; };
 		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
 		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
@@ -52,10 +50,11 @@
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CE417EF809E002BE30D /* LoadingScreenViewController.m */; };
 		04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */; };
-		04602CF217EFCE0D002BE30D /* StopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CF117EFCE0D002BE30D /* StopsViewController.m */; };
+		04602CF217EFCE0D002BE30D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CF117EFCE0D002BE30D /* FavoritesViewController.m */; };
 		047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047443F417F74EBB00436B4B /* CoreData.framework */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
+		0492BBFC180E153600914847 /* busStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0492BBFB180E153600914847 /* busStop@2x.png */; };
 		04B9202417F396C50063E384 /* WebApiInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9202317F396C50063E384 /* WebApiInterface.m */; };
 		04C06E3517F7347F00C120C7 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06E3417F7347F00C120C7 /* Stop.m */; };
 		04C06E3817F734A900C120C7 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06E3717F734A900C120C7 /* Trip.m */; };
@@ -77,7 +76,7 @@
 		04C7C2B217E48B8D001A9981 /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2B117E48B8D001A9981 /* ParentViewController.m */; };
 		04C7C2B617E49CD5001A9981 /* TrackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2B417E49CD5001A9981 /* TrackViewController.m */; };
 		04C7C2B717E49CD5001A9981 /* TrackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2B517E49CD5001A9981 /* TrackViewController.xib */; };
-		04C7C2BD17E49F90001A9981 /* StopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2BB17E49F8F001A9981 /* StopsViewController.xib */; };
+		04C7C2BD17E49F90001A9981 /* FavoritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2BB17E49F8F001A9981 /* FavoritesViewController.xib */; };
 		04C7C2C117E4A1B9001A9981 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2BF17E4A1B9001A9981 /* MapViewController.m */; };
 		04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2C017E4A1B9001A9981 /* MapViewController.xib */; };
 		04C7C2C417E4A474001A9981 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C2C317E4A473001A9981 /* MapKit.framework */; };
@@ -137,7 +136,6 @@
 		0419023C1800C93C00D79040 /* homeButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		041902401800C93C00D79040 /* routeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routeButton@2x.png"; sourceTree = "<group>"; };
 		041902411800C93C00D79040 /* routeButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routeButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		041902421800C93C00D79040 /* topBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBar@2x.png"; sourceTree = "<group>"; };
 		041902431800C93C00D79040 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
 		041902441800C93C00D79040 /* submitButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButton@2x.png"; sourceTree = "<group>"; };
 		041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButtonHighlighted@2x.png"; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		041915A417F72C9100E68CC2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		041FACB817FBA967004F21EF /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
 		041FACB917FBA967004F21EF /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
-		04239FE717E63B7F00D0AA34 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
 		0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDisplayViewController.h; sourceTree = "<group>"; };
 		0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDisplayViewController.m; sourceTree = "<group>"; };
 		0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewController.xib; sourceTree = "<group>"; };
@@ -166,12 +163,13 @@
 		04602CE317EF809E002BE30D /* LoadingScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScreenViewController.h; sourceTree = "<group>"; };
 		04602CE417EF809E002BE30D /* LoadingScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingScreenViewController.m; sourceTree = "<group>"; };
 		04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingScreenViewController.xib; sourceTree = "<group>"; };
-		04602CF017EFCE0D002BE30D /* StopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsViewController.h; sourceTree = "<group>"; };
-		04602CF117EFCE0D002BE30D /* StopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsViewController.m; sourceTree = "<group>"; };
+		04602CF017EFCE0D002BE30D /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		04602CF117EFCE0D002BE30D /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		047443F417F74EBB00436B4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
+		0492BBFB180E153600914847 /* busStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "busStop@2x.png"; sourceTree = "<group>"; };
 		04B9202217F396C50063E384 /* WebApiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebApiInterface.h; sourceTree = "<group>"; };
 		04B9202317F396C50063E384 /* WebApiInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebApiInterface.m; sourceTree = "<group>"; };
 		04C06E3317F7347F00C120C7 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
@@ -209,7 +207,7 @@
 		04C7C2B317E49CD5001A9981 /* TrackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackViewController.h; sourceTree = "<group>"; };
 		04C7C2B417E49CD5001A9981 /* TrackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackViewController.m; sourceTree = "<group>"; };
 		04C7C2B517E49CD5001A9981 /* TrackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackViewController.xib; sourceTree = "<group>"; };
-		04C7C2BB17E49F8F001A9981 /* StopsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopsViewController.xib; sourceTree = "<group>"; };
+		04C7C2BB17E49F8F001A9981 /* FavoritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewController.xib; sourceTree = "<group>"; };
 		04C7C2BE17E4A1B8001A9981 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		04C7C2BF17E4A1B9001A9981 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		04C7C2C017E4A1B9001A9981 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 			children = (
 				041902401800C93C00D79040 /* routeButton@2x.png */,
 				041902411800C93C00D79040 /* routeButtonHighlighted@2x.png */,
-				041902421800C93C00D79040 /* topBar@2x.png */,
 			);
 			path = MapPage;
 			sourceTree = "<group>";
@@ -469,8 +466,8 @@
 				0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */,
 				04C7C29D17E3DFC3001A9981 /* MenuViewController.h */,
 				04C7C29E17E3DFC3001A9981 /* MenuViewController.m */,
-				04602CF017EFCE0D002BE30D /* StopsViewController.h */,
-				04602CF117EFCE0D002BE30D /* StopsViewController.m */,
+				04602CF017EFCE0D002BE30D /* FavoritesViewController.h */,
+				04602CF117EFCE0D002BE30D /* FavoritesViewController.m */,
 				04C7C2A217E3E383001A9981 /* BustedNavigationController.h */,
 				04C7C2A317E3E383001A9981 /* BustedNavigationController.m */,
 				04C7C2AB17E3E9C5001A9981 /* RoutesViewController.h */,
@@ -510,7 +507,7 @@
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
 				04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */,
-				04C7C2BB17E49F8F001A9981 /* StopsViewController.xib */,
+				04C7C2BB17E49F8F001A9981 /* FavoritesViewController.xib */,
 				04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */,
 				04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */,
 				04C7C2B517E49CD5001A9981 /* TrackViewController.xib */,
@@ -548,8 +545,8 @@
 			isa = PBXGroup;
 			children = (
 				041902201800C93C00D79040 /* Images */,
-				04239FE717E63B7F00D0AA34 /* home@2x.png */,
 				04C7C2F817E54963001A9981 /* dot0.png */,
+				0492BBFB180E153600914847 /* busStop@2x.png */,
 				04C7C2F617E5495D001A9981 /* dot0@2x.png */,
 				04C7C2E017E5024C001A9981 /* Icon-Small.png */,
 				04C7C2E117E5024C001A9981 /* Icon-Small@2x.png */,
@@ -649,11 +646,12 @@
 				04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */,
 				04C7C2AF17E3E9C5001A9981 /* RoutesViewController.xib in Resources */,
 				04C7C2B717E49CD5001A9981 /* TrackViewController.xib in Resources */,
-				04C7C2BD17E49F90001A9981 /* StopsViewController.xib in Resources */,
+				04C7C2BD17E49F90001A9981 /* FavoritesViewController.xib in Resources */,
 				041902691800CF6300D79040 /* aboutButtonHighlighted@2x.png in Resources */,
 				041902701800E14500D79040 /* upToDownButton@2x.png in Resources */,
 				04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */,
 				04C7C2D817E4BE5E001A9981 /* Bus Stops.kml in Resources */,
+				0492BBFC180E153600914847 /* busStop@2x.png in Resources */,
 				041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
 				041902481800C93C00D79040 /* backGroundMenu@2x.jpg in Resources */,
@@ -667,7 +665,6 @@
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
-				041902611800C93C00D79040 /* topBar@2x.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
@@ -687,7 +684,6 @@
 				0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */,
 				0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */,
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
-				04239FE917E63B7F00D0AA34 /* home@2x.png in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,
 				048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */,
 				041902551800C93C00D79040 /* sending3.png in Resources */,
@@ -734,7 +730,7 @@
 				041902731800F40700D79040 /* TLTransitionAnimator.m in Sources */,
 				04C7C2EF17E51BC9001A9981 /* BusRoutesCollectionViewController.m in Sources */,
 				04C7C2F317E53B8E001A9981 /* Bus.m in Sources */,
-				04602CF217EFCE0D002BE30D /* StopsViewController.m in Sources */,
+				04602CF217EFCE0D002BE30D /* FavoritesViewController.m in Sources */,
 				04602CE017EF6BBB002BE30D /* Reachability.m in Sources */,
 				0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */,
 				041FACBA17FBA967004F21EF /* Routes.m in Sources */,
@@ -830,6 +826,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Busted/Busted-Prefix.pch";
 				INFOPLIST_FILE = "Busted/Busted-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -852,6 +849,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Busted/Busted-Prefix.pch";
 				INFOPLIST_FILE = "Busted/Busted-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

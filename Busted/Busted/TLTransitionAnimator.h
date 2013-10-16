@@ -11,5 +11,6 @@
 @interface TLTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign, getter = isPresenting) BOOL presenting;
+@property (nonatomic, assign) BOOL isTracking;
 
 @end

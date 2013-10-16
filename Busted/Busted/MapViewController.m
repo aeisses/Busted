@@ -39,31 +39,70 @@ static id instance;
     if (_annotations) [_annotations release];
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
+    [_homeButton release]; _homeButton = nil;
     [super dealloc];
+}
+
+- (IBAction)touchHomeButton:(id)sender
+{
+    [self.superDelegate touchedHomeButton:NO];
 }
 
 - (void)viewDidLoad
 {
+    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+    [_mapView removeOverlays:_mapView.overlays];
+    [_mapView removeAnnotations:_mapView.annotations];
+    if (_isStops)
+    {
+        [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
+        [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+    }
+    else
+    {
+        [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
+        [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+        if (_currentLocation)
+        {
+            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+        } else {
+            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+        }
+    }
     _mapView.scrollEnabled = YES;
     _mapView.zoomEnabled = YES;
     [_mapView setShowsUserLocation:YES];
-    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+    [self.view bringSubviewToFront:_homeButton];
+    if (!_isStops)
+    {
+        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
+        dispatch_async(dataQueue, ^{
+            [[WebApiInterface sharedInstance] requestStopsForRegion:_mapView.region];
+        });
+        dispatch_release(dataQueue);
+    }
     [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-    [displayLink setFrameInterval:15];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    if (_isStops)
+    {
+        displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
+        [displayLink setFrameInterval:15];
+        [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [displayLink invalidate];
-    [displayLink release];
-    displayLink = nil;
+    if (_isStops)
+    {
+        [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        [displayLink invalidate];
+        [displayLink release];
+        displayLink = nil;
+    }
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
     [_mapView removeFromSuperview];
@@ -157,6 +196,20 @@ static id instance;
         }
         return annotationView;
     }
+    else if ([annotation isKindOfClass:[BusStop class]])
+    {
+        BusStop *bus = (BusStop*)annotation;
+        MKAnnotationView *annotationView = [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%@",bus.code]];
+        if (annotationView == nil)
+        {
+            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%@",bus.code]] autorelease];
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            annotationView.image = [UIImage imageNamed:@"busStop.png"];
+        }
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        return annotationView;
+    }
     return nil;
 }
 
@@ -182,18 +235,25 @@ static id instance;
     return polylineView;
 }
 
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    
+}
+
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
-    [[WebApiInterface sharedInstance] requestPlace:mapView.region.center];
+    if (!_isStops) {
+//        [[WebApiInterface sharedInstance] requestPlace:mapView.region.center];
+    }
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-    BusStop *busStop = view.annotation;
-    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
-    stopsVC.busStop = busStop;
-    [_delegate loadViewController:stopsVC];
-    [stopsVC release];
+//    BusStop *busStop = view.annotation;
+//    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+//    stopsVC.busStop = busStop;
+//    [_delegate loadViewController:stopsVC];
+//    [stopsVC release];
 }
 
 #pragma WebApiInterfaceDegelate Methods

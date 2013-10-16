@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @protocol ParentViewControllerDelegate <NSObject>
-- (void)touchedHomeButton;
+- (void)touchedHomeButton:(BOOL)isAll;
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
 @end
 
 @interface ParentViewController : UIViewController
 {
-    UIButton *homeButton;
 }
 
 @property (retain, nonatomic) id <ParentViewControllerDelegate> superDelegate;
