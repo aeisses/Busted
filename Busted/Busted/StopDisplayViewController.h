@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import "BusStop.h"
+#import "ParentViewController.h"
 
-@interface StopDisplayViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@class BusStop;
 
-//@property (retain, nonatomic) BusStop *busStop;
+@interface StopDisplayViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate>
+{
+    CADisplayLink *displayLink;
+    NSMutableIndexSet *expandedSections;
+}
+
+@property (retain, nonatomic) BusStop *busStop;
+@property (retain, nonatomic) IBOutlet UIButton *homeButton;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
+
+-(IBAction)touchHomeButton:(id)sender;
 
 @end

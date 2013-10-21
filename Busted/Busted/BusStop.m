@@ -55,18 +55,15 @@
         {
             if([trip.time doubleValue] > 0)
             {
-//                double currentTime = [[NSDate date] timeIntervalSince1970];
-                if ((lowestTime == -1 || lowestTime < [trip.time doubleValue]))
+                double diffTime = [[NSDate date] timeIntervalSince1970] - [trip.time doubleValue];
+                if ((lowestTime == -1 || lowestTime < [trip.time doubleValue]) && diffTime > 0)
                 {
-//                    if ([[NSDate date] timeIntervalSince1970] - [trip.time doubleValue] >= 0)
-//                    {
-                        lowestTime = [trip.time doubleValue];
-                        if (routeShortName) {
-                            [routeShortName release];
-                        }
-                        routeShortName = [[NSString alloc] initWithString:route.short_name];
-                        routeLongName = [[NSString alloc] initWithString:route.long_name];
-//                    }
+                    lowestTime = [trip.time doubleValue];
+                    if (routeShortName) {
+                        [routeShortName release];
+                    }
+                    routeShortName = [[NSString alloc] initWithString:route.short_name];
+                    routeLongName = [[NSString alloc] initWithString:route.long_name];
                 }
             }
         }

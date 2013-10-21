@@ -52,6 +52,13 @@
 		04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */; };
 		04602CF217EFCE0D002BE30D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CF117EFCE0D002BE30D /* FavoritesViewController.m */; };
 		047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047443F417F74EBB00436B4B /* CoreData.framework */; };
+		04785CDE180F48940024A61B /* MenuViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CDD180F48940024A61B /* MenuViewControllerSmall.xib */; };
+		04785CE0180F4D5F0024A61B /* FavoritesViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CDF180F4D5F0024A61B /* FavoritesViewControllerSmall.xib */; };
+		04785CE2180F4E4D0024A61B /* MapViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */; };
+		04785CE4180F51E10024A61B /* RoutesViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE3180F51E10024A61B /* RoutesViewControllerSmall.xib */; };
+		04785CE6180F54060024A61B /* TrackViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE5180F54060024A61B /* TrackViewControllerSmall.xib */; };
+		04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE7180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib */; };
+		04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
 		0492BBFC180E153600914847 /* busStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0492BBFB180E153600914847 /* busStop@2x.png */; };
@@ -166,6 +173,14 @@
 		04602CF017EFCE0D002BE30D /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		04602CF117EFCE0D002BE30D /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		047443F417F74EBB00436B4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		04785CDD180F48940024A61B /* MenuViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CDF180F4D5F0024A61B /* FavoritesViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CE3180F51E10024A61B /* RoutesViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutesViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CE5180F54060024A61B /* TrackViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CE7180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingScreenViewControllerSmall.xib; sourceTree = "<group>"; };
+		04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutScreenSmall.xib; sourceTree = "<group>"; };
+		04785CEB180F6AD20024A61B /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
@@ -384,6 +399,7 @@
 				048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */,
 				0447EBE117FA514300A91D60 /* TableCell.xib */,
 				0419026B1800D07700D79040 /* AboutScreen.xib */,
+				04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -506,11 +522,17 @@
 				0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */,
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
+				04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */,
 				04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */,
+				04785CE7180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib */,
 				04C7C2BB17E49F8F001A9981 /* FavoritesViewController.xib */,
+				04785CDF180F4D5F0024A61B /* FavoritesViewControllerSmall.xib */,
 				04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */,
+				04785CDD180F48940024A61B /* MenuViewControllerSmall.xib */,
 				04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */,
+				04785CE3180F51E10024A61B /* RoutesViewControllerSmall.xib */,
 				04C7C2B517E49CD5001A9981 /* TrackViewController.xib */,
+				04785CE5180F54060024A61B /* TrackViewControllerSmall.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -537,6 +559,7 @@
 				0419021E180082C500D79040 /* MyRoute.m */,
 				041FACB817FBA967004F21EF /* Routes.h */,
 				041FACB917FBA967004F21EF /* Routes.m */,
+				04785CEB180F6AD20024A61B /* macros.h */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -642,6 +665,7 @@
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */,
+				04785CE0180F4D5F0024A61B /* FavoritesViewControllerSmall.xib in Resources */,
 				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
 				04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */,
 				04C7C2AF17E3E9C5001A9981 /* RoutesViewController.xib in Resources */,
@@ -659,6 +683,7 @@
 				041902621800C93C00D79040 /* route@2x.png in Resources */,
 				041902531800C93C00D79040 /* sending1.png in Resources */,
 				04C7C2DA17E4BE5E001A9981 /* sample.plist in Resources */,
+				04785CE4180F51E10024A61B /* RoutesViewControllerSmall.xib in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				0419024B1800C93C00D79040 /* trackMyBusButton@2x.png in Resources */,
 				04C7C2E417E5024C001A9981 /* Icon-Small.png in Resources */,
@@ -667,11 +692,16 @@
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
+				04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
 				041902581800C93C00D79040 /* backGround@2x.jpg in Resources */,
 				041902561800C93C00D79040 /* sending@2x.png in Resources */,
+				04785CE6180F54060024A61B /* TrackViewControllerSmall.xib in Resources */,
+				04785CDE180F48940024A61B /* MenuViewControllerSmall.xib in Resources */,
 				0419025B1800C93C00D79040 /* homeButton@2x.png in Resources */,
+				04785CE2180F4E4D0024A61B /* MapViewControllerSmall.xib in Resources */,
+				04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */,
 				04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */,
 				04C7C2F917E54963001A9981 /* dot0.png in Resources */,
 				041902491800C93C00D79040 /* myDestinationButton@2x.png in Resources */,

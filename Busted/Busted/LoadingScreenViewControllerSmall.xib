@@ -7,31 +7,26 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingScreenViewController">
             <connections>
-                <outlet property="animationImage" destination="rTN-pr-mpf" id="WSJ-Wo-c2Y"/>
-                <outlet property="backGroundImage" destination="Jzg-JR-AqW" id="ADB-kE-Ra9"/>
-                <outlet property="view" destination="1" id="3"/>
+                <outlet property="animationImage" destination="1GW-il-JV7" id="kis-Jk-1zq"/>
+                <outlet property="backGroundImage" destination="1GW-il-JV7" id="6df-py-fXa"/>
+                <outlet property="view" destination="1" id="eXR-lp-cJ2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jzg-JR-AqW">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="introImage1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="1GW-il-JV7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="introImage1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-pr-mpf">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="Default.jpg" width="40" height="40"/>
         <image name="introImage1.jpg" width="320" height="568"/>
     </resources>
 </document>

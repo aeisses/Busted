@@ -10,10 +10,9 @@
 
 @interface TableCell : UITableViewCell
 
-@property (retain, nonatomic) IBOutlet UILabel *route;
-@property (retain, nonatomic) IBOutlet UILabel *timeOne;
-@property (retain, nonatomic) IBOutlet UILabel *timeTwo;
-@property (retain, nonatomic) IBOutlet UILabel *timeThree;
-
+@property (retain, nonatomic) IBOutlet UILabel *routeNumber;
+@property (retain, nonatomic) IBOutlet UILabel *routeName;
+@property (retain, nonatomic) IBOutlet UILabel *time;
+@property (retain, nonatomic) IBOutlet UILabel *timeRemaining;
 
 @end

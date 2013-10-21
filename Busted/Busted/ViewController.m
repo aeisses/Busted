@@ -22,7 +22,14 @@
 - (void)showMenuView
 {
     [[self navigationController] popViewControllerAnimated:NO];
-    _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    if (IS_IPHONE_5)
+    {
+        _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    }
+    else
+    {
+        _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewControllerSmall" bundle:nil];
+    }
     _menuViewController.delegate = self;
     _menuViewController.superDelegate = self;
     [[self navigationController] pushViewController:_menuViewController animated:NO];
@@ -32,9 +39,19 @@
 {
     _webApiInterface = [[WebApiInterface alloc] init];
     _webApiInterface.delegate = self;
-    _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
+    if (IS_IPHONE_5)
+    {
+        _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil];
+    } else {
+        _trackVC = [[TrackViewController alloc] initWithNibName:@"TrackViewControllerSmall" bundle:nil];
+    }
     _trackVC.delegate = self;
-    _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
+    if (IS_IPHONE_5)
+    {
+        _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewController" bundle:nil];
+    } else {
+        _loadingScreen = [[LoadingScreenViewController alloc] initWithNibName:@"LoadingScreenViewControllerSmall" bundle:nil];
+    }
     _loadingScreen.delegate = self;
     [[self navigationController] pushViewController:_loadingScreen animated:NO];
     [_loadingScreen release];
@@ -131,8 +148,13 @@
         case UISwipeGestureRecognizerDirectionDown:
             if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
             {
-                _trackVC.transitioningDelegate = self;
-                _trackVC.modalPresentationStyle = UIModalPresentationCustom;
+                NSString *ver = [[UIDevice currentDevice] systemVersion];
+                float ver_float = [ver floatValue];
+                if (ver_float >= 7.0)
+                {
+                    _trackVC.transitioningDelegate = self;
+                    _trackVC.modalPresentationStyle = UIModalPresentationCustom;
+                }
                 [self presentViewController:_trackVC animated:YES completion:^{}];
             }
             break;

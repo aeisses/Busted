@@ -7,35 +7,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoritesViewController">
             <connections>
-                <outlet property="homeButton" destination="4Bc-0i-1CT" id="Hb4-ns-tqC"/>
-                <outlet property="view" destination="1" id="3"/>
+                <outlet property="backGroundImage" destination="bl8-nj-jii" id="L1L-vH-4gA"/>
+                <outlet property="homeButton" destination="Fky-zC-bBN" id="iMf-b7-0xd"/>
+                <outlet property="view" destination="1" id="xB6-FQ-E2A"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-Ll-OrS">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-nj-jii">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bc-0i-1CT">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-zC-bBN">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" hint="Return to the menu screen" label="Home Button">
-                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
-                    </accessibility>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" title="Button" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="4LI-pH-VLd"/>
+                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="JBB-H6-hdc"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.86299887050000001" green="0.3098762236" blue="0.71397307980000002" alpha="1" colorSpace="calibratedRGB"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

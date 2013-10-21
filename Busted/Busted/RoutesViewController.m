@@ -62,7 +62,14 @@
         [alert show];
         [alert release];
     } else {
-        _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        if (IS_IPHONE_5)
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        }
+        else
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+        }
         _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];

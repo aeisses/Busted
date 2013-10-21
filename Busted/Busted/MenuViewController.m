@@ -27,10 +27,27 @@
 
 - (void)viewDidLoad
 {
-    NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreen" owner:self options:nil]];
+    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
+    NSArray *nibObjects = nil;
+    if (IS_IPHONE_5)
+    {
+        nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreen" owner:self options:nil]];
+    }
+    else
+    {
+        nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreenSmall" owner:self options:nil]];
+    }
+    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
     _aboutView = [[nibObjects objectAtIndex:0] retain];
     [nibObjects release];
-    _aboutView.frame = (CGRect){314,50,241,519};
+    if (IS_IPHONE_5)
+    {
+        _aboutView.frame = (CGRect){314,49,241,519};
+    }
+    else
+    {
+        _aboutView.frame = (CGRect){314,41,241,439};
+    }
     [self.view addSubview:self.aboutView];
     isAboutScreenVisible = NO;
     [super viewDidLoad];
@@ -52,14 +69,30 @@
 
 - (IBAction)touchButton:(id)sender
 {
+    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
     UIButton *button = (UIButton*)sender;
     if (button.tag == 1) {
-        RoutesViewController *rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
+        RoutesViewController *rootsVC = nil;
+        if (IS_IPHONE_5)
+        {
+            rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
+        }
+        else
+        {
+            rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewControllerSmall" bundle:nil];
+        }
         rootsVC.delegate = self;
         [_delegate loadViewController:rootsVC];
         [rootsVC release];
     } else if (button.tag == 2) {
-        _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        if (IS_IPHONE_5)
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        }
+        else
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+        }
         _mapVC.delegate = self;
         _mapVC.isStops = NO;
         [_delegate loadViewController:_mapVC];
@@ -77,26 +110,50 @@
         });
         dispatch_release(loadDataQueue);
     } else if (button.tag == 3) {
-        FavoritesViewController *favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+        FavoritesViewController *favVC = nil;
+        if (IS_IPHONE_5)
+        {
+            favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+        }
+        else
+        {
+            favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewControllerSmall" bundle:nil];
+        }
         [_delegate loadViewController:favVC];
         [favVC release];
     } else if (button.tag == 4) {
         if (isAboutScreenVisible)
         {
             [UIView animateWithDuration:0.50 animations:^{
-                _aboutView.frame = (CGRect){314,49,241,519};
-                _button4.frame = (CGRect){265,73,50,50};
+                if (IS_IPHONE_5)
+                {
+                    _aboutView.frame = (CGRect){314,49,241,519};
+                    _button4.frame = (CGRect){265,73,50,50};
+                } else {
+                    _aboutView.frame = (CGRect){314,41,241,439};
+                    _button4.frame = (CGRect){265,62,50,50};
+                }
             }completion:^(BOOL finished) {
                 [self enableButton];
                 isAboutScreenVisible = NO;
             }];
         } else {
             [self disableButton];
+            NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
             [UIView animateWithDuration:0.50 animations:^{
-                _aboutView.frame = (CGRect){79,49,241,519};
-                _button4.frame = (CGRect){30,73,50,50};
+                NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
+                if (IS_IPHONE_5)
+                {
+                    _aboutView.frame = (CGRect){79,49,241,519};
+                    _button4.frame = (CGRect){30,73,50,50};
+                } else {
+                    _aboutView.frame = (CGRect){79,41,241,439};
+                    _button4.frame = (CGRect){30,62,50,50};
+                    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
+                }
             } completion:^(BOOL finished) {
                 isAboutScreenVisible = YES;
+                NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
             }];
         }
     }
@@ -154,7 +211,7 @@
 //    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
 //        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
 //    }
-    _mapVC.delegate = nil;
+//    _mapVC.delegate = nil;
     [_mapVC release];
 }
 

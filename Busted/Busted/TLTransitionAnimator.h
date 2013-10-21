@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "macros.h"
 
 @interface TLTransitionAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 

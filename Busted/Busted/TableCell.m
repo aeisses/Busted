@@ -10,6 +10,7 @@
 
 @implementation TableCell
 
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -22,16 +23,20 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
+}
+
+- (NSString *) reuseIdentifier {
+    return @"TableCell";
 }
 
 - (void)dealloc
 {
-    [_route release]; _route = nil;
-    [_timeOne release]; _timeOne = nil;
-    [_timeTwo release]; _timeTwo = nil;
-    [_timeThree release]; _timeThree = nil;
+    [_routeNumber release]; _routeNumber = nil;
+    [_routeNumber release]; _routeNumber = nil;
+    [_time release]; _time = nil;
+    [_timeRemaining release]; _timeRemaining = nil;
     [super dealloc];
 }
+
 @end

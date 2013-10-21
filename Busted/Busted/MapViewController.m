@@ -20,7 +20,14 @@ static id instance;
 + (MapViewController*)sharedInstance
 {
     if (!instance) {
-        return [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+        if (IS_IPHONE_5)
+        {
+            return [[[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil] autorelease];
+        }
+        else
+        {
+            return [[[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil] autorelease];
+        }
     }
     return instance;
 }
@@ -237,7 +244,12 @@ static id instance;
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    
+    BusStop *busStop = view.annotation;
+    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+    stopsVC.busStop = busStop;
+    stopsVC.superDelegate = self;
+    [_delegate loadViewController:stopsVC];
+    [stopsVC release];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
@@ -249,11 +261,7 @@ static id instance;
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
 {
-//    BusStop *busStop = view.annotation;
-//    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
-//    stopsVC.busStop = busStop;
-//    [_delegate loadViewController:stopsVC];
-//    [stopsVC release];
+
 }
 
 #pragma WebApiInterfaceDegelate Methods
@@ -265,6 +273,16 @@ static id instance;
 - (void)stopLoaded:(NSNumber*)stop
 {
 
+}
+
+- (void)touchedHomeButton:(BOOL)isAll
+{
+    [self.superDelegate touchedHomeButton:isAll];
+}
+
+- (void)swipe:(UISwipeGestureRecognizer*)swipeGesture
+{
+    
 }
 
 @end

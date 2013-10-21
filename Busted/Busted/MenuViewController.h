@@ -12,6 +12,7 @@
 #import "FavoritesViewController.h"
 #import "ParentViewController.h"
 #import "FavoritesViewController.h"
+#import "macros.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;

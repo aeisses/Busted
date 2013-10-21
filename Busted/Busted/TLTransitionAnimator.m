@@ -21,6 +21,8 @@
     
     // Set our ending frame. We'll modify this later if we have to
     CGRect endFrame = CGRectMake(0, 0, 320, 568);
+    if (!IS_IPHONE_5)
+        endFrame = CGRectMake(0, 0, 320, 480);
     
     if (self.presenting) {
         fromViewController.view.userInteractionEnabled = NO;
@@ -29,7 +31,11 @@
         [transitionContext.containerView addSubview:toViewController.view];
         
         CGRect startFrame = endFrame;
-        startFrame.origin.y -= 568;
+        if (IS_IPHONE_5) {
+            startFrame.origin.y -= 568;
+        } else {
+            startFrame.origin.y -= 480;
+        }
         
         toViewController.view.frame = startFrame;
         
@@ -46,7 +52,11 @@
         [transitionContext.containerView addSubview:toViewController.view];
         [transitionContext.containerView addSubview:fromViewController.view];
         
-        endFrame.origin.y -= 568;
+        if (IS_IPHONE_5) {
+            endFrame.origin.y -= 568;
+        } else {
+            endFrame.origin.y -= 480;
+        }
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             toViewController.view.tintAdjustmentMode = UIViewTintAdjustmentModeAutomatic;

@@ -15,6 +15,7 @@
 #import "Bus.h"
 #import "Reachability.h"
 #import "StopDisplayViewController.h"
+#import "macros.h"
 
 #define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -25,7 +26,7 @@
 - (void)loadViewController:(UIViewController*)vc;
 @end
 
-@interface MapViewController : ParentViewController <MKMapViewDelegate>
+@interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate>
 {
     CADisplayLink *displayLink;
 }
