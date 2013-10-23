@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
     NSArray *nibObjects = nil;
     if (IS_IPHONE_5)
     {
@@ -37,7 +36,6 @@
     {
         nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreenSmall" owner:self options:nil]];
     }
-    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
     _aboutView = [[nibObjects objectAtIndex:0] retain];
     [nibObjects release];
     if (IS_IPHONE_5)
@@ -69,7 +67,6 @@
 
 - (IBAction)touchButton:(id)sender
 {
-    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
     UIButton *button = (UIButton*)sender;
     if (button.tag == 1) {
         RoutesViewController *rootsVC = nil;
@@ -99,11 +96,11 @@
         dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
         dispatch_async(loadDataQueue, ^{
             if (_mapVC.currentLocation) {
-//                [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
+                [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
 //                NSLog(@"Region: %f",_mapVC.mapView.region.center.latitude);
 //                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
             } else {
-//                [[WebApiInterface sharedInstance] requestPlace:(CLLocationCoordinate2D){HALIFAX_LATITUDE,HALIFAX_LONGITUDE}];
+                [[WebApiInterface sharedInstance] requestPlace:(CLLocationCoordinate2D){HALIFAX_LATITUDE,HALIFAX_LONGITUDE}];
 //                NSLog(@"Region: %f",_mapVC.mapView.region.center.longitude);
 //                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
             }
@@ -139,9 +136,7 @@
             }];
         } else {
             [self disableButton];
-            NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
             [UIView animateWithDuration:0.50 animations:^{
-                NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
                 if (IS_IPHONE_5)
                 {
                     _aboutView.frame = (CGRect){79,49,241,519};
@@ -149,11 +144,9 @@
                 } else {
                     _aboutView.frame = (CGRect){79,41,241,439};
                     _button4.frame = (CGRect){30,62,50,50};
-                    NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
                 }
             } completion:^(BOOL finished) {
                 isAboutScreenVisible = YES;
-                NSLog(@"Frame: %f, %f",_button4.frame.origin.x,_button4.frame.origin.y);
             }];
         }
     }

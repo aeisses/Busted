@@ -17,5 +17,7 @@
 @dynamic stop;
 @dynamic trips;
 @dynamic routes;
+@dynamic isFavorite;
+@dynamic times;
 
 @end

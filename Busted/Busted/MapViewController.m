@@ -37,6 +37,8 @@ static id instance;
     instance = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (instance) {
         // Custom initialization
+        _stops = nil;
+        _route = nil;
     }
     return instance;
 }
@@ -80,14 +82,14 @@ static id instance;
     _mapView.zoomEnabled = YES;
     [_mapView setShowsUserLocation:YES];
     [self.view bringSubviewToFront:_homeButton];
-    if (!_isStops)
-    {
-        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
-        dispatch_async(dataQueue, ^{
-            [[WebApiInterface sharedInstance] requestStopsForRegion:_mapView.region];
-        });
-        dispatch_release(dataQueue);
-    }
+//    if (!_isStops)
+//    {
+//        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
+//        dispatch_async(dataQueue, ^{
+//            [[WebApiInterface sharedInstance] requestStopsForRegion:_mapView.region];
+//        });
+//        dispatch_release(dataQueue);
+//    }
     [super viewDidLoad];
 }
 
@@ -123,7 +125,7 @@ static id instance;
         // TODO: Might still have some memory issues here....
         dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
         dispatch_async(networkQueue, ^{
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%i",SERVERHOSTNAME,_route];
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%i",SERVERHOSTNAME,_route.routeNum];
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
             NSError *error = nil;
@@ -169,7 +171,32 @@ static id instance;
     if (_mapView.overlays)
         [_mapView removeOverlays:_mapView.overlays];
     [_mapView addOverlays:route.lines];
-    _route = route.routeNum;
+    if (_route)
+    {
+        [_route release]; _route = nil;
+    }
+    _route = [route copy];
+}
+
+- (void)addStops:(NSArray *)stops
+{
+    if (_stops)
+    {
+        [_stops release]; _stops = nil;
+    }
+    _stops = [[NSMutableArray alloc] initWithArray:stops];
+    [_mapView addAnnotations:stops];
+}
+
+- (void)addStop:(BusStop*)busStop
+{
+    if (_stops)
+    {
+        [_stops addObject:busStop];
+    } else {
+        _stops = [[NSMutableArray alloc] initWithObjects:busStop,nil];
+    }
+    [_mapView addAnnotation:busStop];
 }
 
 - (void)loadStopsForLocation
@@ -210,11 +237,16 @@ static id instance;
         if (annotationView == nil)
         {
             annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%@",bus.code]] autorelease];
-            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             annotationView.image = [UIImage imageNamed:@"busStop.png"];
         }
-        annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
+        if (![bus.subtitle isEqualToString:@"Next Bus: unknown"])
+        {
+            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        } else {
+            annotationView.rightCalloutAccessoryView = nil;
+        }
+        annotationView.enabled = YES;
         return annotationView;
     }
     return nil;
@@ -277,6 +309,8 @@ static id instance;
 
 - (void)touchedHomeButton:(BOOL)isAll
 {
+    [_mapView addOverlays:_route.lines];
+    [_mapView addAnnotations:_stops];
     [self.superDelegate touchedHomeButton:isAll];
 }
 

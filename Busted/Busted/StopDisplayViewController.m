@@ -31,9 +31,9 @@
 - (void)viewDidLoad
 {
     [_tableView registerNib:[UINib nibWithNibName:@"TableCell" bundle:nil] forCellReuseIdentifier:@"TableCell"];
-    [_tableView registerNib:[UINib nibWithNibName:@"ExpandedCell" bundle:nil] forCellReuseIdentifier:@"ExpandedCell"];
     _tableView.delegate = self;
     [_tableView setDataSource:self];
+    _tableView.backgroundColor = [UIColor clearColor];
     [super viewDidLoad];
 }
 
@@ -71,13 +71,21 @@
     Route *route = [[_busStop.routes allObjects] objectAtIndex:indexPath.row];
     cell.routeNumber.text = route.short_name;
     cell.routeName.text = route.long_name;
+    cell.busStopCode = _busStop.code;
     
     // This needs to be adjusted to the real time
-    cell.time.text = [NSString stringWithFormat:@"%i mins",(int)(([[NSDate date] timeIntervalSince1970] - [((Trip*)[[route.trips allObjects] objectAtIndex:0]).time doubleValue])/3600)];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm"];
-    cell.timeRemaining.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[((Trip*)[[route.trips allObjects] objectAtIndex:0]).time doubleValue]]];
-
+    for (NSNumber *trip in (NSArray*)route.times)
+    {
+        int diff = [trip doubleValue] - [[NSDate date] timeIntervalSince1970];
+        if (diff > 0)
+        {
+            cell.time.text = [NSString stringWithFormat:@"%i mins",(int)([trip doubleValue] - [[NSDate date] timeIntervalSince1970])/60];
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"HH:mm"];
+            cell.timeRemaining.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[trip doubleValue]]];
+            return cell;
+        }
+    }
     return cell;
 }
 

@@ -8,10 +8,15 @@
 
 #import "ParentViewController.h"
 
-@interface FavoritesViewController : ParentViewController
+@interface FavoritesViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate>
+{
+    NSArray *stops;
+    NSArray *routes;
+}
 
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
+@property (retain, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)touchHomeButton:(id)sender;
 

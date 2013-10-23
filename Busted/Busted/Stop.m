@@ -15,6 +15,7 @@
 @dynamic lng;
 @dynamic name;
 @dynamic routes;
+@dynamic isFavorite;
 
 - (void)dealloc
 {

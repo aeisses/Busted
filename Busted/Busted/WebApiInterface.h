@@ -51,5 +51,8 @@
 - (void)requestStop:(NSInteger)stop;
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate;
 - (void)requestStopsForRegion:(MKCoordinateRegion)region;
+- (NSArray*)getFavoriteStops;
+- (NSArray*)getFavoriteRoutes;
+- (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
 
 @end

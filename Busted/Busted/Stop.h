@@ -18,5 +18,6 @@
 @property (nonatomic, retain) NSNumber *lng;
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSSet *routes;
+@property (nonatomic, retain) NSNumber *isFavorite;
 
 @end

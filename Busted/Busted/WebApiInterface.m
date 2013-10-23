@@ -90,6 +90,7 @@ static id instance;
     stop.lat = (NSNumber*)[stopJson valueForKey:@"lat"];
     stop.lng = (NSNumber*)[stopJson valueForKey:@"lng"];
     stop.name = (NSString*)[stopJson valueForKey:@"name"];
+    stop.isFavorite = (NSNumber*)[stopJson valueForKey:@"isFavorite"];
 
     NSArray *routes = (NSArray*)[stopJson valueForKey:@"routes"];
     NSMutableSet *routesSet = [[NSMutableSet alloc] init];
@@ -98,7 +99,7 @@ static id instance;
         NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         fetchRequest.entity = myEntity;
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"short_name == %@",[stopJson valueForKey:@"short_name"]];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"short_name == %@",[routeJson valueForKey:@"short_name"]];
         NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
         [fetchRequest release];
         Route *route = nil;
@@ -112,14 +113,18 @@ static id instance;
         }
         route.long_name = (NSString*)[routeJson valueForKey:@"long_name"];
         route.short_name = (NSString*)[routeJson valueForKey:@"short_name"];
-        NSArray *trips = (NSArray*)[routeJson valueForKey:@"trips"];
+//        route.headsign = (NSString*)[routeJson valueForKey:@"headsign"];
+        route.times = (NSArray*)[routeJson valueForKey:@"times"];
+        route.isFavorite = (NSNumber*)[routeJson valueForKey:@"isFavorite"];
+
+/*        NSArray *trips = (NSArray*)[routeJson valueForKey:@"trips"];
         NSMutableSet *tripsSet = [[NSMutableSet alloc] init];
         for (NSDictionary *tripJson in trips)
         {
             NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Trip" inManagedObjectContext:context];
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             fetchRequest.entity = myEntity;
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"headsign == %@",[stopJson valueForKey:@"headsign"]];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"headsign == %@",[tripJson valueForKey:@"headsign"]];
             NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
             [fetchRequest release];
             Trip *trip = nil;
@@ -138,11 +143,13 @@ static id instance;
         }
         route.trips = (NSSet*)tripsSet;
         [tripsSet release];
+ */
         route.stop = stop;
         [routesSet addObject:route];
     }
     stop.routes = (NSSet*)routesSet;
     [routesSet release];
+    [context save:nil];
     return (NSNumber*)[stopJson valueForKey:@"code"];
 }
 
@@ -178,6 +185,7 @@ static id instance;
     }
     routes.route = (NSSet*)routesSet;
     [routesSet release];
+    [context save:nil];
 }
 
 - (void)createStopRecordsWithStops:(NSArray*)stopsArray context:(NSManagedObjectContext*)context
@@ -301,7 +309,7 @@ static id instance;
 
 - (void)requestStop:(NSInteger)stop
 {
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i%@%g%@", BASEURL, STOP, stop, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
+    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i%@%f%@", BASEURL, STOP, stop, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -339,13 +347,15 @@ static id instance;
 
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate
 {
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%g,%g%@%g%@", BASEURL, PLACE, coordinate.latitude, coordinate.longitude, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
+    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%f,%f%@%f%@", BASEURL, PLACE, coordinate.latitude, coordinate.longitude, FILLER,[[NSDate date] timeIntervalSince1970], ENDURL];
+    NSLog(@"ContentURl: %@",contentUrl);
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         NSManagedObjectContext *threadContext = [self createNewManagedObjectContext];
+        NSLog(@"JSON: %@",JSON);
         NSDictionary *data = (NSDictionary *)JSON;
         NSArray *codes = [self createStopRecordWithStops:(NSArray*)[data valueForKey:@"stops"] context:threadContext];
         for (NSNumber *code in codes) {
@@ -355,7 +365,8 @@ static id instance;
         }
         __block typeof(self) blockSelf = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[MapViewController sharedInstance].mapView addAnnotations:blockSelf.busStops];
+            [[MapViewController sharedInstance] addStops:blockSelf.busStops];
+//            [[MapViewController sharedInstance].mapView addAnnotations:blockSelf.busStops];
         });
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
@@ -398,7 +409,7 @@ static id instance;
             [_busStops addObject:busStop];
             __block typeof(BusStop) *blockBusStop = busStop;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [[MapViewController sharedInstance].mapView addAnnotation:blockBusStop];
+                [[MapViewController sharedInstance] addStop:blockBusStop];
             });
             [busStop release];
         }
@@ -428,6 +439,46 @@ static id instance;
         [jsonString release];
     } else {
         NSLog(@"Got an error: %@", error);
+    }
+}
+
+- (NSArray*)getFavoriteStops
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavorite == YES"];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    return fetchedObject;
+}
+
+- (NSArray*)getFavoriteRoutes
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavorite == YES"];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    return fetchedObject;
+}
+
+- (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"code == %@",code];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    if ([fetchedObject count])
+    {
+        Stop *stop = [fetchedObject lastObject];
+        stop.isFavorite = [NSNumber numberWithBool:favorite];
+        [context save:nil];
     }
 }
 
