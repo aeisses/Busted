@@ -54,5 +54,8 @@
 - (NSArray*)getFavoriteStops;
 - (NSArray*)getFavoriteRoutes;
 - (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
+- (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
+- (Stop*)getStopForCode:(NSNumber*)code;
+- (Route*)getRouteForIdent:(NSString*)ident;
 
 @end

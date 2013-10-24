@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404270673.767409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "389"
-            endingLineNumber = "389"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "-requestStopsForRegion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404270673.767409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "-requestPlace:"
             landmarkType = "5">
          </BreakpointContent>
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404270673.767409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-requestPlace:"
             landmarkType = "5">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404269118.864781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
             landmarkName = "-requestStop:"
             landmarkType = "5">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404270673.767409"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-requestPlace:"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/WebApiInterface.m"
-            timestampString = "404184711.063922"
+            timestampString = "404269118.864781"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "-fetchAllStops"
             landmarkType = "5">
          </BreakpointContent>
@@ -115,44 +115,92 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Busted/BusStop.m"
-            timestampString = "404184280.579"
+            filePath = "Busted/WebApiInterface.m"
+            timestampString = "404265704.608955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "-subtitle"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-createStopRecordWithStop:context:"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BusStop subtitle]"
+                  symbolName = "-[WebApiInterface createStopRecordWithStop:context:]"
                   moduleName = "Busted"
-                  urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/BusStop.m"
-                  timestampString = "404185077.272909"
+                  urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/WebApiInterface.m"
+                  timestampString = "404265704.614948"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "88">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1044">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[BusStop subtitle]"
+                  symbolName = "-[WebApiInterface createStopRecordWithStop:context:]"
                   moduleName = "Busted"
-                  urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/BusStop.m"
-                  timestampString = "404185077.273141"
+                  urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/WebApiInterface.m"
+                  timestampString = "404265704.615219"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "1900">
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "2192">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Busted/WebApiInterface.m"
+            timestampString = "404269118.864781"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-createStopRecordWithStop:context:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Busted/BusStop.m"
+            timestampString = "404270248.837952"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-initWithCode:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Busted/FavoritesViewController.m"
+            timestampString = "404271590.251983"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

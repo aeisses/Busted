@@ -9,7 +9,6 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="routes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Routes" inverseName="route" inverseEntity="Routes" syncable="YES"/>
         <relationship name="stop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Stop" inverseName="routes" inverseEntity="Stop" syncable="YES"/>
-        <relationship name="trips" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trip" inverseName="route" inverseEntity="Trip" syncable="YES"/>
     </entity>
     <entity name="Routes" syncable="YES">
         <attribute name="jsonPath" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,12 +25,11 @@
     <entity name="Trip" syncable="YES">
         <attribute name="headsign" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="time" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="route" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Route" inverseName="trips" inverseEntity="Route" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Route" positionX="0" positionY="0" width="128" height="163"/>
-        <element name="Routes" positionX="207" positionY="-28" width="128" height="73"/>
-        <element name="Stop" positionX="-180" positionY="-171" width="128" height="133"/>
-        <element name="Trip" positionX="-297" positionY="-18" width="128" height="90"/>
+        <element name="Route" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Routes" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Stop" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Trip" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

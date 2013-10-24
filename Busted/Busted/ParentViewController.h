@@ -10,6 +10,7 @@
 
 @protocol ParentViewControllerDelegate <NSObject>
 - (void)touchedHomeButton:(BOOL)isAll;
+@optional
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
 @end
 

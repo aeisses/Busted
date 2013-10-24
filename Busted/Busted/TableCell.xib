@@ -47,22 +47,10 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N74-eg-i8o">
-                        <rect key="frame" x="10" y="42" width="36" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="MenuStarOff.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <state key="selected" image="MenuStarOn.png"/>
-                        <connections>
-                            <action selector="touchFavoriteButton:" destination="8Nv-9G-vxn" eventType="touchUpInside" id="64K-vz-KYC"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="favoriteButton" destination="N74-eg-i8o" id="CHN-2m-x4d"/>
                 <outlet property="routeName" destination="NzJ-q7-ddw" id="8Xx-fE-8Rm"/>
                 <outlet property="routeNumber" destination="9Pc-Md-lCy" id="vhJ-80-0lb"/>
                 <outlet property="time" destination="oS5-p2-ceT" id="zZn-Fx-0bF"/>
@@ -70,8 +58,4 @@
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="MenuStarOff.png" width="36" height="35"/>
-        <image name="MenuStarOn.png" width="36" height="35"/>
-    </resources>
 </document>

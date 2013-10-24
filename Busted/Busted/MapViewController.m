@@ -37,8 +37,6 @@ static id instance;
     instance = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (instance) {
         // Custom initialization
-        _stops = nil;
-        _route = nil;
     }
     return instance;
 }

@@ -116,6 +116,7 @@
         {
             favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewControllerSmall" bundle:nil];
         }
+        favVC.delegate = self;
         [_delegate loadViewController:favVC];
         [favVC release];
     } else if (button.tag == 4) {

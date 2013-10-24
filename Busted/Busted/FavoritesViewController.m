@@ -21,8 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        stops = [[[WebApiInterface sharedInstance] getFavoriteStops] retain];
-        routes = [[[WebApiInterface sharedInstance] getFavoriteRoutes] retain];
+    
     }
     return self;
 }
@@ -41,6 +40,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [_tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -52,8 +56,6 @@
     [_backGroundImage release]; _backGroundImage = nil;
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
-    [stops release]; stops = nil;
-    [routes release]; routes = nil;
     [super dealloc];
 }
 
@@ -73,16 +75,18 @@
     FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
     if (indexPath.section == 0)
     {
-        Stop *stop = [stops objectAtIndex:indexPath.row];
+        Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
         cell.name.text = stop.name;
         cell.number.text = stop.code;
         cell.favoriteButton.selected = [stop.isFavorite boolValue];
+        cell.isStop = YES;
         return cell;
     } else if (indexPath.section == 1) {
-        Route *route = [routes objectAtIndex:indexPath.row];
+        Route *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
         cell.name.text = route.long_name;
         cell.number.text = route.short_name;
         cell.favoriteButton.selected = [route.isFavorite boolValue];
+        cell.isStop = NO;
         return cell;
     }
     return nil;
@@ -96,8 +100,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return [stops count];
-    return [routes count];
+        return [[[WebApiInterface sharedInstance] getFavoriteStops] count];
+    return [[[WebApiInterface sharedInstance] getFavoriteRoutes] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -116,6 +120,29 @@
             break;
     }
     return sectionName;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0)
+    {
+        StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+        Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
+        stopsVC.superDelegate = self;
+        BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInt:[stop.code intValue]]];
+        stopsVC.busStop =  busStop;
+        [busStop release];
+        [_delegate loadViewController:stopsVC];
+        [stopsVC release];
+    } else if (indexPath.section == 1)
+    {
+        
+    }
+}
+
+- (void)touchedHomeButton:(BOOL)isAll
+{
+    [self.superDelegate touchedHomeButton:isAll];
 }
 
 @end

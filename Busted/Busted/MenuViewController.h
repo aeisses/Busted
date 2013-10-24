@@ -20,7 +20,7 @@
 - (NSArray*)getRoutes;
 @end
 
-@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate>
+@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate,FavoritesViewControllerDelegate>
 {
     BOOL isAboutScreenVisible;
 }

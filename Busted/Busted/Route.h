@@ -20,7 +20,6 @@
 @property (nonatomic, retain) NSString *ident;
 @property (nonatomic, retain) NSNumber *type;
 @property (nonatomic, retain) Stop *stop;
-@property (nonatomic, retain) NSSet *trips;
 @property (nonatomic, retain) Routes *routes;
 @property (nonatomic, retain) NSNumber *isFavorite;
 @property (nonatomic, assign) id times;

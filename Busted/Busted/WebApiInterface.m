@@ -85,21 +85,22 @@ static id instance;
     else
     {
         stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:context];
+        stop.isFavorite = @NO;
     }
     stop.code = (NSString*)[stopJson valueForKey:@"code"];
     stop.lat = (NSNumber*)[stopJson valueForKey:@"lat"];
     stop.lng = (NSNumber*)[stopJson valueForKey:@"lng"];
     stop.name = (NSString*)[stopJson valueForKey:@"name"];
-    stop.isFavorite = (NSNumber*)[stopJson valueForKey:@"isFavorite"];
 
     NSArray *routes = (NSArray*)[stopJson valueForKey:@"routes"];
-    NSMutableSet *routesSet = [[NSMutableSet alloc] init];
+    NSMutableSet *routesSet = [NSMutableSet setWithCapacity:[routes count]];
     for (NSDictionary *routeJson in routes)
     {
         NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         fetchRequest.entity = myEntity;
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"short_name == %@",[routeJson valueForKey:@"short_name"]];
+        NSString *searchString = [NSString stringWithFormat:@"%@%@",[stopJson valueForKey:@"code"],[routeJson valueForKey:@"short_name"]];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"ident == %@",searchString];
         NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
         [fetchRequest release];
         Route *route = nil;
@@ -110,45 +111,18 @@ static id instance;
         else
         {
             route = [NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext:context];
+            route.isFavorite = @NO;
         }
+        route.ident = [NSString stringWithFormat:@"%@%@",[stopJson valueForKey:@"code"],[routeJson valueForKey:@"short_name"]];
         route.long_name = (NSString*)[routeJson valueForKey:@"long_name"];
         route.short_name = (NSString*)[routeJson valueForKey:@"short_name"];
 //        route.headsign = (NSString*)[routeJson valueForKey:@"headsign"];
         route.times = (NSArray*)[routeJson valueForKey:@"times"];
-        route.isFavorite = (NSNumber*)[routeJson valueForKey:@"isFavorite"];
-
-/*        NSArray *trips = (NSArray*)[routeJson valueForKey:@"trips"];
-        NSMutableSet *tripsSet = [[NSMutableSet alloc] init];
-        for (NSDictionary *tripJson in trips)
-        {
-            NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Trip" inManagedObjectContext:context];
-            NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-            fetchRequest.entity = myEntity;
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"headsign == %@",[tripJson valueForKey:@"headsign"]];
-            NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-            [fetchRequest release];
-            Trip *trip = nil;
-            if ([fetchedObject count] > 0)
-            {
-                trip = [fetchedObject lastObject];
-            }
-            else
-            {
-                trip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:context];
-            }
-            trip.headsign = (NSString*)[tripJson valueForKey:@"headsign"];
-            trip.time = (NSNumber*)[tripJson valueForKey:@"time"];
-            trip.route = route;
-            [tripsSet addObject:trip];
-        }
-        route.trips = (NSSet*)tripsSet;
-        [tripsSet release];
- */
         route.stop = stop;
         [routesSet addObject:route];
+        [context save:nil];
     }
     stop.routes = (NSSet*)routesSet;
-    [routesSet release];
     [context save:nil];
     return (NSNumber*)[stopJson valueForKey:@"code"];
 }
@@ -316,13 +290,16 @@ static id instance;
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         NSManagedObjectContext *context = [self createNewManagedObjectContext];
+        if (![[(NSDictionary *)JSON valueForKey:@"stops"] count])
+            return;
         NSDictionary *data = [[(NSDictionary *)JSON valueForKey:@"stops"] objectAtIndex:0];
         int counter = 0;
         for (BusStop *stop in [NSArray arrayWithArray:_busStops])
         {
             if ([[data valueForKey:@"code"] integerValue] == [stop.code integerValue])
             {
-                BusStop *busStop = [[BusStop alloc] initWithCode:[self createStopRecordWithStop:data context:context] andContext:context];
+                BusStop *busStop = [[BusStop alloc] initWithCode:[self createStopRecordWithStop:data context:context]];
+                [context save:nil];
                 [[MapViewController sharedInstance].mapView removeAnnotation:stop];
                 [[MapViewController sharedInstance].mapView addAnnotation:busStop];
                 [_busStops replaceObjectAtIndex:counter withObject:busStop];
@@ -358,8 +335,9 @@ static id instance;
         NSLog(@"JSON: %@",JSON);
         NSDictionary *data = (NSDictionary *)JSON;
         NSArray *codes = [self createStopRecordWithStops:(NSArray*)[data valueForKey:@"stops"] context:threadContext];
+//        [threadContext save:nil];
         for (NSNumber *code in codes) {
-            BusStop *busStop = [[BusStop alloc] initWithCode:code andContext:threadContext];
+            BusStop *busStop = [[BusStop alloc] initWithCode:code];// andContext:threadContext];
             [_busStops addObject:busStop];
             [busStop release];
         }
@@ -405,7 +383,7 @@ static id instance;
             [stop.lng doubleValue] >= northWestCorner.longitude &&
             [stop.lng doubleValue] <= southEastCorner.longitude)
         {
-            BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInteger:[stop.code integerValue]] andContext:context];
+            BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInteger:[stop.code integerValue]]];
             [_busStops addObject:busStop];
             __block typeof(BusStop) *blockBusStop = busStop;
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -474,12 +452,58 @@ static id instance;
     fetchRequest.entity = myEntity;
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"code == %@",code];
     NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
     if ([fetchedObject count])
     {
         Stop *stop = [fetchedObject lastObject];
         stop.isFavorite = [NSNumber numberWithBool:favorite];
         [context save:nil];
     }
+}
+
+- (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"short_name == %@",shortName];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    if ([fetchedObject count])
+    {
+        Route *route = [fetchedObject lastObject];
+        route.isFavorite = [NSNumber numberWithBool:favorite];
+        [context save:nil];
+    }
+}
+
+- (Stop*)getStopForCode:(NSNumber*)code
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"code == %@",code];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    if ([fetchedObject count])
+        return (Stop*)[fetchedObject lastObject];
+    return nil;
+}
+
+- (Route*)getRouteForIdent:(NSString*)ident
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"ident == %@",ident];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    if ([fetchedObject count])
+        return (Route*)[fetchedObject lastObject];
+    return nil;
 }
 
 - (void)dealloc

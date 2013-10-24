@@ -7,6 +7,7 @@
 //
 
 #import "FavoriteCell.h"
+#import "WebApiInterface.h"
 
 @implementation FavoriteCell
 
@@ -29,6 +30,11 @@
 - (IBAction)touchFavoriteButton:(id)sender
 {
     _favoriteButton.selected = !_favoriteButton.selected;
+    if (_isStop) {
+        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forStop:[NSNumber numberWithInt:[_number.text intValue]]];
+    } else {
+        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_number.text];
+    }
 }
 
 - (NSString *) reuseIdentifier {

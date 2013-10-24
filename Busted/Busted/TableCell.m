@@ -31,12 +31,6 @@
     return @"TableCell";
 }
 
-- (IBAction)touchFavoriteButton:(id)sender
-{
-    _favoriteButton.selected = !_favoriteButton.selected;
-    [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forStop:_busStopCode];
-}
-
 - (void)dealloc
 {
     [_routeNumber release]; _routeNumber = nil;
@@ -44,7 +38,6 @@
     [_time release]; _time = nil;
     [_timeRemaining release]; _timeRemaining = nil;
     [_busStopCode release]; _busStopCode = nil;
-    [_favoriteButton release]; _favoriteButton = nil;
     [super dealloc];
 }
 

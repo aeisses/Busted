@@ -12,34 +12,28 @@
 
 @implementation BusStop
 
-- (id)initWithCode:(NSNumber *)code andContext:(NSManagedObjectContext *)context
+//- (id)initWithCode:(NSNumber *)code andContext:(NSManagedObjectContext *)context
+- (id)initWithCode:(NSNumber *)code //andContext:(NSManagedObjectContext *)context
 {
     if (self = [super init])
     {
         _code = [code copy];
-        _managedObjectContext = [context retain];
-        NSError *error = nil;
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:_managedObjectContext];
-        fetchRequest.entity = entity;
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"code == %@", _code];
-        fetchRequest.predicate = predicate;
-        NSArray *fetchedObjects = [_managedObjectContext executeFetchRequest:fetchRequest error:&error];
-        [fetchRequest release];
-        if (fetchedObjects != nil && error == nil && [fetchedObjects count] == 1)
+        Stop *stop = [[WebApiInterface sharedInstance] getStopForCode:_code];
+        _isFavorite = [stop.isFavorite boolValue];
+        _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
+        _title = [stop.name copy];
+        _routes = [stop.routes retain];
+        if ([stop.routes count] == 0)
         {
-            Stop *stop = (Stop*)[fetchedObjects objectAtIndex:0];
-            _isFavorite = [stop.isFavorite boolValue];
-            _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
-            _title = [stop.name copy];
-            _routes = [stop.routes retain];
-            if ([_routes count] == 0)
+            [[WebApiInterface sharedInstance] requestStop:[_code integerValue]];
+        } else {
+            NSMutableArray *tempRoutes = [[NSMutableArray alloc] initWithCapacity:[stop.routes count]];
+            for (Route *route in stop.routes)
             {
-                [[WebApiInterface sharedInstance] requestStop:[_code integerValue]];
+                [tempRoutes addObject:route.short_name];
             }
-        }
-        else
-        {
+            _routesId = [[NSArray alloc] initWithArray:tempRoutes];
+            [tempRoutes release];
         }
     }
     return self;
@@ -50,8 +44,9 @@
     NSTimeInterval lowestTime = -1;
     NSString *routeShortName = nil;
     NSString *routeLongName = nil;
-    for (Route *route in _routes)
+    for (NSString *routeId in _routesId)
     {
+        Route *route = [[WebApiInterface sharedInstance] getRouteForIdent:[NSString stringWithFormat:@"%@%@",_code,routeId]];
         for (NSNumber *trip in (NSArray*)route.times)
         {
             if([trip doubleValue] > 0)
@@ -92,6 +87,7 @@
     [_title release]; _title = nil;
     [_code release]; _code = nil;
     [_managedObjectContext release]; _managedObjectContext = nil;
+    [_routesId release]; _routesId = nil;
 }
 
 @end

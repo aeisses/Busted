@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="backGroundImage" destination="bl8-nj-jii" id="L1L-vH-4gA"/>
                 <outlet property="homeButton" destination="Fky-zC-bBN" id="iMf-b7-0xd"/>
+                <outlet property="tableView" destination="ebo-wn-KXJ" id="ofc-xc-Qrk"/>
                 <outlet property="view" destination="1" id="xB6-FQ-E2A"/>
             </connections>
         </placeholder>
@@ -31,6 +32,15 @@
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="JBB-H6-hdc"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ebo-wn-KXJ">
+                    <rect key="frame" x="0.0" y="46" width="320" height="434"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="bl8-nj-jii" id="qQF-uo-wcw"/>
+                        <outlet property="delegate" destination="bl8-nj-jii" id="AAK-id-yiC"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

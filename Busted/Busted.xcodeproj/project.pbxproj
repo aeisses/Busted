@@ -113,6 +113,7 @@
 		04C7C2F317E53B8E001A9981 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2F217E53B8E001A9981 /* Bus.m */; };
 		04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2F617E5495D001A9981 /* dot0@2x.png */; };
 		04C7C2F917E54963001A9981 /* dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2F817E54963001A9981 /* dot0.png */; };
+		04E115461818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */; };
 		04E9588117F6340900DD72AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9586F17F6340900DD72AD /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588217F6340900DD72AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9587117F6340900DD72AD /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588317F6340900DD72AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9587317F6340900DD72AD /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -265,6 +266,7 @@
 		04C7C2F217E53B8E001A9981 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
 		04C7C2F617E5495D001A9981 /* dot0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot0@2x.png"; sourceTree = "<group>"; };
 		04C7C2F817E54963001A9981 /* dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot0.png; sourceTree = "<group>"; };
+		04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopsDisplayViewControllerSmall.xib; sourceTree = "<group>"; };
 		04E9586E17F6340900DD72AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		04E9586F17F6340900DD72AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		04E9587017F6340900DD72AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */,
+				04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */,
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
 				04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */,
@@ -731,6 +734,7 @@
 				041902491800C93C00D79040 /* myDestinationButton@2x.png in Resources */,
 				041902511800C93C00D79040 /* downToUp@2x.png in Resources */,
 				041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */,
+				04E115461818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib in Resources */,
 				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,

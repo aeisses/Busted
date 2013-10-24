@@ -20,7 +20,9 @@
 @property (retain, nonatomic) BusStop *busStop;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
+@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
 
--(IBAction)touchHomeButton:(id)sender;
+- (IBAction)touchHomeButton:(id)sender;
+- (IBAction)touchFavoriteButton:(id)sender;
 
 @end

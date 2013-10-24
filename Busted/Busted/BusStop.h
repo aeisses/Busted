@@ -22,7 +22,8 @@
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain) NSSet *routes;
 @property (nonatomic, assign) BOOL isFavorite;
+@property (nonatomic, retain) NSArray *routesId;
 
-- (id)initWithCode:(NSNumber*)code andContext:(NSManagedObjectContext*)context;
+- (id)initWithCode:(NSNumber *)code;
 
 @end
