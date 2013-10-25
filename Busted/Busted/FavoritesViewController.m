@@ -104,6 +104,31 @@
     return [[[WebApiInterface sharedInstance] getFavoriteRoutes] count];
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIImageView *imageView;
+    switch (section)
+    {
+        case 0:
+            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stops.png"]];
+//            imageView.frame = (CGRect){0,0,320,32};
+            break;
+        case 1:
+            imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"routes.png"]];
+//            imageView.frame = (CGRect){0,0,320,32};
+            break;
+        default:
+            imageView = nil;
+            break;
+    }
+    return imageView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32.0;
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     NSString *sectionName;

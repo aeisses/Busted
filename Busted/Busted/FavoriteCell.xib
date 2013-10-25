@@ -14,8 +14,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bus-number.png" translatesAutoresizingMaskIntoConstraints="NO" id="bP9-Bt-KIl">
+                        <rect key="frame" x="0.0" y="0.0" width="83" height="43"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taO-GS-yc8">
-                        <rect key="frame" x="16" y="11" width="53" height="21"/>
+                        <rect key="frame" x="10" y="11" width="53" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,16 +36,15 @@
                             <action selector="touchFavoriteButton:" destination="saE-th-cpH" eventType="touchUpInside" id="ZSm-Ut-5pO"/>
                         </connections>
                     </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUk-KW-uMs">
-                        <rect key="frame" x="81" y="11" width="175" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUk-KW-uMs">
+                        <rect key="frame" x="94" y="11" width="175" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.7518119352409639" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="favoriteButton" destination="2LO-AS-xMf" id="8yB-Gp-sWq"/>
                 <outlet property="name" destination="vUk-KW-uMs" id="oea-qG-t0H"/>
@@ -52,5 +55,6 @@
     <resources>
         <image name="MenuStarOff.png" width="36" height="35"/>
         <image name="MenuStarOn.png" width="36" height="35"/>
+        <image name="bus-number.png" width="83" height="43"/>
     </resources>
 </document>

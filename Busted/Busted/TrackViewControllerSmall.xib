@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -38,6 +38,7 @@
                     <state key="normal" title="Button" image="onMyWayButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" image="Stop.png"/>
                     <connections>
                         <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="Njg-IU-ASe"/>
                     </connections>
@@ -59,6 +60,7 @@
         </view>
     </objects>
     <resources>
+        <image name="Stop.png" width="320" height="146"/>
         <image name="backGroundOnMyWay.jpg" width="320" height="568"/>
         <image name="downToUp.png" width="320" height="34"/>
         <image name="onMyWay.png" width="320" height="126"/>

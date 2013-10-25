@@ -15,8 +15,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *time;
 @property (retain, nonatomic) IBOutlet UILabel *timeRemaining;
 @property (retain, nonatomic) NSNumber *busStopCode;
-//@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
-
-//- (IBAction)touchFavoriteButton:(id)sender;
+@property (retain, nonatomic) IBOutlet UIImageView *downArrow;
 
 @end

@@ -84,7 +84,12 @@
     cell.routeNumber.text = route.short_name;
     cell.routeName.text = route.long_name;
     cell.busStopCode = _busStop.code;
-    
+    if ([expandedSections containsIndex:indexPath.row])
+    {
+        cell.downArrow.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+    } else {
+        cell.downArrow.layer.transform = CATransform3DMakeRotation(0, 0, 0, 1);
+    }
     // This needs to be adjusted to the real time
     for (NSNumber *trip in (NSArray*)route.times)
     {
@@ -136,7 +141,6 @@
 {
     _favoriteButton.selected = !_favoriteButton.selected;
     _busStop.isFavorite = _favoriteButton.selected;
-//    [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forStop:_busStop.code];
 }
 
 @end

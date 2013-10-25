@@ -42,6 +42,15 @@
 		041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902751800FD5700D79040 /* onMyWayHighlighted@2x.png */; };
 		041915A517F72C9100E68CC2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 041915A317F72C9100E68CC2 /* DataModel.xcdatamodeld */; };
 		041FACBA17FBA967004F21EF /* Routes.m in Sources */ = {isa = PBXBuildFile; fileRef = 041FACB917FBA967004F21EF /* Routes.m */; };
+		0421091B1819C1AA004539B4 /* bus-number.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109191819C1AA004539B4 /* bus-number.png */; };
+		0421091C1819C1AA004539B4 /* bus-number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421091A1819C1AA004539B4 /* bus-number@2x.png */; };
+		0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421091D1819FAA6004539B4 /* open-up-arrow.png */; };
+		042109201819FAA6004539B4 /* open-up-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0421091E1819FAA6004539B4 /* open-up-arrow@2x.png */; };
+		042109251819FBE4004539B4 /* routes.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109211819FBE4004539B4 /* routes.png */; };
+		042109261819FBE4004539B4 /* routes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109221819FBE4004539B4 /* routes@2x.png */; };
+		042109271819FBE4004539B4 /* stops.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109231819FBE4004539B4 /* stops.png */; };
+		042109281819FBE4004539B4 /* stops@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109241819FBE4004539B4 /* stops@2x.png */; };
+		0421092A181A043E004539B4 /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04210929181A043E004539B4 /* Stop@2x.png */; };
 		0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */; };
 		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
 		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
@@ -165,6 +174,15 @@
 		041915A417F72C9100E68CC2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		041FACB817FBA967004F21EF /* Routes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Routes.h; sourceTree = "<group>"; };
 		041FACB917FBA967004F21EF /* Routes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Routes.m; sourceTree = "<group>"; };
+		042109191819C1AA004539B4 /* bus-number.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-number.png"; sourceTree = "<group>"; };
+		0421091A1819C1AA004539B4 /* bus-number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bus-number@2x.png"; sourceTree = "<group>"; };
+		0421091D1819FAA6004539B4 /* open-up-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "open-up-arrow.png"; sourceTree = "<group>"; };
+		0421091E1819FAA6004539B4 /* open-up-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "open-up-arrow@2x.png"; sourceTree = "<group>"; };
+		042109211819FBE4004539B4 /* routes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = routes.png; sourceTree = "<group>"; };
+		042109221819FBE4004539B4 /* routes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "routes@2x.png"; sourceTree = "<group>"; };
+		042109231819FBE4004539B4 /* stops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stops.png; sourceTree = "<group>"; };
+		042109241819FBE4004539B4 /* stops@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stops@2x.png"; sourceTree = "<group>"; };
+		04210929181A043E004539B4 /* Stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop@2x.png"; sourceTree = "<group>"; };
 		0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDisplayViewController.h; sourceTree = "<group>"; };
 		0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDisplayViewController.m; sourceTree = "<group>"; };
 		0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewController.xib; sourceTree = "<group>"; };
@@ -350,6 +368,7 @@
 		0419022D1800C93C00D79040 /* Onmyway */ = {
 			isa = PBXGroup;
 			children = (
+				04210929181A043E004539B4 /* Stop@2x.png */,
 				0419022E1800C93C00D79040 /* backGroundOnMyWay@2x.jpg */,
 				0419022F1800C93C00D79040 /* downToUp@2x.png */,
 				041902301800C93C00D79040 /* onMyWay@2x.png */,
@@ -589,8 +608,16 @@
 				041902201800C93C00D79040 /* Images */,
 				04C7C2F817E54963001A9981 /* dot0.png */,
 				0492BBFB180E153600914847 /* busStop@2x.png */,
+				0421091D1819FAA6004539B4 /* open-up-arrow.png */,
+				0421091E1819FAA6004539B4 /* open-up-arrow@2x.png */,
+				042109211819FBE4004539B4 /* routes.png */,
+				042109221819FBE4004539B4 /* routes@2x.png */,
+				042109231819FBE4004539B4 /* stops.png */,
+				042109241819FBE4004539B4 /* stops@2x.png */,
 				04C56767181743BD00D04131 /* MenuStarOff.png */,
 				04C56768181743BD00D04131 /* MenuStarOff@2x.png */,
+				042109191819C1AA004539B4 /* bus-number.png */,
+				0421091A1819C1AA004539B4 /* bus-number@2x.png */,
 				04C56769181743BD00D04131 /* MenuStarOn.png */,
 				04C5676A181743BD00D04131 /* MenuStarOn@2x.png */,
 				04C7C2F617E5495D001A9981 /* dot0@2x.png */,
@@ -688,6 +715,7 @@
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */,
+				042109201819FAA6004539B4 /* open-up-arrow@2x.png in Resources */,
 				04785CE0180F4D5F0024A61B /* FavoritesViewControllerSmall.xib in Resources */,
 				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
 				04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */,
@@ -703,6 +731,7 @@
 				04C5676D181743BD00D04131 /* MenuStarOn.png in Resources */,
 				041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
+				042109281819FBE4004539B4 /* stops@2x.png in Resources */,
 				041902481800C93C00D79040 /* backGroundMenu@2x.jpg in Resources */,
 				041902631800C93C00D79040 /* submitButton@2x.png in Resources */,
 				041902621800C93C00D79040 /* route@2x.png in Resources */,
@@ -712,12 +741,15 @@
 				04C5676B181743BD00D04131 /* MenuStarOff.png in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				0419024B1800C93C00D79040 /* trackMyBusButton@2x.png in Resources */,
+				042109261819FBE4004539B4 /* routes@2x.png in Resources */,
 				04C7C2E417E5024C001A9981 /* Icon-Small.png in Resources */,
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
+				0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
+				042109271819FBE4004539B4 /* stops.png in Resources */,
 				04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
@@ -733,6 +765,7 @@
 				04C5676E181743BD00D04131 /* MenuStarOn@2x.png in Resources */,
 				041902491800C93C00D79040 /* myDestinationButton@2x.png in Resources */,
 				041902511800C93C00D79040 /* downToUp@2x.png in Resources */,
+				0421091C1819C1AA004539B4 /* bus-number@2x.png in Resources */,
 				041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */,
 				04E115461818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib in Resources */,
 				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
@@ -740,7 +773,10 @@
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,
 				0419024E1800C93C00D79040 /* introImage1@2x.jpg in Resources */,
 				0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */,
+				0421092A181A043E004539B4 /* Stop@2x.png in Resources */,
+				042109251819FBE4004539B4 /* routes.png in Resources */,
 				04C5676C181743BD00D04131 /* MenuStarOff@2x.png in Resources */,
+				0421091B1819C1AA004539B4 /* bus-number.png in Resources */,
 				0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */,
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,

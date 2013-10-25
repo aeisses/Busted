@@ -90,7 +90,7 @@
         mapVC.currentLocation = _trackVC.currentLocation;
     } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
         StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
-        [[self navigationController] pushViewController:stopDisplayVC animated:NO];
+        [[self navigationController] pushViewController:stopDisplayVC animated:YES];
     }
 }
 

@@ -44,6 +44,7 @@
     _swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
     _swipeUp.enabled = NO;
     isTracking = NO;
+    _trackButton.selected = NO;
     if (_locationManager == nil)
     {
         _locationManager = [[CLLocationManager alloc] init];
@@ -66,6 +67,7 @@
         _sendingImage.hidden = YES;
         currentRoute = 0;
     }
+    _trackButton.selected = isTracking;
     [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
     [super viewDidAppear:animated];
@@ -146,6 +148,7 @@
             if ([response statusCode] > 399) {
                 _trackButton.selected = NO;
                 isTracking = NO;
+                _trackButton.selected = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [_trackButton setNeedsDisplay];
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
@@ -195,6 +198,7 @@
 {
     currentRoute = [route integerValue];
     _sendingImage.hidden = NO;
+    _trackButton.selected = YES;
     isTracking = YES;
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
