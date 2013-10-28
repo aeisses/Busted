@@ -27,6 +27,7 @@
                     <state key="normal" title="Button" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" image="homeButtonHighlighted.png"/>
                     <state key="highlighted" image="homeButtonHighlighted.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="Dk4-Oo-VZe"/>

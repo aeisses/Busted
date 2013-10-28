@@ -18,13 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGroundOnMyWay.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OTd-cA-kmK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGroundOnMyWaySmall.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OTd-cA-kmK">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-C5-r9Z">
                     <rect key="frame" x="0.0" y="439" width="320" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="close the track window" label="Close button"/>
                     <state key="normal" image="downToUp.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -35,6 +36,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ1-b3-6bV">
                     <rect key="frame" x="0.0" y="254" width="320" height="123"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="close the track window" label="Close button"/>
                     <state key="normal" title="Button" image="onMyWayButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -61,7 +63,7 @@
     </objects>
     <resources>
         <image name="Stop.png" width="320" height="146"/>
-        <image name="backGroundOnMyWay.jpg" width="320" height="568"/>
+        <image name="backGroundOnMyWaySmall.jpg" width="320" height="480"/>
         <image name="downToUp.png" width="320" height="34"/>
         <image name="onMyWay.png" width="320" height="126"/>
         <image name="onMyWayButton.png" width="320" height="146"/>

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StopDisplayViewController">
             <connections>
+                <outlet property="favoriteButton" destination="OFc-1k-mH7" id="4Gz-n1-ZHk"/>
                 <outlet property="homeButton" destination="Jiy-Ta-UMw" id="3b3-Vy-ycY"/>
                 <outlet property="tableView" destination="t0a-vp-LUS" id="sEg-zz-tvt"/>
                 <outlet property="view" destination="1" id="gxs-y0-PHw"/>
@@ -24,6 +25,7 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jiy-Ta-UMw">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Button" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,8 +34,8 @@
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="z8D-xb-Kh6"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="t0a-vp-LUS">
-                    <rect key="frame" x="0.0" y="48" width="320" height="432"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="t0a-vp-LUS">
+                    <rect key="frame" x="0.0" y="46" width="320" height="439"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -44,6 +46,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="MenuStarOn.png"/>
+                    <connections>
+                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="Hbb-dY-ffU"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

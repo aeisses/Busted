@@ -122,7 +122,15 @@
 		04C7C2F317E53B8E001A9981 /* Bus.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2F217E53B8E001A9981 /* Bus.m */; };
 		04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2F617E5495D001A9981 /* dot0@2x.png */; };
 		04C7C2F917E54963001A9981 /* dot0.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2F817E54963001A9981 /* dot0.png */; };
-		04E115461818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */; };
+		04D13F4C181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F4B181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg */; };
+		04D13F50181DF479002F0398 /* myDestinationButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F4D181DF479002F0398 /* myDestinationButtonSmall@2x.png */; };
+		04D13F51181DF479002F0398 /* myFavoriteButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F4E181DF479002F0398 /* myFavoriteButtonSmall@2x.png */; };
+		04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F4F181DF479002F0398 /* trackMyBusButtonSmall@2x.png */; };
+		04D13F55181DF796002F0398 /* homeButtonHighlightedSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F53181DF796002F0398 /* homeButtonHighlightedSmall@2x.png */; };
+		04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F54181DF796002F0398 /* homeButtonSmall@2x.png */; };
+		04D13F58181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */; };
+		04D13F5A181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F59181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg */; };
+		04E115461818B63900EF8DFD /* StopDisplayViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E115451818B63900EF8DFD /* StopDisplayViewControllerSmall.xib */; };
 		04E9588117F6340900DD72AD /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9586F17F6340900DD72AD /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588217F6340900DD72AD /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9587117F6340900DD72AD /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588317F6340900DD72AD /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9587317F6340900DD72AD /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -284,7 +292,15 @@
 		04C7C2F217E53B8E001A9981 /* Bus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bus.m; sourceTree = "<group>"; };
 		04C7C2F617E5495D001A9981 /* dot0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dot0@2x.png"; sourceTree = "<group>"; };
 		04C7C2F817E54963001A9981 /* dot0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot0.png; sourceTree = "<group>"; };
-		04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopsDisplayViewControllerSmall.xib; sourceTree = "<group>"; };
+		04D13F4B181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundMenuSmall@2x.jpg"; sourceTree = "<group>"; };
+		04D13F4D181DF479002F0398 /* myDestinationButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myDestinationButtonSmall@2x.png"; sourceTree = "<group>"; };
+		04D13F4E181DF479002F0398 /* myFavoriteButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myFavoriteButtonSmall@2x.png"; sourceTree = "<group>"; };
+		04D13F4F181DF479002F0398 /* trackMyBusButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMyBusButtonSmall@2x.png"; sourceTree = "<group>"; };
+		04D13F53181DF796002F0398 /* homeButtonHighlightedSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeButtonHighlightedSmall@2x.png"; sourceTree = "<group>"; };
+		04D13F54181DF796002F0398 /* homeButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeButtonSmall@2x.png"; sourceTree = "<group>"; };
+		04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundOnMyWaySmall@2x.jpg"; sourceTree = "<group>"; };
+		04D13F59181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundTrackSmall@2x.jpg"; sourceTree = "<group>"; };
+		04E115451818B63900EF8DFD /* StopDisplayViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewControllerSmall.xib; sourceTree = "<group>"; };
 		04E9586E17F6340900DD72AD /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		04E9586F17F6340900DD72AD /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		04E9587017F6340900DD72AD /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -343,9 +359,13 @@
 		041902211800C93C00D79040 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				04D13F4B181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg */,
 				0419026F1800E14500D79040 /* upToDownButton@2x.png */,
 				041902651800CF6300D79040 /* aboutButton@2x.png */,
 				041902661800CF6300D79040 /* aboutButtonHighlighted@2x.png */,
+				04D13F4D181DF479002F0398 /* myDestinationButtonSmall@2x.png */,
+				04D13F4E181DF479002F0398 /* myFavoriteButtonSmall@2x.png */,
+				04D13F4F181DF479002F0398 /* trackMyBusButtonSmall@2x.png */,
 				041902671800CF6300D79040 /* aboutScreen@2x.jpg */,
 				041902241800C93C00D79040 /* backGroundMenu@2x.jpg */,
 				041902251800C93C00D79040 /* myDestinationButton@2x.png */,
@@ -368,6 +388,7 @@
 		0419022D1800C93C00D79040 /* Onmyway */ = {
 			isa = PBXGroup;
 			children = (
+				04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */,
 				04210929181A043E004539B4 /* Stop@2x.png */,
 				0419022E1800C93C00D79040 /* backGroundOnMyWay@2x.jpg */,
 				0419022F1800C93C00D79040 /* downToUp@2x.png */,
@@ -385,6 +406,9 @@
 		041902351800C93C00D79040 /* Trackmybus */ = {
 			isa = PBXGroup;
 			children = (
+				04D13F59181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg */,
+				04D13F53181DF796002F0398 /* homeButtonHighlightedSmall@2x.png */,
+				04D13F54181DF796002F0398 /* homeButtonSmall@2x.png */,
 				041902361800C93C00D79040 /* backGroundTrack@2x.jpg */,
 				041902371800C93C00D79040 /* BusNumberPage */,
 				0419023B1800C93C00D79040 /* homeButton@2x.png */,
@@ -557,7 +581,7 @@
 			isa = PBXGroup;
 			children = (
 				0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */,
-				04E115451818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib */,
+				04E115451818B63900EF8DFD /* StopDisplayViewControllerSmall.xib */,
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
 				04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */,
@@ -707,11 +731,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D13F51181DF479002F0398 /* myFavoriteButtonSmall@2x.png in Resources */,
 				0419026C1800D07700D79040 /* AboutScreen.xib in Resources */,
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
 				041902571800C93C00D79040 /* backGroundTrack@2x.jpg in Resources */,
 				04C7C28C17E3D7D9001A9981 /* Default.png in Resources */,
+				04D13F5A181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg in Resources */,
+				04D13F58181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg in Resources */,
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */,
@@ -734,16 +761,20 @@
 				042109281819FBE4004539B4 /* stops@2x.png in Resources */,
 				041902481800C93C00D79040 /* backGroundMenu@2x.jpg in Resources */,
 				041902631800C93C00D79040 /* submitButton@2x.png in Resources */,
+				04D13F4C181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg in Resources */,
 				041902621800C93C00D79040 /* route@2x.png in Resources */,
+				04D13F55181DF796002F0398 /* homeButtonHighlightedSmall@2x.png in Resources */,
 				041902531800C93C00D79040 /* sending1.png in Resources */,
 				04C7C2DA17E4BE5E001A9981 /* sample.plist in Resources */,
 				04785CE4180F51E10024A61B /* RoutesViewControllerSmall.xib in Resources */,
 				04C5676B181743BD00D04131 /* MenuStarOff.png in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
+				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
 				0419024B1800C93C00D79040 /* trackMyBusButton@2x.png in Resources */,
 				042109261819FBE4004539B4 /* routes@2x.png in Resources */,
 				04C7C2E417E5024C001A9981 /* Icon-Small.png in Resources */,
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
+				04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */,
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
 				0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */,
@@ -761,13 +792,14 @@
 				04785CE2180F4E4D0024A61B /* MapViewControllerSmall.xib in Resources */,
 				04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */,
 				04C7C2F717E5495D001A9981 /* dot0@2x.png in Resources */,
+				04D13F50181DF479002F0398 /* myDestinationButtonSmall@2x.png in Resources */,
 				04C7C2F917E54963001A9981 /* dot0.png in Resources */,
 				04C5676E181743BD00D04131 /* MenuStarOn@2x.png in Resources */,
 				041902491800C93C00D79040 /* myDestinationButton@2x.png in Resources */,
 				041902511800C93C00D79040 /* downToUp@2x.png in Resources */,
 				0421091C1819C1AA004539B4 /* bus-number@2x.png in Resources */,
 				041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */,
-				04E115461818B63900EF8DFD /* StopsDisplayViewControllerSmall.xib in Resources */,
+				04E115461818B63900EF8DFD /* StopDisplayViewControllerSmall.xib in Resources */,
 				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,

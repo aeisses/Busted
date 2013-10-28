@@ -14,6 +14,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *routeName;
 @property (retain, nonatomic) IBOutlet UILabel *time;
 @property (retain, nonatomic) IBOutlet UILabel *timeRemaining;
+@property (retain, nonatomic) IBOutlet UILabel *timeLable;
 @property (retain, nonatomic) NSNumber *busStopCode;
 @property (retain, nonatomic) IBOutlet UIImageView *downArrow;
 

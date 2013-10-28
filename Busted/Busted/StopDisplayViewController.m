@@ -87,10 +87,18 @@
     if ([expandedSections containsIndex:indexPath.row])
     {
         cell.downArrow.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+        cell.time.hidden = NO;
+        cell.timeRemaining.hidden = NO;
+        cell.timeLable.hidden = NO;
     } else {
         cell.downArrow.layer.transform = CATransform3DMakeRotation(0, 0, 0, 1);
+        cell.time.hidden = YES;
+        cell.timeRemaining.hidden = YES;
+        cell.timeLable.hidden = YES;
     }
     // This needs to be adjusted to the real time
+    cell.time.text = @"unknown";
+    cell.timeRemaining.text = @"unknown";
     for (NSNumber *trip in (NSArray*)route.times)
     {
         int diff = [trip doubleValue] - [[NSDate date] timeIntervalSince1970];

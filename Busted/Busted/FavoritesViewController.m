@@ -151,7 +151,13 @@
 {
     if (indexPath.section == 0)
     {
-        StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+        StopDisplayViewController *stopsVC;
+        if (IS_IPHONE_5)
+        {
+            stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+        } else {
+            stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil];
+        }
         Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
         stopsVC.superDelegate = self;
         BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInt:[stop.code intValue]]];

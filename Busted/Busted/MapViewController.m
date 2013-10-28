@@ -275,7 +275,14 @@ static id instance;
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
     BusStop *busStop = view.annotation;
-    StopDisplayViewController *stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+    
+    StopDisplayViewController *stopsVC;
+    if (IS_IPHONE_5)
+    {
+        stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil];
+    } else {
+        stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil];
+    }
     stopsVC.busStop = busStop;
     stopsVC.superDelegate = self;
     [_delegate loadViewController:stopsVC];

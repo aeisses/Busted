@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -17,12 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNT-eu-HrS">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JNT-eu-HrS">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button" image="homeButton.png">
+                    <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
+                    <state key="normal" image="homeButtonSmall.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" image="homeButtonHighlightedSmall.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="gF6-Zf-B0p"/>
                     </connections>
@@ -36,6 +38,7 @@
         </view>
     </objects>
     <resources>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
+        <image name="homeButtonSmall.png" width="320" height="47"/>
     </resources>
 </document>

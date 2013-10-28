@@ -64,6 +64,7 @@
                 <outlet property="routeName" destination="NzJ-q7-ddw" id="8Xx-fE-8Rm"/>
                 <outlet property="routeNumber" destination="9Pc-Md-lCy" id="vhJ-80-0lb"/>
                 <outlet property="time" destination="oS5-p2-ceT" id="zZn-Fx-0bF"/>
+                <outlet property="timeLable" destination="qQW-wc-5kh" id="2QL-mj-bn3"/>
                 <outlet property="timeRemaining" destination="nOk-ww-qVg" id="kJz-8P-2aW"/>
             </connections>
         </tableViewCell>

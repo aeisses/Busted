@@ -24,12 +24,13 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bc-0i-1CT">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" hint="Return to the menu screen" label="Home Button">
+                    <accessibility key="accessibilityConfiguration" hint="Return to the menu screen" label="Return Button">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                     </accessibility>
                     <state key="normal" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="homeButtonHighlighted.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="4LI-pH-VLd"/>
                     </connections>
@@ -51,5 +52,6 @@
     <resources>
         <image name="backGround.jpg" width="320" height="568"/>
         <image name="homeButton.png" width="320" height="56"/>
+        <image name="homeButtonHighlighted.png" width="320" height="56"/>
     </resources>
 </document>
