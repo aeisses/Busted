@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
+                <outlet property="favoriteButton" destination="AB8-3i-AQB" id="Exq-EM-5Sg"/>
                 <outlet property="homeButton" destination="JNT-eu-HrS" id="u17-Wr-coA"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
@@ -29,6 +30,17 @@
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="gF6-Zf-B0p"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AB8-3i-AQB">
+                    <rect key="frame" x="274" y="437" width="36" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="MenuStarOff.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="MenuStarOn.png"/>
+                    <connections>
+                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="kaz-UI-GqK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -38,6 +50,8 @@
         </view>
     </objects>
     <resources>
+        <image name="MenuStarOff.png" width="36" height="35"/>
+        <image name="MenuStarOn.png" width="36" height="35"/>
         <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
         <image name="homeButtonSmall.png" width="320" height="47"/>
     </resources>

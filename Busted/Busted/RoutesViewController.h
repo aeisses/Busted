@@ -9,7 +9,7 @@
 #import "ParentViewController.h"
 #import "MapViewController.h"
 #import "BusRoutesCollectionViewController.h"
-#import "myRoute.h"
+#import "MyRoute.h"
 
 @protocol RoutesViewControllerDelegate <NSObject>
 - (void)loadMapViewController:(MapViewController*)mapViewController;
@@ -27,6 +27,7 @@
 @property (retain, nonatomic) MapViewController *mapVC;
 @property (retain, nonatomic) BusRoutesCollectionViewController *collection;
 
++ (RoutesViewController*)sharedInstance;
 - (IBAction)touchSubmitButton:(id)sender;
 - (IBAction)touchRouteButton:(id)sender;
 - (IBAction)touchHomeButton:(id)sender;

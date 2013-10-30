@@ -15,7 +15,6 @@
 @dynamic ident;
 @dynamic type;
 @dynamic stop;
-@dynamic routes;
 @dynamic isFavorite;
 @dynamic times;
 

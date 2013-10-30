@@ -17,6 +17,7 @@
 #import "StopDisplayViewController.h"
 #import "macros.h"
 #import "BusStop.h"
+#import "MyRoute.h"
 
 #define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -32,7 +33,7 @@
     CADisplayLink *displayLink;
 }
 
-@property (retain, nonatomic) BusRoute *route;
+@property (retain, nonatomic) MyRoute *route;
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
@@ -41,6 +42,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
+@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(BusRoute*)route;
@@ -48,5 +50,6 @@
 - (void)loadStopsForLocation;
 - (void)addStop:(BusStop*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
+- (IBAction)touchFavoriteButton:(id)sender;
 
 @end

@@ -14,13 +14,29 @@
 
 @implementation RoutesViewController
 
+static id instance;
+
++ (RoutesViewController*)sharedInstance
+{
+    if (!instance) {
+        if (IS_IPHONE)
+        {
+            return [[[RoutesViewController alloc] initWithNibName:@"RoutesViewControllerSmall" bundle:nil] autorelease];
+        } else {
+            return [[[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil] autorelease];
+        }
+    }
+    return instance;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
-    return self;
+    instance = self;
+    return instance;
 }
 
 - (void)viewDidLoad
@@ -70,6 +86,7 @@
         {
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
+        [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text];
         _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
@@ -97,7 +114,11 @@
 - (void)mapFinishedLoading
 {
     if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
-        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
+        NSArray *routesArray = [self getBusRoutes];
+        MyRoute *route = [[MyRoute alloc] init];
+        route.shortName = _routeButton.titleLabel.text;
+        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
+//        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
     }
     _mapVC.delegate = nil;
     [_mapVC release];
@@ -108,12 +129,21 @@
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    for (Route *route in routes)
+    int counter = 0;
+    for (Routes *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
-        myRoute.ident = route.ident;
-        myRoute.title = route.long_name;
-        myRoute.busNumber = [route.short_name integerValue];
+        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        NSNumber *number = [numberFormatter numberFromString:route.shortName];
+        if (number != nil) {
+            myRoute.ident = [route.shortName integerValue];
+        } else {
+            myRoute.ident = counter + 10000;
+            counter++;
+        }
+        myRoute.longName = route.longName;
+        myRoute.shortName = route.shortName;
+        myRoute.isFavorite = [route.isFavorite boolValue];
         [routesM addObject:myRoute];
         [myRoute release];
     }

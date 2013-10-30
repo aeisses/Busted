@@ -93,6 +93,7 @@
         _mapVC.delegate = self;
         _mapVC.isStops = NO;
         [_delegate loadViewController:_mapVC];
+/*
         dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
         dispatch_async(loadDataQueue, ^{
             if (_mapVC.currentLocation) {
@@ -106,6 +107,7 @@
             }
         });
         dispatch_release(loadDataQueue);
+ */
     } else if (button.tag == 3) {
         FavoritesViewController *favVC = nil;
         if (IS_IPHONE_5)

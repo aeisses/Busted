@@ -25,5 +25,7 @@
 @property (nonatomic, retain) NSArray *routesId;
 
 - (id)initWithCode:(NSNumber *)code;
+- (id)initWithStop:(Stop*)stop;
+- (BOOL)isInsideSquare:(MKCoordinateRegion)region;
 
 @end

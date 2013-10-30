@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
+                <outlet property="favoriteButton" destination="fg0-Vp-16R" id="2ks-dQ-bGO"/>
                 <outlet property="homeButton" destination="ZUq-lV-tiQ" id="mg8-2K-AFN"/>
                 <outlet property="mapView" destination="1" id="42"/>
                 <outlet property="view" destination="1" id="43"/>
@@ -24,13 +25,24 @@
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                     </accessibility>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Button" image="homeButton.png">
+                    <state key="normal" image="homeButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="homeButtonHighlighted.png"/>
                     <state key="highlighted" image="homeButtonHighlighted.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="Dk4-Oo-VZe"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg0-Vp-16R">
+                    <rect key="frame" x="273" y="524" width="36" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="MenuStarOff.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="MenuStarOn.png"/>
+                    <connections>
+                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="N9Q-4u-a8L"/>
                     </connections>
                 </button>
             </subviews>
@@ -42,6 +54,8 @@
         </view>
     </objects>
     <resources>
+        <image name="MenuStarOff.png" width="36" height="35"/>
+        <image name="MenuStarOn.png" width="36" height="35"/>
         <image name="homeButton.png" width="320" height="56"/>
         <image name="homeButtonHighlighted.png" width="320" height="56"/>
     </resources>

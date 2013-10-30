@@ -22,7 +22,7 @@
         _isFavorite = [stop.isFavorite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
         _title = [stop.name copy];
-        _routes = [stop.routes retain];
+/*        _routes = [stop.routes retain];
         if ([stop.routes count] == 0)
         {
             [[WebApiInterface sharedInstance] requestStop:[_code integerValue]];
@@ -35,50 +35,39 @@
             _routesId = [[NSArray alloc] initWithArray:tempRoutes];
             [tempRoutes release];
         }
+ */
     }
     return self;
 }
 
+- (id)initWithStop:(Stop*)stop
+{
+    if (self = [super init])
+    {
+        _code = [stop.code copy];
+        _isFavorite = [stop.isFavorite boolValue];
+        _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
+        _title = [stop.name copy];
+    }
+    return self;
+}
+
+- (BOOL)isInsideSquare:(MKCoordinateRegion)region
+{
+    double lowBoundsLat = region.center.latitude - region.span.latitudeDelta/2;
+    double lowBoundsLng = region.center.longitude - region.span.longitudeDelta/2;
+    double highBoundsLat = region.center.latitude + region.span.latitudeDelta/2;
+    double highBoundsLng = region.center.longitude + region.span.longitudeDelta/2;
+    if (_coordinate.latitude < lowBoundsLat || _coordinate.latitude > highBoundsLat || _coordinate.longitude < lowBoundsLng || _coordinate.longitude > highBoundsLng)
+    {
+        return NO;
+    }
+    return YES;
+}
+
 - (NSString*)subtitle
 {
-    NSTimeInterval lowestTime = -1;
-    NSString *routeShortName = nil;
-    NSString *routeLongName = nil;
-    for (NSString *routeId in _routesId)
-    {
-        Route *route = [[WebApiInterface sharedInstance] getRouteForIdent:[NSString stringWithFormat:@"%@%@",_code,routeId]];
-        for (NSNumber *trip in (NSArray*)route.times)
-        {
-            if([trip doubleValue] > 0)
-            {
-                double diffTime = [trip doubleValue] - [[NSDate date] timeIntervalSince1970];
-//                NSLog(@"DiffTime: %f",diffTime);
-//                NSLog(@"LowestTime: %f",lowestTime);
-//                NSLog(@"Trip Time: %f",[trip doubleValue]);
-//                NSLog(@"Current Time: %f",[[NSDate date] timeIntervalSince1970]);
-//                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//                [formatter setDateFormat:@"HH:mm"];
-//                NSLog(@"TripTime: %@",[formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[trip integerValue]]]);
-//                NSLog(@"CurrentTime: %@",[formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[[NSDate date] timeIntervalSince1970]]]);
-                if ((lowestTime == -1 || lowestTime > [trip doubleValue]) && diffTime > 0)
-                {
-                    lowestTime = [trip doubleValue];
-                    if (routeShortName) {
-                        [routeShortName release];
-                    }
-                    routeShortName = [[NSString alloc] initWithString:route.short_name];
-                    routeLongName = [[NSString alloc] initWithString:route.long_name];
-                }
-            }
-        }
-    }
-    if (routeShortName) {
-        [routeShortName autorelease];
-    }
-    if (lowestTime == -1) {
-        return [NSString stringWithFormat:@"Next Bus: %@",@"unknown"];
-    }
-    return [NSString stringWithFormat:@"Next Bus: %@ %@ - %i min",routeShortName,routeLongName,(int)((lowestTime - [[NSDate date] timeIntervalSince1970])/60)];
+    return [NSString stringWithFormat:@"GoTime: %@",_code];
 }
 
 - (void)dealloc

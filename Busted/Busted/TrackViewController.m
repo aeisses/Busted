@@ -7,6 +7,7 @@
 //
 
 #import "TrackViewController.h"
+#import "Routes.h"
 
 @interface TrackViewController (PrivateMethods)
 - (void)frameIntervalLoop:(CADisplayLink *)sender;
@@ -183,11 +184,21 @@
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    for (Route *route in routes)
+    int counter = 0;
+    for (Routes *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
-        myRoute.title = route.long_name;
-        myRoute.busNumber = [route.short_name integerValue];
+        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        NSNumber *number = [numberFormatter numberFromString:route.shortName];
+        if (number != nil) {
+            myRoute.ident = [route.shortName integerValue];
+        } else {
+            myRoute.ident = counter + 10000;
+            counter++;
+        }
+        myRoute.longName = route.longName;
+        myRoute.shortName = route.shortName;
+        myRoute.isFavorite = [route.isFavorite boolValue];
         [routesM addObject:myRoute];
         [myRoute release];
     }

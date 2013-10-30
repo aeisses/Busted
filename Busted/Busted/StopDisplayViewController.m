@@ -11,12 +11,29 @@
 #import "TableCell.h"
 #import "Trip.h"
 #import "BusStop.h"
+#import "RouteWithTime.h"
+#import "StopTimes.h"
 
 @interface StopDisplayViewController ()
 
 @end
 
 @implementation StopDisplayViewController
+
+static id instance;
+
++ (StopDisplayViewController*)sharedInstance
+{
+    if (!instance) {
+        if (IS_IPHONE)
+        {
+            return [[[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil] autorelease];
+        } else {
+            return [[[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil] autorelease];
+        }
+    }
+    return instance;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -25,7 +42,14 @@
         // Custom initialization
         expandedSections = [[NSMutableIndexSet alloc] init];
     }
-    return self;
+    instance = self;
+    return instance;
+}
+
+- (void)setRoutes:(NSArray*)routes
+{
+    _routes = [[NSArray alloc] initWithArray:routes];
+    [_tableView reloadData];
 }
 
 - (void)setBusStop:(BusStop *)busStop
@@ -35,6 +59,8 @@
         [_busStop release]; _busStop = nil;
     }
     _busStop = [busStop retain];
+    [[WebApiInterface sharedInstance] getRouteForIdent:_busStop.code];
+
 }
 
 - (void)viewDidLoad
@@ -75,14 +101,22 @@
     [_tableView reloadData];
 }
 
+- (void)dealloc
+{
+    if (_routes)
+        [_routes release];
+    [super dealloc];
+}
+
 #pragma UITableViewDelegate Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (!_routes)
+        return nil;
     TableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
-    Route *route = [[WebApiInterface sharedInstance] getRouteForIdent:[NSString stringWithFormat:@"%@%@",_busStop.code,[_busStop.routesId objectAtIndex:indexPath.row]]];
-
-    cell.routeNumber.text = route.short_name;
-    cell.routeName.text = route.long_name;
+    RouteWithTime *route = [_routes objectAtIndex:indexPath.row];
+    cell.routeNumber.text = route.shortName;
+    cell.routeName.text = route.longName;
     cell.busStopCode = _busStop.code;
     if ([expandedSections containsIndex:indexPath.row])
     {
@@ -95,23 +129,31 @@
         cell.time.hidden = YES;
         cell.timeRemaining.hidden = YES;
         cell.timeLable.hidden = YES;
+        return cell;
     }
     // This needs to be adjusted to the real time
     cell.time.text = @"unknown";
     cell.timeRemaining.text = @"unknown";
-    for (NSNumber *trip in (NSArray*)route.times)
+    int minDiff = 0;
+    NSString *departTime = @"unknown";
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
+    [currentTimeFormatter setDateFormat:@"YYYY-MM-dd"];
+    for (StopTimes *times in route.times)
     {
-        int diff = [trip doubleValue] - [[NSDate date] timeIntervalSince1970];
-        if (diff > 0)
+        NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
+        int diff = [stopDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
+        if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
-            cell.time.text = [NSString stringWithFormat:@"%i mins",(int)([trip doubleValue] - [[NSDate date] timeIntervalSince1970])/60];
-            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"HH:mm"];
-            cell.timeRemaining.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:[trip doubleValue]]];
-            [formatter release];
-            return cell;
+            minDiff = diff;
+            departTime = [NSString stringWithString:times.departure];
         }
     }
+    [formatter release];
+    [currentTimeFormatter release];
+    cell.time.text = [NSString stringWithFormat:@"%i mins",(int)minDiff/60];
+    cell.timeRemaining.text = departTime;
     return cell;
 }
 
@@ -137,7 +179,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_busStop.routesId count];
+    if (_routes)
+        return [_routes count];
+    return 0;
+//    return [_busStop.routesId count];
 }
 
 - (IBAction)touchHomeButton:(id)sender

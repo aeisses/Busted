@@ -55,6 +55,11 @@ static id instance;
     [self.superDelegate touchedHomeButton:NO];
 }
 
+- (IBAction)touchFavoriteButton:(id)sender
+{
+    _favoriteButton.selected = !_favoriteButton.selected;
+}
+
 - (void)viewDidLoad
 {
     [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
@@ -64,6 +69,8 @@ static id instance;
     {
         [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
         [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+        [self.view bringSubviewToFront:_favoriteButton];
+        _favoriteButton.hidden = NO;
     }
     else
     {
@@ -75,6 +82,18 @@ static id instance;
         } else {
             [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
         }
+        if (_stops)
+            [_stops release];
+        _stops = [[NSMutableArray alloc] initWithCapacity:0];
+        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
+        {
+            if ([stop isInsideSquare:_mapView.region])
+            {
+                [_mapView addAnnotation:stop];
+                [_stops addObject:stop];
+            }
+        }
+        _favoriteButton.hidden = YES;
     }
     _mapView.scrollEnabled = YES;
     _mapView.zoomEnabled = YES;
@@ -109,6 +128,7 @@ static id instance;
         [displayLink invalidate];
         [displayLink release];
         displayLink = nil;
+        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_route.shortName];
     }
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
@@ -123,7 +143,7 @@ static id instance;
         // TODO: Might still have some memory issues here....
         dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
         dispatch_async(networkQueue, ^{
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%i",SERVERHOSTNAME,_route.routeNum];
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@",SERVERHOSTNAME,_route.shortName];
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
             NSError *error = nil;
@@ -164,16 +184,14 @@ static id instance;
     }
 }
 
-- (void)addRoute:(BusRoute*)route
+- (void)addRoute:(MyRoute*)route
 {
-    if (_mapView.overlays)
-        [_mapView removeOverlays:_mapView.overlays];
-    [_mapView addOverlays:route.lines];
     if (_route)
     {
         [_route release]; _route = nil;
     }
-    _route = [route copy];
+    _route = [route retain];
+    _favoriteButton.selected = _route.isFavorite;
 }
 
 - (void)addStops:(NSArray *)stops
@@ -238,12 +256,12 @@ static id instance;
             annotationView.image = [UIImage imageNamed:@"busStop.png"];
         }
         annotationView.canShowCallout = YES;
-        if (![bus.subtitle isEqualToString:@"Next Bus: unknown"])
-        {
+//        if (![bus.subtitle isEqualToString:@"Next Bus: unknown"])
+//        {
             annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        } else {
-            annotationView.rightCalloutAccessoryView = nil;
-        }
+//        } else {
+//            annotationView.rightCalloutAccessoryView = nil;
+//        }
         annotationView.enabled = YES;
         return annotationView;
     }
@@ -292,7 +310,19 @@ static id instance;
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     if (!_isStops) {
-//        [[WebApiInterface sharedInstance] requestPlace:mapView.region.center];
+        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
+        {
+            if ([stop isInsideSquare:_mapView.region])
+            {
+                if (![_stops containsObject:stop]) {
+                    [_mapView addAnnotation:stop];
+                    [_stops addObject:stop];
+                }
+            } else if ([_stops containsObject:stop]) {
+                [_mapView removeAnnotation:stop];
+                [_stops removeObject:stop];
+            }
+        }
     }
 }
 
@@ -314,7 +344,7 @@ static id instance;
 
 - (void)touchedHomeButton:(BOOL)isAll
 {
-    [_mapView addOverlays:_route.lines];
+//    [_mapView addOverlays:_route.lines];
     [_mapView addAnnotations:_stops];
     [self.superDelegate touchedHomeButton:isAll];
 }

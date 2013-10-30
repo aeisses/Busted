@@ -70,7 +70,11 @@
 		04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
-		0492BBFC180E153600914847 /* busStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0492BBFB180E153600914847 /* busStop@2x.png */; };
+		049393D1182075BB00B5F92A /* RouteWithTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D0182075BB00B5F92A /* RouteWithTime.m */; };
+		049393D41820761400B5F92A /* StopTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D31820761400B5F92A /* StopTimes.m */; };
+		049393D718208A1200B5F92A /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D618208A1200B5F92A /* Path.m */; };
+		04B06095181F14870082C29B /* busStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06093181F14870082C29B /* busStop.png */; };
+		04B06096181F14870082C29B /* busStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06094181F14870082C29B /* busStop@2x.png */; };
 		04B9202417F396C50063E384 /* WebApiInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9202317F396C50063E384 /* WebApiInterface.m */; };
 		04C06E3517F7347F00C120C7 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06E3417F7347F00C120C7 /* Stop.m */; };
 		04C06E3817F734A900C120C7 /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C06E3717F734A900C120C7 /* Trip.m */; };
@@ -217,7 +221,14 @@
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
-		0492BBFB180E153600914847 /* busStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "busStop@2x.png"; sourceTree = "<group>"; };
+		049393CF182075BB00B5F92A /* RouteWithTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteWithTime.h; sourceTree = "<group>"; };
+		049393D0182075BB00B5F92A /* RouteWithTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteWithTime.m; sourceTree = "<group>"; };
+		049393D21820761400B5F92A /* StopTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTimes.h; sourceTree = "<group>"; };
+		049393D31820761400B5F92A /* StopTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTimes.m; sourceTree = "<group>"; };
+		049393D518208A1200B5F92A /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		049393D618208A1200B5F92A /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
+		04B06093181F14870082C29B /* busStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = busStop.png; sourceTree = "<group>"; };
+		04B06094181F14870082C29B /* busStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "busStop@2x.png"; sourceTree = "<group>"; };
 		04B9202217F396C50063E384 /* WebApiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebApiInterface.h; sourceTree = "<group>"; };
 		04B9202317F396C50063E384 /* WebApiInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebApiInterface.m; sourceTree = "<group>"; };
 		04C06E3317F7347F00C120C7 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
@@ -608,6 +619,8 @@
 				04C7C2CE17E4BC33001A9981 /* BusStop.m */,
 				04C7C2CF17E4BC33001A9981 /* BusRoute.h */,
 				04C7C2D017E4BC33001A9981 /* BusRoute.m */,
+				049393D518208A1200B5F92A /* Path.h */,
+				049393D618208A1200B5F92A /* Path.m */,
 				04C7C2D117E4BC33001A9981 /* Enums.h */,
 				04C7C2F117E53B8E001A9981 /* Bus.h */,
 				04C7C2F217E53B8E001A9981 /* Bus.m */,
@@ -617,6 +630,10 @@
 				04C06E3717F734A900C120C7 /* Trip.m */,
 				04C06E3917F734B900C120C7 /* Route.h */,
 				04C06E3A17F734B900C120C7 /* Route.m */,
+				049393CF182075BB00B5F92A /* RouteWithTime.h */,
+				049393D0182075BB00B5F92A /* RouteWithTime.m */,
+				049393D21820761400B5F92A /* StopTimes.h */,
+				049393D31820761400B5F92A /* StopTimes.m */,
 				0419021D180082C500D79040 /* MyRoute.h */,
 				0419021E180082C500D79040 /* MyRoute.m */,
 				041FACB817FBA967004F21EF /* Routes.h */,
@@ -631,7 +648,8 @@
 			children = (
 				041902201800C93C00D79040 /* Images */,
 				04C7C2F817E54963001A9981 /* dot0.png */,
-				0492BBFB180E153600914847 /* busStop@2x.png */,
+				04B06093181F14870082C29B /* busStop.png */,
+				04B06094181F14870082C29B /* busStop@2x.png */,
 				0421091D1819FAA6004539B4 /* open-up-arrow.png */,
 				0421091E1819FAA6004539B4 /* open-up-arrow@2x.png */,
 				042109211819FBE4004539B4 /* routes.png */,
@@ -747,6 +765,7 @@
 				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
 				04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */,
 				04C7C2AF17E3E9C5001A9981 /* RoutesViewController.xib in Resources */,
+				04B06096181F14870082C29B /* busStop@2x.png in Resources */,
 				04C7C2B717E49CD5001A9981 /* TrackViewController.xib in Resources */,
 				04C5676318173ED900D04131 /* FavoriteCell.xib in Resources */,
 				04C7C2BD17E49F90001A9981 /* FavoritesViewController.xib in Resources */,
@@ -754,7 +773,6 @@
 				041902701800E14500D79040 /* upToDownButton@2x.png in Resources */,
 				04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */,
 				04C7C2D817E4BE5E001A9981 /* Bus Stops.kml in Resources */,
-				0492BBFC180E153600914847 /* busStop@2x.png in Resources */,
 				04C5676D181743BD00D04131 /* MenuStarOn.png in Resources */,
 				041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
@@ -782,6 +800,7 @@
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
 				042109271819FBE4004539B4 /* stops.png in Resources */,
 				04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */,
+				04B06095181F14870082C29B /* busStop.png in Resources */,
 				04C7C2EB17E5029E001A9981 /* Icon@2x.png in Resources */,
 				04C7C2F017E51BC9001A9981 /* BusRoutesCollectionViewController.xib in Resources */,
 				041902581800C93C00D79040 /* backGround@2x.jpg in Resources */,
@@ -845,6 +864,7 @@
 				04C7C2A017E3DFC3001A9981 /* MenuViewController.m in Sources */,
 				04E9588617F6340900DD72AD /* AFPropertyListRequestOperation.m in Sources */,
 				0447EBE617FA519600A91D60 /* TableCell.m in Sources */,
+				049393D1182075BB00B5F92A /* RouteWithTime.m in Sources */,
 				04E9588317F6340900DD72AD /* AFImageRequestOperation.m in Sources */,
 				04C7C2A417E3E383001A9981 /* BustedNavigationController.m in Sources */,
 				04E9588417F6340900DD72AD /* AFJSONRequestOperation.m in Sources */,
@@ -853,10 +873,12 @@
 				04C7C2B617E49CD5001A9981 /* TrackViewController.m in Sources */,
 				041915A517F72C9100E68CC2 /* DataModel.xcdatamodeld in Sources */,
 				04E9588817F6340900DD72AD /* AFXMLRequestOperation.m in Sources */,
+				049393D41820761400B5F92A /* StopTimes.m in Sources */,
 				04C7C2C117E4A1B9001A9981 /* MapViewController.m in Sources */,
 				041902731800F40700D79040 /* TLTransitionAnimator.m in Sources */,
 				04C7C2EF17E51BC9001A9981 /* BusRoutesCollectionViewController.m in Sources */,
 				04C7C2F317E53B8E001A9981 /* Bus.m in Sources */,
+				049393D718208A1200B5F92A /* Path.m in Sources */,
 				04602CF217EFCE0D002BE30D /* FavoritesViewController.m in Sources */,
 				04602CE017EF6BBB002BE30D /* Reachability.m in Sources */,
 				04C56766181742D500D04131 /* FavoriteCell.m in Sources */,

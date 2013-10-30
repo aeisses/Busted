@@ -209,9 +209,9 @@
 {
 //    _routes = [[routes.route allObjects] copy];
 //    [self showMenuView];
-    [self showMenuView];
+//    [self showMenuView];
 
-//    [_webApiInterface fetchAllStops];
+    [_webApiInterface fetchAllStops];
 }
 
 - (void)receivedStops

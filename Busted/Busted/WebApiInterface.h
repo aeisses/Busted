@@ -30,7 +30,7 @@
 //http://t2go-halifax.transittogo.com/api/v1/routes/motd?appversion=15
 
 #define BASEURL @"http://t2go-halifax.transittogo.com/api/v1/"
-#define SANGSTERBASEURL @"https://ertt.ca/api/alpha_1/"
+#define SANGSTERBASEURL @"http://knowtime.ca/api/alpha_1/"
 #define FILLER  @"/upcoming_stoptimes?time="
 #define ENDURL  @"&all_routes=yes"
 #define STOP    @"stop/"
@@ -38,10 +38,15 @@
 #define PLACE   @"place/"
 #define ROUTE   @"route/"
 #define ROUTES  @"routes"
+#define NAMES   @"names"
 #define ALL     @"all"
+#define SHORTS  @"short"
+#define PATHS   @"paths/"
+#define STOPTIME @"stoptimes/"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSMutableArray *busStops;
+@property (strong, nonatomic) NSArray *stops;
 @property (retain, nonatomic) id <WebApiInterfaceDelegate> delegate;
 
 + (WebApiInterface*)sharedInstance;
@@ -56,6 +61,8 @@
 - (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
 - (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
 - (Stop*)getStopForCode:(NSNumber*)code;
-- (Route*)getRouteForIdent:(NSString*)ident;
+- (void)getRouteForIdent:(NSNumber*)ident;
+- (void)getInformationForStop:(NSNumber*)stop;
+- (void)loadPathForRoute:(NSString*)shortName;
 
 @end

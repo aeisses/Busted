@@ -13,7 +13,9 @@
 
 @interface Routes : NSManagedObject
 
-@property (nonatomic, retain) NSString *jsonString;
-@property (nonatomic, retain) NSSet *route;
+@property (nonatomic, retain) NSString *longName;
+@property (nonatomic, retain) NSString *shortName;
+@property (assign) NSInteger ident;
+@property (nonatomic, retain) NSNumber *isFavorite;
 
 @end

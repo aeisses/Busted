@@ -10,4 +10,11 @@
 
 @implementation MyRoute
 
+- (BOOL)isEqual:(id)object
+{
+    if ([self.shortName isEqualToString:((MyRoute*)object).shortName])
+        return YES;
+    return NO;
+}
+
 @end

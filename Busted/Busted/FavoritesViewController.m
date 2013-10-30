@@ -9,6 +9,7 @@
 #import "FavoritesViewController.h"
 #import "WebApiInterface.h"
 #import "FavoriteCell.h"
+#import "RoutesViewController.h"
 
 @interface FavoritesViewController ()
 
@@ -56,6 +57,8 @@
     [_backGroundImage release]; _backGroundImage = nil;
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
+    if (routeName)
+        [routeName release];
     [super dealloc];
 }
 
@@ -82,9 +85,9 @@
         cell.isStop = YES;
         return cell;
     } else if (indexPath.section == 1) {
-        Route *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
-        cell.name.text = route.long_name;
-        cell.number.text = route.short_name;
+        Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        cell.name.text = route.longName;
+        cell.number.text = route.shortName;
         cell.favoriteButton.selected = [route.isFavorite boolValue];
         cell.isStop = NO;
         return cell;
@@ -121,7 +124,7 @@
             imageView = nil;
             break;
     }
-    return imageView;
+    return [imageView autorelease];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -167,9 +170,39 @@
         [stopsVC release];
     } else if (indexPath.section == 1)
     {
-        
+        if (IS_IPHONE_5)
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        }
+        else
+        {
+            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+        }
+        Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        routeName = [[NSString alloc] initWithString:route.shortName];
+        [[WebApiInterface sharedInstance] loadPathForRoute:routeName];
+//        _mapVC.delegate = self;
+        _mapVC.isStops = YES;
+        [_delegate loadViewController:_mapVC];
+//        _mapVC.delegate = nil;
+        [_mapVC release];
     }
 }
+
+#pragma MapViewControllerDelegate
+- (void)mapFinishedLoading
+{
+//    if (routeName) {
+//        NSArray *routesArray = [[RoutesViewController sharedInstance] getBusRoutes];
+//        MyRoute *route = [[MyRoute alloc] init];
+//        route.shortName = routeName;
+//        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
+//        //        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
+//    }
+//    _mapVC.delegate = nil;
+//    [_mapVC release];
+}
+
 
 - (void)touchedHomeButton:(BOOL)isAll
 {

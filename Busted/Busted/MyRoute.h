@@ -10,8 +10,9 @@
 
 @interface MyRoute : NSObject
 
-@property (nonatomic, retain) NSString *title;
-@property (readwrite) NSInteger busNumber;
-@property (nonatomic, retain) NSString *ident;
+@property (nonatomic, retain) NSString *shortName;
+@property (readwrite) NSInteger ident;
+@property (nonatomic, retain) NSString *longName;
+@property (nonatomic, assign) BOOL isFavorite;
 
 @end

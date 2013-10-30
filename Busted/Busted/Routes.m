@@ -10,7 +10,9 @@
 
 @implementation Routes
 
-@synthesize jsonString;
-@synthesize route;
+@synthesize longName;
+@synthesize shortName;
+@synthesize ident;
+@synthesize isFavorite;
 
 @end

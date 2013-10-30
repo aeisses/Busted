@@ -25,9 +25,9 @@
 
 - (void)viewDidLoad
 {
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"busNumber" ascending:YES];
+   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ident" ascending:YES];
     _routes = [[[_delegate getBusRoutes] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] retain];
-    
+
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     [layout release];
@@ -74,7 +74,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     BusRouteViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
-    cell.number.text = [NSString stringWithFormat:@"%i",((MyRoute*)[_routes objectAtIndex:indexPath.row]).busNumber];
+    cell.number.text = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
     return cell;
 }
 
