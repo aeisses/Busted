@@ -13,6 +13,7 @@
 #import "BusStop.h"
 #import "RouteWithTime.h"
 #import "StopTimes.h"
+#import "StopsHeader.h"
 
 @interface StopDisplayViewController ()
 
@@ -183,6 +184,21 @@ static id instance;
         return [_routes count];
     return 0;
 //    return [_busStop.routesId count];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"StopsHeader" owner:self options:nil]];
+    StopsHeader *stopsHeader = [nibObjects objectAtIndex:0];
+    [nibObjects release];
+    stopsHeader.goTimeNumber.text = [NSString stringWithFormat:@"%@",_busStop.code];
+    stopsHeader.title.text = _busStop.title;
+    return stopsHeader;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 32.0;
 }
 
 - (IBAction)touchHomeButton:(id)sender

@@ -12,6 +12,7 @@
 #import "FavoritesViewController.h"
 #import "ParentViewController.h"
 #import "FavoritesViewController.h"
+#import "AboutScreen.h"
 #import "macros.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
@@ -20,7 +21,7 @@
 - (NSArray*)getRoutes;
 @end
 
-@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate,FavoritesViewControllerDelegate>
+@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate,FavoritesViewControllerDelegate,AboutScreenDelegate>
 {
     BOOL isAboutScreenVisible;
 }
@@ -31,7 +32,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *button3;
 @property (retain, nonatomic) IBOutlet UIButton *button4;
 @property (retain, nonatomic) MapViewController *mapVC;
-@property (retain, nonatomic) UIView *aboutView;
+@property (retain, nonatomic) AboutScreen *aboutView;
 @property (retain, nonatomic) IBOutlet UIButton *trackButton;
 
 - (IBAction)touchButton:(id)sender;

@@ -43,6 +43,7 @@
 #define SHORTS  @"short"
 #define PATHS   @"paths/"
 #define STOPTIME @"stoptimes/"
+#define HEADSIGNS @"headsigns/"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSMutableArray *busStops;

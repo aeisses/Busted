@@ -77,6 +77,10 @@
                         <action selector="touchButton:" destination="-1" eventType="touchUpInside" id="r9T-QQ-Tjl"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutScreenImage.jpg" id="OsO-WJ-gTb">
+                    <rect key="frame" x="314" y="41" width="6" height="439"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -84,6 +88,7 @@
     </objects>
     <resources>
         <image name="aboutButton.png" width="49" height="49"/>
+        <image name="aboutScreenImage.jpg" width="6" height="439"/>
         <image name="backGroundMenuSmall.jpg" width="320" height="480"/>
         <image name="myDestinationButtonSmall.png" width="320" height="110"/>
         <image name="myFavoriteButtonSmall.png" width="320" height="110"/>

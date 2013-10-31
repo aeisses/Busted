@@ -308,6 +308,7 @@ static id instance;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-DD"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%@/%@", BASEURL, STOPTIME, stop, [formatter stringFromDate:[NSDate date]]];
+    [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
@@ -567,11 +568,13 @@ static id instance;
                 [timesArray addObject:times];
                 [times release];
             }
-            route.times = [timesArray retain];
+            route.times = timesArray;
             [timesArray release];
             [array addObject:route];
+            [route release];
         }
         [[StopDisplayViewController sharedInstance] setRoutes:array];
+        [array release];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
@@ -600,7 +603,8 @@ static id instance;
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         Path *path = [[Path alloc] init];
-        [path addLines:(NSArray*)JSON];
+        MKCoordinateRegion region = [path addLines:(NSArray*)JSON];
+        [[MapViewController sharedInstance].mapView setRegion:region];
         [[MapViewController sharedInstance].mapView addOverlays:path.lines];
         [path release];
     }
@@ -622,13 +626,22 @@ static id instance;
 
 - (void)loadPathForRoute:(NSString*)shortName
 {
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@/%@:%@", SANGSTERBASEURL, ROUTES, SHORTS, shortName];
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setDateFormat:@"YYYY-MM-dd"];
+    NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
+    [timeFormatter setDateFormat:@"HH:MM"];
+    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@/%@:%@/%@%@/%@", SANGSTERBASEURL, ROUTES, SHORTS, shortName, HEADSIGNS, [dayFormatter stringFromDate:[NSDate date]], [timeFormatter stringFromDate:[NSDate date]]];
+    [dayFormatter release];
+    [timeFormatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
-        [self getPathForRouteId:[((NSDictionary*)[((NSArray*)JSON) lastObject]) valueForKey:@"routeId"]];
+        if ([((NSArray*)JSON) count])
+        {
+            [self getPathForRouteId:[((NSDictionary*)[((NSArray*)JSON) firstObject]) valueForKey:@"routeId"]];
+        }
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {

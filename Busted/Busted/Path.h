@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 @interface Path : NSObject
 
 @property (retain, nonatomic) NSArray *lines;
 
-- (void)addLines:(NSArray*)paths;
+- (MKCoordinateRegion)addLines:(NSArray*)paths;
 
 @end

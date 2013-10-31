@@ -118,7 +118,7 @@ static id instance;
         MyRoute *route = [[MyRoute alloc] init];
         route.shortName = _routeButton.titleLabel.text;
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
-//        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
+        [route release];
     }
     _mapVC.delegate = nil;
     [_mapVC release];

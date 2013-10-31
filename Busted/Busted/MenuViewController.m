@@ -37,6 +37,7 @@
         nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"AboutScreenSmall" owner:self options:nil]];
     }
     _aboutView = [[nibObjects objectAtIndex:0] retain];
+    _aboutView.delegate = self;
     [nibObjects release];
     if (IS_IPHONE_5)
     {
@@ -57,6 +58,12 @@
     self.swipeLeft.enabled = NO;
     self.swipeUp.enabled = NO;
     self.swipeDown.enabled = YES;
+    _aboutView.hidden = NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    _aboutView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,21 +100,6 @@
         _mapVC.delegate = self;
         _mapVC.isStops = NO;
         [_delegate loadViewController:_mapVC];
-/*
-        dispatch_queue_t loadDataQueue  = dispatch_queue_create("load data queue", NULL);
-        dispatch_async(loadDataQueue, ^{
-            if (_mapVC.currentLocation) {
-                [[WebApiInterface sharedInstance] requestPlace:_mapVC.currentLocation.coordinate];
-//                NSLog(@"Region: %f",_mapVC.mapView.region.center.latitude);
-//                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
-            } else {
-                [[WebApiInterface sharedInstance] requestPlace:(CLLocationCoordinate2D){HALIFAX_LATITUDE,HALIFAX_LONGITUDE}];
-//                NSLog(@"Region: %f",_mapVC.mapView.region.center.longitude);
-//                [[WebApiInterface sharedInstance] requestStopsForRegion:_mapVC.mapView.region];
-            }
-        });
-        dispatch_release(loadDataQueue);
- */
     } else if (button.tag == 3) {
         FavoritesViewController *favVC = nil;
         if (IS_IPHONE_5)
@@ -220,4 +212,11 @@
 {
     [_delegate loadViewController:vc];
 }
+
+#pragma AboutScreenDelegate
+- (void)showSocialMedia:(SLComposeViewController *)mySLComposerSheet
+{
+    [self presentViewController:mySLComposerSheet animated:YES completion:nil];
+}
+
 @end
