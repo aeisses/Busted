@@ -219,4 +219,41 @@
     [self presentViewController:mySLComposerSheet animated:YES completion:nil];
 }
 
+- (void)showMailComposer
+{
+    if ([MFMailComposeViewController canSendMail]) {
+        [UIView animateWithDuration:0.50 animations:^{
+            if (IS_IPHONE_5)
+            {
+                _aboutView.frame = (CGRect){314,49,241,519};
+                _button4.frame = (CGRect){265,73,50,50};
+            } else {
+                _aboutView.frame = (CGRect){314,41,241,439};
+                _button4.frame = (CGRect){265,62,50,50};
+            }
+        }completion:^(BOOL finished) {
+            isAboutScreenVisible = NO;
+            MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+            controller.mailComposeDelegate = self;
+            [controller setSubject:@"My Subject"];
+            [controller setMessageBody:@"Hello there." isHTML:NO];
+            if (controller) [self presentViewController:controller animated:YES completion:nil];
+            [controller release];
+            [self enableButton];
+        }];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears your mail client is not setup." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
+
+}
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError*)error;
+{
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

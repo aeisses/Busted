@@ -23,14 +23,22 @@
     return self;
 }
 
+- (IBAction)touchExitButton:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:^{}];
+}
+
 - (void)viewDidLoad
 {
    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ident" ascending:YES];
     _routes = [[[_delegate getBusRoutes] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] retain];
 
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];
-    _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:(CGRect){self.view.frame.origin.x,_exitButton.frame.size.height,self.view.frame.size.width,self.view.frame.size.height-_exitButton.frame.size.height} collectionViewLayout:layout];
     [layout release];
+    NSLog(@"Frame: %f %f %f %f",self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height);
+    NSLog(@"FrameExit: %f, %f, %f, %f",_exitButton.frame.origin.x,_exitButton.frame.origin.y,_exitButton.frame.size.width,_exitButton.frame.size.height);
+    NSLog(@"Collection: %f, %f, %f, %f",_collectionView.frame.origin.x,_collectionView.frame.origin.y,_collectionView.frame.size.width,_collectionView.frame.size.height);
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
   
@@ -75,6 +83,7 @@
 {
     BusRouteViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
     cell.number.text = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
+    cell.number.accessibilityLabel = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
     return cell;
 }
 

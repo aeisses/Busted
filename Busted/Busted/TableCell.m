@@ -34,10 +34,11 @@
 - (void)dealloc
 {
     [_routeNumber release]; _routeNumber = nil;
-    [_routeNumber release]; _routeNumber = nil;
+    [_downArrow release]; _downArrow = nil;
     [_time release]; _time = nil;
     [_timeRemaining release]; _timeRemaining = nil;
     [_busStopCode release]; _busStopCode = nil;
+    [_timeLable release]; _timeLable = nil;
     [super dealloc];
 }
 

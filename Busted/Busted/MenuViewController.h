@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 #import "RoutesViewController.h"
 #import "TrackViewController.h"
 #import "FavoritesViewController.h"
@@ -21,7 +22,7 @@
 - (NSArray*)getRoutes;
 @end
 
-@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate,FavoritesViewControllerDelegate,AboutScreenDelegate>
+@interface MenuViewController : ParentViewController <RoutesViewControllerDelegate,MapViewControllerDelegate,FavoritesViewControllerDelegate,AboutScreenDelegate,MFMailComposeViewControllerDelegate>
 {
     BOOL isAboutScreenVisible;
 }

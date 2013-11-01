@@ -106,6 +106,12 @@ static id instance;
 {
     if (_routes)
         [_routes release];
+    if (_busStop)
+        [_busStop release];
+    [expandedSections release];
+    [_homeButton release]; _homeButton = nil;
+    [_tableView release]; _tableView = nil;
+    [_favoriteButton release]; _favoriteButton = nil;
     [super dealloc];
 }
 

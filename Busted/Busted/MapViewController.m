@@ -43,7 +43,18 @@ static id instance;
 
 - (void)dealloc
 {
-    if (_annotations) [_annotations release];
+    if (_annotations) {
+        [_annotations release];
+        _annotations = nil;
+    }
+    if (_route) {
+        [_route release];
+        _route = nil;
+    }
+    if (_stops) {
+        [_stops release];
+        _stops = nil;
+    }
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;

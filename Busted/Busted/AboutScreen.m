@@ -32,8 +32,7 @@
 {
     if(NSClassFromString(@"SLComposeViewController") != nil)
     {
-        SLComposeViewController *mySLComposerSheet = [[SLComposeViewController alloc] init];
-        mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
         [mySLComposerSheet setInitialText:@"We need copy here!"];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"knowtime.ca"]];
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -59,8 +58,7 @@
 {
     if(NSClassFromString(@"SLComposeViewController") != nil)
     {
-        SLComposeViewController *mySLComposerSheet = [[SLComposeViewController alloc] init];
-        mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [mySLComposerSheet setInitialText:@"We need 140 character of copy here!"];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"knowtime.ca"]];
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -82,10 +80,16 @@
     }
 }
 
+- (IBAction)touchMailButton:(id)sender
+{
+    [_delegate showMailComposer];
+}
+
 - (void)dealloc
 {
     [_facebookButton release]; _facebookButton = nil;
     [_twitterButton release]; _twitterButton = nil;
+    [_mailButton release]; _mailButton = nil;
     [super dealloc];
 }
 

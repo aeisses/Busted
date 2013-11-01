@@ -95,7 +95,12 @@ static id instance;
 
 - (IBAction)touchRouteButton:(id)sender
 {
-    _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+    if (IS_IPHONE_5)
+    {
+        _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+    } else {
+        _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
+    }
     _collection.delegate = self;
     [self presentViewController:_collection animated:YES completion:^{}];
 }
@@ -129,7 +134,7 @@ static id instance;
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    int counter = 0;
+//    int counter = 0;
     for (Routes *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
@@ -138,8 +143,10 @@ static id instance;
         if (number != nil) {
             myRoute.ident = [route.shortName integerValue];
         } else {
-            myRoute.ident = counter + 10000;
-            counter++;
+//            myRoute.ident = counter + 10000;
+//            counter++;
+            [myRoute release];
+            continue;
         }
         myRoute.longName = route.longName;
         myRoute.shortName = route.shortName;

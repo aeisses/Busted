@@ -44,6 +44,8 @@
 #define PATHS   @"paths/"
 #define STOPTIME @"stoptimes/"
 #define HEADSIGNS @"headsigns/"
+#define USERS   @"users/"
+#define NEW     @"new/"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSMutableArray *busStops;

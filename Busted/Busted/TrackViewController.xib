@@ -139,14 +139,11 @@
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="925000524"/>
-						<object class="NSCustomResource" key="IBUIHighlightedImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">onMyWayHighlighted.png</string>
-						</object>
-						<object class="NSCustomResource" key="IBUISelectedImage">
+						<object class="NSCustomResource" key="IBUIHighlightedImage" id="415795592">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">Stop.png</string>
 						</object>
+						<reference key="IBUISelectedImage" ref="415795592"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">onMyWayButton.png</string>
@@ -417,10 +414,10 @@
 								<bool key="placeholder">NO</bool>
 							</object>
 							<reference ref="994944785"/>
-							<reference ref="533521634"/>
 							<reference ref="669276265"/>
 							<reference ref="173385359"/>
 							<reference ref="923544590"/>
+							<reference ref="533521634"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -610,7 +607,6 @@
 			<string key="downToUp.png">{320, 34}</string>
 			<string key="onMyWay.png">{320, 126}</string>
 			<string key="onMyWayButton.png">{320, 146}</string>
-			<string key="onMyWayHighlighted.png">{320, 146}</string>
 			<string key="sending.png">{64, 21}</string>
 		</dictionary>
 		<bool key="IBDocument.UseAutolayout">YES</bool>

@@ -52,8 +52,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="open-up-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="3eh-Us-Nqf">
-                        <rect key="frame" x="270" y="13" width="34" height="18"/>
+                        <rect key="frame" x="268" y="13" width="34" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <accessibility key="accessibilityConfiguration" hint="Learn more about this bus stop" label="Expand Bus Stop">
+                            <accessibilityTraits key="traits" none="YES" image="YES" playsSound="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.7455289909638555" alpha="1" colorSpace="calibratedWhite"/>

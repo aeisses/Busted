@@ -220,6 +220,8 @@ static id instance;
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         fetchRequest.entity = entity;
         NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:&error];
+//        NSLog(@"FetchedObject %i",fetchedObject.retainCount);
+        [error release];
         [fetchRequest release];
         if (fetchedObject.count > 0)
         {

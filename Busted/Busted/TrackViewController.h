@@ -32,6 +32,7 @@
 @property (retain, nonatomic) CLLocation *currentLocation;
 @property (retain, nonatomic) BusRoutesCollectionViewController *collection;
 @property (retain, nonatomic) UISwipeGestureRecognizer *swipeUp;
+@property (retain, nonatomic) NSString *locationString;
 
 - (IBAction)touchTrackButton:(id)sender;
 - (IBAction)touchHomeButton:(id)sender;

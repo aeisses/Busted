@@ -60,6 +60,14 @@
 		04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CE417EF809E002BE30D /* LoadingScreenViewController.m */; };
 		04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */; };
 		04602CF217EFCE0D002BE30D /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CF117EFCE0D002BE30D /* FavoritesViewController.m */; };
+		046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E118231B330038B3E3 /* buttonGround.jpg */; };
+		046D31E418231B330038B3E3 /* buttonGround@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E218231B330038B3E3 /* buttonGround@2x.jpg */; };
+		046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E518231B3E0038B3E3 /* backGround.jpg */; };
+		046D31E818231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E718231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib */; };
+		046D31EA1823317C0038B3E3 /* explaination@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E91823317C0038B3E3 /* explaination@2x.png */; };
+		046D31ED182334700038B3E3 /* mailButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D31EB182334700038B3E3 /* mailButton.png */; };
+		046D31EE182334700038B3E3 /* mailButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 046D31EC182334700038B3E3 /* mailButton@2x.png */; };
+		046D31F018233ECC0038B3E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046D31EF18233ECC0038B3E3 /* MessageUI.framework */; };
 		047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047443F417F74EBB00436B4B /* CoreData.framework */; };
 		04785CDE180F48940024A61B /* MenuViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CDD180F48940024A61B /* MenuViewControllerSmall.xib */; };
 		04785CE0180F4D5F0024A61B /* FavoritesViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CDF180F4D5F0024A61B /* FavoritesViewControllerSmall.xib */; };
@@ -142,8 +150,6 @@
 		04E3E8F61821D1B800A12F0A /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E8F41821D1B800A12F0A /* twitterButton.png */; };
 		04E3E8F91821D26300A12F0A /* facebookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E8F71821D26300A12F0A /* facebookButton@2x.png */; };
 		04E3E8FA1821D26300A12F0A /* facebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E8F81821D26300A12F0A /* facebookButton.png */; };
-		04E3E8FD1821D78B00A12F0A /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E8FB1821D78B00A12F0A /* line.png */; };
-		04E3E8FE1821D78B00A12F0A /* line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E8FC1821D78B00A12F0A /* line@2x.png */; };
 		04E3E9011821DCED00A12F0A /* AboutScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3E9001821DCED00A12F0A /* AboutScreen.m */; };
 		04E3E9051821DF7E00A12F0A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E3E9041821DF7E00A12F0A /* Social.framework */; };
 		04E3E90B1821E4F700A12F0A /* aboutScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E90A1821E4F700A12F0A /* aboutScreen.jpg */; };
@@ -225,6 +231,14 @@
 		04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingScreenViewController.xib; sourceTree = "<group>"; };
 		04602CF017EFCE0D002BE30D /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		04602CF117EFCE0D002BE30D /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		046D31E118231B330038B3E3 /* buttonGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buttonGround.jpg; sourceTree = "<group>"; };
+		046D31E218231B330038B3E3 /* buttonGround@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "buttonGround@2x.jpg"; sourceTree = "<group>"; };
+		046D31E518231B3E0038B3E3 /* backGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backGround.jpg; sourceTree = "<group>"; };
+		046D31E718231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteCollectionViewControllerSmall.xib; sourceTree = "<group>"; };
+		046D31E91823317C0038B3E3 /* explaination@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "explaination@2x.png"; sourceTree = "<group>"; };
+		046D31EB182334700038B3E3 /* mailButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailButton.png; sourceTree = "<group>"; };
+		046D31EC182334700038B3E3 /* mailButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mailButton@2x.png"; sourceTree = "<group>"; };
+		046D31EF18233ECC0038B3E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		047443F417F74EBB00436B4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		04785CDD180F48940024A61B /* MenuViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewControllerSmall.xib; sourceTree = "<group>"; };
 		04785CDF180F4D5F0024A61B /* FavoritesViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesViewControllerSmall.xib; sourceTree = "<group>"; };
@@ -336,8 +350,6 @@
 		04E3E8F41821D1B800A12F0A /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
 		04E3E8F71821D26300A12F0A /* facebookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebookButton@2x.png"; sourceTree = "<group>"; };
 		04E3E8F81821D26300A12F0A /* facebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookButton.png; sourceTree = "<group>"; };
-		04E3E8FB1821D78B00A12F0A /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
-		04E3E8FC1821D78B00A12F0A /* line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line@2x.png"; sourceTree = "<group>"; };
 		04E3E8FF1821DCED00A12F0A /* AboutScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutScreen.h; sourceTree = "<group>"; };
 		04E3E9001821DCED00A12F0A /* AboutScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutScreen.m; sourceTree = "<group>"; };
 		04E3E9041821DF7E00A12F0A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -373,6 +385,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046D31F018233ECC0038B3E3 /* MessageUI.framework in Frameworks */,
 				04E3E9051821DF7E00A12F0A /* Social.framework in Frameworks */,
 				047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */,
 				04E9588B17F6347A00DD72AD /* MobileCoreServices.framework in Frameworks */,
@@ -475,6 +488,9 @@
 		041902371800C93C00D79040 /* BusNumberPage */ = {
 			isa = PBXGroup;
 			children = (
+				046D31E518231B3E0038B3E3 /* backGround.jpg */,
+				046D31E118231B330038B3E3 /* buttonGround.jpg */,
+				046D31E218231B330038B3E3 /* buttonGround@2x.jpg */,
 				041902381800C93C00D79040 /* backGround@2x.jpg */,
 				0419023A1800C93C00D79040 /* cellBackGround@2x.png */,
 			);
@@ -543,6 +559,7 @@
 		04C7C27817E3D7D9001A9981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				046D31EF18233ECC0038B3E3 /* MessageUI.framework */,
 				04E3E9041821DF7E00A12F0A /* Social.framework */,
 				047443F417F74EBB00436B4B /* CoreData.framework */,
 				04E9588A17F6347A00DD72AD /* MobileCoreServices.framework */,
@@ -640,6 +657,7 @@
 				0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */,
 				04E115451818B63900EF8DFD /* StopDisplayViewControllerSmall.xib */,
 				04C7C2EE17E51BC9001A9981 /* BusRoutesCollectionViewController.xib */,
+				046D31E718231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib */,
 				04C7C2C017E4A1B9001A9981 /* MapViewController.xib */,
 				04785CE1180F4E4D0024A61B /* MapViewControllerSmall.xib */,
 				04602CE517EF809E002BE30D /* LoadingScreenViewController.xib */,
@@ -696,10 +714,11 @@
 				04C7C2F817E54963001A9981 /* dot0.png */,
 				04B06093181F14870082C29B /* busStop.png */,
 				04B06094181F14870082C29B /* busStop@2x.png */,
-				04E3E8FB1821D78B00A12F0A /* line.png */,
-				04E3E8FC1821D78B00A12F0A /* line@2x.png */,
+				046D31E91823317C0038B3E3 /* explaination@2x.png */,
 				04E3E8F31821D1B800A12F0A /* twitterButton@2x.png */,
 				04E3E8F41821D1B800A12F0A /* twitterButton.png */,
+				046D31EB182334700038B3E3 /* mailButton.png */,
+				046D31EC182334700038B3E3 /* mailButton@2x.png */,
 				04E3E8F71821D26300A12F0A /* facebookButton@2x.png */,
 				04E3E8F81821D26300A12F0A /* facebookButton.png */,
 				0421091D1819FAA6004539B4 /* open-up-arrow.png */,
@@ -805,7 +824,6 @@
 				04E3E8F91821D26300A12F0A /* facebookButton@2x.png in Resources */,
 				04D13F51181DF479002F0398 /* myFavoriteButtonSmall@2x.png in Resources */,
 				04E3E8E51821C80300A12F0A /* StopsHeader@2x.png in Resources */,
-				04E3E8FD1821D78B00A12F0A /* line.png in Resources */,
 				0419026C1800D07700D79040 /* AboutScreen.xib in Resources */,
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
@@ -818,6 +836,7 @@
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				04602CE717EF809E002BE30D /* LoadingScreenViewController.xib in Resources */,
 				042109201819FAA6004539B4 /* open-up-arrow@2x.png in Resources */,
+				046D31EA1823317C0038B3E3 /* explaination@2x.png in Resources */,
 				04785CE0180F4D5F0024A61B /* FavoritesViewControllerSmall.xib in Resources */,
 				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
 				04E3E90E1821E59700A12F0A /* aboutScreenSmall@2x.jpg in Resources */,
@@ -841,15 +860,17 @@
 				04D13F4C181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg in Resources */,
 				041902621800C93C00D79040 /* route@2x.png in Resources */,
 				04D13F55181DF796002F0398 /* homeButtonHighlightedSmall@2x.png in Resources */,
+				046D31E418231B330038B3E3 /* buttonGround@2x.jpg in Resources */,
 				041902531800C93C00D79040 /* sending1.png in Resources */,
 				04C7C2DA17E4BE5E001A9981 /* sample.plist in Resources */,
 				04785CE4180F51E10024A61B /* RoutesViewControllerSmall.xib in Resources */,
-				04E3E8FE1821D78B00A12F0A /* line@2x.png in Resources */,
 				04C5676B181743BD00D04131 /* MenuStarOff.png in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
+				046D31ED182334700038B3E3 /* mailButton.png in Resources */,
 				0419024B1800C93C00D79040 /* trackMyBusButton@2x.png in Resources */,
 				042109261819FBE4004539B4 /* routes@2x.png in Resources */,
+				046D31E818231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib in Resources */,
 				04C7C2E417E5024C001A9981 /* Icon-Small.png in Resources */,
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
 				04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */,
@@ -857,6 +878,7 @@
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
 				0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
+				046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */,
 				04E3E90F1821E59700A12F0A /* aboutScreenSmall.jpg in Resources */,
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
 				042109271819FBE4004539B4 /* stops.png in Resources */,
@@ -876,6 +898,7 @@
 				04E3E8F51821D1B800A12F0A /* twitterButton@2x.png in Resources */,
 				04D13F50181DF479002F0398 /* myDestinationButtonSmall@2x.png in Resources */,
 				04C7C2F917E54963001A9981 /* dot0.png in Resources */,
+				046D31EE182334700038B3E3 /* mailButton@2x.png in Resources */,
 				04E3E8FA1821D26300A12F0A /* facebookButton.png in Resources */,
 				04C5676E181743BD00D04131 /* MenuStarOn@2x.png in Resources */,
 				041902491800C93C00D79040 /* myDestinationButton@2x.png in Resources */,
@@ -894,6 +917,7 @@
 				04C5676C181743BD00D04131 /* MenuStarOff@2x.png in Resources */,
 				0421091B1819C1AA004539B4 /* bus-number.png in Resources */,
 				0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */,
+				046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */,
 				04E3E8F61821D1B800A12F0A /* twitterButton.png in Resources */,
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,

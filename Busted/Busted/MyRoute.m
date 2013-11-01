@@ -17,4 +17,11 @@
     return NO;
 }
 
+- (void)dealloc
+{
+    [_shortName release]; _shortName = nil;
+    [_longName release]; _longName = nil;
+    [super dealloc];
+}
+
 @end

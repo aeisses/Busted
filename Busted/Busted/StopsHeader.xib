@@ -14,6 +14,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="StopsHeader.png" translatesAutoresizingMaskIntoConstraints="NO" id="0oL-F6-CdT">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <accessibility key="accessibilityConfiguration" label="Stop Header"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baz-o8-ovC">
                     <rect key="frame" x="14" y="5" width="42" height="21"/>
