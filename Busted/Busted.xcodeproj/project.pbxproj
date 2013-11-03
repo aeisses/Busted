@@ -58,6 +58,11 @@
 		0434394218257A1800FAB62E /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434394118257A1800FAB62E /* Stop.png */; };
 		04343A061825C26F00FAB62E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */; };
 		04343A0E1825C30F00FAB62E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04343A0D1825C30F00FAB62E /* libz.dylib */; };
+		04343A111825D74C00FAB62E /* introImage1Small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04343A0F1825D74C00FAB62E /* introImage1Small@2x.jpg */; };
+		04343A121825D74C00FAB62E /* introImage2Small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04343A101825D74C00FAB62E /* introImage2Small@2x.jpg */; };
+		04343A1A1825D7EE00FAB62E /* introImage2Small.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04343A171825D7EE00FAB62E /* introImage2Small.jpg */; };
+		04343A1D1825D8A700FAB62E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 04343A1B1825D8A700FAB62E /* Default.png */; };
+		04343A1E1825D8A700FAB62E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04343A1C1825D8A700FAB62E /* Default@2x.png */; };
 		0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */; };
 		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
 		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
@@ -106,7 +111,6 @@
 		04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C28217E3D7D9001A9981 /* InfoPlist.strings */; };
 		04C7C28617E3D7D9001A9981 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C28517E3D7D9001A9981 /* main.m */; };
 		04C7C28A17E3D7D9001A9981 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C28917E3D7D9001A9981 /* AppDelegate.m */; };
-		04C7C28C17E3D7D9001A9981 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C28B17E3D7D9001A9981 /* Default.png */; };
 		04C7C29317E3D7D9001A9981 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C29217E3D7D9001A9981 /* ViewController.m */; };
 		04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C29417E3D7D9001A9981 /* ViewController.xib */; };
 		04C7C2A017E3DFC3001A9981 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C29E17E3DFC3001A9981 /* MenuViewController.m */; };
@@ -243,6 +247,11 @@
 		043439B61825C26F00FAB62E /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		04343A0D1825C30F00FAB62E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		04343A0F1825D74C00FAB62E /* introImage1Small@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introImage1Small@2x.jpg"; sourceTree = "<group>"; };
+		04343A101825D74C00FAB62E /* introImage2Small@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introImage2Small@2x.jpg"; sourceTree = "<group>"; };
+		04343A171825D7EE00FAB62E /* introImage2Small.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = introImage2Small.jpg; sourceTree = "<group>"; };
+		04343A1B1825D8A700FAB62E /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		04343A1C1825D8A700FAB62E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDisplayViewController.h; sourceTree = "<group>"; };
 		0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDisplayViewController.m; sourceTree = "<group>"; };
 		0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewController.xib; sourceTree = "<group>"; };
@@ -310,7 +319,6 @@
 		04C7C28717E3D7D9001A9981 /* Busted-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Busted-Prefix.pch"; sourceTree = "<group>"; };
 		04C7C28817E3D7D9001A9981 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04C7C28917E3D7D9001A9981 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04C7C28B17E3D7D9001A9981 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		04C7C29117E3D7D9001A9981 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		04C7C29217E3D7D9001A9981 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		04C7C29517E3D7D9001A9981 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
@@ -476,6 +484,11 @@
 		041902291800C93C00D79040 /* Loadingpage */ = {
 			isa = PBXGroup;
 			children = (
+				04343A1B1825D8A700FAB62E /* Default.png */,
+				04343A1C1825D8A700FAB62E /* Default@2x.png */,
+				04343A171825D7EE00FAB62E /* introImage2Small.jpg */,
+				04343A0F1825D74C00FAB62E /* introImage1Small@2x.jpg */,
+				04343A101825D74C00FAB62E /* introImage2Small@2x.jpg */,
 				0419022A1800C93C00D79040 /* Default-568h@2x.png */,
 				0419022B1800C93C00D79040 /* introImage1@2x.jpg */,
 				0419022C1800C93C00D79040 /* introImage2@2x.jpg */,
@@ -663,7 +676,6 @@
 				04C7C28217E3D7D9001A9981 /* InfoPlist.strings */,
 				04C7C28517E3D7D9001A9981 /* main.m */,
 				04C7C28717E3D7D9001A9981 /* Busted-Prefix.pch */,
-				04C7C28B17E3D7D9001A9981 /* Default.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -897,9 +909,9 @@
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
 				041902571800C93C00D79040 /* backGroundTrack@2x.jpg in Resources */,
-				04C7C28C17E3D7D9001A9981 /* Default.png in Resources */,
 				04D13F5A181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg in Resources */,
 				04D13F58181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg in Resources */,
+				04343A1D1825D8A700FAB62E /* Default.png in Resources */,
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				04E3E8E71821C9D000A12F0A /* StopsHeader.xib in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
@@ -916,6 +928,7 @@
 				04C5676318173ED900D04131 /* FavoriteCell.xib in Resources */,
 				04C7C2BD17E49F90001A9981 /* FavoritesViewController.xib in Resources */,
 				041902691800CF6300D79040 /* aboutButtonHighlighted@2x.png in Resources */,
+				04343A1E1825D8A700FAB62E /* Default@2x.png in Resources */,
 				04E3E90B1821E4F700A12F0A /* aboutScreen.jpg in Resources */,
 				041902701800E14500D79040 /* upToDownButton@2x.png in Resources */,
 				04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */,
@@ -955,6 +968,7 @@
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */,
 				04E3E90F1821E59700A12F0A /* aboutScreenSmall.jpg in Resources */,
+				04343A111825D74C00FAB62E /* introImage1Small@2x.jpg in Resources */,
 				0419024A1800C93C00D79040 /* myFavoriteButton@2x.png in Resources */,
 				042109271819FBE4004539B4 /* stops.png in Resources */,
 				04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */,
@@ -964,9 +978,11 @@
 				041902581800C93C00D79040 /* backGround@2x.jpg in Resources */,
 				04E3E9131821E61B00A12F0A /* aboutScreenImage.jpg in Resources */,
 				041902561800C93C00D79040 /* sending@2x.png in Resources */,
+				04343A1A1825D7EE00FAB62E /* introImage2Small.jpg in Resources */,
 				04785CE6180F54060024A61B /* TrackViewControllerSmall.xib in Resources */,
 				04785CDE180F48940024A61B /* MenuViewControllerSmall.xib in Resources */,
 				04F5961918245F57009AFB70 /* full-star.png in Resources */,
+				04343A121825D74C00FAB62E /* introImage2Small@2x.jpg in Resources */,
 				0419025B1800C93C00D79040 /* homeButton@2x.png in Resources */,
 				04785CE2180F4E4D0024A61B /* MapViewControllerSmall.xib in Resources */,
 				04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */,

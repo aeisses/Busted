@@ -7,6 +7,7 @@
 //
 
 #import "LoadingScreenViewController.h"
+#import "macros.h"
 
 @interface LoadingScreenViewController ()
 
@@ -51,10 +52,20 @@
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
     if (isOne) {
-        _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
+        if (IS_IPHONE_5)
+        {
+            _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
+        } else {
+            _animationImage.image = [UIImage imageNamed:@"introImage2Small.jpg"];
+        }
         isOne = NO;
     } else {
-        _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
+        if (IS_IPHONE_5)
+        {
+            _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
+        } else {
+            _animationImage.image = [UIImage imageNamed:@"introImage1Small.jpg"];
+        }
         isOne = YES;
     }
 }

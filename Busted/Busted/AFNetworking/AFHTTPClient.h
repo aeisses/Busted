@@ -72,7 +72,6 @@
  - Archives and copies of HTTP clients will be initialized with an empty operation queue.
  - NSCoding cannot serialize / deserialize block properties, so an archive of an HTTP client will not include any reachability callback block that may be set.
  */
-
 #ifdef _SYSTEMCONFIGURATION_H
 typedef enum {
     AFNetworkReachabilityStatusUnknown          = -1,
