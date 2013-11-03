@@ -87,18 +87,22 @@
 {
     UIButton *button = (UIButton*)sender;
     if (button.tag == 1) {
-        RoutesViewController *rootsVC = nil;
-        if (IS_IPHONE_5)
-        {
-            rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
-        }
-        else
-        {
-            rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewControllerSmall" bundle:nil];
-        }
-        rootsVC.delegate = self;
-        [_delegate loadViewController:rootsVC];
-        [rootsVC release];
+        dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
+        dispatch_async(menuQueue, ^{
+            RoutesViewController *rootsVC = nil;
+            if (IS_IPHONE_5)
+            {
+                rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewController" bundle:nil];
+            }
+            else
+            {
+                rootsVC = [[RoutesViewController alloc] initWithNibName:@"RoutesViewControllerSmall" bundle:nil];
+            }
+            rootsVC.delegate = self;
+            [_delegate loadViewController:rootsVC];
+            [rootsVC release];
+        });
+        dispatch_release(menuQueue);
 //        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //        dispatch_async(googleQueue, ^{
 //            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
@@ -108,17 +112,21 @@
 //        });
 //        dispatch_release(googleQueue);
     } else if (button.tag == 2) {
-        if (IS_IPHONE_5)
-        {
-            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
-        }
-        else
-        {
-            _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
-        }
-        _mapVC.delegate = self;
-        _mapVC.isStops = NO;
-        [_delegate loadViewController:_mapVC];
+        dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
+        dispatch_async(menuQueue, ^{
+            if (IS_IPHONE_5)
+            {
+                _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+            }
+            else
+            {
+                _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+            }
+            _mapVC.delegate = self;
+            _mapVC.isStops = NO;
+            [_delegate loadViewController:_mapVC];
+        });
+        dispatch_release(menuQueue);
 //        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //        dispatch_async(googleQueue, ^{
 //            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
@@ -128,18 +136,22 @@
 //        });
 //        dispatch_release(googleQueue);
     } else if (button.tag == 3) {
-        FavoritesViewController *favVC = nil;
-        if (IS_IPHONE_5)
-        {
-            favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
-        }
-        else
-        {
-            favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewControllerSmall" bundle:nil];
-        }
-        favVC.delegate = self;
-        [_delegate loadViewController:favVC];
-        [favVC release];
+        dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
+        dispatch_async(menuQueue, ^{
+            FavoritesViewController *favVC = nil;
+            if (IS_IPHONE_5)
+            {
+                favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+            }
+            else
+            {
+                favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewControllerSmall" bundle:nil];
+            }
+            favVC.delegate = self;
+            [_delegate loadViewController:favVC];
+            [favVC release];
+        });
+        dispatch_release(menuQueue);
 //        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //        dispatch_async(googleQueue, ^{
 //            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"

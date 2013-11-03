@@ -66,7 +66,11 @@
 
 - (IBAction)touchHomeButton:(id)sender
 {
-    [self.superDelegate touchedHomeButton:YES];
+    dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
+    dispatch_async(menuQueue, ^{
+        [self.superDelegate touchedHomeButton:YES];
+    });
+    dispatch_release(menuQueue);
 }
 
 #pragma UITableViewDelegate Methods

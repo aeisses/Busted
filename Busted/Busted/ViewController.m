@@ -78,19 +78,27 @@
     if ([vc isKindOfClass:[RoutesViewController class]]) {
         RoutesViewController *routesVC = (RoutesViewController*)vc;
         routesVC.superDelegate = self;
-        [[self navigationController] pushViewController:routesVC animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:routesVC animated:YES];
+        });
     } else if ([vc isKindOfClass:[FavoritesViewController class]]) {
         FavoritesViewController *favVC = (FavoritesViewController*)vc;
         favVC.superDelegate = self;
-        [[self navigationController] pushViewController:favVC animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:favVC animated:YES];
+        });
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
         mapVC.superDelegate = self;
-        [[self navigationController] pushViewController:vc animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:vc animated:YES];
+        });
         mapVC.currentLocation = _trackVC.currentLocation;
     } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
         StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
-        [[self navigationController] pushViewController:stopDisplayVC animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:stopDisplayVC animated:YES];
+        });
     }
 }
 
@@ -120,9 +128,13 @@
 {
     if (isAll)
     {
-        [[self navigationController] popToViewController:_menuViewController animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] popToViewController:_menuViewController animated:YES];
+        });
     } else {
-        [[self navigationController] popViewControllerAnimated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] popViewControllerAnimated:YES];
+        });
     }
 }
 

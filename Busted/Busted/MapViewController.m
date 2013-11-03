@@ -82,43 +82,34 @@ static id instance;
 
 - (void)viewDidLoad
 {
-    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
-    [_mapView removeOverlays:_mapView.overlays];
-    [_mapView removeAnnotations:_mapView.annotations];
-    if (_isStops)
-    {
-        [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
-        [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-        [self.view bringSubviewToFront:_favoriteButton];
-        _favoriteButton.hidden = NO;
-    }
-    else
-    {
-        [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
-        [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-        if (_currentLocation)
-        {
-            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
-        } else {
+    dispatch_queue_t loadingThread  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(loadingThread, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
             [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
-        }
-        if (_stops)
-            [_stops release];
-        _stops = [[NSMutableArray alloc] initWithCapacity:0];
-        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
-        {
-            if ([stop isInsideSquare:_mapView.region])
+            [_mapView removeOverlays:_mapView.overlays];
+            [_mapView removeAnnotations:_mapView.annotations];
+            if (_isStops)
             {
-                [_mapView addAnnotation:stop];
-                [_stops addObject:stop];
+                [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
+                [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+                [self.view bringSubviewToFront:_favoriteButton];
+                _favoriteButton.hidden = NO;
             }
-        }
-        _favoriteButton.hidden = YES;
-    }
-    _mapView.scrollEnabled = YES;
-    _mapView.zoomEnabled = YES;
-    [_mapView setShowsUserLocation:YES];
-    [self.view bringSubviewToFront:_homeButton];
+            else
+            {
+                [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
+                [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+                if (_stops)
+                    [_stops release];
+                _stops = [[NSMutableArray alloc] initWithCapacity:0];
+                _favoriteButton.hidden = YES;
+            }
+            _mapView.scrollEnabled = YES;
+            _mapView.zoomEnabled = YES;
+            [self.view bringSubviewToFront:_homeButton];
+        });
+    });
+    dispatch_release(loadingThread);
 //    if (!_isStops)
 //    {
 //        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
@@ -132,11 +123,27 @@ static id instance;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [_mapView setShowsUserLocation:YES];
     if (_isStops)
     {
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
         [displayLink setFrameInterval:15];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    } else {
+        if (_currentLocation)
+        {
+            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+        } else {
+            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+        }
+        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
+        {
+            if ([stop isInsideSquare:_mapView.region])
+            {
+                [_mapView addAnnotation:stop];
+                [_stops addObject:stop];
+            }
+        }
     }
 }
 
