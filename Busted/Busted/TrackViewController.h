@@ -22,11 +22,15 @@
     BOOL isTracking;
     NSString *uudi;
     NSInteger currentRoute;
+    int currentFrame;
+    NSArray *frames;
+    NSDate *startTrackingTime;
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *trackButton;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UIImageView *sendingImage;
+@property (retain, nonatomic) IBOutlet UIImageView *sendingZoom;
 @property (retain, nonatomic) id <TrackViewControllerDelegate> delegate;
 @property (retain, nonatomic) CLLocationManager *locationManager;
 @property (retain, nonatomic) CLLocation *currentLocation;

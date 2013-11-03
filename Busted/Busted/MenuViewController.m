@@ -8,6 +8,8 @@
 
 #import "MenuViewController.h"
 #import "WebApiInterface.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface MenuViewController (PrivateMethods)
 - (void)disableButton;
@@ -52,6 +54,15 @@
     [super viewDidLoad];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (_mapVC)
+    {
+        [_mapVC release];
+        _mapVC = nil;
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     self.swipeRight.enabled = NO;
@@ -88,6 +99,14 @@
         rootsVC.delegate = self;
         [_delegate loadViewController:rootsVC];
         [rootsVC release];
+//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//        dispatch_async(googleQueue, ^{
+//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                                action:@"viewload"
+//                                                                                                 label:@"Routes View Load"
+//                                                                                                 value:nil] build]];
+//        });
+//        dispatch_release(googleQueue);
     } else if (button.tag == 2) {
         if (IS_IPHONE_5)
         {
@@ -100,6 +119,14 @@
         _mapVC.delegate = self;
         _mapVC.isStops = NO;
         [_delegate loadViewController:_mapVC];
+//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//        dispatch_async(googleQueue, ^{
+//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                                action:@"viewload"
+//                                                                                                 label:@"Stops View Load"
+//                                                                                                 value:nil] build]];
+//        });
+//        dispatch_release(googleQueue);
     } else if (button.tag == 3) {
         FavoritesViewController *favVC = nil;
         if (IS_IPHONE_5)
@@ -113,6 +140,14 @@
         favVC.delegate = self;
         [_delegate loadViewController:favVC];
         [favVC release];
+//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//        dispatch_async(googleQueue, ^{
+//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                                                        action:@"viewload"
+//                                                                                                                         label:@"Favorites View Load"
+//                                                                                                                         value:nil] build]];
+//        });
+//        dispatch_release(googleQueue);
     } else if (button.tag == 4) {
         if (isAboutScreenVisible)
         {
@@ -200,7 +235,7 @@
 //        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
 //    }
 //    _mapVC.delegate = nil;
-    [_mapVC release];
+//    [_mapVC release];
 }
 
 - (void)updateStops:(CLLocationCoordinate2D)mapCenter

@@ -7,6 +7,8 @@
 //
 
 #import "RoutesViewController.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface RoutesViewController (PrivateMethods)
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
@@ -90,6 +92,14 @@ static id instance;
         _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
+//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//        dispatch_async(googleQueue, ^{
+//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                                                        action:@"RouteViewController"
+//                                                                                                                         label:[NSString stringWithFormat:@"Route %@ Viewed",_routeButton.titleLabel.text]
+//                                                                                                                         value:nil] build]];
+//        });
+//        dispatch_release(googleQueue);
     }
 }
 
@@ -160,6 +170,13 @@ static id instance;
 - (void)setBusRoute:(NSString*)route
 {
     [_routeButton setTitle:route forState:UIControlStateNormal];
+    [_collection dismissViewControllerAnimated:YES completion:^{}];
+    _collection.delegate = nil;
+    [_collection release];
+}
+
+- (void)exitCollectionView
+{
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
     [_collection release];

@@ -13,6 +13,7 @@
 @protocol BusRouteCollectionViewControllerDelegate <NSObject>
 - (NSArray*)getBusRoutes;
 - (void)setBusRoute:(NSString*)route;
+- (void)exitCollectionView;
 @end
 
 @interface BusRoutesCollectionViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>

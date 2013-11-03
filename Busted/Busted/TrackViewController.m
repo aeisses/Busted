@@ -10,6 +10,8 @@
 #import "Routes.h"
 #import "macros.h"
 #import "WebApiInterface.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface TrackViewController (PrivateMethods)
 - (void)frameIntervalLoop:(CADisplayLink *)sender;
@@ -40,6 +42,32 @@
 
 - (void)viewDidLoad
 {
+    int height = 215;
+    if (IS_IPHONE_5)
+    {
+        height = 255;
+    }
+    frames = [[NSArray alloc] initWithObjects:
+                [NSValue valueWithCGRect:(CGRect){160,height,0,12}],
+                [NSValue valueWithCGRect:(CGRect){150,height,20,12}],
+                [NSValue valueWithCGRect:(CGRect){140,height,40,12}],
+                [NSValue valueWithCGRect:(CGRect){130,height,60,12}],
+                [NSValue valueWithCGRect:(CGRect){120,height,80,12}],
+                [NSValue valueWithCGRect:(CGRect){110,height,100,12}],
+                [NSValue valueWithCGRect:(CGRect){100,height,120,12}],
+                [NSValue valueWithCGRect:(CGRect){90,height,140,12}],
+                [NSValue valueWithCGRect:(CGRect){80,height,160,12}],
+                [NSValue valueWithCGRect:(CGRect){70,height,180,12}],
+                [NSValue valueWithCGRect:(CGRect){60,height,200,12}],
+                [NSValue valueWithCGRect:(CGRect){50,height,220,12}],
+                [NSValue valueWithCGRect:(CGRect){40,height,240,12}],
+                [NSValue valueWithCGRect:(CGRect){30,height,260,12}],
+                [NSValue valueWithCGRect:(CGRect){20,height,280,12}],
+                [NSValue valueWithCGRect:(CGRect){10,height,300,12}],
+                [NSValue valueWithCGRect:(CGRect){0,height,320,12}],
+                  nil];
+
+    currentFrame = 0;
     _swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
     _swipeUp.numberOfTouchesRequired = 1;
     _swipeUp.accessibilityLabel = @"Close Tracking Window";
@@ -49,6 +77,7 @@
     isTracking = NO;
     _trackButton.selected = NO;
     _sendingImage.hidden = YES;
+//    _sendingImage.hidden = YES;
     if (_locationManager == nil)
     {
         _locationManager = [[CLLocationManager alloc] init];
@@ -67,13 +96,24 @@
 {
     if (isTracking) {
         _sendingImage.hidden = NO;
+        _sendingZoom.hidden = NO;
     } else {
         _sendingImage.hidden = YES;
+        _sendingZoom.hidden = YES;
         currentRoute = 0;
     }
+    
     _trackButton.selected = isTracking;
     [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
+//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//    dispatch_async(googleQueue, ^{
+//        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                            action:@"viewshow"
+//                                                                                             label:@"Tracking View Shown"
+//                                                                                             value:nil] build]];
+//    });
+//    dispatch_release(googleQueue);
     [super viewDidAppear:animated];
 }
 
@@ -97,10 +137,12 @@
     [_trackButton release]; _trackButton = nil;
     [_locationManager release]; _locationManager = nil;
     [_sendingImage release]; _sendingImage = nil;
+    [_sendingZoom release]; _sendingZoom = nil;
     [_collection release]; _collection = nil;
     [_homeButton release]; _homeButton = nil;
     [_swipeUp release]; _swipeUp = nil;
     [_locationString release]; _locationString = nil;
+    [frames release];
     _delegate = nil;
     if (uudi)
         [uudi release];
@@ -109,15 +151,32 @@
 
 - (IBAction)touchTrackButton:(id)sender
 {
-    if (IS_IPHONE_5)
+    if (_trackButton.selected && isTracking)
     {
-        _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+        _trackButton.selected = NO;
+        isTracking = NO;
+        _sendingImage.hidden = YES;
+        _sendingZoom.hidden = YES;
+        currentFrame = 0;
+//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//        dispatch_async(googleQueue, ^{
+//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
+//                                                                                               interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
+//                                                                                                   name:@"Tracking ended"
+//                                                                                                  label:@"Tacking Stopped"] build]];
+//        });
+//        dispatch_release(googleQueue);
     } else {
-        _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
+        if (IS_IPHONE_5)
+        {
+            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+        } else {
+            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
+        }
+        _trackButton.selected = YES;
+        _collection.delegate = self;
+        [self presentViewController:_collection animated:YES completion:^{}];
     }
-    _trackButton.selected = YES;
-    _collection.delegate = self;
-    [self presentViewController:_collection animated:YES completion:^{}];
 }
 
 - (IBAction)touchHomeButton:(id)sender
@@ -146,20 +205,31 @@
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         if ([response statusCode] != 201) {
             isTracking = NO;
-            _trackButton.selected = NO;
-            _sendingImage.hidden = YES;
             dispatch_async(dispatch_get_main_queue(), ^{
-                [_trackButton setNeedsDisplay];
+                _trackButton.selected = NO;
+                _sendingImage.hidden = YES;
+                _sendingZoom.hidden = YES;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
                 [alert release];
             });
         } else {
             isTracking = YES;
-            _sendingImage.hidden = NO;
-            _trackButton.selected = YES;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _sendingImage.hidden = NO;
+                _sendingZoom.hidden = NO;
+                _trackButton.selected = YES;
+            });
             NSDictionary *header = response.allHeaderFields;
-            _locationString = [[NSString alloc] initWithString:[header valueForKey:@"Location"]];
+            _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
+//            dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//            dispatch_async(googleQueue, ^{
+//                [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"tracking_action"
+//                                                                                                    action:@"tracking started"
+//                                                                                                     label:@"tracking started"
+//                                                                                                     value:[NSNumber numberWithInt:currentRoute]] build]];
+//            });
+//            dispatch_release(googleQueue);
         }
         request = nil;
         response = nil;
@@ -199,14 +269,31 @@
             }
             if ([response statusCode] != 200) {
                 isTracking = NO;
+                startTrackingTime = [NSDate date];
+//                dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//                dispatch_async(googleQueue, ^{
+//                    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
+//                                                                                                       interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
+//                                                                                                           name:@"Tracking ended"
+//                                                                                                          label:@"Tacking Stopped"] build]];
+//                });
+//                dispatch_release(googleQueue);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _trackButton.selected = NO;
                     _sendingImage.hidden = YES;
-//                    [_trackButton setNeedsDisplay];
+                    _sendingZoom.hidden = YES;
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having  sometrouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                     [alert show];
                     [alert release];
                 });
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _sendingZoom.frame = [[frames objectAtIndex:currentFrame] CGRectValue];
+            });
+            currentFrame++;
+            if (currentFrame >= [frames count])
+            {
+                currentFrame = 0;
             }
             jsonData = nil;
             request = nil;
@@ -262,6 +349,13 @@
 {
     currentRoute = [route integerValue];
     [self createNewUser];
+    [_collection dismissViewControllerAnimated:YES completion:^{}];
+    _collection.delegate = nil;
+    [_collection release];
+}
+
+- (void)exitCollectionView
+{
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
     [_collection release];

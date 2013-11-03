@@ -14,6 +14,8 @@
 #import "RouteWithTime.h"
 #import "StopTimes.h"
 #import "StopsHeader.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface StopDisplayViewController ()
 
@@ -61,7 +63,14 @@ static id instance;
     }
     _busStop = [busStop retain];
     [[WebApiInterface sharedInstance] getRouteForIdent:_busStop.code];
-
+//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//    dispatch_async(googleQueue, ^{
+//        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
+//                                                                                            action:@"StopViewController"
+//                                                                                             label:busStop.title
+//                                                                                             value:busStop.code] build]];
+//    });
+//    dispatch_release(googleQueue);
 }
 
 - (void)viewDidLoad

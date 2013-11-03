@@ -25,7 +25,7 @@
 
 - (IBAction)touchExitButton:(id)sender
 {
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [_delegate exitCollectionView];
 }
 
 - (void)viewDidLoad
@@ -36,9 +36,6 @@
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[UICollectionView alloc] initWithFrame:(CGRect){self.view.frame.origin.x,_exitButton.frame.size.height,self.view.frame.size.width,self.view.frame.size.height-_exitButton.frame.size.height} collectionViewLayout:layout];
     [layout release];
-    NSLog(@"Frame: %f %f %f %f",self.view.frame.origin.x,self.view.frame.origin.y,self.view.frame.size.width,self.view.frame.size.height);
-    NSLog(@"FrameExit: %f, %f, %f, %f",_exitButton.frame.origin.x,_exitButton.frame.origin.y,_exitButton.frame.size.width,_exitButton.frame.size.height);
-    NSLog(@"Collection: %f, %f, %f, %f",_collectionView.frame.origin.x,_collectionView.frame.origin.y,_collectionView.frame.size.width,_collectionView.frame.size.height);
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
   

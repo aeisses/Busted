@@ -37,10 +37,10 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg0-Vp-16R">
                     <rect key="frame" x="273" y="524" width="36" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="MenuStarOff.png">
+                    <state key="normal" image="empty-starblack.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="MenuStarOn.png"/>
+                    <state key="selected" image="full-starblack.png"/>
                     <connections>
                         <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="N9Q-4u-a8L"/>
                     </connections>
@@ -54,8 +54,8 @@
         </view>
     </objects>
     <resources>
-        <image name="MenuStarOff.png" width="36" height="35"/>
-        <image name="MenuStarOn.png" width="36" height="35"/>
+        <image name="empty-starblack.png" width="35" height="35"/>
+        <image name="full-starblack.png" width="35" height="35"/>
         <image name="homeButton.png" width="320" height="56"/>
         <image name="homeButtonHighlighted.png" width="320" height="56"/>
     </resources>

@@ -56,6 +56,8 @@
 {
     [_backGroundImage release]; _backGroundImage = nil;
     [_homeButton release]; _homeButton = nil;
+    _tableView.delegate = nil;
+    _tableView.dataSource = nil;
     [_tableView release]; _tableView = nil;
     if (routeName)
         [routeName release];
@@ -83,6 +85,7 @@
         cell.number.text = stop.code;
         cell.favoriteButton.selected = [stop.isFavorite boolValue];
         cell.isStop = YES;
+        stop = nil;
         return cell;
     } else if (indexPath.section == 1) {
         Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
@@ -90,6 +93,7 @@
         cell.number.text = route.shortName;
         cell.favoriteButton.selected = [route.isFavorite boolValue];
         cell.isStop = NO;
+        route = nil;
         return cell;
     }
     return nil;

@@ -31,10 +31,10 @@
                         <accessibility key="accessibilityConfiguration" hint="" label="Favorite this item">
                             <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                         </accessibility>
-                        <state key="normal" image="MenuStarOff.png">
+                        <state key="normal" image="empty-star.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
-                        <state key="selected" image="MenuStarOn.png"/>
+                        <state key="selected" image="full-star.png"/>
                         <connections>
                             <action selector="touchFavoriteButton:" destination="saE-th-cpH" eventType="touchUpInside" id="ZSm-Ut-5pO"/>
                         </connections>
@@ -57,8 +57,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="MenuStarOff.png" width="36" height="35"/>
-        <image name="MenuStarOn.png" width="36" height="35"/>
         <image name="bus-number.png" width="83" height="43"/>
+        <image name="empty-star.png" width="35" height="35"/>
+        <image name="full-star.png" width="35" height="35"/>
     </resources>
 </document>

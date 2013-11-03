@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @implementation AppDelegate
 
@@ -32,6 +34,21 @@
     self.window.rootViewController = _navController;
     [self.window makeKeyAndVisible];
     [rootView release];
+    
+//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//    dispatch_async(googleQueue, ^{
+////        [GAI sharedInstance].trackUncaughtExceptions = YES;
+////        [GAI sharedInstance].dispatchInterval = 20;
+//        [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+//        id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-45344419-1"];
+////        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
+////                                                              action:@"app_load"  // Event action (required)
+////                                                               label:@"App Loading"          // Event label
+////                                                               value:nil] build]];    // Event value
+////        [tracker setSessionStart:YES];
+//        
+//    });
+//    dispatch_release(googleQueue);
     return YES;
 }
 
@@ -50,6 +67,15 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+//    dispatch_async(googleQueue, ^{
+//        id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-45344419-1"];
+//        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
+//                                                              action:@"app_resume"  // Event action (required)
+//                                                               label:@"App Entering Foreground"          // Event label
+//                                                               value:nil] build]];
+//    });
+//    dispatch_release(googleQueue);
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

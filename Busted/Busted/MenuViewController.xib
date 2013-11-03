@@ -93,6 +93,11 @@
                                 <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="4v3-Hj-QAn"/>
                             </connections>
                         </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreenImage.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="q6G-Cx-tDy">
+                            <rect key="frame" x="314" y="49" width="8" height="520"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.47870757920000001" green="1" blue="0.40548823270000001" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -103,6 +108,7 @@
     <resources>
         <image name="aboutButton.png" width="49" height="49"/>
         <image name="aboutButtonHighlighted.png" width="49" height="49"/>
+        <image name="aboutScreenImage.jpg" width="6" height="439"/>
         <image name="backGroundMenu.jpg" width="320" height="568"/>
         <image name="myDestinationButton.png" width="320" height="129"/>
         <image name="myFavoriteButton.png" width="320" height="123"/>

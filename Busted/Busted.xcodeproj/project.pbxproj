@@ -51,6 +51,13 @@
 		042109271819FBE4004539B4 /* stops.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109231819FBE4004539B4 /* stops.png */; };
 		042109281819FBE4004539B4 /* stops@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 042109241819FBE4004539B4 /* stops@2x.png */; };
 		0421092A181A043E004539B4 /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04210929181A043E004539B4 /* Stop@2x.png */; };
+		043439391825658B00FAB62E /* full-starblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 043439371825658B00FAB62E /* full-starblack.png */; };
+		0434393A1825658B00FAB62E /* full-starblack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043439381825658B00FAB62E /* full-starblack@2x.png */; };
+		0434393E182570C800FAB62E /* sendingzoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434393D182570C800FAB62E /* sendingzoom@2x.png */; };
+		043439401825784700FAB62E /* sendingzoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434393F1825784700FAB62E /* sendingzoom.png */; };
+		0434394218257A1800FAB62E /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434394118257A1800FAB62E /* Stop.png */; };
+		04343A061825C26F00FAB62E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */; };
+		04343A0E1825C30F00FAB62E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04343A0D1825C30F00FAB62E /* libz.dylib */; };
 		0447EBDE17FA4A5B00A91D60 /* StopDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */; };
 		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
 		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
@@ -167,6 +174,12 @@
 		04E9588817F6340900DD72AD /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9587E17F6340900DD72AD /* AFXMLRequestOperation.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588917F6340900DD72AD /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E9588017F6340900DD72AD /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		04E9588B17F6347A00DD72AD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E9588A17F6347A00DD72AD /* MobileCoreServices.framework */; };
+		04F5961518245F57009AFB70 /* empty-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5960F18245F57009AFB70 /* empty-star.png */; };
+		04F5961618245F57009AFB70 /* empty-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5961018245F57009AFB70 /* empty-star@2x.png */; };
+		04F5961718245F57009AFB70 /* empty-starblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5961118245F57009AFB70 /* empty-starblack.png */; };
+		04F5961818245F57009AFB70 /* empty-starblack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5961218245F57009AFB70 /* empty-starblack@2x.png */; };
+		04F5961918245F57009AFB70 /* full-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5961318245F57009AFB70 /* full-star.png */; };
+		04F5961A18245F57009AFB70 /* full-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F5961418245F57009AFB70 /* full-star@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +230,19 @@
 		042109231819FBE4004539B4 /* stops.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stops.png; sourceTree = "<group>"; };
 		042109241819FBE4004539B4 /* stops@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stops@2x.png"; sourceTree = "<group>"; };
 		04210929181A043E004539B4 /* Stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop@2x.png"; sourceTree = "<group>"; };
+		043439371825658B00FAB62E /* full-starblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-starblack.png"; sourceTree = "<group>"; };
+		043439381825658B00FAB62E /* full-starblack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-starblack@2x.png"; sourceTree = "<group>"; };
+		0434393D182570C800FAB62E /* sendingzoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sendingzoom@2x.png"; sourceTree = "<group>"; };
+		0434393F1825784700FAB62E /* sendingzoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendingzoom.png; sourceTree = "<group>"; };
+		0434394118257A1800FAB62E /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
+		043439B11825C26F00FAB62E /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		043439B21825C26F00FAB62E /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		043439B31825C26F00FAB62E /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		043439B41825C26F00FAB62E /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		043439B51825C26F00FAB62E /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		043439B61825C26F00FAB62E /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		04343A0D1825C30F00FAB62E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0447EBDB17FA4A5B00A91D60 /* StopDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopDisplayViewController.h; sourceTree = "<group>"; };
 		0447EBDC17FA4A5B00A91D60 /* StopDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopDisplayViewController.m; sourceTree = "<group>"; };
 		0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopDisplayViewController.xib; sourceTree = "<group>"; };
@@ -378,6 +404,12 @@
 		04E9587F17F6340900DD72AD /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		04E9588017F6340900DD72AD /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		04E9588A17F6347A00DD72AD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		04F5960F18245F57009AFB70 /* empty-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-star.png"; sourceTree = "<group>"; };
+		04F5961018245F57009AFB70 /* empty-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-star@2x.png"; sourceTree = "<group>"; };
+		04F5961118245F57009AFB70 /* empty-starblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-starblack.png"; sourceTree = "<group>"; };
+		04F5961218245F57009AFB70 /* empty-starblack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-starblack@2x.png"; sourceTree = "<group>"; };
+		04F5961318245F57009AFB70 /* full-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-star.png"; sourceTree = "<group>"; };
+		04F5961418245F57009AFB70 /* full-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-star@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,14 +417,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04343A0E1825C30F00FAB62E /* libz.dylib in Frameworks */,
+				04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */,
 				046D31F018233ECC0038B3E3 /* MessageUI.framework in Frameworks */,
 				04E3E9051821DF7E00A12F0A /* Social.framework in Frameworks */,
 				047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */,
 				04E9588B17F6347A00DD72AD /* MobileCoreServices.framework in Frameworks */,
-				04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */,
 				04C7C2DF17E4F3D3001A9981 /* QuartzCore.framework in Frameworks */,
 				04C7C2C617E4A47C001A9981 /* CoreLocation.framework in Frameworks */,
 				04C7C2C417E4A474001A9981 /* MapKit.framework in Frameworks */,
+				04343A061825C26F00FAB62E /* libGoogleAnalyticsServices.a in Frameworks */,
 				04C7C27A17E3D7D9001A9981 /* UIKit.framework in Frameworks */,
 				04C7C27C17E3D7D9001A9981 /* Foundation.framework in Frameworks */,
 				04C7C27E17E3D7D9001A9981 /* CoreGraphics.framework in Frameworks */,
@@ -454,6 +488,7 @@
 			children = (
 				04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */,
 				04210929181A043E004539B4 /* Stop@2x.png */,
+				0434394118257A1800FAB62E /* Stop.png */,
 				0419022E1800C93C00D79040 /* backGroundOnMyWay@2x.jpg */,
 				0419022F1800C93C00D79040 /* downToUp@2x.png */,
 				041902301800C93C00D79040 /* onMyWay@2x.png */,
@@ -506,6 +541,27 @@
 			path = MapPage;
 			sourceTree = "<group>";
 		};
+		043439841825C26F00FAB62E /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				043439B01825C26F00FAB62E /* Library */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		043439B01825C26F00FAB62E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				043439B11825C26F00FAB62E /* GAI.h */,
+				043439B21825C26F00FAB62E /* GAIDictionaryBuilder.h */,
+				043439B31825C26F00FAB62E /* GAIFields.h */,
+				043439B41825C26F00FAB62E /* GAILogger.h */,
+				043439B51825C26F00FAB62E /* GAITrackedViewController.h */,
+				043439B61825C26F00FAB62E /* GAITracker.h */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		0447EBE017FA512C00A91D60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +596,8 @@
 		04C7C26D17E3D7D9001A9981 = {
 			isa = PBXGroup;
 			children = (
+				043439841825C26F00FAB62E /* GoogleAnalytics */,
+				043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */,
 				04C7C2EA17E5029E001A9981 /* Icon@2x.png */,
 				04C7C2E817E50288001A9981 /* Icon.png */,
 				04C7C27F17E3D7D9001A9981 /* Busted */,
@@ -559,6 +617,7 @@
 		04C7C27817E3D7D9001A9981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04343A0D1825C30F00FAB62E /* libz.dylib */,
 				046D31EF18233ECC0038B3E3 /* MessageUI.framework */,
 				04E3E9041821DF7E00A12F0A /* Social.framework */,
 				047443F417F74EBB00436B4B /* CoreData.framework */,
@@ -730,6 +789,16 @@
 				042109241819FBE4004539B4 /* stops@2x.png */,
 				04C56767181743BD00D04131 /* MenuStarOff.png */,
 				04C56768181743BD00D04131 /* MenuStarOff@2x.png */,
+				04F5960F18245F57009AFB70 /* empty-star.png */,
+				04F5961018245F57009AFB70 /* empty-star@2x.png */,
+				04F5961118245F57009AFB70 /* empty-starblack.png */,
+				04F5961218245F57009AFB70 /* empty-starblack@2x.png */,
+				0434393D182570C800FAB62E /* sendingzoom@2x.png */,
+				0434393F1825784700FAB62E /* sendingzoom.png */,
+				04F5961318245F57009AFB70 /* full-star.png */,
+				04F5961418245F57009AFB70 /* full-star@2x.png */,
+				043439371825658B00FAB62E /* full-starblack.png */,
+				043439381825658B00FAB62E /* full-starblack@2x.png */,
 				042109191819C1AA004539B4 /* bus-number.png */,
 				0421091A1819C1AA004539B4 /* bus-number@2x.png */,
 				04C56769181743BD00D04131 /* MenuStarOn.png */,
@@ -851,10 +920,13 @@
 				041902701800E14500D79040 /* upToDownButton@2x.png in Resources */,
 				04C7C2C217E4A1B9001A9981 /* MapViewController.xib in Resources */,
 				04C7C2D817E4BE5E001A9981 /* Bus Stops.kml in Resources */,
+				043439401825784700FAB62E /* sendingzoom.png in Resources */,
 				04C5676D181743BD00D04131 /* MenuStarOn.png in Resources */,
+				04F5961618245F57009AFB70 /* empty-star@2x.png in Resources */,
 				041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
 				042109281819FBE4004539B4 /* stops@2x.png in Resources */,
+				04F5961718245F57009AFB70 /* empty-starblack.png in Resources */,
 				041902481800C93C00D79040 /* backGroundMenu@2x.jpg in Resources */,
 				041902631800C93C00D79040 /* submitButton@2x.png in Resources */,
 				04D13F4C181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg in Resources */,
@@ -864,10 +936,12 @@
 				041902531800C93C00D79040 /* sending1.png in Resources */,
 				04C7C2DA17E4BE5E001A9981 /* sample.plist in Resources */,
 				04785CE4180F51E10024A61B /* RoutesViewControllerSmall.xib in Resources */,
+				04F5961A18245F57009AFB70 /* full-star@2x.png in Resources */,
 				04C5676B181743BD00D04131 /* MenuStarOff.png in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
 				046D31ED182334700038B3E3 /* mailButton.png in Resources */,
+				04F5961518245F57009AFB70 /* empty-star.png in Resources */,
 				0419024B1800C93C00D79040 /* trackMyBusButton@2x.png in Resources */,
 				042109261819FBE4004539B4 /* routes@2x.png in Resources */,
 				046D31E818231C0E0038B3E3 /* BusRouteCollectionViewControllerSmall.xib in Resources */,
@@ -876,6 +950,7 @@
 				04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */,
 				04C7C2E517E5024C001A9981 /* Icon-Small@2x.png in Resources */,
 				04C7C2E917E50288001A9981 /* Icon.png in Resources */,
+				04F5961818245F57009AFB70 /* empty-starblack@2x.png in Resources */,
 				0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */,
@@ -891,6 +966,7 @@
 				041902561800C93C00D79040 /* sending@2x.png in Resources */,
 				04785CE6180F54060024A61B /* TrackViewControllerSmall.xib in Resources */,
 				04785CDE180F48940024A61B /* MenuViewControllerSmall.xib in Resources */,
+				04F5961918245F57009AFB70 /* full-star.png in Resources */,
 				0419025B1800C93C00D79040 /* homeButton@2x.png in Resources */,
 				04785CE2180F4E4D0024A61B /* MapViewControllerSmall.xib in Resources */,
 				04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */,
@@ -907,8 +983,10 @@
 				0421091C1819C1AA004539B4 /* bus-number@2x.png in Resources */,
 				041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */,
 				04E115461818B63900EF8DFD /* StopDisplayViewControllerSmall.xib in Resources */,
+				0434393E182570C800FAB62E /* sendingzoom@2x.png in Resources */,
 				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
+				0434393A1825658B00FAB62E /* full-starblack@2x.png in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,
 				0419024E1800C93C00D79040 /* introImage1@2x.jpg in Resources */,
 				0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */,
@@ -917,12 +995,14 @@
 				04C5676C181743BD00D04131 /* MenuStarOff@2x.png in Resources */,
 				0421091B1819C1AA004539B4 /* bus-number.png in Resources */,
 				0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */,
+				0434394218257A1800FAB62E /* Stop.png in Resources */,
 				046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */,
 				04E3E8F61821D1B800A12F0A /* twitterButton.png in Resources */,
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,
 				048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */,
 				041902551800C93C00D79040 /* sending3.png in Resources */,
+				043439391825658B00FAB62E /* full-starblack.png in Resources */,
 				041902541800C93C00D79040 /* sending2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1071,7 +1151,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/aeisses/Personal/IOS/Busted/Busted/GoogleAnalytics/Library,
+					/Users/aeisses/Personal/IOS/Busted/Busted,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1094,7 +1176,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/aeisses/Personal/IOS/Busted/Busted/GoogleAnalytics/Library,
+					/Users/aeisses/Personal/IOS/Busted/Busted,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -44,20 +44,29 @@ static id instance;
 - (void)dealloc
 {
     if (_annotations) {
+        [_mapView removeAnnotations:_annotations];
         [_annotations release];
         _annotations = nil;
     }
     if (_route) {
+//        [_mapView removeOverlays:_route.lines];
         [_route release];
         _route = nil;
     }
     if (_stops) {
+        [_mapView removeAnnotations:_stops];
         [_stops release];
         _stops = nil;
+    }
+    if (_currentLocation)
+    {
+        [_currentLocation release];
+        _currentLocation = nil;
     }
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;
+    [_favoriteButton release]; _favoriteButton = nil;
     [super dealloc];
 }
 
@@ -255,6 +264,7 @@ static id instance;
         } else {
             annotationView.annotation = annotation;
         }
+        bus = nil;
         return annotationView;
     }
     else if ([annotation isKindOfClass:[BusStop class]])
@@ -274,6 +284,7 @@ static id instance;
 //            annotationView.rightCalloutAccessoryView = nil;
 //        }
         annotationView.enabled = YES;
+        bus = nil;
         return annotationView;
     }
     return nil;
@@ -316,6 +327,7 @@ static id instance;
     stopsVC.superDelegate = self;
     [_delegate loadViewController:stopsVC];
     [stopsVC release];
+    stopsVC = nil;
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
