@@ -45,6 +45,16 @@
                         <action selector="touchButton:" destination="-1" eventType="touchDown" id="77e-j3-gBD"/>
                     </connections>
                 </button>
+                <button autoresizesSubviews="NO" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fJu-QS-41B">
+                    <rect key="frame" x="265" y="62" width="49" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="aboutButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchButton:" destination="-1" eventType="touchUpInside" id="r9T-QQ-Tjl"/>
+                    </connections>
+                </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0WN-zd-KVe">
                     <rect key="frame" x="0.0" y="265" width="320" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -65,16 +75,6 @@
                     </state>
                     <connections>
                         <action selector="touchButton:" destination="-1" eventType="touchDown" id="wt2-c5-JOi"/>
-                    </connections>
-                </button>
-                <button autoresizesSubviews="NO" opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fJu-QS-41B">
-                    <rect key="frame" x="265" y="62" width="49" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="aboutButton.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="touchButton:" destination="-1" eventType="touchUpInside" id="r9T-QQ-Tjl"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutScreenImage.jpg" id="OsO-WJ-gTb">

@@ -90,6 +90,7 @@
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
         mapVC.superDelegate = self;
+        mapVC.currentLocation = _trackVC.currentLocation;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:vc animated:YES];
         });

@@ -18,24 +18,49 @@
 - (void)updatePoint;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
+- (void)sendLocationToServer;
 @end
 
 @implementation TrackViewController
 
-- (NSString *)uuidString {
-    // Returns a UUID
-    
-    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
-    NSString *uuidStr = (NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
-    CFRelease(uuid);
-    
-    return [uuidStr autorelease];
+static id instance;
+
++ (TrackViewController*)sharedInstance
+{
+    if (!instance) {
+        if (IS_IPHONE_5)
+        {
+            return [[[TrackViewController alloc] initWithNibName:@"TrackViewController" bundle:nil] autorelease];
+        } else {
+            return [[[TrackViewController alloc] initWithNibName:@"TrackViewControllerSmall" bundle:nil] autorelease];
+        }
+    }
+    return instance;
 }
+
+//- (NSString *)uuidString {
+//    // Returns a UUID
+//    
+//    CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+//    NSString *uuidStr = (NSString *)CFUUIDCreateString(kCFAllocatorDefault, uuid);
+//    CFRelease(uuid);
+//    
+//    return [uuidStr autorelease];
+//}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        if (_locationManager == nil)
+        {
+            _locationManager = [[CLLocationManager alloc] init];
+            _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+//            _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            _locationManager.delegate = self;
+        }
+        [_locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -74,18 +99,11 @@
     _swipeUp.isAccessibilityElement = YES;
     _swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
     _swipeUp.enabled = NO;
-    isTracking = NO;
+    _isTracking = NO;
     _trackButton.selected = NO;
     _sendingImage.hidden = YES;
 //    _sendingImage.hidden = YES;
-    if (_locationManager == nil)
-    {
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.desiredAccuracy =
-        kCLLocationAccuracyNearestTenMeters;
-        _locationManager.delegate = self;
-    }
-    [_locationManager startUpdatingLocation];
+
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     [displayLink setFrameInterval:15];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
@@ -94,7 +112,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    if (isTracking) {
+    if (_isTracking) {
         _sendingImage.hidden = NO;
         _sendingZoom.hidden = NO;
     } else {
@@ -103,7 +121,7 @@
         currentRoute = 0;
     }
     
-    _trackButton.selected = isTracking;
+    _trackButton.selected = _isTracking;
     [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
 //    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
@@ -151,10 +169,10 @@
 
 - (IBAction)touchTrackButton:(id)sender
 {
-    if (_trackButton.selected && isTracking)
+    if (_trackButton.selected && _isTracking)
     {
         _trackButton.selected = NO;
-        isTracking = NO;
+        _isTracking = NO;
         _sendingImage.hidden = YES;
         _sendingZoom.hidden = YES;
         currentFrame = 0;
@@ -204,7 +222,7 @@
         NSHTTPURLResponse *response;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         if ([response statusCode] != 201) {
-            isTracking = NO;
+            _isTracking = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
@@ -214,7 +232,7 @@
                 [alert release];
             });
         } else {
-            isTracking = YES;
+            _isTracking = YES;
             dispatch_async(dispatch_get_main_queue(), ^{
                 _sendingImage.hidden = NO;
                 _sendingZoom.hidden = NO;
@@ -237,69 +255,73 @@
     dispatch_release(networkQueue);
 }
 
-- (void)updatePoint
+- (void)sendLocationToServer
 {
-    if (isTracking)
-    {
-        __block NSString *blockLocationString = _locationString;
-        __block CLLocation *blockCurrentLocation = _currentLocation;
-        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-        dispatch_async(networkQueue, ^{
-            NSError *error = nil;
-            NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
-                                        [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"lat",
-                                        [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"lng", nil];
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
-            [info release];
-            NSString *urlStr = [[NSString alloc] initWithString:blockLocationString];
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-            [urlStr release];
-            [request setHTTPMethod:@"POST"];
-            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-            [request setHTTPBody:jsonData];
-            NSHTTPURLResponse *response;
-            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-
-            if (!isTracking)
-            {
-                jsonData = nil;
-                request = nil;
-                response = nil;
-                return;
-            }
-            if ([response statusCode] != 200) {
-                isTracking = NO;
-                startTrackingTime = [NSDate date];
-//                dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//                dispatch_async(googleQueue, ^{
-//                    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
-//                                                                                                       interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
-//                                                                                                           name:@"Tracking ended"
-//                                                                                                          label:@"Tacking Stopped"] build]];
-//                });
-//                dispatch_release(googleQueue);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    _trackButton.selected = NO;
-                    _sendingImage.hidden = YES;
-                    _sendingZoom.hidden = YES;
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having  sometrouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                    [alert show];
-                    [alert release];
-                });
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _sendingZoom.frame = [[frames objectAtIndex:currentFrame] CGRectValue];
-            });
-            currentFrame++;
-            if (currentFrame >= [frames count])
-            {
-                currentFrame = 0;
-            }
+    __block NSString *blockLocationString = _locationString;
+    __block CLLocation *blockCurrentLocation = _currentLocation;
+    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(networkQueue, ^{
+        NSError *error = nil;
+        NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
+                              [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"lat",
+                              [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"lng", nil];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+        [info release];
+        NSString *urlStr = [[NSString alloc] initWithString:blockLocationString];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+        [urlStr release];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:jsonData];
+        NSHTTPURLResponse *response;
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        if (!_isTracking)
+        {
             jsonData = nil;
             request = nil;
             response = nil;
+            return;
+        }
+        if ([response statusCode] != 200) {
+            _isTracking = NO;
+            startTrackingTime = [NSDate date];
+            //                dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
+            //                dispatch_async(googleQueue, ^{
+            //                    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
+            //                                                                                                       interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
+            //                                                                                                           name:@"Tracking ended"
+            //                                                                                                          label:@"Tacking Stopped"] build]];
+            //                });
+            //                dispatch_release(googleQueue);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                _trackButton.selected = NO;
+                _sendingImage.hidden = YES;
+                _sendingZoom.hidden = YES;
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having  sometrouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                [alert show];
+                [alert release];
+            });
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _sendingZoom.frame = [[frames objectAtIndex:currentFrame] CGRectValue];
         });
-        dispatch_release(networkQueue);
+        currentFrame++;
+        if (currentFrame >= [frames count])
+        {
+            currentFrame = 0;
+        }
+        jsonData = nil;
+        request = nil;
+        response = nil;
+    });
+    dispatch_release(networkQueue);
+}
+- (void)updatePoint
+{
+    if (_isTracking)
+    {
+        [self sendLocationToServer];
     }
 }
 
@@ -309,7 +331,11 @@
         [_currentLocation release]; _currentLocation = nil;
     }
     _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
-    NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
+    if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
+    {
+        [self sendLocationToServer];
+    }
+//    NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
 }
 
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture

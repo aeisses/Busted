@@ -8,7 +8,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingScreenViewController">
             <connections>
                 <outlet property="animationImage" destination="rTN-pr-mpf" id="WSJ-Wo-c2Y"/>
-                <outlet property="backGroundImage" destination="Jzg-JR-AqW" id="ADB-kE-Ra9"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -17,10 +16,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Default.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Jzg-JR-AqW">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="introImage1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rTN-pr-mpf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -31,7 +26,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Default.jpg" width="320" height="34"/>
         <image name="introImage1.jpg" width="320" height="568"/>
     </resources>
 </document>

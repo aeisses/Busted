@@ -82,9 +82,9 @@ static id instance;
 
 - (void)viewDidLoad
 {
-    dispatch_queue_t loadingThread  = dispatch_queue_create("network queue", NULL);
-    dispatch_async(loadingThread, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_queue_t loadingThread  = dispatch_queue_create("network queue", NULL);
+//    dispatch_async(loadingThread, ^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
             [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
             [_mapView removeOverlays:_mapView.overlays];
             [_mapView removeAnnotations:_mapView.annotations];
@@ -107,9 +107,9 @@ static id instance;
             _mapView.scrollEnabled = YES;
             _mapView.zoomEnabled = YES;
             [self.view bringSubviewToFront:_homeButton];
-        });
-    });
-    dispatch_release(loadingThread);
+//        });
+//    });
+//    dispatch_release(loadingThread);
 //    if (!_isStops)
 //    {
 //        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
@@ -144,6 +144,7 @@ static id instance;
                 [_stops addObject:stop];
             }
         }
+//        [_mapView setNeedsDisplay];
     }
 }
 
@@ -157,9 +158,9 @@ static id instance;
         displayLink = nil;
         [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_route.shortName];
     }
-    [_mapView removeOverlays:_mapView.overlays];
-    [_mapView removeAnnotations:_mapView.annotations];
-    [_mapView removeFromSuperview];
+//    [_mapView removeOverlays:_mapView.overlays];
+//    [_mapView removeAnnotations:_mapView.annotations];
+//    [_mapView removeFromSuperview];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
@@ -334,6 +335,7 @@ static id instance;
     stopsVC.superDelegate = self;
     [_delegate loadViewController:stopsVC];
     [stopsVC release];
+    view.selected = NO;
     stopsVC = nil;
 }
 
