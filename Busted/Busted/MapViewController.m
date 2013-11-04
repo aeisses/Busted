@@ -103,6 +103,12 @@ static id instance;
                     [_stops release];
                 _stops = [[NSMutableArray alloc] initWithCapacity:0];
                 _favoriteButton.hidden = YES;
+                if (_currentLocation)
+                {
+                    [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+                } else {
+                    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+                }
             }
             _mapView.scrollEnabled = YES;
             _mapView.zoomEnabled = YES;
@@ -130,12 +136,6 @@ static id instance;
         [displayLink setFrameInterval:15];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
-        if (_currentLocation)
-        {
-            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
-        } else {
-            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
-        }
         for (BusStop *stop in [WebApiInterface sharedInstance].stops)
         {
             if ([stop isInsideSquare:_mapView.region])

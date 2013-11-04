@@ -105,10 +105,12 @@
         dispatch_release(menuQueue);
 //        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //        dispatch_async(googleQueue, ^{
-//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                                action:@"viewload"
-//                                                                                                 label:@"Routes View Load"
-//                                                                                                 value:nil] build]];
+//            NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"UI"
+//                                                                                 action:@"buttonPress"
+//                                                                                  label:@"dispatch"
+//                                                                                  value:nil] build];
+//            [[GAI sharedInstance].defaultTracker send:event];
+//            [[GAI sharedInstance] dispatch];
 //        });
 //        dispatch_release(googleQueue);
     } else if (button.tag == 2) {

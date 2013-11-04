@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BustedNavigationController.h"
 #import "ViewController.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,5 +21,6 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) id<GAITracker> tracker;
 
 @end

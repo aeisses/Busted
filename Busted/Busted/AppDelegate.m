@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
 #import "TrackViewController.h"
 
 @implementation AppDelegate
@@ -16,6 +14,9 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+
+static NSString *const kTrackingId = @"UA-45344419-1";
+static NSString *const kAllowTracking = @"allowTracking";
 
 - (void)dealloc
 {
@@ -38,16 +39,22 @@
     
 //    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //    dispatch_async(googleQueue, ^{
-////        [GAI sharedInstance].trackUncaughtExceptions = YES;
-////        [GAI sharedInstance].dispatchInterval = 20;
-//        [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-//        id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-45344419-1"];
-////        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
-////                                                              action:@"app_load"  // Event action (required)
-////                                                               label:@"App Loading"          // Event label
-////                                                               value:nil] build]];    // Event value
-////        [tracker setSessionStart:YES];
-//        
+        NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+        [GAI sharedInstance].trackUncaughtExceptions = YES;
+        [GAI sharedInstance].dispatchInterval = 120;
+//        [GAI sharedInstance].dryRun = YES;
+//       [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+//        _tracker = [[GAI sharedInstance] trackerWithName:@"KNOWtime" trackingId:@"UA-45344419-1"];
+
+        //trackerWithTrackingId:@"UA-45344419-1"];
+//        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
+//                                                              action:@"app_load"  // Event action (required)
+//                                                               label:@"App Loading"          // Event label
+//                                                               value:nil] build]];    // Event value
+//        [tracker setSessionStart:YES];
+        
 //    });
 //    dispatch_release(googleQueue);
     return YES;
@@ -86,6 +93,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
     [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
 }
 
