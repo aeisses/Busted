@@ -257,6 +257,7 @@ static id instance;
 
 - (void)sendLocationToServer
 {
+    NSLog(@"Hello");
     __block NSString *blockLocationString = _locationString;
     __block CLLocation *blockCurrentLocation = _currentLocation;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);

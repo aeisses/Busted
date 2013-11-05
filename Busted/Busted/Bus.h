@@ -13,9 +13,8 @@
 
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (retain, nonatomic) NSString *UUID;
-@property (readwrite) NSInteger busNumber;
-@property (readwrite) double timeToNextStop;
+@property (copy, nonatomic) NSString *subtitle;
+@property (nonatomic, readonly) NSInteger num;
 
-- (id)initWithBusNumber:(NSInteger)num UUDID:(NSString*)uuid latitude:(float)lat longitude:(float)longi timeToNextStop:(double)timeToNextStop;
+- (id)initWithBusNumber:(NSInteger)num latitude:(float)lat longitude:(float)lng timeToNextStop:(NSString*)timeToNextStop nextStopNumber:(NSInteger)nextStop;
 @end

@@ -46,6 +46,7 @@
 #define HEADSIGNS @"headsigns/"
 #define USERS   @"users/"
 #define NEW     @"new/"
+#define ESTIMATE @"estimates/"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSMutableArray *busStops;

@@ -18,8 +18,9 @@
 #import "macros.h"
 #import "BusStop.h"
 #import "MyRoute.h"
+#import "WebApiInterface.h"
 
-#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
+//#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
 @protocol MapViewControllerDelegate <NSObject>
 - (void)mapFinishedLoading;

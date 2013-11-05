@@ -133,7 +133,7 @@ static id instance;
     if (_isStops)
     {
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-        [displayLink setFrameInterval:15];
+        [displayLink setFrameInterval:120];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
         for (BusStop *stop in [WebApiInterface sharedInstance].stops)
@@ -165,13 +165,13 @@ static id instance;
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
-    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:SERVERHOSTNAME];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
         // TODO: Might still have some memory issues here....
         dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
         dispatch_async(networkQueue, ^{
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@",SERVERHOSTNAME,_route.shortName];
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
             NSError *error = nil;
@@ -181,13 +181,17 @@ static id instance;
                 if (!error) {
                     NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
                     for (NSDictionary *dic in json) {
-                        Bus *bus = [[Bus alloc] initWithBusNumber:[(NSNumber*)[dic objectForKey:@"busNumber"] integerValue]
-                                                            UUDID:[dic objectForKey:@"uuid"]
-                                                         latitude:[(NSNumber*)[dic objectForKey:@"latitude"] floatValue]
-                                                        longitude:[(NSNumber*)[dic objectForKey:@"longitude"] floatValue]
-                                                   timeToNextStop:0];
-                        [myAnnotations addObject:bus];
-                        [bus release];
+                        NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
+                        if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue])
+                        {
+                            Bus *bus = [[Bus alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
+                                                             latitude:44.64745 // [(NSNumber*)[location objectForKey:@"lat"] floatValue]
+                                                            longitude:-63.601491 //[(NSNumber*)[location objectForKey:@"lng"] floatValue]
+                                                       timeToNextStop:[dic valueForKey:@"estimateArrival"]
+                                                       nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
+                            [myAnnotations addObject:bus];
+                            [bus release];
+                        }
                     }
                     json = nil;
                     if (_annotations) {
@@ -262,12 +266,12 @@ static id instance;
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[Bus class]]) {
         Bus *bus = (Bus*)annotation;
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:bus.UUID];
+        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]];
         if (annotationView == nil) {
-            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:bus.UUID] autorelease];
+            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]] autorelease];
             annotationView.enabled = YES;
-            annotationView.canShowCallout = NO;
-            NSString *imageName = @"dot0.png";
+            annotationView.canShowCallout = YES;
+            NSString *imageName = @"bus-icon.png";
             annotationView.image = [UIImage imageNamed:imageName];//here we use a nice image instead of the default pins
         } else {
             annotationView.annotation = annotation;

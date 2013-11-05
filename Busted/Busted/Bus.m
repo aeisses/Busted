@@ -10,21 +10,38 @@
 
 @implementation Bus
 
-- (id)initWithBusNumber:(NSInteger)num UUDID:(NSString*)uuid latitude:(float)lat longitude:(float)longi timeToNextStop:(double)timeToNextStop
+- (id)initWithBusNumber:(NSInteger)num latitude:(float)lat longitude:(float)lng timeToNextStop:(NSString*)timeToNextStop nextStopNumber:(NSInteger)nextStop
 {
     if (self = [super init])
     {
-        _UUID = [uuid retain];
-        _title = [[NSString alloc] initWithFormat:@"%i",num];
-        _coordinate = CLLocationCoordinate2DMake(lat, longi);
+        _num = num;
+        if (![timeToNextStop isEqualToString:@""]) {
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+            NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
+            [currentTimeFormatter setDateFormat:@"YYYY-MM-dd"];
+            NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],timeToNextStop]];
+            int diff = [stopDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
+            _title = [[NSString alloc] initWithFormat:@"%i mins",diff];
+            [formatter release];
+            [currentTimeFormatter release];
+        } else {
+            _title = @"";
+        }
+        if (!nextStop == 0) {
+            _subtitle = [[NSString alloc] initWithFormat:@"Next Stop: %i",nextStop];
+        } else {
+            _subtitle = @"";
+        }
+        _coordinate = CLLocationCoordinate2DMake(lat, lng);
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [_UUID release];
-    [_title release];
+    [_subtitle release]; _subtitle = nil;
+    [_title release]; _title = nil;
     [super dealloc];
 }
 @end
