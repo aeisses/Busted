@@ -12,6 +12,7 @@
 #import "WebApiInterface.h"
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
+#import "RegionZoomData.h"
 
 @interface TrackViewController (PrivateMethods)
 - (void)frameIntervalLoop:(CADisplayLink *)sender;
@@ -201,6 +202,20 @@ static id instance;
     [super dealloc];
 }
 
+- (BOOL)isCurrentLocaitonInHRM
+{
+    if (_currentLocation)
+    {
+        if (_currentLocation.coordinate.latitude >= (HRM_LATITUDE - HRM_LATITUDE_DELTA/2) &&
+            _currentLocation.coordinate.latitude <= (HRM_LATITUDE + HRM_LATITUDE_DELTA/2) &&
+            _currentLocation.coordinate.longitude >= (HRM_LONGITUDE - HRM_LONGITUDE_DELTA/2) &&
+            _currentLocation.coordinate.longitude <= (HRM_LONGITUDE + HRM_LONGITUDE_DELTA/2)) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 - (IBAction)touchTrackButton:(id)sender
 {
     if (_trackButton.selected && _isTracking)
@@ -219,15 +234,21 @@ static id instance;
 //        });
 //        dispatch_release(googleQueue);
     } else {
-        if (IS_IPHONE_5)
-        {
-            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+        if ([self isCurrentLocaitonInHRM]) {
+            if (IS_IPHONE_5)
+            {
+                _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
+            } else {
+                _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
+            }
+            _trackButton.selected = YES;
+            _collection.delegate = self;
+            [self presentViewController:_collection animated:YES completion:^{}];
         } else {
-            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to be in Halifax Regional Municipality to send data." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
         }
-        _trackButton.selected = YES;
-        _collection.delegate = self;
-        [self presentViewController:_collection animated:YES completion:^{}];
     }
 }
 
