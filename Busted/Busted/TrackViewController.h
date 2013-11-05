@@ -19,6 +19,7 @@
 @interface TrackViewController : UIViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
 {
     CADisplayLink *displayLink;
+    CADisplayLink *sendingLink;
     NSString *uudi;
     NSInteger currentRoute;
     int currentFrame;

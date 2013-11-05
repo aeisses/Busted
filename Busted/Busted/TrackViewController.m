@@ -15,6 +15,7 @@
 
 @interface TrackViewController (PrivateMethods)
 - (void)frameIntervalLoop:(CADisplayLink *)sender;
+- (void)sendingIntervalLoop:(CADisplayLink *)sender;
 - (void)updatePoint;
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations;
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
@@ -105,7 +106,37 @@ static id instance;
 //    _sendingImage.hidden = YES;
 
     displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
-    [displayLink setFrameInterval:15];
+    sendingLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(sendingIntervalLoop:)];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
+    if (remoteHostStatus.currentReachabilityStatus != NotReachable)
+    {
+        NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@",SANGSTERBASEURL,@"pollrate"];
+        NSURL *url = [[NSURL alloc] initWithString:urlStr];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSError *error = nil;
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        if (!error) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+            if (!error) {
+                float rate = [(NSNumber*)[json objectForKey:@"rate"] floatValue];
+                if (rate != 0)
+                {
+                    [displayLink setFrameInterval:rate*60];
+                } else {
+                    [displayLink setFrameInterval:600];
+                }
+            } else {
+                [displayLink setFrameInterval:600];
+            }
+        } else {
+            [displayLink setFrameInterval:600];
+        }
+        [urlStr release];
+        [url release];
+        [request release];
+    }
+    [sendingLink setFrameInterval:15];
+    [sendingLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [super viewDidLoad];
 }
@@ -152,6 +183,9 @@ static id instance;
     [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [displayLink invalidate];
     [displayLink release]; displayLink = nil;
+    [sendingLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [sendingLink invalidate];
+    [sendingLink release]; sendingLink = nil;
     [_trackButton release]; _trackButton = nil;
     [_locationManager release]; _locationManager = nil;
     [_sendingImage release]; _sendingImage = nil;
@@ -203,6 +237,21 @@ static id instance;
 }
 
 #pragma Private Methods
+- (void)sendingIntervalLoop:(CADisplayLink *)sender
+{
+    if (_isTracking)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _sendingZoom.frame = [[frames objectAtIndex:currentFrame] CGRectValue];
+        });
+        currentFrame++;
+        if (currentFrame >= [frames count])
+        {
+            currentFrame = 0;
+        }
+    }
+}
+
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
     [self updatePoint];
@@ -239,6 +288,10 @@ static id instance;
                 _trackButton.selected = YES;
             });
             NSDictionary *header = response.allHeaderFields;
+            if (_locationString) {
+                [_locationString release];
+                _locationString = nil;
+            }
             _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
 //            dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
 //            dispatch_async(googleQueue, ^{
@@ -257,7 +310,6 @@ static id instance;
 
 - (void)sendLocationToServer
 {
-    NSLog(@"Hello");
     __block NSString *blockLocationString = _locationString;
     __block CLLocation *blockCurrentLocation = _currentLocation;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
@@ -282,6 +334,7 @@ static id instance;
             jsonData = nil;
             request = nil;
             response = nil;
+            error  = nil;
             return;
         }
         if ([response statusCode] != 200) {
@@ -304,20 +357,13 @@ static id instance;
                 [alert release];
             });
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _sendingZoom.frame = [[frames objectAtIndex:currentFrame] CGRectValue];
-        });
-        currentFrame++;
-        if (currentFrame >= [frames count])
-        {
-            currentFrame = 0;
-        }
         jsonData = nil;
         request = nil;
         response = nil;
     });
     dispatch_release(networkQueue);
 }
+
 - (void)updatePoint
 {
     if (_isTracking)

@@ -45,7 +45,6 @@
     [imageView release];
     
     [self.view addSubview:_collectionView];
-    [_collectionView release];
     [super viewDidLoad];
 }
 
@@ -66,6 +65,11 @@
         [_routes release];
         _routes = nil;
     }
+    _collectionView.delegate = nil;
+    _collectionView.dataSource = nil;
+    [_collectionView removeFromSuperview];
+    [_collectionView release]; _collectionView = nil;
+    [_exitButton release]; _exitButton = nil;
     _delegate = nil;
     [super dealloc];
 }

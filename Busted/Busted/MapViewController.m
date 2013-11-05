@@ -43,13 +43,15 @@ static id instance;
 
 - (void)dealloc
 {
+    [_mapView removeOverlays:_mapView.overlays];
+    [_mapView removeAnnotations:_mapView.annotations];
+    [_mapView removeFromSuperview];
     if (_annotations) {
         [_mapView removeAnnotations:_annotations];
         [_annotations release];
         _annotations = nil;
     }
     if (_route) {
-//        [_mapView removeOverlays:_route.lines];
         [_route release];
         _route = nil;
     }
@@ -133,7 +135,7 @@ static id instance;
     if (_isStops)
     {
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-        [displayLink setFrameInterval:120];
+        [displayLink setFrameInterval:60];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     } else {
         for (BusStop *stop in [WebApiInterface sharedInstance].stops)
@@ -158,9 +160,6 @@ static id instance;
         displayLink = nil;
         [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_route.shortName];
     }
-//    [_mapView removeOverlays:_mapView.overlays];
-//    [_mapView removeAnnotations:_mapView.annotations];
-//    [_mapView removeFromSuperview];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
@@ -194,16 +193,22 @@ static id instance;
                         }
                     }
                     json = nil;
-                    if (_annotations) {
-                        [_mapView removeAnnotations:_annotations];
-                        _annotations = nil;
+                    if ([myAnnotations count] == 0)
+                    {
+                        [myAnnotations release];
+                        myAnnotations = nil;
+                    } else {
+                        if (_annotations) {
+                            [_mapView removeAnnotations:_annotations];
+                            _annotations = nil;
+                        }
+                        _annotations = [[NSArray alloc] initWithArray:myAnnotations];
+                        [myAnnotations release];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [_mapView addAnnotations:_annotations];
+                            [_mapView setNeedsDisplay]; // This might not be needed
+                        });
                     }
-                    _annotations = [[NSArray alloc] initWithArray:myAnnotations];
-                    [myAnnotations release];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [_mapView addAnnotations:_annotations];
-                        [_mapView setNeedsDisplay]; // This might not be needed
-                    });
                 }
             }
             [request release];

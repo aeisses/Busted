@@ -509,6 +509,8 @@ static id instance;
         stop.isFavorite = [NSNumber numberWithBool:favorite];
         [context save:nil];
     }
+    fetchedObject = nil;
+    context = nil;
 }
 
 - (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName
@@ -526,6 +528,9 @@ static id instance;
         route.isFavorite = [NSNumber numberWithBool:favorite];
         [context save:nil];
     }
+    fetchedObject = nil;
+    context = nil;
+    shortName = nil;
 }
 
 - (Stop*)getStopForCode:(NSNumber*)code
