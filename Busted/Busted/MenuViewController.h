@@ -38,4 +38,6 @@
 
 - (IBAction)touchButton:(id)sender;
 - (IBAction)touchTrackButton:(id)sender;
+- (void)showTrackingAlert;
+
 @end

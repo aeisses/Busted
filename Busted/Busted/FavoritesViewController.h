@@ -11,6 +11,7 @@
 
 @protocol FavoritesViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;
+- (NSArray*)getRoutes;
 @end
 
 @interface FavoritesViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate,ParentViewControllerDelegate,MapViewControllerDelegate>

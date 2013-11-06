@@ -137,6 +137,7 @@ static id instance;
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
         [displayLink setFrameInterval:60];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        _favoriteButton.selected = _route.isFavorite;
     } else {
         for (BusStop *stop in [WebApiInterface sharedInstance].stops)
         {

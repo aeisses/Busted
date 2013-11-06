@@ -19,6 +19,7 @@
 #import "BusStop.h"
 #import "MyRoute.h"
 #import "WebApiInterface.h"
+#import "Routes.h"
 
 //#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -46,7 +47,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
 
 + (MapViewController*)sharedInstance;
-- (void)addRoute:(BusRoute*)route;
+- (void)addRoute:(MyRoute*)route;
 - (void)addStops:(NSArray*)stops;
 - (void)loadStopsForLocation;
 - (void)addStop:(BusStop*)busStop;

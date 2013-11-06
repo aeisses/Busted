@@ -8,8 +8,7 @@
 
 #import "MenuViewController.h"
 #import "WebApiInterface.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "Flurry.h"
 
 @interface MenuViewController (PrivateMethods)
 - (void)disableButton;
@@ -63,6 +62,13 @@
     }
 }
 
+- (void)showTrackingAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Crowd Sourcing" message:@"KNOWtime runs on crowd power: This app works best when users share the location of the bus they’re riding. Touch the button at the top of the screen to help your fellow transit users and join the KNOWtime community." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     self.swipeRight.enabled = NO;
@@ -70,6 +76,11 @@
     self.swipeUp.enabled = NO;
     self.swipeDown.enabled = YES;
     _aboutView.hidden = NO;
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"alert"]) {
+        [self showTrackingAlert];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"alert"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -103,16 +114,7 @@
             [rootsVC release];
         });
         dispatch_release(menuQueue);
-//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//        dispatch_async(googleQueue, ^{
-//            NSMutableDictionary *event = [[GAIDictionaryBuilder createEventWithCategory:@"UI"
-//                                                                                 action:@"buttonPress"
-//                                                                                  label:@"dispatch"
-//                                                                                  value:nil] build];
-//            [[GAI sharedInstance].defaultTracker send:event];
-//            [[GAI sharedInstance] dispatch];
-//        });
-//        dispatch_release(googleQueue);
+        [Flurry logEvent:@"Routes_Button_Pressed"];
     } else if (button.tag == 2) {
         dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
         dispatch_async(menuQueue, ^{
@@ -129,14 +131,7 @@
             [_delegate loadViewController:_mapVC];
         });
         dispatch_release(menuQueue);
-//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//        dispatch_async(googleQueue, ^{
-//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                                action:@"viewload"
-//                                                                                                 label:@"Stops View Load"
-//                                                                                                 value:nil] build]];
-//        });
-//        dispatch_release(googleQueue);
+        [Flurry logEvent:@"Stops_Button_Pressed"];
     } else if (button.tag == 3) {
         dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
         dispatch_async(menuQueue, ^{
@@ -154,14 +149,7 @@
             [favVC release];
         });
         dispatch_release(menuQueue);
-//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//        dispatch_async(googleQueue, ^{
-//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                                                        action:@"viewload"
-//                                                                                                                         label:@"Favorites View Load"
-//                                                                                                                         value:nil] build]];
-//        });
-//        dispatch_release(googleQueue);
+        [Flurry logEvent:@"Favorites_Button_Pressed"];
     } else if (button.tag == 4) {
         if (isAboutScreenVisible)
         {
@@ -179,6 +167,7 @@
                 isAboutScreenVisible = NO;
             }];
         } else {
+            [Flurry logEvent:@"Abouts_Button_Pressed"];
             [self disableButton];
             [UIView animateWithDuration:0.50 animations:^{
                 if (IS_IPHONE_5)
@@ -199,6 +188,7 @@
 - (IBAction)touchTrackButton:(id)sender
 {
     [self.superDelegate swipe:self.swipeDown];
+    [Flurry logEvent:@"Track_Button_Pressed"];
 }
 
 - (void)dealloc

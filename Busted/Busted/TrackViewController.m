@@ -10,8 +10,7 @@
 #import "Routes.h"
 #import "macros.h"
 #import "WebApiInterface.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "Flurry.h"
 #import "RegionZoomData.h"
 
 @interface TrackViewController (PrivateMethods)
@@ -156,14 +155,7 @@ static id instance;
     _trackButton.selected = _isTracking;
     [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
-//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//    dispatch_async(googleQueue, ^{
-//        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                            action:@"viewshow"
-//                                                                                             label:@"Tracking View Shown"
-//                                                                                             value:nil] build]];
-//    });
-//    dispatch_release(googleQueue);
+    [Flurry logEvent:@"Track_View_Did_Appear"];
     [super viewDidAppear:animated];
 }
 
@@ -225,14 +217,7 @@ static id instance;
         _sendingImage.hidden = YES;
         _sendingZoom.hidden = YES;
         currentFrame = 0;
-//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//        dispatch_async(googleQueue, ^{
-//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
-//                                                                                               interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
-//                                                                                                   name:@"Tracking ended"
-//                                                                                                  label:@"Tacking Stopped"] build]];
-//        });
-//        dispatch_release(googleQueue);
+        [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
     } else {
         if ([self isCurrentLocaitonInHRM]) {
             if (IS_IPHONE_5)
@@ -314,14 +299,8 @@ static id instance;
                 _locationString = nil;
             }
             _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
-//            dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//            dispatch_async(googleQueue, ^{
-//                [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"tracking_action"
-//                                                                                                    action:@"tracking started"
-//                                                                                                     label:@"tracking started"
-//                                                                                                     value:[NSNumber numberWithInt:currentRoute]] build]];
-//            });
-//            dispatch_release(googleQueue);
+            NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",currentRoute], nil];
+            [Flurry logEvent:@"Tracking_Location_For_Route" withParameters:routesParams timed:YES];
         }
         request = nil;
         response = nil;
@@ -361,14 +340,7 @@ static id instance;
         if ([response statusCode] != 200) {
             _isTracking = NO;
             startTrackingTime = [NSDate date];
-            //                dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-            //                dispatch_async(googleQueue, ^{
-            //                    [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createTimingWithCategory:@"ui_action"
-            //                                                                                                       interval:[NSNumber numberWithDouble:[startTrackingTime timeIntervalSinceNow]]
-            //                                                                                                           name:@"Tracking ended"
-            //                                                                                                          label:@"Tacking Stopped"] build]];
-            //                });
-            //                dispatch_release(googleQueue);
+            [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
@@ -402,6 +374,11 @@ static id instance;
     if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
     {
         [self sendLocationToServer];
+    }
+    else if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
+    {
+        [Flurry setBackgroundSessionEnabled:NO];
+        [_locationManager stopUpdatingLocation];
     }
 //    NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
 }

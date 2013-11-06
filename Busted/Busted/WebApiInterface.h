@@ -57,14 +57,15 @@
 - (NSArray*)requestAllRoutes;
 - (void)fetchAllRoutes;
 - (void)fetchAllStops;
-- (void)requestStop:(NSInteger)stop;
+//- (void)requestStop:(NSInteger)stop;
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate;
-- (void)requestStopsForRegion:(MKCoordinateRegion)region;
+//- (void)requestStopsForRegion:(MKCoordinateRegion)region;
 - (NSArray*)getFavoriteStops;
 - (NSArray*)getFavoriteRoutes;
 - (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
 - (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
 - (Stop*)getStopForCode:(NSNumber*)code;
+- (Routes*)getRouteForShortName:(NSString*)shortName;
 - (void)getRouteForIdent:(NSNumber*)ident;
 - (void)getInformationForStop:(NSNumber*)stop;
 - (void)loadPathForRoute:(NSString*)shortName;

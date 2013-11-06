@@ -192,23 +192,48 @@
 //        _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadViewController:_mapVC];
+        NSArray *routesArray = [self getBusRoutes];
+        MyRoute *myRoute = [[MyRoute alloc] init];
+        myRoute.shortName = routeName;
+        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:myRoute]]];
+        [myRoute release];
+//        [_mapVC addRoute:route];
+
 //        _mapVC.delegate = nil;
         [_mapVC release];
     }
 }
 
+- (NSArray*)getBusRoutes
+{
+    NSArray *routes = [_delegate getRoutes];
+    NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
+    //    int counter = 0;
+    for (Routes *route in routes)
+    {
+        MyRoute *myRoute = [[MyRoute alloc] init];
+        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        NSNumber *number = [numberFormatter numberFromString:route.shortName];
+        if (number != nil) {
+            myRoute.ident = [route.shortName integerValue];
+        } else {
+            //            myRoute.ident = counter + 10000;
+            //            counter++;
+            [myRoute release];
+            continue;
+        }
+        myRoute.longName = route.longName;
+        myRoute.shortName = route.shortName;
+        myRoute.isFavorite = [route.isFavorite boolValue];
+        [routesM addObject:myRoute];
+        [myRoute release];
+    }
+    return [(NSArray*)routesM autorelease];
+}
+
 #pragma MapViewControllerDelegate
 - (void)mapFinishedLoading
 {
-//    if (routeName) {
-//        NSArray *routesArray = [[RoutesViewController sharedInstance] getBusRoutes];
-//        MyRoute *route = [[MyRoute alloc] init];
-//        route.shortName = routeName;
-//        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
-//        //        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
-//    }
-//    _mapVC.delegate = nil;
-//    [_mapVC release];
 }
 
 

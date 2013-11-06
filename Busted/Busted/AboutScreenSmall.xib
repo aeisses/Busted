@@ -49,7 +49,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click &quot;My Stops&quot; to review Halifax Metro Transit's schedule arrival times at each bus stop." lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="167" translatesAutoresizingMaskIntoConstraints="NO" id="t9J-ft-vRk">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click &quot;My Stops&quot; to review Halifax Metro Transit's scheduled arrival times at each bus stop." lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="167" translatesAutoresizingMaskIntoConstraints="NO" id="t9J-ft-vRk">
                     <rect key="frame" x="64" y="225" width="167" height="104"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
@@ -96,6 +96,8 @@
     </objects>
     <resources>
         <image name="aboutScreenSmall.jpg" width="241" height="438"/>
+        <image name="explaination.png" width="28" height="60"/>
+        <image name="explaination.png" width="28" height="60"/>
         <image name="explaination.png" width="28" height="60"/>
         <image name="facebookButton.png" width="24" height="24"/>
         <image name="mailButton.png" width="24" height="24"/>

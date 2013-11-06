@@ -14,8 +14,7 @@
 #import "RouteWithTime.h"
 #import "StopTimes.h"
 #import "StopsHeader.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "Flurry.h"
 
 @interface StopDisplayViewController ()
 
@@ -63,14 +62,8 @@ static id instance;
     }
     _busStop = [busStop retain];
     [[WebApiInterface sharedInstance] getRouteForIdent:_busStop.code];
-//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//    dispatch_async(googleQueue, ^{
-//        [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                            action:@"StopViewController"
-//                                                                                             label:busStop.title
-//                                                                                             value:busStop.code] build]];
-//    });
-//    dispatch_release(googleQueue);
+    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",[_busStop.code integerValue]], nil];
+    [Flurry logEvent:@"Stops_View_Button_Pressed" withParameters:routesParams];
 }
 
 - (void)viewDidLoad

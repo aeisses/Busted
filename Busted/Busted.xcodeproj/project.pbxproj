@@ -56,7 +56,6 @@
 		0434393E182570C800FAB62E /* sendingzoom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434393D182570C800FAB62E /* sendingzoom@2x.png */; };
 		043439401825784700FAB62E /* sendingzoom.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434393F1825784700FAB62E /* sendingzoom.png */; };
 		0434394218257A1800FAB62E /* Stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 0434394118257A1800FAB62E /* Stop.png */; };
-		04343A061825C26F00FAB62E /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */; };
 		04343A0E1825C30F00FAB62E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04343A0D1825C30F00FAB62E /* libz.dylib */; };
 		04343A111825D74C00FAB62E /* introImage1Small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04343A0F1825D74C00FAB62E /* introImage1Small@2x.jpg */; };
 		04343A121825D74C00FAB62E /* introImage2Small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04343A101825D74C00FAB62E /* introImage2Small@2x.jpg */; };
@@ -67,6 +66,9 @@
 		0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBDD17FA4A5B00A91D60 /* StopDisplayViewController.xib */; };
 		0447EBE217FA514300A91D60 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0447EBE117FA514300A91D60 /* TableCell.xib */; };
 		0447EBE617FA519600A91D60 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0447EBE517FA519600A91D60 /* TableCell.m */; };
+		044EE46B1829B09500685CEE /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */; };
+		044EE46D1829B0DD00685CEE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46C1829B0DD00685CEE /* Security.framework */; };
+		044EE46F1829B0E900685CEE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46E1829B0E900685CEE /* AdSupport.framework */; };
 		04602CE017EF6BBB002BE30D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CDF17EF6BBB002BE30D /* Reachability.m */; };
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		04602CE617EF809E002BE30D /* LoadingScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04602CE417EF809E002BE30D /* LoadingScreenViewController.m */; };
@@ -93,8 +95,6 @@
 		049393D1182075BB00B5F92A /* RouteWithTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D0182075BB00B5F92A /* RouteWithTime.m */; };
 		049393D41820761400B5F92A /* StopTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D31820761400B5F92A /* StopTimes.m */; };
 		049393D718208A1200B5F92A /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D618208A1200B5F92A /* Path.m */; };
-		049497061827299E00FC44D3 /* libGoogleAnalytics_debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 049497051827299E00FC44D3 /* libGoogleAnalytics_debug.a */; };
-		0494970818272C1800FC44D3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0494970718272C1800FC44D3 /* Settings.bundle */; };
 		04B06095181F14870082C29B /* busStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06093181F14870082C29B /* busStop.png */; };
 		04B06096181F14870082C29B /* busStop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06094181F14870082C29B /* busStop@2x.png */; };
 		04B9202417F396C50063E384 /* WebApiInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9202317F396C50063E384 /* WebApiInterface.m */; };
@@ -242,13 +242,6 @@
 		0434393D182570C800FAB62E /* sendingzoom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sendingzoom@2x.png"; sourceTree = "<group>"; };
 		0434393F1825784700FAB62E /* sendingzoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendingzoom.png; sourceTree = "<group>"; };
 		0434394118257A1800FAB62E /* Stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stop.png; sourceTree = "<group>"; };
-		043439B11825C26F00FAB62E /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		043439B21825C26F00FAB62E /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
-		043439B31825C26F00FAB62E /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
-		043439B41825C26F00FAB62E /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
-		043439B51825C26F00FAB62E /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		043439B61825C26F00FAB62E /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		04343A0D1825C30F00FAB62E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		04343A0F1825D74C00FAB62E /* introImage1Small@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introImage1Small@2x.jpg"; sourceTree = "<group>"; };
 		04343A101825D74C00FAB62E /* introImage2Small@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introImage2Small@2x.jpg"; sourceTree = "<group>"; };
@@ -261,6 +254,10 @@
 		0447EBE117FA514300A91D60 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
 		0447EBE417FA519600A91D60 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		0447EBE517FA519600A91D60 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		044EE4691829B09500685CEE /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
+		044EE46C1829B0DD00685CEE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		044EE46E1829B0E900685CEE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		04602CDE17EF6BBB002BE30D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		04602CDF17EF6BBB002BE30D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -295,8 +292,6 @@
 		049393D31820761400B5F92A /* StopTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTimes.m; sourceTree = "<group>"; };
 		049393D518208A1200B5F92A /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		049393D618208A1200B5F92A /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
-		049497051827299E00FC44D3 /* libGoogleAnalytics_debug.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics_debug.a; sourceTree = "<group>"; };
-		0494970718272C1800FC44D3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		04B06093181F14870082C29B /* busStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = busStop.png; sourceTree = "<group>"; };
 		04B06094181F14870082C29B /* busStop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "busStop@2x.png"; sourceTree = "<group>"; };
 		04B9202217F396C50063E384 /* WebApiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebApiInterface.h; sourceTree = "<group>"; };
@@ -431,8 +426,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044EE46F1829B0E900685CEE /* AdSupport.framework in Frameworks */,
+				044EE46D1829B0DD00685CEE /* Security.framework in Frameworks */,
 				04343A0E1825C30F00FAB62E /* libz.dylib in Frameworks */,
 				04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */,
+				044EE46B1829B09500685CEE /* libFlurry_4.3.0.a in Frameworks */,
 				046D31F018233ECC0038B3E3 /* MessageUI.framework in Frameworks */,
 				04E3E9051821DF7E00A12F0A /* Social.framework in Frameworks */,
 				047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */,
@@ -440,9 +438,7 @@
 				04C7C2DF17E4F3D3001A9981 /* QuartzCore.framework in Frameworks */,
 				04C7C2C617E4A47C001A9981 /* CoreLocation.framework in Frameworks */,
 				04C7C2C417E4A474001A9981 /* MapKit.framework in Frameworks */,
-				04343A061825C26F00FAB62E /* libGoogleAnalyticsServices.a in Frameworks */,
 				04C7C27A17E3D7D9001A9981 /* UIKit.framework in Frameworks */,
-				049497061827299E00FC44D3 /* libGoogleAnalytics_debug.a in Frameworks */,
 				04C7C27C17E3D7D9001A9981 /* Foundation.framework in Frameworks */,
 				04C7C27E17E3D7D9001A9981 /* CoreGraphics.framework in Frameworks */,
 				04C7C2C817E4BB16001A9981 /* KML.framework in Frameworks */,
@@ -561,28 +557,6 @@
 			path = MapPage;
 			sourceTree = "<group>";
 		};
-		043439841825C26F00FAB62E /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				043439B01825C26F00FAB62E /* Library */,
-			);
-			path = GoogleAnalytics;
-			sourceTree = "<group>";
-		};
-		043439B01825C26F00FAB62E /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				043439B11825C26F00FAB62E /* GAI.h */,
-				043439B21825C26F00FAB62E /* GAIDictionaryBuilder.h */,
-				043439B31825C26F00FAB62E /* GAIFields.h */,
-				043439B41825C26F00FAB62E /* GAILogger.h */,
-				043439B51825C26F00FAB62E /* GAITrackedViewController.h */,
-				043439B61825C26F00FAB62E /* GAITracker.h */,
-				049497051827299E00FC44D3 /* libGoogleAnalytics_debug.a */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
 		0447EBE017FA512C00A91D60 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -614,11 +588,19 @@
 			name = Nibs;
 			sourceTree = "<group>";
 		};
+		044EE4681829B09500685CEE /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				044EE4691829B09500685CEE /* Flurry.h */,
+				044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */,
+			);
+			path = Flurry;
+			sourceTree = "<group>";
+		};
 		04C7C26D17E3D7D9001A9981 = {
 			isa = PBXGroup;
 			children = (
-				043439841825C26F00FAB62E /* GoogleAnalytics */,
-				043439B91825C26F00FAB62E /* libGoogleAnalyticsServices.a */,
+				044EE4681829B09500685CEE /* Flurry */,
 				04C7C2EA17E5029E001A9981 /* Icon@2x.png */,
 				04C7C2E817E50288001A9981 /* Icon.png */,
 				04C7C27F17E3D7D9001A9981 /* Busted */,
@@ -638,6 +620,8 @@
 		04C7C27817E3D7D9001A9981 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				044EE46E1829B0E900685CEE /* AdSupport.framework */,
+				044EE46C1829B0DD00685CEE /* Security.framework */,
 				04343A0D1825C30F00FAB62E /* libz.dylib */,
 				046D31EF18233ECC0038B3E3 /* MessageUI.framework */,
 				04E3E9041821DF7E00A12F0A /* Social.framework */,
@@ -684,7 +668,6 @@
 				04C7C28217E3D7D9001A9981 /* InfoPlist.strings */,
 				04C7C28517E3D7D9001A9981 /* main.m */,
 				04C7C28717E3D7D9001A9981 /* Busted-Prefix.pch */,
-				0494970718272C1800FC44D3 /* Settings.bundle */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -946,7 +929,6 @@
 				043439401825784700FAB62E /* sendingzoom.png in Resources */,
 				04C5676D181743BD00D04131 /* MenuStarOn.png in Resources */,
 				04F5961618245F57009AFB70 /* empty-star@2x.png in Resources */,
-				0494970818272C1800FC44D3 /* Settings.bundle in Resources */,
 				041902601800C93C00D79040 /* routeButtonHighlighted@2x.png in Resources */,
 				04C7C2D917E4BE5E001A9981 /* Bus Routes.kml in Resources */,
 				042109281819FBE4004539B4 /* stops@2x.png in Resources */,
@@ -1182,6 +1164,7 @@
 					"$(SRCROOT)",
 					/Users/aeisses/Personal/IOS/Busted/Busted/GoogleAnalytics/Library,
 					/Users/aeisses/Personal/IOS/Busted/Busted,
+					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1207,6 +1190,7 @@
 					"$(SRCROOT)",
 					/Users/aeisses/Personal/IOS/Busted/Busted/GoogleAnalytics/Library,
 					/Users/aeisses/Personal/IOS/Busted/Busted,
+					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

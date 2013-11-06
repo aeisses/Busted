@@ -7,8 +7,7 @@
 //
 
 #import "RoutesViewController.h"
-#import "GAI.h"
-#import "GAIDictionaryBuilder.h"
+#import "Flurry.h"
 
 @interface RoutesViewController (PrivateMethods)
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture;
@@ -92,14 +91,8 @@ static id instance;
         _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
-//        dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//        dispatch_async(googleQueue, ^{
-//            [[[GAI sharedInstance] defaultTracker] send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action"
-//                                                                                                                        action:@"RouteViewController"
-//                                                                                                                         label:[NSString stringWithFormat:@"Route %@ Viewed",_routeButton.titleLabel.text]
-//                                                                                                                         value:nil] build]];
-//        });
-//        dispatch_release(googleQueue);
+        NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", _routeButton.titleLabel.text, nil];
+        [Flurry logEvent:@"Routes_View_Button_Pressed" withParameters:routesParams];
     }
 }
 

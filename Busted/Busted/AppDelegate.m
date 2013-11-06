@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TrackViewController.h"
+#import "Flurry.h"
 
 @implementation AppDelegate
 
@@ -37,26 +38,11 @@ static NSString *const kAllowTracking = @"allowTracking";
     [self.window makeKeyAndVisible];
     [rootView release];
     
-//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//    dispatch_async(googleQueue, ^{
-        NSDictionary *appDefaults = @{kAllowTracking: @(YES)};
-        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-        [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
-        [GAI sharedInstance].trackUncaughtExceptions = YES;
-        [GAI sharedInstance].dispatchInterval = 120;
-//        [GAI sharedInstance].dryRun = YES;
-//       [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
-//        _tracker = [[GAI sharedInstance] trackerWithName:@"KNOWtime" trackingId:@"UA-45344419-1"];
-
-        //trackerWithTrackingId:@"UA-45344419-1"];
-//        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
-//                                                              action:@"app_load"  // Event action (required)
-//                                                               label:@"App Loading"          // Event label
-//                                                               value:nil] build]];    // Event value
-//        [tracker setSessionStart:YES];
-        
-//    });
-//    dispatch_release(googleQueue);
+    [Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:FLURRY_API_KEY];
+    
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"alert"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 
@@ -73,28 +59,28 @@ static NSString *const kAllowTracking = @"allowTracking";
     if (![TrackViewController sharedInstance].isTracking)
     {
         [[TrackViewController sharedInstance].locationManager stopUpdatingLocation];
+    } else {
+        [Flurry setBackgroundSessionEnabled:YES];
     }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-//    dispatch_queue_t googleQueue  = dispatch_queue_create("google queue", NULL);
-//    dispatch_async(googleQueue, ^{
-//        id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-45344419-1"];
-//        [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"app_action"     // Event category (required)
-//                                                              action:@"app_resume"  // Event action (required)
-//                                                               label:@"App Entering Foreground"          // Event label
-//                                                               value:nil] build]];
-//    });
-//    dispatch_release(googleQueue);
+    if ([_navController.topViewController isKindOfClass:[MenuViewController class]])
+    {
+        [((MenuViewController*)_navController.topViewController) showTrackingAlert];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
-    [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
+//    [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
+    if ([TrackViewController sharedInstance].isTracking)
+    {
+        [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -332,46 +332,46 @@ static id instance;
     [contentUrl release];
 }
 
-- (void)requestStop:(NSInteger)stop
-{
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i%@%f%@", BASEURL, STOP, stop, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
-    NSURL *url = [[NSURL alloc] initWithString:contentUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-    {
-        NSManagedObjectContext *context = [self createNewManagedObjectContext];
-        if (![[(NSDictionary *)JSON valueForKey:@"stops"] count])
-            return;
-        NSDictionary *data = [[(NSDictionary *)JSON valueForKey:@"stops"] objectAtIndex:0];
-        int counter = 0;
-        for (BusStop *stop in [NSArray arrayWithArray:_busStops])
-        {
-            if ([[data valueForKey:@"code"] integerValue] == [stop.code integerValue])
-            {
-                BusStop *busStop = [[BusStop alloc] initWithCode:[self createStopRecordWithStop:data context:context]];
-                [context save:nil];
-                [[MapViewController sharedInstance].mapView removeAnnotation:stop];
-                [[MapViewController sharedInstance].mapView addAnnotation:busStop];
-                [_busStops replaceObjectAtIndex:counter withObject:busStop];
-                [busStop release];
-            }
-            counter++;
-        }
-    }
-                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
-    }];
-    [operation start];
-    [url release];
-    [contentUrl release];
-}
+//- (void)requestStop:(NSInteger)stop
+//{
+//    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i%@%f%@", BASEURL, STOP, stop, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
+//    NSURL *url = [[NSURL alloc] initWithString:contentUrl];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
+//                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
+//    {
+//        NSManagedObjectContext *context = [self createNewManagedObjectContext];
+//        if (![[(NSDictionary *)JSON valueForKey:@"stops"] count])
+//            return;
+//        NSDictionary *data = [[(NSDictionary *)JSON valueForKey:@"stops"] objectAtIndex:0];
+//        int counter = 0;
+//        for (BusStop *stop in [NSArray arrayWithArray:_busStops])
+//        {
+//            if ([[data valueForKey:@"code"] integerValue] == [stop.code integerValue])
+//            {
+//                BusStop *busStop = [[BusStop alloc] initWithCode:[self createStopRecordWithStop:data context:context]];
+//                [context save:nil];
+//                [[MapViewController sharedInstance].mapView removeAnnotation:stop];
+//                [[MapViewController sharedInstance].mapView addAnnotation:busStop];
+//                [_busStops replaceObjectAtIndex:counter withObject:busStop];
+//                [busStop release];
+//            }
+//            counter++;
+//        }
+//    }
+//                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
+//    {
+//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
+//                                                     message:[NSString stringWithFormat:@"%@",error]
+//                                                    delegate:nil
+//                                           cancelButtonTitle:@"OK"
+//                                           otherButtonTitles:nil];
+//        [av show];
+//    }];
+//    [operation start];
+//    [url release];
+//    [contentUrl release];
+//}
 
 - (void)requestPlace:(CLLocationCoordinate2D)coordinate
 {
@@ -412,37 +412,37 @@ static id instance;
     [contentUrl release];
 }
 
-- (void)requestStopsForRegion:(MKCoordinateRegion)region
-{
-    NSManagedObjectContext *context = [self createNewManagedObjectContext];
-    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = myEntity;
-    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-    [fetchRequest release];
-//    NSMutableArray *busStops = [[NSMutableArray alloc] initWithCapacity:0];
-    for (Stop *stop in fetchedObject)
-    {
-        CLLocationCoordinate2D northWestCorner, southEastCorner;
-        northWestCorner.latitude = region.center.latitude - (region.span.latitudeDelta / 2.0);
-        northWestCorner.longitude = region.center.longitude - (region.span.longitudeDelta / 2.0);
-        southEastCorner.latitude = region.center.latitude + (region.span.latitudeDelta / 2.0);
-        southEastCorner.longitude = region.center.longitude + (region.span.longitudeDelta / 2.0);
-        if ([stop.lat doubleValue] >= northWestCorner.latitude &&
-            [stop.lat doubleValue] <= southEastCorner.latitude &&
-            [stop.lng doubleValue] >= northWestCorner.longitude &&
-            [stop.lng doubleValue] <= southEastCorner.longitude)
-        {
-            BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInteger:[stop.code integerValue]]];
-            [_busStops addObject:busStop];
-            __block typeof(BusStop) *blockBusStop = busStop;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[MapViewController sharedInstance] addStop:blockBusStop];
-            });
-            [busStop release];
-        }
-    }
-}
+//- (void)requestStopsForRegion:(MKCoordinateRegion)region
+//{
+//    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+//    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
+//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+//    fetchRequest.entity = myEntity;
+//    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+//    [fetchRequest release];
+////    NSMutableArray *busStops = [[NSMutableArray alloc] initWithCapacity:0];
+//    for (Stop *stop in fetchedObject)
+//    {
+//        CLLocationCoordinate2D northWestCorner, southEastCorner;
+//        northWestCorner.latitude = region.center.latitude - (region.span.latitudeDelta / 2.0);
+//        northWestCorner.longitude = region.center.longitude - (region.span.longitudeDelta / 2.0);
+//        southEastCorner.latitude = region.center.latitude + (region.span.latitudeDelta / 2.0);
+//        southEastCorner.longitude = region.center.longitude + (region.span.longitudeDelta / 2.0);
+//        if ([stop.lat doubleValue] >= northWestCorner.latitude &&
+//            [stop.lat doubleValue] <= southEastCorner.latitude &&
+//            [stop.lng doubleValue] >= northWestCorner.longitude &&
+//            [stop.lng doubleValue] <= southEastCorner.longitude)
+//        {
+//            BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInteger:[stop.code integerValue]]];
+//            [_busStops addObject:busStop];
+//            __block typeof(BusStop) *blockBusStop = busStop;
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [[MapViewController sharedInstance] addStop:blockBusStop];
+//            });
+//            [busStop release];
+//        }
+//    }
+//}
 
 - (void)saveRawData:(NSDictionary *)item {
     NSLog(@"Saving raw data");
@@ -531,6 +531,22 @@ static id instance;
     fetchedObject = nil;
     context = nil;
     shortName = nil;
+}
+
+- (Routes*)getRouteForShortName:(NSString*)shortName
+{
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"shortName == %@",shortName];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    if ([fetchedObject count])
+    {
+        return (Routes*)[fetchedObject lastObject];
+    }
+    return nil;
 }
 
 - (Stop*)getStopForCode:(NSNumber*)code
