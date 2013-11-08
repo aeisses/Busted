@@ -97,8 +97,6 @@
     <resources>
         <image name="aboutScreenSmall.jpg" width="241" height="438"/>
         <image name="explaination.png" width="28" height="60"/>
-        <image name="explaination.png" width="28" height="60"/>
-        <image name="explaination.png" width="28" height="60"/>
         <image name="facebookButton.png" width="24" height="24"/>
         <image name="mailButton.png" width="24" height="24"/>
         <image name="twitterButton.png" width="24" height="24"/>
