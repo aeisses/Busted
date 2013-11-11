@@ -56,10 +56,10 @@ static NSString *const kAllowTracking = @"allowTracking";
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    if (![TrackViewController sharedInstance].isTracking)
+    if ([TrackViewController sharedInstance].isTracking)
     {
-        [[TrackViewController sharedInstance].locationManager stopUpdatingLocation];
-    } else {
+        [[TrackViewController sharedInstance].displayLink setPaused:YES];
+//        [[TrackViewController sharedInstance].locationManager startMonitoringSignificantLocationChanges];
         [Flurry setBackgroundSessionEnabled:YES];
     }
 }
@@ -67,9 +67,16 @@ static NSString *const kAllowTracking = @"allowTracking";
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    if ([_navController.topViewController isKindOfClass:[MenuViewController class]])
+    if ([_navController.topViewController isKindOfClass:[MenuViewController class]] && _navController.topViewController.presentedViewController == nil)
     {
         [((MenuViewController*)_navController.topViewController) showTrackingAlert];
+    }
+    if ([TrackViewController sharedInstance].isTracking)
+    {
+        [[TrackViewController sharedInstance].displayLink setPaused:NO];
+        [TrackViewController sharedInstance].backGroundTime = [NSDate date];
+//        [[TrackViewController sharedInstance].locationManager stopMonitoringSignificantLocationChanges];
+//        [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
     }
 }
 
@@ -77,10 +84,11 @@ static NSString *const kAllowTracking = @"allowTracking";
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 //    [GAI sharedInstance].optOut = ![[NSUserDefaults standardUserDefaults] boolForKey:kAllowTracking];
-    if ([TrackViewController sharedInstance].isTracking)
-    {
-        [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
-    }
+//    if ([TrackViewController sharedInstance].isTracking)
+//    {
+//        [[TrackViewController sharedInstance].displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+////        [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
+//    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

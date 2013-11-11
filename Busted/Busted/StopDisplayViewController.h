@@ -15,7 +15,7 @@
 @interface StopDisplayViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate>
 {
     CADisplayLink *displayLink;
-    NSMutableIndexSet *expandedSections;
+//    NSMutableIndexSet *expandedSections;
 }
 
 @property (retain, nonatomic) BusStop *busStop;

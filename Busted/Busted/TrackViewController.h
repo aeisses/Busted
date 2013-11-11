@@ -18,15 +18,16 @@
 
 @interface TrackViewController : UIViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
 {
-    CADisplayLink *displayLink;
     CADisplayLink *sendingLink;
     NSString *uudi;
     NSInteger currentRoute;
     int currentFrame;
     NSArray *frames;
     NSDate *startTrackingTime;
+    BOOL viewIsVisable;
 }
 
+@property (retain, nonatomic) CADisplayLink *displayLink;
 @property (retain, nonatomic) IBOutlet UIButton *trackButton;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UIImageView *sendingImage;
@@ -38,6 +39,7 @@
 @property (retain, nonatomic) UISwipeGestureRecognizer *swipeUp;
 @property (retain, nonatomic) NSString *locationString;
 @property (assign, nonatomic) BOOL isTracking;
+@property (retain, nonatomic) NSDate *backGroundTime;
 
 + (TrackViewController*)sharedInstance;
 - (IBAction)touchTrackButton:(id)sender;

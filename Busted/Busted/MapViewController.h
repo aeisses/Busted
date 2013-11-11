@@ -30,16 +30,18 @@
 - (void)loadViewController:(UIViewController*)vc;
 @end
 
-@interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate>
+@interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate,CLLocationManagerDelegate>
 {
     CADisplayLink *displayLink;
     BOOL skipLoop;
+    BOOL isStarting;
 }
 
 @property (retain, nonatomic) MyRoute *route;
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
+@property (retain, nonatomic) CLLocationManager *locationManager;
 @property (retain, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;

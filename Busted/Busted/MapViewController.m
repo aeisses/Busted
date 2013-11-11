@@ -37,6 +37,7 @@ static id instance;
     instance = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (instance) {
         // Custom initialization
+        isStarting = NO;
     }
     return instance;
 }
@@ -65,6 +66,10 @@ static id instance;
         [_currentLocation release];
         _currentLocation = nil;
     }
+    if (_locationManager)
+        [_locationManager release];
+    if (_currentLocation)
+        [_currentLocation release];
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;
@@ -91,6 +96,11 @@ static id instance;
 
 - (void)viewDidLoad
 {
+    _locationManager = [[CLLocationManager alloc] init];
+    //            _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
 //    dispatch_queue_t loadingThread  = dispatch_queue_create("network queue", NULL);
 //    dispatch_async(loadingThread, ^{
 //        dispatch_async(dispatch_get_main_queue(), ^{
@@ -112,12 +122,6 @@ static id instance;
                     [_stops release];
                 _stops = [[NSMutableArray alloc] initWithCapacity:0];
                 _favoriteButton.hidden = YES;
-                if (_currentLocation)
-                {
-                    [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
-                } else {
-                    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
-                }
             }
             _mapView.scrollEnabled = YES;
             _mapView.zoomEnabled = YES;
@@ -156,6 +160,12 @@ static id instance;
                 [_stops addObject:stop];
             }
         }
+        if (_currentLocation)
+        {
+            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+        } else {
+            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+        }
 //        [_mapView setNeedsDisplay];
     }
 }
@@ -170,6 +180,7 @@ static id instance;
         displayLink = nil;
         [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_route.shortName];
     }
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
@@ -423,4 +434,25 @@ static id instance;
     
 }
 
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if (_currentLocation) {
+        [_currentLocation release]; _currentLocation = nil;
+    }
+    _currentLocation =  [[locations objectAtIndex:[locations count]-1] retain];
+    if (isStarting)
+    {
+        [_mapView setCenterCoordinate:_currentLocation.coordinate animated:YES];
+        isStarting = NO;
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorized)
+    {
+        [_locationManager startUpdatingLocation];
+        isStarting = YES;
+    }
+}
 @end

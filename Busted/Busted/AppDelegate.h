@@ -13,6 +13,9 @@
 #define FLURRY_API_KEY @"3S4TY9QJ4PSNRJSDT377"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSTimer *backGroundTimer;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) BustedNavigationController *navController;

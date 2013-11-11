@@ -42,7 +42,7 @@ static id instance;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        expandedSections = [[NSMutableIndexSet alloc] init];
+//        expandedSections = [[NSMutableIndexSet alloc] init];
     }
     instance = self;
     return instance;
@@ -53,7 +53,7 @@ static id instance;
     _routes = [[NSArray alloc] initWithArray:routes];
     if (_routes && [_routes count] == 0)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"There are currently no buses routes in-service at this stop at the moment." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"There are currently no buses servicing this stop at the moment." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
         [alert show];
         [alert release];
     }
@@ -116,7 +116,7 @@ static id instance;
         [_routes release];
     if (_busStop)
         [_busStop release];
-    [expandedSections release];
+//    [expandedSections release];
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
     [_favoriteButton release]; _favoriteButton = nil;
@@ -133,19 +133,19 @@ static id instance;
     cell.routeNumber.text = route.shortName;
     cell.routeName.text = route.longName;
     cell.busStopCode = _busStop.code;
-    if ([expandedSections containsIndex:indexPath.row])
-    {
-        cell.downArrow.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
-        cell.time.hidden = NO;
-        cell.timeRemaining.hidden = NO;
-        cell.timeLable.hidden = NO;
-    } else {
-        cell.downArrow.layer.transform = CATransform3DMakeRotation(0, 0, 0, 1);
-        cell.time.hidden = YES;
-        cell.timeRemaining.hidden = YES;
-        cell.timeLable.hidden = YES;
-        return cell;
-    }
+//    if ([expandedSections containsIndex:indexPath.row])
+//    {
+//        cell.downArrow.layer.transform = CATransform3DMakeRotation(M_PI, 0, 0, 1);
+//        cell.time.hidden = NO;
+//        cell.timeRemaining.hidden = NO;
+//        cell.timeLable.hidden = NO;
+//    } else {
+//        cell.downArrow.layer.transform = CATransform3DMakeRotation(0, 0, 0, 1);
+//        cell.time.hidden = YES;
+//        cell.timeRemaining.hidden = YES;
+//        cell.timeLable.hidden = YES;
+//        return cell;
+//    }
     // This needs to be adjusted to the real time
     cell.time.text = @"unknown";
     cell.timeRemaining.text = @"unknown";
@@ -162,33 +162,36 @@ static id instance;
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
             minDiff = diff;
-            departTime = [NSString stringWithString:times.departure];
+            NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
+            [displayFormatter setDateFormat:@"h:mm"];
+//            departTime = [NSString stringWithString:times.departure];
+            departTime = [displayFormatter stringFromDate:stopDate];
         }
     }
     [formatter release];
     [currentTimeFormatter release];
-    cell.time.text = [NSString stringWithFormat:@"%i mins",(int)minDiff/60];
+    cell.time.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
     cell.timeRemaining.text = departTime;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([expandedSections containsIndex:indexPath.row])
-    {
-        [expandedSections removeIndex:indexPath.row];
-    } else {
-        [expandedSections addIndex:indexPath.row];
-    }
-    [tableView reloadData];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if ([expandedSections containsIndex:indexPath.row])
+//    {
+//        [expandedSections removeIndex:indexPath.row];
+//    } else {
+//        [expandedSections addIndex:indexPath.row];
+//    }
+//    [tableView reloadData];
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([expandedSections containsIndex:indexPath.row])
-    {
-        return 86;
-    }
+//    if ([expandedSections containsIndex:indexPath.row])
+//    {
+//        return 86;
+//    }
     return 43;
 }
 

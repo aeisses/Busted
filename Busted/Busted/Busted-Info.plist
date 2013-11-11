@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationUsageDescription</key>
+	<string>To provide bus stops around your current location and to send your location on the bus you are riding so other users can know where that bus is.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>

@@ -57,17 +57,21 @@ static id instance;
         if (_locationManager == nil)
         {
             _locationManager = [[CLLocationManager alloc] init];
-            _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-//            _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            _locationManager.distanceFilter = 1;
+//            _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+//            _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+            _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//            _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
             _locationManager.delegate = self;
         }
-        [_locationManager startUpdatingLocation];
     }
-    return self;
+    instance = self;
+    return instance;
 }
 
 - (void)viewDidLoad
 {
+    viewIsVisable = NO;
     int height = 215;
     if (IS_IPHONE_5)
     {
@@ -101,11 +105,12 @@ static id instance;
     _swipeUp.direction = (UISwipeGestureRecognizerDirectionUp);
     _swipeUp.enabled = NO;
     _isTracking = NO;
+    [_locationManager stopUpdatingLocation];
     _trackButton.selected = NO;
     _sendingImage.hidden = YES;
 //    _sendingImage.hidden = YES;
 
-    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     sendingLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(sendingIntervalLoop:)];
     Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
@@ -121,15 +126,15 @@ static id instance;
                 float rate = [(NSNumber*)[json objectForKey:@"rate"] floatValue];
                 if (rate != 0)
                 {
-                    [displayLink setFrameInterval:rate*60];
+                    [_displayLink setFrameInterval:rate*60];
                 } else {
-                    [displayLink setFrameInterval:600];
+                    [_displayLink setFrameInterval:600];
                 }
             } else {
-                [displayLink setFrameInterval:600];
+                [_displayLink setFrameInterval:600];
             }
         } else {
-            [displayLink setFrameInterval:600];
+            [_displayLink setFrameInterval:600];
         }
         [urlStr release];
         [url release];
@@ -137,12 +142,13 @@ static id instance;
     }
     [sendingLink setFrameInterval:15];
     [sendingLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    viewIsVisable = YES;
     if (_isTracking) {
         _sendingImage.hidden = NO;
         _sendingZoom.hidden = NO;
@@ -161,6 +167,7 @@ static id instance;
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    viewIsVisable = NO;
     [self.view removeGestureRecognizer:_swipeUp];
     [super viewDidDisappear:animated];
 }
@@ -173,9 +180,9 @@ static id instance;
 
 - (void)dealloc
 {
-    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [displayLink invalidate];
-    [displayLink release]; displayLink = nil;
+    [_displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [_displayLink invalidate];
+    [_displayLink release]; _displayLink = nil;
     [sendingLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [sendingLink invalidate];
     [sendingLink release]; sendingLink = nil;
@@ -214,26 +221,21 @@ static id instance;
     {
         _trackButton.selected = NO;
         _isTracking = NO;
+        [_locationManager stopUpdatingLocation];
         _sendingImage.hidden = YES;
         _sendingZoom.hidden = YES;
         currentFrame = 0;
         [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
     } else {
-        if ([self isCurrentLocaitonInHRM]) {
-            if (IS_IPHONE_5)
-            {
-                _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
-            } else {
-                _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
-            }
-            _trackButton.selected = YES;
-            _collection.delegate = self;
-            [self presentViewController:_collection animated:YES completion:^{}];
+        if (IS_IPHONE_5)
+        {
+            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRoutesCollectionViewController" bundle:nil];
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to be in Halifax Regional Municipality to send data." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
+            _collection = [[BusRoutesCollectionViewController alloc] initWithNibName:@"BusRouteCollectionViewControllerSmall" bundle:nil];
         }
+        _trackButton.selected = YES;
+        _collection.delegate = self;
+        [self presentViewController:_collection animated:YES completion:^{}];
     }
 }
 
@@ -278,6 +280,7 @@ static id instance;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         if ([response statusCode] != 201) {
             _isTracking = NO;
+            [_locationManager stopUpdatingLocation];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
@@ -288,6 +291,7 @@ static id instance;
             });
         } else {
             _isTracking = YES;
+            [_locationManager startUpdatingLocation];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _sendingImage.hidden = NO;
                 _sendingZoom.hidden = NO;
@@ -310,6 +314,21 @@ static id instance;
 
 - (void)sendLocationToServer
 {
+    if (![self isCurrentLocaitonInHRM]) {
+        if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive)
+        {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to be located in Halifax Regional Municipality, Nova Scotia Canada to send your location data to our server." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+        }
+        _isTracking = NO;
+        [_locationManager stopUpdatingLocation];
+        return;
+    }
+    if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive)
+    {
+        
+    }
     __block NSString *blockLocationString = _locationString;
     __block CLLocation *blockCurrentLocation = _currentLocation;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
@@ -340,15 +359,18 @@ static id instance;
         NSLog(@"Response StatusCode: %i",[response statusCode]);
         if ([response statusCode] != 200) {
             _isTracking = NO;
+            [_locationManager stopUpdatingLocation];
             startTrackingTime = [NSDate date];
             [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
                 _sendingZoom.hidden = YES;
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having  sometrouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                [alert show];
-                [alert release];
+                if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
+                }
             });
         }
         jsonData = nil;
@@ -375,13 +397,13 @@ static id instance;
     if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
     {
         [self sendLocationToServer];
+        if (_backGroundTime && [_backGroundTime timeIntervalSinceNow] > 1800.0)
+        {
+            [_locationManager stopUpdatingLocation];
+            [Flurry setBackgroundSessionEnabled:NO];
+            _backGroundTime = nil;
+        }
     }
-    else if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
-    {
-        [Flurry setBackgroundSessionEnabled:NO];
-        [_locationManager stopUpdatingLocation];
-    }
-//    NSLog(@"%f, %f", _currentLocation.coordinate.longitude, _currentLocation.coordinate.latitude);
 }
 
 - (void)swipe:(UISwipeGestureRecognizer*)swipeGesture
@@ -431,6 +453,18 @@ static id instance;
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;
     [_collection release];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusAuthorized)
+    {
+        if (viewIsVisable)
+        {
+            [_locationManager startUpdatingLocation];
+            _isTracking = YES;
+        }
+    }
 }
 
 @end
