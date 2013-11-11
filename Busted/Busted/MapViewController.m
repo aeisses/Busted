@@ -72,6 +72,13 @@ static id instance;
     [super dealloc];
 }
 
+- (void)showRouteAlert
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"This route is not in service at the moment." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
 - (IBAction)touchHomeButton:(id)sender
 {
     [self.superDelegate touchedHomeButton:NO];
@@ -126,12 +133,14 @@ static id instance;
 //        });
 //        dispatch_release(dataQueue);
 //    }
+    skipLoop = NO;
     [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [_mapView setShowsUserLocation:YES];
+    skipLoop =  NO;
     if (_isStops)
     {
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
@@ -165,6 +174,10 @@ static id instance;
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
+    if (skipLoop)
+    {
+        return;
+    }
     Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
@@ -182,11 +195,11 @@ static id instance;
                     NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
                     for (NSDictionary *dic in json) {
                         NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
-                        if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue])
+                        if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                         {
                             Bus *bus = [[Bus alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
-                                                             latitude:44.64745 // [(NSNumber*)[location objectForKey:@"lat"] floatValue]
-                                                            longitude:-63.601491 //[(NSNumber*)[location objectForKey:@"lng"] floatValue]
+                                                             latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
+                                                            longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
                                                        timeToNextStop:[dic valueForKey:@"estimateArrival"]
                                                        nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
                             [myAnnotations addObject:bus];
@@ -196,6 +209,12 @@ static id instance;
                     json = nil;
                     if ([myAnnotations count] == 0)
                     {
+                        skipLoop = YES;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                            [alert show];
+                            [alert release];
+                        });
                         [myAnnotations release];
                         myAnnotations = nil;
                     } else {
@@ -210,6 +229,14 @@ static id instance;
                             [_mapView setNeedsDisplay]; // This might not be needed
                         });
                     }
+                } else {
+                    skipLoop = YES;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
+                    });
                 }
             }
             [request release];

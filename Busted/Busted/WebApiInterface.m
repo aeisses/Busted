@@ -664,6 +664,8 @@ static id instance;
         if ([((NSArray*)JSON) count])
         {
             [self getPathForRouteId:[((NSDictionary*)[((NSArray*)JSON) firstObject]) valueForKey:@"routeId"]];
+        } else {
+            [[MapViewController sharedInstance] showRouteAlert];
         }
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)

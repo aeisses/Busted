@@ -85,7 +85,28 @@
     if (indexPath.section == 0)
     {
         Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
-        cell.name.text = stop.name;
+        NSError *error = nil;
+        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
+        if (!error)
+        {
+            NSArray *matches = [regexp matchesInString:stop.name options:0 range:NSMakeRange(0, [stop.name length])];
+            NSMutableString *street = [[NSMutableString alloc] initWithString:@""];
+            for (NSTextCheckingResult *match in matches)
+            {
+                NSRange matchRange = match.range;
+                if ([[stop.name substringWithRange:matchRange] isEqualToString:@"in"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"before"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"after"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"opposite"]) {
+                    break;
+                } else {
+                    [street appendString:[NSString stringWithFormat:@"%@ ",[stop.name substringWithRange:matchRange]]];
+                }
+            }
+            cell.name.text = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+        } else {
+            cell.name.text = stop.name;
+        }
         cell.number.text = stop.code;
         cell.favoriteButton.selected = [stop.isFavorite boolValue];
         cell.isStop = YES;

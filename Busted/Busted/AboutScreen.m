@@ -50,6 +50,7 @@
             } //check if everythink worked properly. Give out a message on the state.
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alert show];
+            [alert release];
         }];
         [_delegate showSocialMedia:mySLComposerSheet];
     }
@@ -76,6 +77,7 @@
             } //check if everythink worked properly. Give out a message on the state.
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alert show];
+            [alert release];
         }];
         [_delegate showSocialMedia:mySLComposerSheet];
     }

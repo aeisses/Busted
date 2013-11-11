@@ -30,7 +30,7 @@
 
 - (void)dealloc
 {
-    [_goTimeNumber release]; _goTimeNumber = nil;
+//    [_goTimeNumber release]; _goTimeNumber = nil;
     [_title release]; _title = nil;
     [super dealloc];
 }

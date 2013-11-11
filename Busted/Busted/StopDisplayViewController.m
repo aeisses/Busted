@@ -51,6 +51,12 @@ static id instance;
 - (void)setRoutes:(NSArray*)routes
 {
     _routes = [[NSArray alloc] initWithArray:routes];
+    if (_routes && [_routes count] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"There are currently no buses routes in-service at this stop at the moment." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
     [_tableView reloadData];
 }
 
@@ -199,8 +205,8 @@ static id instance;
     NSArray *nibObjects = [[NSArray alloc] initWithArray:[[NSBundle mainBundle] loadNibNamed:@"StopsHeader" owner:self options:nil]];
     StopsHeader *stopsHeader = [nibObjects objectAtIndex:0];
     [nibObjects release];
-    stopsHeader.goTimeNumber.text = [NSString stringWithFormat:@"%@",_busStop.code];
-    stopsHeader.title.text = _busStop.title;
+//    stopsHeader.goTimeNumber.text = [NSString stringWithFormat:@"%@",_busStop.code];
+    stopsHeader.title.text = _busStop.longTitle;
     return stopsHeader;
 }
 

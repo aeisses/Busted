@@ -33,6 +33,7 @@
 @interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate>
 {
     CADisplayLink *displayLink;
+    BOOL skipLoop;
 }
 
 @property (retain, nonatomic) MyRoute *route;
@@ -53,5 +54,6 @@
 - (void)addStop:(BusStop*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
 - (IBAction)touchFavoriteButton:(id)sender;
+- (void)showRouteAlert;
 
 @end

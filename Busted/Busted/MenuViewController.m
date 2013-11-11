@@ -64,7 +64,7 @@
 
 - (void)showTrackingAlert
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Crowd Sourcing" message:@"KNOWtime runs on crowd power: This app works best when users share the location of the bus they’re riding. Touch the button at the top of the screen to help your fellow transit users and join the KNOWtime community." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"KNOWtime Runs on Crowd Power" message:@"This app works best when users share the location of the bus they’re riding. Touch the button at the top of the screen to help your fellow transit users and join the KNOWtime community." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
     [alert show];
     [alert release];
 }

@@ -21,7 +21,37 @@
         Stop *stop = [[WebApiInterface sharedInstance] getStopForCode:_code];
         _isFavorite = [stop.isFavorite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
-        _title = [stop.name copy];
+        NSError *error = nil;
+        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
+        if (!error)
+        {
+            NSArray *matches = [regexp matchesInString:stop.name options:0 range:NSMakeRange(0, [stop.name length])];
+            NSMutableString *street = [[NSMutableString alloc] initWithString:@""];
+            for (NSTextCheckingResult *match in matches)
+            {
+                NSRange matchRange = match.range;
+                if ([[stop.name substringWithRange:matchRange] isEqualToString:@"in"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"before"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"after"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"opposite"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"after"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[southbound]"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[inbound]"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[northbound]"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[outbound]"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[westbound]"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[eastbound]"]) {
+                    break;
+                } else {
+                    [street appendString:[NSString stringWithFormat:@"%@ ",[stop.name substringWithRange:matchRange]]];
+                }
+            }
+            _title = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+            _longTitle = [stop.name copy];
+        } else {
+            _title = @"";
+            _longTitle = @"";
+        }
 /*        _routes = [stop.routes retain];
         if ([stop.routes count] == 0)
         {
@@ -47,7 +77,38 @@
         _code = [stop.code copy];
         _isFavorite = [stop.isFavorite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
-        _title = [stop.name copy];
+//        _title = [stop.name copy];
+        NSError *error = nil;
+        NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
+        if (!error)
+        {
+            NSArray *matches = [regexp matchesInString:stop.name options:0 range:NSMakeRange(0, [stop.name length])];
+            NSMutableString *street = [[NSMutableString alloc] initWithString:@""];
+            for (NSTextCheckingResult *match in matches)
+            {
+                NSRange matchRange = match.range;
+                if ([[stop.name substringWithRange:matchRange] isEqualToString:@"in"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"before"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"after"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"opposite"] ||
+                    [[stop.name substringWithRange:matchRange] isEqualToString:@"after"]) {
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[southbound]"] ||
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[inbound]"] ||
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[northbound]"] ||
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[outbound]"] ||
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[westbound]"] ||
+//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[eastbound]"]) {
+                    break;
+                } else {
+                    [street appendString:[NSString stringWithFormat:@"%@ ",[stop.name substringWithRange:matchRange]]];
+                }
+            }
+            _title = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+            _longTitle = [[stop.name capitalizedString] copy];
+        } else {
+            _title = @"";
+            _longTitle = @"";
+        }
     }
     return self;
 }

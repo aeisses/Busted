@@ -17,6 +17,7 @@
 
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
+@property (nonatomic, readonly, copy) NSString *longTitle;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, copy) NSNumber *code;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
