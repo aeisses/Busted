@@ -671,9 +671,9 @@ static id instance;
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:[NSString stringWithFormat:@"%@",error]
+                                                     message:@"To get the path the bus will travel requires internet access. Please ensure your internet is enabled."
                                                     delegate:nil
-                                           cancelButtonTitle:@"OK"
+                                           cancelButtonTitle:@"Thanks"
                                            otherButtonTitles:nil];
         [av show];
         [av release];
