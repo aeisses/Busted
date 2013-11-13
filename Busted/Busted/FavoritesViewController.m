@@ -103,7 +103,8 @@
                     [street appendString:[NSString stringWithFormat:@"%@ ",[stop.name substringWithRange:matchRange]]];
                 }
             }
-            cell.name.text = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+            cell.name.text = [[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString];
+            [street release];
         } else {
             cell.name.text = stop.name;
         }

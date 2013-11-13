@@ -47,6 +47,7 @@
                 }
             }
             _title = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+            [street release];
             _longTitle = [stop.name copy];
         } else {
             _title = @"";
@@ -104,6 +105,7 @@
                 }
             }
             _title = [[NSString alloc] initWithString:[[street stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]] capitalizedString]];
+            [street release];
             _longTitle = [[stop.name capitalizedString] copy];
         } else {
             _title = @"";

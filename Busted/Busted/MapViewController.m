@@ -34,11 +34,12 @@ static id instance;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    instance = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (instance) {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
         // Custom initialization
         isStarting = NO;
     }
+    instance = self;
     return instance;
 }
 

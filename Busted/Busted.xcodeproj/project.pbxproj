@@ -90,6 +90,8 @@
 		04785CE6180F54060024A61B /* TrackViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE5180F54060024A61B /* TrackViewControllerSmall.xib */; };
 		04785CE8180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE7180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib */; };
 		04785CEA180F5E0B0024A61B /* AboutScreenSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */; };
+		047AED511832F838006A6DF4 /* iconSmall@2x-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AED501832F838006A6DF4 /* iconSmall@2x-568.png */; };
+		047AED53183302FE006A6DF4 /* iconLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 047AED52183302FE006A6DF4 /* iconLarge@2x.png */; };
 		048F13A917ED10E90011ABC7 /* BusRouteViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */; };
 		048F13AD17ED19AA0011ABC7 /* BusRouteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */; };
 		049393D1182075BB00B5F92A /* RouteWithTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 049393D0182075BB00B5F92A /* RouteWithTime.m */; };
@@ -283,6 +285,8 @@
 		04785CE7180F5DA20024A61B /* LoadingScreenViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingScreenViewControllerSmall.xib; sourceTree = "<group>"; };
 		04785CE9180F5E0B0024A61B /* AboutScreenSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutScreenSmall.xib; sourceTree = "<group>"; };
 		04785CEB180F6AD20024A61B /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
+		047AED501832F838006A6DF4 /* iconSmall@2x-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSmall@2x-568.png"; sourceTree = "<group>"; };
+		047AED52183302FE006A6DF4 /* iconLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLarge@2x.png"; sourceTree = "<group>"; };
 		048F13A717ED10E90011ABC7 /* BusRouteViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRouteViewCell.h; sourceTree = "<group>"; };
 		048F13A817ED10E90011ABC7 /* BusRouteViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusRouteViewCell.m; sourceTree = "<group>"; };
 		048F13AC17ED19AA0011ABC7 /* BusRouteViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusRouteViewCell.xib; sourceTree = "<group>"; };
@@ -775,10 +779,12 @@
 			children = (
 				041902201800C93C00D79040 /* Images */,
 				04E8785218287944004B67C9 /* bus-icon.png */,
+				047AED52183302FE006A6DF4 /* iconLarge@2x.png */,
 				04E8785318287944004B67C9 /* bus-icon@2x.png */,
 				04B06093181F14870082C29B /* busStop.png */,
 				04B06094181F14870082C29B /* busStop@2x.png */,
 				046D31E91823317C0038B3E3 /* explaination@2x.png */,
+				047AED501832F838006A6DF4 /* iconSmall@2x-568.png */,
 				04E3E8F31821D1B800A12F0A /* twitterButton@2x.png */,
 				04E3E8F41821D1B800A12F0A /* twitterButton.png */,
 				046D31EB182334700038B3E3 /* mailButton.png */,
@@ -959,6 +965,7 @@
 				04F5961818245F57009AFB70 /* empty-starblack@2x.png in Resources */,
 				04E8785418287944004B67C9 /* bus-icon.png in Resources */,
 				0421091F1819FAA6004539B4 /* open-up-arrow.png in Resources */,
+				047AED53183302FE006A6DF4 /* iconLarge@2x.png in Resources */,
 				0447EBE217FA514300A91D60 /* TableCell.xib in Resources */,
 				046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */,
 				04E3E90F1821E59700A12F0A /* aboutScreenSmall.jpg in Resources */,
@@ -994,6 +1001,7 @@
 				04E115461818B63900EF8DFD /* StopDisplayViewControllerSmall.xib in Resources */,
 				0434393E182570C800FAB62E /* sendingzoom@2x.png in Resources */,
 				0447EBDF17FA4A5B00A91D60 /* StopDisplayViewController.xib in Resources */,
+				047AED511832F838006A6DF4 /* iconSmall@2x-568.png in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
 				0434393A1825658B00FAB62E /* full-starblack@2x.png in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,

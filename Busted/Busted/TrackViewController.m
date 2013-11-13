@@ -72,7 +72,7 @@ static id instance;
 - (void)viewDidLoad
 {
     viewIsVisable = NO;
-    int height = 215;
+    int height = 225;
     if (IS_IPHONE_5)
     {
         height = 255;

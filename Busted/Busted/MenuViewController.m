@@ -274,8 +274,9 @@
             isAboutScreenVisible = NO;
             MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
             controller.mailComposeDelegate = self;
-            [controller setSubject:@"My Subject"];
-            [controller setMessageBody:@"Hello there." isHTML:NO];
+            [controller setToRecipients:[NSArray arrayWithObject:@"feedback@knowtime.ca"]];
+//            [controller setSubject:@"My Subject"];
+//            [controller setMessageBody:@"Hello there." isHTML:NO];
             if (controller) [self presentViewController:controller animated:YES completion:nil];
             [controller release];
             [self enableButton];

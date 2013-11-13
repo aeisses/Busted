@@ -152,20 +152,21 @@ static id instance;
     int minDiff = 0;
     NSString *departTime = @"unknown";
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
-    [currentTimeFormatter setDateFormat:@"YYYY-MM-dd"];
+    [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
     for (StopTimes *times in route.times)
     {
+        NSLog(@"%@",[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]);
         NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
-        int diff = [stopDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
+        int diff = [stopDate timeIntervalSinceNow];
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
             minDiff = diff;
             NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
             [displayFormatter setDateFormat:@"h:mm"];
-//            departTime = [NSString stringWithString:times.departure];
             departTime = [displayFormatter stringFromDate:stopDate];
+            [displayFormatter release];
         }
     }
     [formatter release];

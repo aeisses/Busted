@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationUsageDescription</key>
-	<string>To provide bus stops around your current location and to send your location on the bus you are riding so other users can know where that bus is.</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>location</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -20,6 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
+				<string>iconLarge</string>
+				<string>iconSmall@2x-568</string>
 				<string>Icon-Small.png</string>
 				<string>Icon-Small@2x.png</string>
 				<string>Icon.png</string>
@@ -47,6 +43,12 @@
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationUsageDescription</key>
+	<string>To provide bus stops around your current location and to send your location on the bus you are riding so other users can know where that bus is.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
 	<key>UILaunchImages</key>
 	<array>
 		<dict>
