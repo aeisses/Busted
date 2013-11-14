@@ -1142,7 +1142,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1183,8 +1184,8 @@
 		04C7C29B17E3D7D9001A9981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Eisses";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1201,8 +1202,8 @@
 					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8E5EA592-3B69-4BCC-A6F7-BA3EA11417A8";
+				PROVISIONING_PROFILE = "02F12FA8-C423-4BBF-B682-3F200820D3C6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02F12FA8-C423-4BBF-B682-3F200820D3C6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

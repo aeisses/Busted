@@ -157,7 +157,7 @@ static id instance;
     [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
     for (StopTimes *times in route.times)
     {
-        NSLog(@"%@",[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]);
+//        NSLog(@"%@",[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]);
         NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
         int diff = [stopDate timeIntervalSinceNow];
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))

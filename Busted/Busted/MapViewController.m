@@ -197,6 +197,7 @@ static id instance;
         dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
         dispatch_async(networkQueue, ^{
             NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
+//            NSLog(@"UrlString: %@",urlStr);
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
             NSError *error = nil;

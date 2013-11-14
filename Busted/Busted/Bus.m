@@ -17,12 +17,12 @@
         _num = num;
         if (![timeToNextStop isEqualToString:@""]) {
             NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-            [formatter setDateFormat:@"YYYY-MM-dd HH:mm"];
+            [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
             NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
-            [currentTimeFormatter setDateFormat:@"YYYY-MM-dd"];
+            [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
             NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],timeToNextStop]];
             int diff = [stopDate timeIntervalSince1970] - [[NSDate date] timeIntervalSince1970];
-            _title = [[NSString alloc] initWithFormat:@"%i mins",diff];
+            _title = [[NSString alloc] initWithFormat:@"%i min",diff];
             [formatter release];
             [currentTimeFormatter release];
         } else {
