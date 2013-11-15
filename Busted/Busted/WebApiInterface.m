@@ -627,8 +627,10 @@ static id instance;
     {
         Path *path = [[Path alloc] init];
         MKCoordinateRegion region = [path addLines:(NSArray*)JSON];
-        [[MapViewController sharedInstance].mapView setRegion:region];
-        [[MapViewController sharedInstance].mapView addOverlays:path.lines];
+        if ([MapViewController sharedInstance].mapView) {
+            [[MapViewController sharedInstance].mapView setRegion:region];
+            [[MapViewController sharedInstance].mapView addOverlays:path.lines];
+        }
         [path release];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
