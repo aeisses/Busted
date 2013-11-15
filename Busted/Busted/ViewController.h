@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "MenuViewController.h"
-#import "DataReader.h"
 #import "TrackViewController.h"
 #import "LoadingScreenViewController.h"
 #import "WebApiInterface.h"
 #import "TLTransitionAnimator.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,DataReaderDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate>
 {
-    DataReader *dataReader;
     UIActivityIndicatorView *activityIndicator;
 }
 

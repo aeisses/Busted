@@ -19,15 +19,6 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
-
 - (IBAction)touchFacebookButton:(id)sender
 {
     if(NSClassFromString(@"SLComposeViewController") != nil)
@@ -93,6 +84,7 @@
     [_facebookButton release]; _facebookButton = nil;
     [_twitterButton release]; _twitterButton = nil;
     [_mailButton release]; _mailButton = nil;
+    _delegate = nil;
     [super dealloc];
 }
 

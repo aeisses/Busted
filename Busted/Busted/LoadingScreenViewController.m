@@ -10,7 +10,7 @@
 #import "macros.h"
 
 @interface LoadingScreenViewController ()
-
+- (void)frameIntervalLoop:(CADisplayLink *)sender;
 @end
 
 @implementation LoadingScreenViewController

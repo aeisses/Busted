@@ -26,7 +26,7 @@
 @protocol MapViewControllerDelegate <NSObject>
 - (void)mapFinishedLoading;
 @optional
-- (void)updateStops:(CLLocationCoordinate2D)mapCenter;
+//- (void)updateStops:(CLLocationCoordinate2D)mapCenter;
 - (void)loadViewController:(UIViewController*)vc;
 @end
 

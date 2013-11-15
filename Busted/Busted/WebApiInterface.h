@@ -24,32 +24,20 @@
 
 @interface WebApiInterface : NSObject
 
-// Calls:
-//http://t2go-halifax.transittogo.com/api/v1/stop/6963/upcoming_stoptimes?time=1380145872&all_routes=yes
-//http://t2go-halifax.transittogo.com/api/v1/place/44.638508,-63.568782/upcoming_stoptimes?time=1380145872&all_routes=yes
-//http://t2go-halifax.transittogo.com/api/v1/routes/motd?appversion=15
-
-#define BASEURL @"http://t2go-halifax.transittogo.com/api/v1/"
 #define SANGSTERBASEURL @"http://knowtime.ca/api/alpha_1/"
-#define FILLER  @"/upcoming_stoptimes?time="
-#define ENDURL  @"&all_routes=yes"
-#define STOP    @"stop/"
-#define STOPS   @"stops"
-#define PLACE   @"place/"
-#define ROUTE   @"route/"
-#define ROUTES  @"routes"
-#define NAMES   @"names"
-#define ALL     @"all"
-#define SHORTS  @"short"
-#define PATHS   @"paths/"
-#define STOPTIME @"stoptimes/"
-#define HEADSIGNS @"headsigns/"
-#define USERS   @"users/"
-#define NEW     @"new/"
-#define ESTIMATE @"estimates/"
+#define ENDURL          @"&all_routes=yes"
+#define STOPS           @"stops"
+#define ROUTES          @"routes"
+#define NAMES           @"names"
+#define SHORTS          @"short"
+#define PATHS           @"paths/"
+#define STOPTIME        @"stoptimes/"
+#define HEADSIGNS       @"headsigns/"
+#define USERS           @"users/"
+#define NEW             @"new/"
+#define ESTIMATE        @"estimates/"
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSMutableArray *busStops;
 @property (strong, nonatomic) NSArray *stops;
 @property (retain, nonatomic) id <WebApiInterfaceDelegate> delegate;
 
@@ -57,17 +45,12 @@
 - (NSArray*)requestAllRoutes;
 - (void)fetchAllRoutes;
 - (void)fetchAllStops;
-//- (void)requestStop:(NSInteger)stop;
-- (void)requestPlace:(CLLocationCoordinate2D)coordinate;
-//- (void)requestStopsForRegion:(MKCoordinateRegion)region;
 - (NSArray*)getFavoriteStops;
 - (NSArray*)getFavoriteRoutes;
 - (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
 - (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
 - (Stop*)getStopForCode:(NSNumber*)code;
-- (Routes*)getRouteForShortName:(NSString*)shortName;
 - (void)getRouteForIdent:(NSNumber*)ident;
-- (void)getInformationForStop:(NSNumber*)stop;
 - (void)loadPathForRoute:(NSString*)shortName;
 
 @end

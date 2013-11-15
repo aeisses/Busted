@@ -14,8 +14,6 @@
 static NSString *const JSONDirectoryPath = @"/RawJson";
 
 @interface WebApiInterface (PrivateMethods)
-- (NSArray*)createStopRecordWithStops:(NSArray*)stops context:(NSManagedObjectContext*)context;
-- (NSNumber*)createStopRecordWithStop:(NSDictionary*)stopJson context:(NSManagedObjectContext*)context;
 - (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context;
 - (void)createStopRecordsWithStops:(NSArray*)stopsArray context:(NSManagedObjectContext*)context;
 - (NSManagedObjectContext*)createNewManagedObjectContext;
@@ -41,93 +39,9 @@ static id instance;
                                                  selector:@selector(contextDidSave:)
                                                      name:NSManagedObjectContextDidSaveNotification
                                                    object:nil];
-        _busStops = [[NSMutableArray alloc] initWithCapacity:0];
-
-        // Initialize dateFormatter
-//        _dateFormatter = [[NSDateFormatter alloc] init];
-//        [_dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"];
-        
-/*
-        NSError *error;
-        // Create json document directory if it doesn't already exist
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:JSONDirectoryPath];
-        
-        if (![[NSFileManager defaultManager] fileExistsAtPath:dataPath])
-            [[NSFileManager defaultManager] createDirectoryAtPath:dataPath withIntermediateDirectories:NO attributes:nil error:&error];
- */
     }
     instance = self;
     return instance;
-}
-
-- (NSArray*)createStopRecordWithStops:(NSArray*)stops context:(NSManagedObjectContext*)context
-{
-    NSMutableArray *returnArray = [[NSMutableArray alloc] initWithCapacity:[stops count]];
-    for (NSDictionary *stop in stops)
-    {
-        [returnArray addObject:[self createStopRecordWithStop:stop context:context]];
-    }
-    return [(NSArray*)returnArray autorelease];
-}
-
-- (NSNumber*)createStopRecordWithStop:(NSDictionary*)stopJson context:(NSManagedObjectContext*)context
-{
-    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = myEntity;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"code == %@",[stopJson valueForKey:@"code"]];
-    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-    [fetchRequest release];
-    Stop *stop = nil;
-    if ([fetchedObject count] > 0)
-    {
-        stop = [fetchedObject lastObject];
-    }
-    else
-    {
-        stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:context];
-        stop.isFavorite = @NO;
-    }
-    stop.code = (NSString*)[stopJson valueForKey:@"code"];
-    stop.lat = (NSNumber*)[stopJson valueForKey:@"lat"];
-    stop.lng = (NSNumber*)[stopJson valueForKey:@"lng"];
-    stop.name = (NSString*)[stopJson valueForKey:@"name"];
-
-    NSArray *routes = (NSArray*)[stopJson valueForKey:@"routes"];
-    NSMutableSet *routesSet = [NSMutableSet setWithCapacity:[routes count]];
-    for (NSDictionary *routeJson in routes)
-    {
-        NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        fetchRequest.entity = myEntity;
-        NSString *searchString = [NSString stringWithFormat:@"%@%@",[stopJson valueForKey:@"code"],[routeJson valueForKey:@"short_name"]];
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"ident == %@",searchString];
-        NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-        [fetchRequest release];
-        Route *route = nil;
-        if ([fetchedObject count])
-        {
-            route = [fetchedObject lastObject];
-        }
-        else
-        {
-            route = [NSEntityDescription insertNewObjectForEntityForName:@"Route" inManagedObjectContext:context];
-            route.isFavorite = @NO;
-        }
-        route.ident = [NSString stringWithFormat:@"%@%@",[stopJson valueForKey:@"code"],[routeJson valueForKey:@"short_name"]];
-        route.long_name = (NSString*)[routeJson valueForKey:@"long_name"];
-        route.short_name = (NSString*)[routeJson valueForKey:@"short_name"];
-//        route.headsign = (NSString*)[routeJson valueForKey:@"headsign"];
-        route.times = (NSArray*)[routeJson valueForKey:@"times"];
-        route.stop = stop;
-        [routesSet addObject:route];
-        [context save:nil];
-    }
-    stop.routes = (NSSet*)routesSet;
-    [context save:nil];
-    return (NSNumber*)[stopJson valueForKey:@"code"];
 }
 
 - (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context
@@ -305,171 +219,6 @@ static id instance;
     [contentUrl release];
 }
 
-- (void)getInformationForStop:(NSNumber*)stop
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-DD"];
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%@/%@", BASEURL, STOPTIME, stop, [formatter stringFromDate:[NSDate date]]];
-    [formatter release];
-    NSURL *url = [[NSURL alloc] initWithString:contentUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-    {
-        NSLog(@"JSON: %@",JSON);
-    }
-                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
-    }];
-    [operation start];
-    [url release];
-    [contentUrl release];
-}
-
-//- (void)requestStop:(NSInteger)stop
-//{
-//    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i%@%f%@", BASEURL, STOP, stop, FILLER, (double)[[NSDate date] timeIntervalSince1970], ENDURL];
-//    NSURL *url = [[NSURL alloc] initWithString:contentUrl];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-//                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-//    {
-//        NSManagedObjectContext *context = [self createNewManagedObjectContext];
-//        if (![[(NSDictionary *)JSON valueForKey:@"stops"] count])
-//            return;
-//        NSDictionary *data = [[(NSDictionary *)JSON valueForKey:@"stops"] objectAtIndex:0];
-//        int counter = 0;
-//        for (BusStop *stop in [NSArray arrayWithArray:_busStops])
-//        {
-//            if ([[data valueForKey:@"code"] integerValue] == [stop.code integerValue])
-//            {
-//                BusStop *busStop = [[BusStop alloc] initWithCode:[self createStopRecordWithStop:data context:context]];
-//                [context save:nil];
-//                [[MapViewController sharedInstance].mapView removeAnnotation:stop];
-//                [[MapViewController sharedInstance].mapView addAnnotation:busStop];
-//                [_busStops replaceObjectAtIndex:counter withObject:busStop];
-//                [busStop release];
-//            }
-//            counter++;
-//        }
-//    }
-//                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-//    {
-//        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-//                                                     message:[NSString stringWithFormat:@"%@",error]
-//                                                    delegate:nil
-//                                           cancelButtonTitle:@"OK"
-//                                           otherButtonTitles:nil];
-//        [av show];
-//    }];
-//    [operation start];
-//    [url release];
-//    [contentUrl release];
-//}
-
-- (void)requestPlace:(CLLocationCoordinate2D)coordinate
-{
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%f,%f%@%f%@", BASEURL, PLACE, coordinate.latitude, coordinate.longitude, FILLER,[[NSDate date] timeIntervalSince1970], ENDURL];
-    NSURL *url = [[NSURL alloc] initWithString:contentUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
-                                                                                        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
-    {
-        NSManagedObjectContext *threadContext = [self createNewManagedObjectContext];
-        NSLog(@"JSON: %@",JSON);
-        NSDictionary *data = (NSDictionary *)JSON;
-        NSArray *codes = [self createStopRecordWithStops:(NSArray*)[data valueForKey:@"stops"] context:threadContext];
-//        [threadContext save:nil];
-        for (NSNumber *code in codes) {
-            BusStop *busStop = [[BusStop alloc] initWithCode:code];// andContext:threadContext];
-            [_busStops addObject:busStop];
-            [busStop release];
-        }
-        __block typeof(self) blockSelf = self;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[MapViewController sharedInstance] addStops:blockSelf.busStops];
-//            [[MapViewController sharedInstance].mapView addAnnotations:blockSelf.busStops];
-        });
-    }
-                                                                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
-    {
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:[NSString stringWithFormat:@"%@",error]
-                                                    delegate:nil
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil];
-        [av show];
-        [av release];
-    }];
-    [operation start];
-    [url release];
-    [contentUrl release];
-}
-
-//- (void)requestStopsForRegion:(MKCoordinateRegion)region
-//{
-//    NSManagedObjectContext *context = [self createNewManagedObjectContext];
-//    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
-//    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-//    fetchRequest.entity = myEntity;
-//    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-//    [fetchRequest release];
-////    NSMutableArray *busStops = [[NSMutableArray alloc] initWithCapacity:0];
-//    for (Stop *stop in fetchedObject)
-//    {
-//        CLLocationCoordinate2D northWestCorner, southEastCorner;
-//        northWestCorner.latitude = region.center.latitude - (region.span.latitudeDelta / 2.0);
-//        northWestCorner.longitude = region.center.longitude - (region.span.longitudeDelta / 2.0);
-//        southEastCorner.latitude = region.center.latitude + (region.span.latitudeDelta / 2.0);
-//        southEastCorner.longitude = region.center.longitude + (region.span.longitudeDelta / 2.0);
-//        if ([stop.lat doubleValue] >= northWestCorner.latitude &&
-//            [stop.lat doubleValue] <= southEastCorner.latitude &&
-//            [stop.lng doubleValue] >= northWestCorner.longitude &&
-//            [stop.lng doubleValue] <= southEastCorner.longitude)
-//        {
-//            BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInteger:[stop.code integerValue]]];
-//            [_busStops addObject:busStop];
-//            __block typeof(BusStop) *blockBusStop = busStop;
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [[MapViewController sharedInstance] addStop:blockBusStop];
-//            });
-//            [busStop release];
-//        }
-//    }
-//}
-
-- (void)saveRawData:(NSDictionary *)item {
-    NSLog(@"Saving raw data");
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:item
-                                                       options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
-                                                         error:&error];
-    
-    if (jsonData) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0]; // Get documents folder
-        NSString *dataPath = [documentsDirectory stringByAppendingPathComponent:JSONDirectoryPath];
-        
-        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-        NSString *filePath = [NSString stringWithFormat:@"%@/%@", dataPath, [item valueForKey:@"id"]];
-        BOOL fileCreated = [[NSFileManager defaultManager] createFileAtPath:filePath
-                                                                   contents:[jsonString dataUsingEncoding:NSUTF8StringEncoding]
-                                                                 attributes:nil];
-        if (!fileCreated) {
-            NSLog(@"Could not create file '%@'", filePath);
-        }
-        [jsonString release];
-    } else {
-        NSLog(@"Got an error: %@", error);
-    }
-}
-
 - (NSArray*)getFavoriteStops
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
@@ -533,22 +282,6 @@ static id instance;
     shortName = nil;
 }
 
-- (Routes*)getRouteForShortName:(NSString*)shortName
-{
-    NSManagedObjectContext *context = [self createNewManagedObjectContext];
-    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Routes" inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    fetchRequest.entity = myEntity;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"shortName == %@",shortName];
-    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
-    [fetchRequest release];
-    if ([fetchedObject count])
-    {
-        return (Routes*)[fetchedObject lastObject];
-    }
-    return nil;
-}
-
 - (Stop*)getStopForCode:(NSNumber*)code
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
@@ -563,7 +296,6 @@ static id instance;
     return nil;
 }
 
-// This function is used
 - (void)getRouteForIdent:(NSNumber*)ident
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -687,7 +419,6 @@ static id instance;
 
 - (void)dealloc
 {
-    [_busStops release];
     [_stops release];
     [super dealloc];
 }

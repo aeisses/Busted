@@ -48,11 +48,6 @@
     [super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-//    [self.collectionView reloadData];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -82,7 +77,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BusRouteViewCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
+    RouteSelectCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
     cell.number.text = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
     cell.number.accessibilityLabel = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
     return cell;
@@ -91,7 +86,7 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BusRouteViewCell *cell = (BusRouteViewCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    RouteSelectCell *cell = (RouteSelectCell*)[collectionView cellForItemAtIndexPath:indexPath];
     [_delegate setBusRoute:cell.number.text];
 }
 

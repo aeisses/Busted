@@ -242,10 +242,10 @@
 //    [_mapVC release];
 }
 
-- (void)updateStops:(CLLocationCoordinate2D)mapCenter
-{
-    [[WebApiInterface sharedInstance] requestPlace:mapCenter];
-}
+//- (void)updateStops:(CLLocationCoordinate2D)mapCenter
+//{
+//    [[WebApiInterface sharedInstance] requestPlace:mapCenter];
+//}
 
 - (void)loadViewController:(UIViewController*)vc
 {

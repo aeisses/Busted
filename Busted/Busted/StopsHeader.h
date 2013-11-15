@@ -10,7 +10,6 @@
 
 @interface StopsHeader : UIView
 
-//@property (retain, nonatomic) IBOutlet UILabel *goTimeNumber;
 @property (retain, nonatomic) IBOutlet UILabel *title;
 
 @end
