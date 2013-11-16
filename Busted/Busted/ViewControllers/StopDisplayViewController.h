@@ -21,11 +21,11 @@
 @property (retain, nonatomic) StopAnnotation *busStop;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
-@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (retain, nonatomic) NSArray *routes;
 
 + (StopDisplayViewController*)sharedInstance;
 - (IBAction)touchHomeButton:(id)sender;
-- (IBAction)touchFavoriteButton:(id)sender;
+- (IBAction)touchFavouriteButton:(id)sender;
 
 @end

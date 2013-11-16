@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "FavoritesViewController.h"
+#import "FavouritesViewController.h"
 #import "WebApiInterface.h"
-#import "FavoriteCell.h"
+#import "FavouriteCell.h"
 #import "RoutesViewController.h"
 
-@interface FavoritesViewController ()
+@interface FavouritesViewController ()
 
 @end
 
-@implementation FavoritesViewController
+@implementation FavouritesViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad
 {
-    [_tableView registerNib:[UINib nibWithNibName:@"FavoriteCell" bundle:nil] forCellReuseIdentifier:@"FavoriteCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"FavouriteCell" bundle:nil] forCellReuseIdentifier:@"FavouriteCell"];
     _tableView.delegate = self;
     [_tableView setDataSource:self];
     _tableView.backgroundColor = [UIColor clearColor];
@@ -81,10 +81,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
+    FavouriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavouriteCell" forIndexPath:indexPath];
     if (indexPath.section == 0)
     {
-        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
+        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavouriteStops] objectAtIndex:indexPath.row];
         NSError *error = nil;
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
         if (!error)
@@ -109,15 +109,15 @@
             cell.name.text = stop.name;
         }
         cell.number.text = stop.code;
-        cell.favoriteButton.selected = [stop.isFavorite boolValue];
+        cell.favouriteButton.selected = [stop.isFavourite boolValue];
         cell.isStop = YES;
         stop = nil;
         return cell;
     } else if (indexPath.section == 1) {
-        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavouriteRoutes] objectAtIndex:indexPath.row];
         cell.name.text = route.longName;
         cell.number.text = route.shortName;
-        cell.favoriteButton.selected = [route.isFavorite boolValue];
+        cell.favouriteButton.selected = [route.isFavourite boolValue];
         cell.isStop = NO;
         route = nil;
         return cell;
@@ -133,8 +133,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return [[[WebApiInterface sharedInstance] getFavoriteStops] count];
-    return [[[WebApiInterface sharedInstance] getFavoriteRoutes] count];
+        return [[[WebApiInterface sharedInstance] getFavouriteStops] count];
+    return [[[WebApiInterface sharedInstance] getFavouriteRoutes] count];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -189,7 +189,7 @@
         } else {
             stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil];
         }
-        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
+        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavouriteStops] objectAtIndex:indexPath.row];
         stopsVC.superDelegate = self;
         StopAnnotation *busStop = [[StopAnnotation alloc] initWithCode:[NSNumber numberWithInt:[stop.code intValue]]];
         stopsVC.busStop =  busStop;
@@ -206,7 +206,7 @@
         {
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
-        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavouriteRoutes] objectAtIndex:indexPath.row];
         routeName = [[NSString alloc] initWithString:route.shortName];
         [[WebApiInterface sharedInstance] loadPathForRoute:routeName];
         _mapVC.isStops = YES;
@@ -237,7 +237,7 @@
         }
         myRoute.longName = route.longName;
         myRoute.shortName = route.shortName;
-        myRoute.isFavorite = [route.isFavorite boolValue];
+        myRoute.isFavourite = [route.isFavourite boolValue];
         [routesM addObject:myRoute];
         [myRoute release];
     }

@@ -219,31 +219,31 @@ static id instance;
     [contentUrl release];
 }
 
-- (NSArray*)getFavoriteStops
+- (NSArray*)getFavouriteStops
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
     NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     fetchRequest.entity = myEntity;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavorite == YES"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavourite == YES"];
     NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
     [fetchRequest release];
     return fetchedObject;
 }
 
-- (NSArray*)getFavoriteRoutes
+- (NSArray*)getFavouriteRoutes
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
     NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     fetchRequest.entity = myEntity;
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavorite == YES"];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"isFavourite == YES"];
     NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
     [fetchRequest release];
     return fetchedObject;
 }
 
-- (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code
+- (void)setFavourite:(BOOL)favourite forStop:(NSNumber*)code
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
     NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Stop" inManagedObjectContext:context];
@@ -255,14 +255,14 @@ static id instance;
     if ([fetchedObject count])
     {
         StopManagedObject *stop = [fetchedObject lastObject];
-        stop.isFavorite = [NSNumber numberWithBool:favorite];
+        stop.isFavourite = [NSNumber numberWithBool:favourite];
         [context save:nil];
     }
     fetchedObject = nil;
     context = nil;
 }
 
-- (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName
+- (void)setFavourite:(BOOL)favourite forRoute:(NSString *)shortName
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];
     NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"Route" inManagedObjectContext:context];
@@ -274,7 +274,7 @@ static id instance;
     if ([fetchedObject count])
     {
         RouteManagedObject *route = [fetchedObject lastObject];
-        route.isFavorite = [NSNumber numberWithBool:favorite];
+        route.isFavourite = [NSNumber numberWithBool:favourite];
         [context save:nil];
     }
     fetchedObject = nil;

@@ -14,7 +14,7 @@
 @dynamic lat;
 @dynamic lng;
 @dynamic name;
-@dynamic isFavorite;
+@dynamic isFavourite;
 
 - (void)dealloc
 {

@@ -2,12 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="favoriteButton" destination="AB8-3i-AQB" id="Exq-EM-5Sg"/>
+                <outlet property="favouriteButton" destination="AB8-3i-AQB" id="6rZ-o7-cpn"/>
                 <outlet property="homeButton" destination="JNT-eu-HrS" id="u17-Wr-coA"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
@@ -38,7 +38,7 @@
                     </state>
                     <state key="selected" image="full-starblack.png"/>
                     <connections>
-                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="kaz-UI-GqK"/>
+                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="SFp-7V-22y"/>
                     </connections>
                 </button>
             </subviews>

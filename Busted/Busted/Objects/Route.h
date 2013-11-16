@@ -13,6 +13,6 @@
 @property (nonatomic, retain) NSString *shortName;
 @property (readwrite) NSInteger ident;
 @property (nonatomic, retain) NSString *longName;
-@property (nonatomic, assign) BOOL isFavorite;
+@property (nonatomic, assign) BOOL isFavourite;
 
 @end

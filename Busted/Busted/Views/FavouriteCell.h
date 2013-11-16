@@ -1,5 +1,5 @@
 //
-//  FavoriteCell.h
+//  FavouriteCell.h
 //   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-10-22.
@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "StopManagedObject.h"
 
-@interface FavoriteCell : UITableViewCell
+@interface FavouriteCell : UITableViewCell
 
 @property (retain, nonatomic) IBOutlet UILabel *number;
 @property (retain, nonatomic) IBOutlet UILabel *name;
-@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (assign, nonatomic) BOOL isStop;
 
-- (IBAction)touchFavoriteButton:(id)sender;
+- (IBAction)touchFavouriteButton:(id)sender;
 
 @end

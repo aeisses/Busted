@@ -18,7 +18,7 @@
     {
         _code = [code copy];
         StopManagedObject *stop = [[WebApiInterface sharedInstance] getStopForCode:_code];
-        _isFavorite = [stop.isFavorite boolValue];
+        _isFavourite = [stop.isFavourite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
         NSError *error = nil;
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -75,7 +75,7 @@
     if (self = [super init])
     {
         _code = [stop.code copy];
-        _isFavorite = [stop.isFavorite boolValue];
+        _isFavourite = [stop.isFavourite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
 //        _title = [stop.name copy];
         NSError *error = nil;

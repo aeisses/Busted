@@ -1,15 +1,15 @@
 //
-//  FavoriteCell.m
+//  FavouriteCell.m
 //   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-10-22.
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "FavoriteCell.h"
+#import "FavouriteCell.h"
 #import "WebApiInterface.h"
 
-@implementation FavoriteCell
+@implementation FavouriteCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -25,25 +25,25 @@
     [super setSelected:selected animated:animated];
 }
 
-- (IBAction)touchFavoriteButton:(id)sender
+- (IBAction)touchFavouriteButton:(id)sender
 {
-    _favoriteButton.selected = !_favoriteButton.selected;
+    _favouriteButton.selected = !_favouriteButton.selected;
     if (_isStop) {
-        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forStop:[NSNumber numberWithInt:[_number.text intValue]]];
+        [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forStop:[NSNumber numberWithInt:[_number.text intValue]]];
     } else {
-        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_number.text];
+        [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_number.text];
     }
 }
 
 - (NSString *) reuseIdentifier {
-    return @"FavoriteCell";
+    return @"FavouriteCell";
 }
 
 - (void)dealloc
 {
     [_number release]; _number = nil;
     [_name release]; _name = nil;
-    [_favoriteButton release]; _favoriteButton = nil;
+    [_favouriteButton release]; _favouriteButton = nil;
     [super dealloc];
 }
 

@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="saE-th-cpH" customClass="FavoriteCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="saE-th-cpH" customClass="FavouriteCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="saE-th-cpH" id="AIB-cM-H7B">
@@ -36,7 +36,7 @@
                         </state>
                         <state key="selected" image="full-star.png"/>
                         <connections>
-                            <action selector="touchFavoriteButton:" destination="saE-th-cpH" eventType="touchUpInside" id="ZSm-Ut-5pO"/>
+                            <action selector="touchFavouriteButton:" destination="saE-th-cpH" eventType="touchUpInside" id="trV-7N-cw2"/>
                         </connections>
                     </button>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="vUk-KW-uMs">
@@ -50,7 +50,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.7518119352409639" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="favoriteButton" destination="2LO-AS-xMf" id="8yB-Gp-sWq"/>
+                <outlet property="favouriteButton" destination="2LO-AS-xMf" id="cyn-G0-ETT"/>
                 <outlet property="name" destination="vUk-KW-uMs" id="oea-qG-t0H"/>
                 <outlet property="number" destination="taO-GS-yc8" id="ERU-c8-NlV"/>
             </connections>

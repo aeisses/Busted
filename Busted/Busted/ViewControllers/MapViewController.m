@@ -74,7 +74,7 @@ static id instance;
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;
-    [_favoriteButton release]; _favoriteButton = nil;
+    [_favouriteButton release]; _favouriteButton = nil;
     [super dealloc];
 }
 
@@ -90,9 +90,9 @@ static id instance;
     [self.superDelegate touchedHomeButton:NO];
 }
 
-- (IBAction)touchFavoriteButton:(id)sender
+- (IBAction)touchFavouriteButton:(id)sender
 {
-    _favoriteButton.selected = !_favoriteButton.selected;
+    _favouriteButton.selected = !_favouriteButton.selected;
 }
 
 - (void)viewDidLoad
@@ -112,8 +112,8 @@ static id instance;
             {
                 [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
                 [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-                [self.view bringSubviewToFront:_favoriteButton];
-                _favoriteButton.hidden = NO;
+                [self.view bringSubviewToFront:_favouriteButton];
+                _favouriteButton.hidden = NO;
             }
             else
             {
@@ -122,7 +122,7 @@ static id instance;
                 if (_stops)
                     [_stops release];
                 _stops = [[NSMutableArray alloc] initWithCapacity:0];
-                _favoriteButton.hidden = YES;
+                _favouriteButton.hidden = YES;
             }
             _mapView.scrollEnabled = YES;
             _mapView.zoomEnabled = YES;
@@ -151,7 +151,7 @@ static id instance;
         displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
         [displayLink setFrameInterval:60];
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-        _favoriteButton.selected = _route.isFavorite;
+        _favouriteButton.selected = _route.isFavourite;
     } else {
         for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
         {
@@ -179,7 +179,7 @@ static id instance;
         [displayLink invalidate];
         [displayLink release];
         displayLink = nil;
-        [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forRoute:_route.shortName];
+        [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
     [_locationManager stopUpdatingLocation];
 }
@@ -269,7 +269,7 @@ static id instance;
         [_route release]; _route = nil;
     }
     _route = [route retain];
-    _favoriteButton.selected = _route.isFavorite;
+    _favouriteButton.selected = _route.isFavourite;
 }
 
 - (void)addStops:(NSArray *)stops

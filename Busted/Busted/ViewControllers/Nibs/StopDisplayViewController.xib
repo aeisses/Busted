@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StopDisplayViewController">
             <connections>
-                <outlet property="favoriteButton" destination="vlM-0E-5Hw" id="6mX-cM-CAO"/>
+                <outlet property="favouriteButton" destination="vlM-0E-5Hw" id="Aa6-Oe-015"/>
                 <outlet property="homeButton" destination="c3J-3l-tvV" id="DvN-ve-eCI"/>
                 <outlet property="tableView" destination="nvN-rZ-ACQ" id="scd-an-cLZ"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -48,7 +48,7 @@
                     </state>
                     <state key="selected" image="full-star.png"/>
                     <connections>
-                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="xTI-lQ-Xin"/>
+                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="vXt-QU-RtC"/>
                     </connections>
                 </button>
             </subviews>

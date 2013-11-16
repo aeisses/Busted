@@ -15,6 +15,6 @@
 @property (nonatomic, retain) NSNumber *lat;
 @property (nonatomic, retain) NSNumber *lng;
 @property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSNumber *isFavorite;
+@property (nonatomic, retain) NSNumber *isFavourite;
 
 @end

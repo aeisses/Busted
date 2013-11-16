@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoritesViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouritesViewController">
             <connections>
                 <outlet property="homeButton" destination="4Bc-0i-1CT" id="Hb4-ns-tqC"/>
                 <outlet property="tableView" destination="UwZ-yQ-LtU" id="sYg-Mv-NWU"/>

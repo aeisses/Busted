@@ -13,6 +13,6 @@
 @synthesize longName;
 @synthesize shortName;
 @synthesize ident;
-@synthesize isFavorite;
+@synthesize isFavourite;
 
 @end

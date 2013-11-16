@@ -90,7 +90,7 @@ static id instance;
     displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
     [displayLink setFrameInterval:500];
     [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    _favoriteButton.selected = _busStop.isFavorite;
+    _favouriteButton.selected = _busStop.isFavourite;
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -99,7 +99,7 @@ static id instance;
     [displayLink invalidate];
     [displayLink release];
     displayLink = nil;
-    [[WebApiInterface sharedInstance] setFavorite:_favoriteButton.selected forStop:_busStop.code];
+    [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forStop:_busStop.code];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
@@ -117,7 +117,7 @@ static id instance;
 //    [expandedSections release];
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
-    [_favoriteButton release]; _favoriteButton = nil;
+    [_favouriteButton release]; _favouriteButton = nil;
     [super dealloc];
 }
 
@@ -225,10 +225,10 @@ static id instance;
     dispatch_release(menuQueue);
 }
 
-- (IBAction)touchFavoriteButton:(id)sender
+- (IBAction)touchFavouriteButton:(id)sender
 {
-    _favoriteButton.selected = !_favoriteButton.selected;
-    _busStop.isFavorite = _favoriteButton.selected;
+    _favouriteButton.selected = !_favouriteButton.selected;
+    _busStop.isFavourite = _favouriteButton.selected;
 }
 
 @end

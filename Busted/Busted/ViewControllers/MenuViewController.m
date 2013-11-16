@@ -135,21 +135,21 @@
     } else if (button.tag == 3) {
         dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
         dispatch_async(menuQueue, ^{
-            FavoritesViewController *favVC = nil;
+            FavouritesViewController *favVC = nil;
             if (IS_IPHONE_5)
             {
-                favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewController" bundle:nil];
+                favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewController" bundle:nil];
             }
             else
             {
-                favVC = [[FavoritesViewController alloc] initWithNibName:@"FavoritesViewControllerSmall" bundle:nil];
+                favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewControllerSmall" bundle:nil];
             }
             favVC.delegate = self;
             [_delegate loadViewController:favVC];
             [favVC release];
         });
         dispatch_release(menuQueue);
-        [Flurry logEvent:@"Favorites_Button_Pressed"];
+        [Flurry logEvent:@"Favourites_Button_Pressed"];
     } else if (button.tag == 4) {
         if (isAboutScreenVisible)
         {
@@ -167,7 +167,7 @@
                 isAboutScreenVisible = NO;
             }];
         } else {
-            [Flurry logEvent:@"Abouts_Button_Pressed"];
+            [Flurry logEvent:@"About_Button_Pressed"];
             [self disableButton];
             [UIView animateWithDuration:0.50 animations:^{
                 if (IS_IPHONE_5)

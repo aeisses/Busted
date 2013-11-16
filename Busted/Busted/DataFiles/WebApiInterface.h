@@ -42,10 +42,10 @@
 - (NSArray*)requestAllRoutes;
 - (void)fetchAllRoutes;
 - (void)fetchAllStops;
-- (NSArray*)getFavoriteStops;
-- (NSArray*)getFavoriteRoutes;
-- (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
-- (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
+- (NSArray*)getFavouriteStops;
+- (NSArray*)getFavouriteRoutes;
+- (void)setFavourite:(BOOL)favourite forStop:(NSNumber*)code;
+- (void)setFavourite:(BOOL)favourite forRoute:(NSString *)shortName;
 - (StopManagedObject*)getStopForCode:(NSNumber*)code;
 - (void)getRouteForIdent:(NSNumber*)ident;
 - (void)loadPathForRoute:(NSString*)shortName;

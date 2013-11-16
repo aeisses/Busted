@@ -428,7 +428,7 @@ static id instance;
         }
         myRoute.longName = route.longName;
         myRoute.shortName = route.shortName;
-        myRoute.isFavorite = [route.isFavorite boolValue];
+        myRoute.isFavourite = [route.isFavourite boolValue];
         [routesM addObject:myRoute];
         [myRoute release];
     }

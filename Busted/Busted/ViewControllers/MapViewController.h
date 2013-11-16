@@ -45,7 +45,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
-@property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;
@@ -53,7 +53,7 @@
 - (void)loadStopsForLocation;
 - (void)addStop:(StopAnnotation*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
-- (IBAction)touchFavoriteButton:(id)sender;
+- (IBAction)touchFavouriteButton:(id)sender;
 - (void)showRouteAlert;
 
 @end

@@ -2,12 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StopDisplayViewController">
             <connections>
-                <outlet property="favoriteButton" destination="OFc-1k-mH7" id="4Gz-n1-ZHk"/>
+                <outlet property="favouriteButton" destination="OFc-1k-mH7" id="Kzc-tl-OUA"/>
                 <outlet property="homeButton" destination="Jiy-Ta-UMw" id="3b3-Vy-ycY"/>
                 <outlet property="tableView" destination="t0a-vp-LUS" id="sEg-zz-tvt"/>
                 <outlet property="view" destination="1" id="gxs-y0-PHw"/>
@@ -47,7 +47,7 @@
                     </state>
                     <state key="selected" image="full-star.png"/>
                     <connections>
-                        <action selector="touchFavoriteButton:" destination="-1" eventType="touchUpInside" id="Hbb-dY-ffU"/>
+                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="fAr-Wx-fPl"/>
                     </connections>
                 </button>
             </subviews>

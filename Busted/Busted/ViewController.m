@@ -80,8 +80,8 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:routesVC animated:YES];
         });
-    } else if ([vc isKindOfClass:[FavoritesViewController class]]) {
-        FavoritesViewController *favVC = (FavoritesViewController*)vc;
+    } else if ([vc isKindOfClass:[FavouritesViewController class]]) {
+        FavouritesViewController *favVC = (FavouritesViewController*)vc;
         favVC.superDelegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:favVC animated:YES];
@@ -89,7 +89,6 @@
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
         mapVC.superDelegate = self;
-//        mapVC.currentLocation = _trackVC.currentLocation;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:vc animated:YES];
         });

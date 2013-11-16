@@ -14,6 +14,6 @@
 @property (nonatomic, retain) NSString *longName;
 @property (nonatomic, retain) NSString *shortName;
 @property (assign) NSInteger ident;
-@property (nonatomic, retain) NSNumber *isFavorite;
+@property (nonatomic, retain) NSNumber *isFavourite;
 
 @end
