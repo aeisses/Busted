@@ -84,7 +84,7 @@
     FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
     if (indexPath.section == 0)
     {
-        Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
+        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
         NSError *error = nil;
         NSRegularExpression *regexp = [NSRegularExpression regularExpressionWithPattern:@"\\w+" options:NSRegularExpressionCaseInsensitive error:&error];
         if (!error)
@@ -114,7 +114,7 @@
         stop = nil;
         return cell;
     } else if (indexPath.section == 1) {
-        Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
         cell.name.text = route.longName;
         cell.number.text = route.shortName;
         cell.favoriteButton.selected = [route.isFavorite boolValue];
@@ -189,9 +189,9 @@
         } else {
             stopsVC = [[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil];
         }
-        Stop *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
+        StopManagedObject *stop = [[[WebApiInterface sharedInstance] getFavoriteStops] objectAtIndex:indexPath.row];
         stopsVC.superDelegate = self;
-        BusStop *busStop = [[BusStop alloc] initWithCode:[NSNumber numberWithInt:[stop.code intValue]]];
+        StopAnnotation *busStop = [[StopAnnotation alloc] initWithCode:[NSNumber numberWithInt:[stop.code intValue]]];
         stopsVC.busStop =  busStop;
         [busStop release];
         [_delegate loadViewController:stopsVC];
@@ -206,13 +206,13 @@
         {
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
-        Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
+        RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
         routeName = [[NSString alloc] initWithString:route.shortName];
         [[WebApiInterface sharedInstance] loadPathForRoute:routeName];
         _mapVC.isStops = YES;
         [_delegate loadViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
-        MyRoute *myRoute = [[MyRoute alloc] init];
+        Route *myRoute = [[Route alloc] init];
         myRoute.shortName = routeName;
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:myRoute]]];
         [myRoute release];
@@ -224,9 +224,9 @@
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    for (Routes *route in routes)
+    for (RouteManagedObject *route in routes)
     {
-        MyRoute *myRoute = [[MyRoute alloc] init];
+        Route *myRoute = [[Route alloc] init];
         NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
         NSNumber *number = [numberFormatter numberFromString:route.shortName];
         if (number != nil) {

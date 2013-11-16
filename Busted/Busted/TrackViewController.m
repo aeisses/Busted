@@ -7,7 +7,6 @@
 //
 
 #import "TrackViewController.h"
-#import "Routes.h"
 #import "macros.h"
 #import "WebApiInterface.h"
 #import "Flurry.h"
@@ -416,9 +415,9 @@ static id instance;
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    for (Routes *route in routes)
+    for (RouteManagedObject *route in routes)
     {
-        MyRoute *myRoute = [[MyRoute alloc] init];
+        Route *myRoute = [[Route alloc] init];
         NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
         NSNumber *number = [numberFormatter numberFromString:route.shortName];
         if (number != nil) {

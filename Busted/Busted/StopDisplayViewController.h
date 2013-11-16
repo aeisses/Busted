@@ -10,7 +10,7 @@
 #import "ParentViewController.h"
 #import "macros.h"
 
-@class BusStop;
+@class StopAnnotation;
 
 @interface StopDisplayViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate>
 {
@@ -18,7 +18,7 @@
 //    NSMutableIndexSet *expandedSections;
 }
 
-@property (retain, nonatomic) BusStop *busStop;
+@property (retain, nonatomic) StopAnnotation *busStop;
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UIButton *favoriteButton;

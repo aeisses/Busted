@@ -10,12 +10,9 @@
 #import <MapKit/MapKit.h>
 #import <CoreData/CoreData.h>
 #import "AFJSONRequestOperation.h"
-#import "Stop.h"
-#import "Trip.h"
-#import "Route.h"
+#import "StopManagedObject.h"
 #import "MapViewController.h"
-#import "BusStop.h"
-#import "Routes.h"
+#import "StopAnnotation.h"
 
 @protocol WebApiInterfaceDelegate <NSObject>
 - (void)receivedRoutes;
@@ -49,7 +46,7 @@
 - (NSArray*)getFavoriteRoutes;
 - (void)setFavorite:(BOOL)favorite forStop:(NSNumber*)code;
 - (void)setFavorite:(BOOL)favorite forRoute:(NSString *)shortName;
-- (Stop*)getStopForCode:(NSNumber*)code;
+- (StopManagedObject*)getStopForCode:(NSNumber*)code;
 - (void)getRouteForIdent:(NSNumber*)ident;
 - (void)loadPathForRoute:(NSString*)shortName;
 

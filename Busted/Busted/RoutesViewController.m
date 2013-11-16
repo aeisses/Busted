@@ -90,7 +90,7 @@ static id instance;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
-        MyRoute *route = [[MyRoute alloc] init];
+        Route *route = [[Route alloc] init];
         route.shortName = _routeButton.titleLabel.text;
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
         [route release];
@@ -132,9 +132,9 @@ static id instance;
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
 //    int counter = 0;
-    for (Routes *route in routes)
+    for (RouteManagedObject *route in routes)
     {
-        MyRoute *myRoute = [[MyRoute alloc] init];
+        Route *myRoute = [[Route alloc] init];
         NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
         NSNumber *number = [numberFormatter numberFromString:route.shortName];
         if (number != nil) {

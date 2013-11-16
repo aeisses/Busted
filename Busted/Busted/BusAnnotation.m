@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "Bus.h"
+#import "BusAnnotation.h"
 
-@implementation Bus
+@implementation BusAnnotation
 
 - (id)initWithBusNumber:(NSInteger)num latitude:(float)lat longitude:(float)lng timeToNextStop:(NSString*)timeToNextStop nextStopNumber:(NSInteger)nextStop
 {

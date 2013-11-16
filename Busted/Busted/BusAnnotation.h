@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface Bus : NSObject <MKAnnotation>
+@interface BusAnnotation : NSObject <MKAnnotation>
 
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;

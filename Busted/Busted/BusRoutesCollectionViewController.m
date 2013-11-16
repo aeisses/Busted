@@ -78,8 +78,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     RouteSelectCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
-    cell.number.text = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
-    cell.number.accessibilityLabel = ((MyRoute*)[_routes objectAtIndex:indexPath.row]).shortName;
+    cell.number.text = ((Route*)[_routes objectAtIndex:indexPath.row]).shortName;
+    cell.number.accessibilityLabel = ((Route*)[_routes objectAtIndex:indexPath.row]).shortName;
     return cell;
 }
 

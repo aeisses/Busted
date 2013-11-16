@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Stop.h"
-#import "Route.h"
+#import "StopManagedObject.h"
 
 @interface FavoriteCell : UITableViewCell
 

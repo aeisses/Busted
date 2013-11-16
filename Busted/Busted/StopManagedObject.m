@@ -6,15 +6,14 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "Stop.h"
+#import "StopManagedObject.h"
 
-@implementation Stop
+@implementation StopManagedObject
 
 @dynamic code;
 @dynamic lat;
 @dynamic lng;
 @dynamic name;
-@dynamic routes;
 @dynamic isFavorite;
 
 - (void)dealloc

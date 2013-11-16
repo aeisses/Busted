@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "Routes.h"
+#import "RouteManagedObject.h"
 
-@implementation Routes
+@implementation RouteManagedObject
 
 @synthesize longName;
 @synthesize shortName;

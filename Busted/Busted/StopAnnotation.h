@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <CoreData/CoreData.h>
-#import "Enums.h"
-#import "Route.h"
 #import "WebApiInterface.h"
 
-@interface BusStop : NSObject <MKAnnotation>
+@interface StopAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *subtitle;
@@ -26,7 +24,7 @@
 @property (nonatomic, retain) NSArray *routesId;
 
 - (id)initWithCode:(NSNumber *)code;
-- (id)initWithStop:(Stop*)stop;
+- (id)initWithStop:(StopManagedObject*)stop;
 - (BOOL)isInsideSquare:(MKCoordinateRegion)region;
 
 @end

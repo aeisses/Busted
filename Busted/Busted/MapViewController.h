@@ -11,15 +11,14 @@
 #import <QuartzCore/QuartzCore.h>
 #import "ParentViewController.h"
 #import "RegionZoomData.h"
-#import "BusRoute.h"
-#import "Bus.h"
+#import "BusAnnotation.h"
 #import "Reachability.h"
 #import "StopDisplayViewController.h"
 #import "macros.h"
-#import "BusStop.h"
-#import "MyRoute.h"
+#import "StopAnnotation.h"
+#import "Route.h"
 #import "WebApiInterface.h"
-#import "Routes.h"
+#import "RouteManagedObject.h"
 
 //#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -36,7 +35,7 @@
     BOOL isStarting;
 }
 
-@property (retain, nonatomic) MyRoute *route;
+@property (retain, nonatomic) Route *route;
 @property (retain, nonatomic) NSArray *annotations;
 @property (retain, nonatomic) IBOutlet MKMapView *mapView;
 @property (retain, nonatomic) id <MapViewControllerDelegate> delegate;
@@ -49,10 +48,10 @@
 @property (retain, nonatomic) IBOutlet UIButton *favoriteButton;
 
 + (MapViewController*)sharedInstance;
-- (void)addRoute:(MyRoute*)route;
+- (void)addRoute:(Route*)route;
 - (void)addStops:(NSArray*)stops;
 - (void)loadStopsForLocation;
-- (void)addStop:(BusStop*)busStop;
+- (void)addStop:(StopAnnotation*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
 - (IBAction)touchFavoriteButton:(id)sender;
 - (void)showRouteAlert;

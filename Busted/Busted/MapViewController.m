@@ -153,7 +153,7 @@ static id instance;
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         _favoriteButton.selected = _route.isFavorite;
     } else {
-        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
+        for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
         {
             if ([stop isInsideSquare:_mapView.region])
             {
@@ -210,7 +210,7 @@ static id instance;
                         NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                         if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                         {
-                            Bus *bus = [[Bus alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
+                            BusAnnotation *bus = [[BusAnnotation alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
                                                              latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
                                                             longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
                                                        timeToNextStop:[dic valueForKey:@"estimateArrival"]
@@ -262,7 +262,7 @@ static id instance;
     }
 }
 
-- (void)addRoute:(MyRoute*)route
+- (void)addRoute:(Route*)route
 {
     if (_route)
     {
@@ -282,7 +282,7 @@ static id instance;
     [_mapView addAnnotations:stops];
 }
 
-- (void)addStop:(BusStop*)busStop
+- (void)addStop:(StopAnnotation*)busStop
 {
     if (_stops)
     {
@@ -305,8 +305,8 @@ static id instance;
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    if ([annotation isKindOfClass:[Bus class]]) {
-        Bus *bus = (Bus*)annotation;
+    if ([annotation isKindOfClass:[BusAnnotation class]]) {
+        BusAnnotation *bus = (BusAnnotation*)annotation;
         MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]];
         if (annotationView == nil) {
             annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]] autorelease];
@@ -320,9 +320,9 @@ static id instance;
         bus = nil;
         return annotationView;
     }
-    else if ([annotation isKindOfClass:[BusStop class]])
+    else if ([annotation isKindOfClass:[StopAnnotation class]])
     {
-        BusStop *bus = (BusStop*)annotation;
+        StopAnnotation *bus = (StopAnnotation*)annotation;
         MKAnnotationView *annotationView = [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%@",bus.code]];
         if (annotationView == nil)
         {
@@ -367,7 +367,7 @@ static id instance;
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-    BusStop *busStop = view.annotation;
+    StopAnnotation *busStop = view.annotation;
     
     StopDisplayViewController *stopsVC;
     if (IS_IPHONE_5)
@@ -387,7 +387,7 @@ static id instance;
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     if (!_isStops) {
-        for (BusStop *stop in [WebApiInterface sharedInstance].stops)
+        for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
         {
             if ([stop isInsideSquare:_mapView.region])
             {

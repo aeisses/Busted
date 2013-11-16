@@ -6,11 +6,10 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "BusStop.h"
-#import "Stop.h"
-#import "Trip.h"
+#import "StopAnnotation.h"
+#import "StopManagedObject.h"
 
-@implementation BusStop
+@implementation StopAnnotation
 
 //- (id)initWithCode:(NSNumber *)code andContext:(NSManagedObjectContext *)context
 - (id)initWithCode:(NSNumber *)code //andContext:(NSManagedObjectContext *)context
@@ -18,7 +17,7 @@
     if (self = [super init])
     {
         _code = [code copy];
-        Stop *stop = [[WebApiInterface sharedInstance] getStopForCode:_code];
+        StopManagedObject *stop = [[WebApiInterface sharedInstance] getStopForCode:_code];
         _isFavorite = [stop.isFavorite boolValue];
         _coordinate = CLLocationCoordinate2DMake([stop.lat doubleValue], [stop.lng doubleValue]);
         NSError *error = nil;
@@ -71,7 +70,7 @@
     return self;
 }
 
-- (id)initWithStop:(Stop*)stop
+- (id)initWithStop:(StopManagedObject*)stop
 {
     if (self = [super init])
     {
@@ -93,12 +92,6 @@
                     [[stop.name substringWithRange:matchRange] isEqualToString:@"after"] ||
                     [[stop.name substringWithRange:matchRange] isEqualToString:@"opposite"] ||
                     [[stop.name substringWithRange:matchRange] isEqualToString:@"after"]) {
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[southbound]"] ||
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[inbound]"] ||
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[northbound]"] ||
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[outbound]"] ||
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[westbound]"] ||
-//                    [[stop.name substringWithRange:matchRange] isEqualToString:@"[eastbound]"]) {
                     break;
                 } else {
                     [street appendString:[NSString stringWithFormat:@"%@ ",[stop.name substringWithRange:matchRange]]];

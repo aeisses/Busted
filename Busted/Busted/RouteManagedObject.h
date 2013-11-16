@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Route;
-
-@interface Routes : NSManagedObject
+@interface RouteManagedObject : NSManagedObject
 
 @property (nonatomic, retain) NSString *longName;
 @property (nonatomic, retain) NSString *shortName;

@@ -7,10 +7,8 @@
 //
 
 #import "StopDisplayViewController.h"
-#import "Route.h"
 #import "TableCell.h"
-#import "Trip.h"
-#import "BusStop.h"
+#import "StopAnnotation.h"
 #import "RouteWithTime.h"
 #import "StopTimes.h"
 #import "StopsHeader.h"
@@ -60,7 +58,7 @@ static id instance;
     [_tableView reloadData];
 }
 
-- (void)setBusStop:(BusStop *)busStop
+- (void)setBusStop:(StopAnnotation *)busStop
 {
     if (_busStop)
     {

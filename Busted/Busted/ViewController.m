@@ -196,15 +196,9 @@
     [self showMenuView];
 }
 
-- (void)addBusStop:(BusStop*)busStop
+- (void)addBusStop:(StopAnnotation*)busStop
 {
 //   [mapViewController addBusStop:busStop];
-}
-
--(void)addRoute:(BusRoute*)route;
-{
- //   for (BusRoute *busRoute in dataReader.routes) {
-//    [mapViewController addRoute:route];
 }
 
 #pragma WebApiInterfaceDelegate
