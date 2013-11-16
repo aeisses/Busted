@@ -144,11 +144,9 @@
     {
         case 0:
             imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"stops.png"]];
-//            imageView.frame = (CGRect){0,0,320,32};
             break;
         case 1:
             imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"routes.png"]];
-//            imageView.frame = (CGRect){0,0,320,32};
             break;
         default:
             imageView = nil;
@@ -211,7 +209,6 @@
         Routes *route = [[[WebApiInterface sharedInstance] getFavoriteRoutes] objectAtIndex:indexPath.row];
         routeName = [[NSString alloc] initWithString:route.shortName];
         [[WebApiInterface sharedInstance] loadPathForRoute:routeName];
-//        _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
@@ -219,9 +216,6 @@
         myRoute.shortName = routeName;
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:myRoute]]];
         [myRoute release];
-//        [_mapVC addRoute:route];
-
-//        _mapVC.delegate = nil;
         [_mapVC release];
     }
 }
@@ -230,7 +224,6 @@
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    //    int counter = 0;
     for (Routes *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
@@ -239,8 +232,6 @@
         if (number != nil) {
             myRoute.ident = [route.shortName integerValue];
         } else {
-            //            myRoute.ident = counter + 10000;
-            //            counter++;
             [myRoute release];
             continue;
         }
@@ -252,12 +243,6 @@
     }
     return [(NSArray*)routesM autorelease];
 }
-
-#pragma MapViewControllerDelegate
-- (void)mapFinishedLoading
-{
-}
-
 
 - (void)touchedHomeButton:(BOOL)isAll
 {

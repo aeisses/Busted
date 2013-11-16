@@ -416,7 +416,6 @@ static id instance;
 {
     NSArray *routes = [_delegate getRoutes];
     NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-//    int counter = 0;
     for (Routes *route in routes)
     {
         MyRoute *myRoute = [[MyRoute alloc] init];
@@ -425,8 +424,6 @@ static id instance;
         if (number != nil) {
             myRoute.ident = [route.shortName integerValue];
         } else {
-//            myRoute.ident = counter + 10000;
-//            counter++;
             [myRoute release];
             continue;
         }

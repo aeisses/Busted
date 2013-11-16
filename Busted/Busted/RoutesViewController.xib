@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RoutesViewController">
@@ -10,7 +10,6 @@
                 <outlet property="homeButton" destination="S3g-or-X27" id="7Pu-vD-1Ug"/>
                 <outlet property="routeButton" destination="15" id="rWp-1A-ISA"/>
                 <outlet property="submitButton" destination="PEQ-Zv-jWT" id="XIk-rf-h5Q"/>
-                <outlet property="trackButton" destination="fdi-7b-9tN" id="7sh-s6-28H"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -71,16 +70,6 @@
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="hH8-S4-ft2"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdi-7b-9tN">
-                    <rect key="frame" x="-27" y="519" width="375" height="49"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="upToDownButton.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="iOK-5l-yBY"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="0.059071220229999999" blue="0.084883680210000007" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -93,6 +82,5 @@
         <image name="route.png" width="320" height="66"/>
         <image name="submitButton.png" width="89" height="66"/>
         <image name="submitButtonHighlighted.png" width="89" height="66"/>
-        <image name="upToDownButton.png" width="320" height="49"/>
     </resources>
 </document>

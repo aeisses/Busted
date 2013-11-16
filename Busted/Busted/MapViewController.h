@@ -24,9 +24,8 @@
 //#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
 @protocol MapViewControllerDelegate <NSObject>
-- (void)mapFinishedLoading;
 @optional
-//- (void)updateStops:(CLLocationCoordinate2D)mapCenter;
+- (void)mapFinishedLoading;
 - (void)loadViewController:(UIViewController*)vc;
 @end
 

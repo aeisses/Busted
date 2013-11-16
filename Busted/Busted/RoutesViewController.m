@@ -67,7 +67,6 @@ static id instance;
     [_submitButton release]; _submitButton = nil;
     [_routeButton release]; _routeButton = nil;
     [_homeButton release]; _homeButton = nil;
-    [_trackButton release]; _trackButton = nil;
     _delegate = nil;
     [super dealloc];
 }
@@ -88,9 +87,14 @@ static id instance;
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
         [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text];
-        _mapVC.delegate = self;
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
+        NSArray *routesArray = [self getBusRoutes];
+        MyRoute *route = [[MyRoute alloc] init];
+        route.shortName = _routeButton.titleLabel.text;
+        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
+        [route release];
+        [_mapVC release];
         NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", _routeButton.titleLabel.text, nil];
         [Flurry logEvent:@"Routes_View_Button_Pressed" withParameters:routesParams];
     }
@@ -120,20 +124,6 @@ static id instance;
 - (IBAction)touchTrackButton:(id)sender
 {
     [self.superDelegate swipe:self.swipeDown];
-}
-
-#pragma MapViewControllerDelegate
-- (void)mapFinishedLoading
-{
-    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
-        NSArray *routesArray = [self getBusRoutes];
-        MyRoute *route = [[MyRoute alloc] init];
-        route.shortName = _routeButton.titleLabel.text;
-        [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
-        [route release];
-    }
-    _mapVC.delegate = nil;
-    [_mapVC release];
 }
 
 #pragma BusRoutesCollectionViewController

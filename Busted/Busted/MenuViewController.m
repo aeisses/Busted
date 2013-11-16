@@ -228,16 +228,6 @@
 }
 
 #pragma MapViewControllerDelegate
-- (void)mapFinishedLoading
-{
-
-}
-
-//- (void)updateStops:(CLLocationCoordinate2D)mapCenter
-//{
-//    [[WebApiInterface sharedInstance] requestPlace:mapCenter];
-//}
-
 - (void)loadViewController:(UIViewController*)vc
 {
     [_delegate loadViewController:vc];

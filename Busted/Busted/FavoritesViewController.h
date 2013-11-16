@@ -14,7 +14,7 @@
 - (NSArray*)getRoutes;
 @end
 
-@interface FavoritesViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate,ParentViewControllerDelegate,MapViewControllerDelegate>
+@interface FavoritesViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate,ParentViewControllerDelegate>
 {
     NSString *routeName;
 }

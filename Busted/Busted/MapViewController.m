@@ -304,11 +304,6 @@ static id instance;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView
-{
-    [_delegate mapFinishedLoading];
-}
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[Bus class]]) {
         Bus *bus = (Bus*)annotation;
