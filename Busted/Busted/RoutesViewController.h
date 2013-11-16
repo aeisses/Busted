@@ -1,9 +1,9 @@
 //
 //  RoutesViewController.h
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import "ParentViewController.h"
@@ -13,7 +13,6 @@
 
 @protocol RoutesViewControllerDelegate <NSObject>
 - (void)loadMapViewController:(MapViewController*)mapViewController;
-- (BusRoute*)getRoute:(NSInteger)routeNumber;
 - (NSArray*)getRoutes;
 @end
 

@@ -1,13 +1,13 @@
 //
 //  AppDelegate.h
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "BustedNavigationController.h"
+#import "KNOWtimeNavigationController.h"
 #import "ViewController.h"
 
 #define FLURRY_API_KEY @"3S4TY9QJ4PSNRJSDT377"
@@ -18,7 +18,7 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) BustedNavigationController *navController;
+@property (strong, nonatomic) KNOWtimeNavigationController *navController;
 @property (strong, nonatomic) ViewController *viewController;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

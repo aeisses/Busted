@@ -1,18 +1,18 @@
 //
-//  BustedNavigationController.m
-//  Busted
+//   KNOWtimeNavigationController.m
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "BustedNavigationController.h"
+#import "KNOWtimeNavigationController.h"
 
-@interface BustedNavigationController ()
+@interface KNOWtimeNavigationController ()
 
 @end
 
-@implementation BustedNavigationController
+@implementation KNOWtimeNavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -119,7 +119,7 @@
 		04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C29417E3D7D9001A9981 /* ViewController.xib */; };
 		04C7C2A017E3DFC3001A9981 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C29E17E3DFC3001A9981 /* MenuViewController.m */; };
 		04C7C2A117E3DFC3001A9981 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */; };
-		04C7C2A417E3E383001A9981 /* BustedNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2A317E3E383001A9981 /* BustedNavigationController.m */; };
+		04C7C2A417E3E383001A9981 /* KNOWtimeNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2A317E3E383001A9981 /* KNOWtimeNavigationController.m */; };
 		04C7C2AE17E3E9C5001A9981 /* RoutesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2AC17E3E9C5001A9981 /* RoutesViewController.m */; };
 		04C7C2AF17E3E9C5001A9981 /* RoutesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */; };
 		04C7C2B217E48B8D001A9981 /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C2B117E48B8D001A9981 /* ParentViewController.m */; };
@@ -325,8 +325,8 @@
 		04C7C29D17E3DFC3001A9981 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		04C7C29E17E3DFC3001A9981 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		04C7C29F17E3DFC3001A9981 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
-		04C7C2A217E3E383001A9981 /* BustedNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BustedNavigationController.h; sourceTree = "<group>"; };
-		04C7C2A317E3E383001A9981 /* BustedNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BustedNavigationController.m; sourceTree = "<group>"; };
+		04C7C2A217E3E383001A9981 /* KNOWtimeNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNOWtimeNavigationController.h; sourceTree = "<group>"; };
+		04C7C2A317E3E383001A9981 /* KNOWtimeNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNOWtimeNavigationController.m; sourceTree = "<group>"; };
 		04C7C2AB17E3E9C5001A9981 /* RoutesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesViewController.h; sourceTree = "<group>"; };
 		04C7C2AC17E3E9C5001A9981 /* RoutesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesViewController.m; sourceTree = "<group>"; };
 		04C7C2AD17E3E9C5001A9981 /* RoutesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoutesViewController.xib; sourceTree = "<group>"; };
@@ -677,8 +677,8 @@
 				04C7C29E17E3DFC3001A9981 /* MenuViewController.m */,
 				04602CF017EFCE0D002BE30D /* FavoritesViewController.h */,
 				04602CF117EFCE0D002BE30D /* FavoritesViewController.m */,
-				04C7C2A217E3E383001A9981 /* BustedNavigationController.h */,
-				04C7C2A317E3E383001A9981 /* BustedNavigationController.m */,
+				04C7C2A217E3E383001A9981 /* KNOWtimeNavigationController.h */,
+				04C7C2A317E3E383001A9981 /* KNOWtimeNavigationController.m */,
 				04C7C2AB17E3E9C5001A9981 /* RoutesViewController.h */,
 				04C7C2AC17E3E9C5001A9981 /* RoutesViewController.m */,
 				04C7C2B017E48B8D001A9981 /* ParentViewController.h */,
@@ -1037,7 +1037,7 @@
 				0447EBE617FA519600A91D60 /* TableCell.m in Sources */,
 				049393D1182075BB00B5F92A /* RouteWithTime.m in Sources */,
 				04E9588317F6340900DD72AD /* AFImageRequestOperation.m in Sources */,
-				04C7C2A417E3E383001A9981 /* BustedNavigationController.m in Sources */,
+				04C7C2A417E3E383001A9981 /* KNOWtimeNavigationController.m in Sources */,
 				04E9588417F6340900DD72AD /* AFJSONRequestOperation.m in Sources */,
 				04C7C2AE17E3E9C5001A9981 /* RoutesViewController.m in Sources */,
 				04C7C2B217E48B8D001A9981 /* ParentViewController.m in Sources */,

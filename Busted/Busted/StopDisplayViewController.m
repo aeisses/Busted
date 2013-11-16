@@ -1,9 +1,9 @@
 //
 //  StopDisplayViewController.m
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-30.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import "StopDisplayViewController.h"

@@ -3,7 +3,7 @@
 //  BusRoutes
 //
 //  Created by Aaron Eisses on 13-07-28.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 typedef enum {

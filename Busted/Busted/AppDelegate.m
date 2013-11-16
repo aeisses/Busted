@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -32,7 +32,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     ViewController *rootView = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     rootView.managedObjectContext = self.managedObjectContext;
-    _navController = [[BustedNavigationController alloc] initWithRootViewController:rootView];
+    _navController = [[KNOWtimeNavigationController alloc] initWithRootViewController:rootView];
     _navController.navigationBarHidden = YES;
     self.window.rootViewController = _navController;
     [self.window makeKeyAndVisible];

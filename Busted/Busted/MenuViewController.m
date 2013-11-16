@@ -1,9 +1,9 @@
 //
 //  MenuViewController.m
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import "MenuViewController.h"
@@ -222,11 +222,6 @@
     [_delegate loadViewController:mapViewController];
 }
 
-- (BusRoute*)getRoute:(NSInteger)routeNumber
-{
-    return [_delegate getRoute:routeNumber];
-}
-
 - (NSArray*)getRoutes
 {
     return [_delegate getRoutes];
@@ -235,11 +230,7 @@
 #pragma MapViewControllerDelegate
 - (void)mapFinishedLoading
 {
-//    if (![_routeButton.titleLabel.text isEqualToString:@"?"]) {
-//        [_mapVC addRoute:[_delegate getRoute:[_routeButton.titleLabel.text integerValue]]];
-//    }
-//    _mapVC.delegate = nil;
-//    [_mapVC release];
+
 }
 
 //- (void)updateStops:(CLLocationCoordinate2D)mapCenter

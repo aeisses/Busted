@@ -1,9 +1,9 @@
 //
 //  ViewController.m
-//  Busted
+//   KNOWtime
 //
 //  Created by Aaron Eisses on 2013-09-13.
-//  Copyright (c) 2013 Aaron Eisses. All rights reserved.
+//  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -67,7 +67,6 @@
 - (void)dealloc
 {
     [_webApiInterface release]; _webApiInterface = nil;
-    [dataReader release]; dataReader = nil;
     [activityIndicator release]; activityIndicator = nil;
     [super dealloc];
 }
@@ -101,15 +100,6 @@
             [[self navigationController] pushViewController:stopDisplayVC animated:YES];
         });
     }
-}
-
-- (BusRoute*)getRoute:(NSInteger)routeNumber;
-{
-    for (BusRoute *busRoute in dataReader.routes) {
-        if (busRoute.routeNum == routeNumber)
-            return busRoute;
-    }
-    return nil;
 }
 
 #pragma TranistionViewControllerDelegate
