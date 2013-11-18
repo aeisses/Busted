@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIView"/>
@@ -96,7 +96,7 @@
     </objects>
     <resources>
         <image name="aboutScreenSmall.jpg" width="241" height="438"/>
-        <image name="explaination.png" width="28" height="60"/>
+        <image name="explaination.png" width="29" height="60"/>
         <image name="facebookButton.png" width="24" height="24"/>
         <image name="mailButton.png" width="24" height="24"/>
         <image name="twitterButton.png" width="24" height="24"/>
