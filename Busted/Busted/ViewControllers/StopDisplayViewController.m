@@ -7,7 +7,7 @@
 //
 
 #import "StopDisplayViewController.h"
-#import "TableCell.h"
+#import "StopSelectCell.h"
 #import "StopAnnotation.h"
 #import "RouteWithTime.h"
 #import "StopTimes.h"
@@ -72,7 +72,7 @@ static id instance;
 
 - (void)viewDidLoad
 {
-    [_tableView registerNib:[UINib nibWithNibName:@"TableCell" bundle:nil] forCellReuseIdentifier:@"TableCell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"StopSelectCell" bundle:nil] forCellReuseIdentifier:@"StopSelectCell"];
     _tableView.delegate = self;
     [_tableView setDataSource:self];
     _tableView.backgroundColor = [UIColor clearColor];
@@ -126,7 +126,7 @@ static id instance;
 {
     if (!_routes)
         return nil;
-    TableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
+    StopSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopSelectCell" forIndexPath:indexPath];
     RouteWithTime *route = [_routes objectAtIndex:indexPath.row];
     cell.routeNumber.text = route.shortName;
     cell.routeName.text = route.longName;
@@ -153,6 +153,9 @@ static id instance;
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
     [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
+    [displayFormatter setDateFormat:@"h:mm"];
+    int counter = 0;
     for (StopTimes *times in route.times)
     {
         NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
@@ -160,16 +163,34 @@ static id instance;
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
             minDiff = diff;
-            NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
-            [displayFormatter setDateFormat:@"h:mm"];
             departTime = [displayFormatter stringFromDate:stopDate];
-            [displayFormatter release];
+            counter = [route.times indexOfObject:times];
         }
     }
+
+    cell.timeRemaining.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
+    cell.time.text = departTime;
+    if (counter+1 >= [route.times count]) {
+        cell.timeNext.text = @"unknown";
+        cell.timeNextNext.text = @"unknown";
+        cell.timeRemainingNext.text = @"unknown";
+        cell.timeRemainingNextNext.text = @"unknown";
+    } else {
+        NSDate *stopDateNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+1]).departure]];
+        cell.timeRemainingNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNext timeIntervalSinceNow]/60];
+        cell.timeNext.text = [displayFormatter stringFromDate:stopDateNext];
+        if (counter+2 >= [route.times count]) {
+            cell.timeRemainingNext.text = @"unknown";
+            cell.timeRemainingNextNext.text = @"unknown";
+        } else {
+            NSDate *stopDateNextNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+2]).departure]];
+            cell.timeRemainingNextNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNextNext timeIntervalSinceNow]/60];
+            cell.timeNextNext.text = [displayFormatter stringFromDate:stopDateNextNext];
+        }
+    }
+    [displayFormatter release];
     [formatter release];
     [currentTimeFormatter release];
-    cell.time.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
-    cell.timeRemaining.text = departTime;
     return cell;
 }
 
@@ -190,7 +211,7 @@ static id instance;
 //    {
 //        return 86;
 //    }
-    return 43;
+    return 70;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

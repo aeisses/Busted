@@ -90,10 +90,10 @@
 		043DAC501837D4DA00129145 /* FavouriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC421837D4DA00129145 /* FavouriteCell.xib */; };
 		043DAC511837D4DA00129145 /* RouteSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC431837D4DA00129145 /* RouteSelectCell.xib */; };
 		043DAC521837D4DA00129145 /* StopsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC441837D4DA00129145 /* StopsHeader.xib */; };
-		043DAC531837D4DA00129145 /* TableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC451837D4DA00129145 /* TableCell.xib */; };
+		043DAC531837D4DA00129145 /* StopSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC451837D4DA00129145 /* StopSelectCell.xib */; };
 		043DAC541837D4DA00129145 /* RouteSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC471837D4DA00129145 /* RouteSelectCell.m */; };
 		043DAC551837D4DA00129145 /* StopsHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC491837D4DA00129145 /* StopsHeader.m */; };
-		043DAC561837D4DA00129145 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC4B1837D4DA00129145 /* TableCell.m */; };
+		043DAC561837D4DA00129145 /* StopSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC4B1837D4DA00129145 /* StopSelectCell.m */; };
 		043DAC6B1837D55100129145 /* BusAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC591837D55100129145 /* BusAnnotation.m */; };
 		043DAC6C1837D55100129145 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC5C1837D55100129145 /* Path.m */; };
 		043DAC6D1837D55100129145 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC5E1837D55100129145 /* Reachability.m */; };
@@ -265,13 +265,13 @@
 		043DAC421837D4DA00129145 /* FavouriteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteCell.xib; sourceTree = "<group>"; };
 		043DAC431837D4DA00129145 /* RouteSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RouteSelectCell.xib; sourceTree = "<group>"; };
 		043DAC441837D4DA00129145 /* StopsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopsHeader.xib; sourceTree = "<group>"; };
-		043DAC451837D4DA00129145 /* TableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCell.xib; sourceTree = "<group>"; };
+		043DAC451837D4DA00129145 /* StopSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StopSelectCell.xib; sourceTree = "<group>"; };
 		043DAC461837D4DA00129145 /* RouteSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteSelectCell.h; sourceTree = "<group>"; };
 		043DAC471837D4DA00129145 /* RouteSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteSelectCell.m; sourceTree = "<group>"; };
 		043DAC481837D4DA00129145 /* StopsHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsHeader.h; sourceTree = "<group>"; };
 		043DAC491837D4DA00129145 /* StopsHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsHeader.m; sourceTree = "<group>"; };
-		043DAC4A1837D4DA00129145 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
-		043DAC4B1837D4DA00129145 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		043DAC4A1837D4DA00129145 /* StopSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopSelectCell.h; sourceTree = "<group>"; };
+		043DAC4B1837D4DA00129145 /* StopSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopSelectCell.m; sourceTree = "<group>"; };
 		043DAC581837D55100129145 /* BusAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusAnnotation.h; sourceTree = "<group>"; };
 		043DAC591837D55100129145 /* BusAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusAnnotation.m; sourceTree = "<group>"; };
 		043DAC5A1837D55100129145 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
@@ -577,8 +577,8 @@
 				043DAC471837D4DA00129145 /* RouteSelectCell.m */,
 				043DAC481837D4DA00129145 /* StopsHeader.h */,
 				043DAC491837D4DA00129145 /* StopsHeader.m */,
-				043DAC4A1837D4DA00129145 /* TableCell.h */,
-				043DAC4B1837D4DA00129145 /* TableCell.m */,
+				043DAC4A1837D4DA00129145 /* StopSelectCell.h */,
+				043DAC4B1837D4DA00129145 /* StopSelectCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -591,7 +591,7 @@
 				043DAC421837D4DA00129145 /* FavouriteCell.xib */,
 				043DAC431837D4DA00129145 /* RouteSelectCell.xib */,
 				043DAC441837D4DA00129145 /* StopsHeader.xib */,
-				043DAC451837D4DA00129145 /* TableCell.xib */,
+				043DAC451837D4DA00129145 /* StopSelectCell.xib */,
 			);
 			path = NIbs;
 			sourceTree = "<group>";
@@ -954,7 +954,7 @@
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,
 				043DAC331837D22E00129145 /* StopsHeader@2x.png in Resources */,
-				043DAC531837D4DA00129145 /* TableCell.xib in Resources */,
+				043DAC531837D4DA00129145 /* StopSelectCell.xib in Resources */,
 				043DAC181837D22E00129145 /* empty-starblack.png in Resources */,
 				043DAC911837D5D200129145 /* LoadingScreenViewController.xib in Resources */,
 				043DAC1C1837D22E00129145 /* facebookButton.png in Resources */,
@@ -1010,7 +1010,7 @@
 				041902731800F40700D79040 /* TLTransitionAnimator.m in Sources */,
 				043DAC711837D55100129145 /* StopAnnotation.m in Sources */,
 				043DAC4C1837D4DA00129145 /* AboutScreen.m in Sources */,
-				043DAC561837D4DA00129145 /* TableCell.m in Sources */,
+				043DAC561837D4DA00129145 /* StopSelectCell.m in Sources */,
 				043DAC781837D59800129145 /* RegionZoomData.m in Sources */,
 				043DAC6F1837D55100129145 /* RouteManagedObject.m in Sources */,
 				04E9588517F6340900DD72AD /* AFNetworkActivityIndicatorManager.m in Sources */,
@@ -1080,8 +1080,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1121,7 +1121,7 @@
 		04C7C29B17E3D7D9001A9981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
+				CODE_SIGN_IDENTITY = "iOS Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Eisses";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1138,8 +1138,8 @@
 					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "02F12FA8-C423-4BBF-B682-3F200820D3C6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02F12FA8-C423-4BBF-B682-3F200820D3C6";
+				PROVISIONING_PROFILE = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -67,6 +67,10 @@ static NSString *const kAllowTracking = @"allowTracking";
 //        [[TrackViewController sharedInstance].locationManager startMonitoringSignificantLocationChanges];
         [Flurry setBackgroundSessionEnabled:YES];
     }
+    if ([_navController.topViewController isKindOfClass:[MapViewController class]])
+    {
+        [((MapViewController*)_navController.topViewController).locationManager stopUpdatingLocation];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -84,6 +88,10 @@ static NSString *const kAllowTracking = @"allowTracking";
         [TrackViewController sharedInstance].backGroundTime = [NSDate date];
 //        [[TrackViewController sharedInstance].locationManager stopMonitoringSignificantLocationChanges];
 //        [[TrackViewController sharedInstance].locationManager startUpdatingLocation];
+    }
+    if ([_navController.topViewController isKindOfClass:[MapViewController class]])
+    {
+        [((MapViewController*)_navController.topViewController).locationManager startUpdatingLocation];
     }
 }
 

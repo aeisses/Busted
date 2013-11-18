@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TableCell : UITableViewCell
+@interface StopSelectCell : UITableViewCell
 
 @property (retain, nonatomic) IBOutlet UILabel *routeNumber;
 @property (retain, nonatomic) IBOutlet UILabel *routeName;
 @property (retain, nonatomic) IBOutlet UILabel *time;
 @property (retain, nonatomic) IBOutlet UILabel *timeRemaining;
+@property (retain, nonatomic) IBOutlet UILabel *timeNext;
+@property (retain, nonatomic) IBOutlet UILabel *timeRemainingNext;
+@property (retain, nonatomic) IBOutlet UILabel *timeNextNext;
+@property (retain, nonatomic) IBOutlet UILabel *timeRemainingNextNext;
 @property (retain, nonatomic) NSNumber *busStopCode;
 
 @end

@@ -233,10 +233,12 @@ static id instance;
                     } else {
                         if (_annotations) {
                             [_mapView removeAnnotations:_annotations];
+                            [_annotations release];
                             _annotations = nil;
                         }
                         _annotations = [[NSArray alloc] initWithArray:myAnnotations];
                         [myAnnotations release];
+                        myAnnotations = nil;
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [_mapView addAnnotations:_annotations];
                             [_mapView setNeedsDisplay]; // This might not be needed

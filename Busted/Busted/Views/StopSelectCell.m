@@ -6,10 +6,10 @@
 //  Copyright (c) 2013 KNOWtime Team. All rights reserved.
 //
 
-#import "TableCell.h"
+#import "StopSelectCell.h"
 #import "WebApiInterface.h"
 
-@implementation TableCell
+@implementation StopSelectCell
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -27,7 +27,7 @@
 }
 
 - (NSString *) reuseIdentifier {
-    return @"TableCell";
+    return @"StopSelectCell";
 }
 
 - (void)dealloc
@@ -35,6 +35,10 @@
     [_routeNumber release]; _routeNumber = nil;
     [_time release]; _time = nil;
     [_timeRemaining release]; _timeRemaining = nil;
+    [_timeNext release]; _timeNext = nil;
+    [_timeRemainingNext release]; _timeRemainingNext = nil;
+    [_timeNextNext release]; _timeNextNext = nil;
+    [_timeRemainingNextNext release]; _timeRemainingNextNext = nil;
     [_busStopCode release]; _busStopCode = nil;
     [super dealloc];
 }
