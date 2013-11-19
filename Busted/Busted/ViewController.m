@@ -19,6 +19,22 @@
     
 }
 
+- (void)showMapScreen
+{
+    [[self navigationController] popViewControllerAnimated:NO];
+    if (IS_IPHONE_5)
+    {
+        _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+    }
+    else
+    {
+        _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+    }
+    _mapViewController.delegate = self;
+    _mapViewController.superDelegate = self;
+    [[self navigationController] pushViewController:_mapViewController animated:NO];
+}
+
 - (void)showMenuView
 {
     [[self navigationController] popViewControllerAnimated:NO];
@@ -192,7 +208,8 @@
 {
     [activityIndicator stopAnimating];
     [activityIndicator removeFromSuperview];
-    [self showMenuView];
+//    [self showMenuView];
+    [self showMapScreen];
 }
 
 - (void)addBusStop:(StopAnnotation*)busStop
@@ -212,7 +229,8 @@
 
 - (void)receivedStops
 {
-    [self showMenuView];
+//    [self showMenuView];
+    [self showMapScreen];
 }
 
 #pragma LoadingScreenViewControllerDelegate

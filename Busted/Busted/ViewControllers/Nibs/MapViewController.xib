@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="favouriteButton" destination="fg0-Vp-16R" id="YtK-Hj-GoC"/>
-                <outlet property="homeButton" destination="ZUq-lV-tiQ" id="mg8-2K-AFN"/>
                 <outlet property="mapView" destination="1" id="42"/>
                 <outlet property="view" destination="1" id="43"/>
             </connections>
@@ -18,32 +16,33 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZUq-lV-tiQ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hD6-tH-Ybn">
+                    <rect key="frame" x="69" y="515" width="48" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button">
-                        <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
-                    </accessibility>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="homeButtonHighlighted.png"/>
-                    <state key="highlighted" image="homeButtonHighlighted.png"/>
-                    <connections>
-                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="Dk4-Oo-VZe"/>
-                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fg0-Vp-16R">
-                    <rect key="frame" x="264" y="517" width="56" height="51"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15O-go-jin">
+                    <rect key="frame" x="133" y="515" width="48" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="empty-starblack.png">
+                    <state key="normal" title="Button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="full-starblack.png"/>
-                    <connections>
-                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="9T2-dd-T3k"/>
-                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhf-HG-kWt">
+                    <rect key="frame" x="197" y="515" width="46" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3j6-CD-33D">
+                    <rect key="frame" x="258" y="515" width="51" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -53,10 +52,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="empty-starblack.png" width="35" height="35"/>
-        <image name="full-starblack.png" width="35" height="35"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="homeButtonHighlighted.png" width="320" height="56"/>
-    </resources>
 </document>

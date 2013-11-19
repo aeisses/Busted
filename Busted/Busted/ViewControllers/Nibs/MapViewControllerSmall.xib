@@ -7,8 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="favouriteButton" destination="AB8-3i-AQB" id="6rZ-o7-cpn"/>
-                <outlet property="homeButton" destination="JNT-eu-HrS" id="u17-Wr-coA"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
             </connections>
@@ -17,31 +15,6 @@
         <view contentMode="scaleToFill" id="1" customClass="MKMapView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JNT-eu-HrS">
-                    <rect key="frame" x="0.0" y="-5" width="320" height="56"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
-                    <state key="normal" image="homeButton.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" image="homeButtonHighlightedSmall.png"/>
-                    <connections>
-                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="gF6-Zf-B0p"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AB8-3i-AQB">
-                    <rect key="frame" x="268" y="427" width="52" height="53"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="empty-starblack.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" image="full-starblack.png"/>
-                    <connections>
-                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="SFp-7V-22y"/>
-                    </connections>
-                </button>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -49,10 +22,4 @@
             </connections>
         </view>
     </objects>
-    <resources>
-        <image name="empty-starblack.png" width="35" height="35"/>
-        <image name="full-starblack.png" width="35" height="35"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
-    </resources>
 </document>

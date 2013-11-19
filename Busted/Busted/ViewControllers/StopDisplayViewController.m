@@ -25,11 +25,11 @@ static id instance;
 + (StopDisplayViewController*)sharedInstance
 {
     if (!instance) {
-        if (IS_IPHONE)
+        if (IS_IPHONE_5)
         {
-            return [[[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil] autorelease];
-        } else {
             return [[[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewController" bundle:nil] autorelease];
+        } else {
+            return [[[StopDisplayViewController alloc] initWithNibName:@"StopDisplayViewControllerSmall" bundle:nil] autorelease];
         }
     }
     return instance;
