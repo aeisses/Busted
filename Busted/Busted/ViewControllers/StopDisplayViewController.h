@@ -12,6 +12,11 @@
 
 @class StopAnnotation;
 
+@protocol StopDisplayViewControllerDelegate <NSObject>
+- (void)loadViewController:(UIViewController*)vc;
+- (NSArray*)getRoutes;
+@end
+
 @interface StopDisplayViewController : ParentViewController <UITableViewDataSource,UITableViewDelegate>
 {
     CADisplayLink *displayLink;
@@ -23,6 +28,7 @@
 @property (retain, nonatomic) IBOutlet UITableView *tableView;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (retain, nonatomic) NSArray *routes;
+@property (retain, nonatomic) id <StopDisplayViewControllerDelegate> delegate;
 
 + (StopDisplayViewController*)sharedInstance;
 - (IBAction)touchHomeButton:(id)sender;

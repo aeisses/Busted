@@ -46,6 +46,33 @@ static id instance;
     return instance;
 }
 
+- (NSArray*)getBusRoutes
+{
+    NSArray *routes = [_delegate getRoutes];
+    NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
+    //    int counter = 0;
+    for (RouteManagedObject *route in routes)
+    {
+        Route *myRoute = [[Route alloc] init];
+        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        NSNumber *number = [numberFormatter numberFromString:route.shortName];
+        if (number != nil) {
+            myRoute.ident = [route.shortName integerValue];
+        } else {
+            //            myRoute.ident = counter + 10000;
+            //            counter++;
+            [myRoute release];
+            continue;
+        }
+        myRoute.longName = route.longName;
+        myRoute.shortName = route.shortName;
+        myRoute.isFavourite = [route.isFavourite boolValue];
+        [routesM addObject:myRoute];
+        [myRoute release];
+    }
+    return [(NSArray*)routesM autorelease];
+}
+
 - (void)setRoutes:(NSArray*)routes
 {
     _routes = [[NSArray alloc] initWithArray:routes];
@@ -115,11 +142,13 @@ static id instance;
     if (_busStop)
         [_busStop release];
 //    [expandedSections release];
+    _delegate = nil;
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
     [_favouriteButton release]; _favouriteButton = nil;
     [super dealloc];
 }
+
 
 #pragma UITableViewDelegate Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -194,16 +223,31 @@ static id instance;
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if ([expandedSections containsIndex:indexPath.row])
-//    {
-//        [expandedSections removeIndex:indexPath.row];
-//    } else {
-//        [expandedSections addIndex:indexPath.row];
-//    }
-//    [tableView reloadData];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    StopSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopSelectCell" forIndexPath:indexPath];
+    MapViewController *mapVC = nil;
+    if (IS_IPHONE_5)
+    {
+        mapVC = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+    }
+    else
+    {
+        mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+    }
+    [[WebApiInterface sharedInstance] loadPathForRoute:cell.routeNumber.text];
+    mapVC.isStops = YES;
+    [_delegate loadViewController:mapVC];
+    NSArray *routesArray = [self getBusRoutes];
+    Route *route = [[Route alloc] init];
+    RouteWithTime *routeWTime = [_routes objectAtIndex:indexPath.row];
+    route.shortName = routeWTime.shortName;
+    [mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
+    [route release];
+    [mapVC release];
+    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", cell.routeNumber.text, nil];
+    [Flurry logEvent:@"Routes_View_Button_Pressed" withParameters:routesParams];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

@@ -24,7 +24,6 @@
 
 @protocol MapViewControllerDelegate <NSObject>
 @optional
-- (void)mapFinishedLoading;
 - (void)loadViewController:(UIViewController*)vc;
 @end
 
@@ -33,6 +32,7 @@
     CADisplayLink *displayLink;
     BOOL skipLoop;
     BOOL isStarting;
+    BOOL shouldShowStops;
 }
 
 @property (retain, nonatomic) Route *route;
@@ -46,6 +46,10 @@
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
+@property (retain, nonatomic) IBOutlet UIButton *aboutButton;
+@property (retain, nonatomic) IBOutlet UIButton *stopsButton;
+@property (retain, nonatomic) IBOutlet UIButton *favouriteScreenButton;
+@property (retain, nonatomic) IBOutlet UIButton *trackButton;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;
@@ -54,6 +58,10 @@
 - (void)addStop:(StopAnnotation*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
 - (IBAction)touchFavouriteButton:(id)sender;
+- (IBAction)touchAboutButton:(id)sender;
+- (IBAction)touchStopsButton:(id)sender;
+- (IBAction)touchFavoriteScreenButton:(id)sender;
+- (IBAction)touchtTrackButton:(id)sender;
 - (void)showRouteAlert;
 
 @end

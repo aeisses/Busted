@@ -104,6 +104,7 @@
         });
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
+        mapVC.delegate = self;
         mapVC.superDelegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:vc animated:YES];
@@ -111,6 +112,7 @@
         mapVC.currentLocation = _trackVC.currentLocation;
     } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
         StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
+        stopDisplayVC.delegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:stopDisplayVC animated:YES];
         });

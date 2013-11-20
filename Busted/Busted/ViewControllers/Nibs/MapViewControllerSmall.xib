@@ -7,7 +7,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
+                <outlet property="aboutButton" destination="mNM-fW-V4A" id="Uws-rL-5tQ"/>
+                <outlet property="favouriteButton" destination="gIP-pJ-E5u" id="j2t-sJ-6wF"/>
+                <outlet property="favouriteScreenButton" destination="9al-2j-G9M" id="y5c-5a-lDh"/>
+                <outlet property="homeButton" destination="eRF-bX-Czo" id="rGT-xN-Fns"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
+                <outlet property="stopsButton" destination="eA7-7G-aa2" id="8Yt-Bt-1bk"/>
+                <outlet property="trackButton" destination="uhy-E1-jMp" id="tb2-lh-oKF"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
             </connections>
         </placeholder>
@@ -15,6 +21,67 @@
         <view contentMode="scaleToFill" id="1" customClass="MKMapView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eRF-bX-Czo">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
+                    <state key="normal" image="homeButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="homeButtonHighlightedSmall.png"/>
+                    <connections>
+                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="UDL-ye-7rA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gIP-pJ-E5u">
+                    <rect key="frame" x="268" y="432" width="52" height="53"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="empty-starblack.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="full-starblack.png"/>
+                    <connections>
+                        <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="GXr-dT-7hm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mNM-fW-V4A">
+                    <rect key="frame" x="17" y="431" width="46" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="About"/>
+                    <connections>
+                        <action selector="touchAboutButton:" destination="-1" eventType="touchUpInside" id="10Q-7J-ZeA"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eA7-7G-aa2">
+                    <rect key="frame" x="75" y="431" width="46" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Stops"/>
+                    <connections>
+                        <action selector="touchStopsButton:" destination="-1" eventType="touchUpInside" id="zs1-Np-AKv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9al-2j-G9M">
+                    <rect key="frame" x="135" y="431" width="46" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Fav"/>
+                    <connections>
+                        <action selector="touchFavoriteScreenButton:" destination="-1" eventType="touchUpInside" id="EVl-lb-CM1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uhy-E1-jMp">
+                    <rect key="frame" x="194" y="431" width="46" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Track"/>
+                    <connections>
+                        <action selector="touchtTrackButton:" destination="-1" eventType="touchUpInside" id="mcb-1e-hg4"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -22,4 +89,10 @@
             </connections>
         </view>
     </objects>
+    <resources>
+        <image name="empty-starblack.png" width="35" height="35"/>
+        <image name="full-starblack.png" width="35" height="35"/>
+        <image name="homeButton.png" width="320" height="56"/>
+        <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
+    </resources>
 </document>

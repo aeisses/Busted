@@ -68,7 +68,7 @@
 {
     dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
     dispatch_async(menuQueue, ^{
-        [self.superDelegate touchedHomeButton:YES];
+        [self.superDelegate touchedHomeButton:NO];
     });
     dispatch_release(menuQueue);
 }
