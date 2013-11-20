@@ -299,7 +299,7 @@ static id instance;
 - (void)getRouteForIdent:(NSNumber*)ident
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i/%@", SANGSTERBASEURL, STOPTIME, [ident integerValue], [formatter stringFromDate:[NSDate date]]];
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
@@ -349,7 +349,7 @@ static id instance;
 - (void)getPathForRouteId:(NSString*)routeId
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%@/%@", SANGSTERBASEURL, PATHS, [formatter stringFromDate:[NSDate date]], routeId];
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
@@ -384,7 +384,7 @@ static id instance;
 - (void)loadPathForRoute:(NSString*)shortName
 {
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-    [dayFormatter setDateFormat:@"YYYY-MM-dd"];
+    [dayFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:MM"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@/%@:%@/%@%@/%@", SANGSTERBASEURL, ROUTES, SHORTS, shortName, HEADSIGNS, [dayFormatter stringFromDate:[NSDate date]], [timeFormatter stringFromDate:[NSDate date]]];
