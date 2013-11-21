@@ -121,6 +121,20 @@ static id instance;
     [super dealloc];
 }
 
+- (NSDate*)getStopDate:(NSString*)departTime withFromatter:(NSDateFormatter*)formatter andFormatter:(NSDateFormatter*)currentTimeFormatter
+{
+    NSDate *returnDate = nil;
+    NSArray *components = [departTime componentsSeparatedByString:@":"];
+    if ([components count] >= 2 && [(NSString*)[components objectAtIndex:0] integerValue] >= 24)
+    {
+        NSDate *tempDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@:%@",[currentTimeFormatter stringFromDate:[NSDate date]],@"00",(NSString*)[components objectAtIndex:1]]];
+        returnDate = [NSDate dateWithTimeIntervalSinceReferenceDate:([tempDate timeIntervalSinceReferenceDate] + 86400)];
+    } else {
+        returnDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],departTime]];
+    }
+    return returnDate;
+}
+
 #pragma UITableViewDelegate Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -149,16 +163,18 @@ static id instance;
     cell.timeRemaining.text = @"unknown";
     int minDiff = 0;
     NSString *departTime = @"unknown";
+    
+    NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
+    [displayFormatter setDateFormat:@"h:mm"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
     [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
-    [displayFormatter setDateFormat:@"h:mm"];
-    int counter = 0;
+
+    int counter = -1;
     for (StopTimes *times in route.times)
     {
-        NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
+        NSDate *stopDate = [self getStopDate:times.departure withFromatter:formatter andFormatter:currentTimeFormatter];
         int diff = [stopDate timeIntervalSinceNow];
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
@@ -167,23 +183,24 @@ static id instance;
             counter = [route.times indexOfObject:times];
         }
     }
-
-    cell.timeRemaining.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
-    cell.time.text = departTime;
-    if (counter+1 >= [route.times count]) {
+    if (minDiff != 0) {
+        cell.timeRemaining.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
+        cell.time.text = departTime;
+    }
+    if (counter+1 >= [route.times count] || counter == -1) {
         cell.timeNext.text = @"unknown";
         cell.timeNextNext.text = @"unknown";
         cell.timeRemainingNext.text = @"unknown";
         cell.timeRemainingNextNext.text = @"unknown";
     } else {
-        NSDate *stopDateNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+1]).departure]];
+        NSDate *stopDateNext = [self getStopDate:((StopTimes*)[route.times objectAtIndex:counter+1]).departure withFromatter:formatter andFormatter:currentTimeFormatter];
         cell.timeRemainingNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNext timeIntervalSinceNow]/60];
         cell.timeNext.text = [displayFormatter stringFromDate:stopDateNext];
         if (counter+2 >= [route.times count]) {
-            cell.timeRemainingNext.text = @"unknown";
+            cell.timeNextNext.text = @"unknown";
             cell.timeRemainingNextNext.text = @"unknown";
         } else {
-            NSDate *stopDateNextNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+2]).departure]];
+            NSDate *stopDateNextNext = [self getStopDate:((StopTimes*)[route.times objectAtIndex:counter+2]).departure withFromatter:formatter andFormatter:currentTimeFormatter];
             cell.timeRemainingNextNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNextNext timeIntervalSinceNow]/60];
             cell.timeNextNext.text = [displayFormatter stringFromDate:stopDateNextNext];
         }
