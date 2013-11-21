@@ -29,13 +29,13 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39">
-                            <rect key="frame" x="0.0" y="443" width="320" height="130"/>
+                            <rect key="frame" x="0.0" y="383" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="See you favorite stops" label="Favorites Screens">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                             </accessibility>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" image="myFavoriteButton.png">
+                            <state key="normal" image="myFavouritesButton.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -55,31 +55,24 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJE-17-L8t">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                            <rect key="frame" x="0.0" y="476" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="Show the track screen" label="Track button"/>
-                            <state key="normal" image="upToDownButton.png">
+                            <state key="normal" image="trackMeButton.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
                                 <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="4v3-Hj-QAn"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Track Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MjG-0M-Ndt">
-                            <rect key="frame" x="7" y="26" width="74" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36">
-                            <rect key="frame" x="0.0" y="321" width="320" height="130"/>
+                            <rect key="frame" x="0.0" y="290" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="See the stops around your current location" label="My Destination">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                             </accessibility>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" image="myDestinationButton.png">
+                            <state key="normal" image="myStopsButton.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -87,7 +80,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                            <rect key="frame" x="0.0" y="197" width="320" height="130"/>
+                            <rect key="frame" x="0.0" y="197" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="The button to track your bus" label="Track My Bus">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -105,6 +98,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upToDownButton.png" translatesAutoresizingMaskIntoConstraints="NO" id="A9J-7l-MZk">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.47870757920000001" green="1" blue="0.40548823270000001" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
@@ -117,9 +114,10 @@
         <image name="aboutButtonHighlighted.png" width="49" height="49"/>
         <image name="aboutScreenImage.jpg" width="6" height="439"/>
         <image name="backGroundMenu.jpg" width="320" height="568"/>
-        <image name="myDestinationButton.png" width="320" height="129"/>
-        <image name="myFavoriteButton.png" width="320" height="123"/>
-        <image name="trackMyBusButton.png" width="320" height="130"/>
+        <image name="myFavouritesButton.png" width="320" height="93"/>
+        <image name="myStopsButton.png" width="320" height="93"/>
+        <image name="trackMeButton.png" width="320" height="93"/>
+        <image name="trackMyBusButton.png" width="320" height="93"/>
         <image name="upToDownButton.png" width="320" height="49"/>
     </resources>
 </document>
