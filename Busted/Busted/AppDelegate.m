@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "TrackViewController.h"
 #import "Flurry.h"
 
 @implementation AppDelegate

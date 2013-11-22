@@ -9,7 +9,7 @@
 #import "WebApiInterface.h"
 #import "RouteWithTime.h"
 #import "StopTimes.h"
-#import "Path.h"
+#import "MapViewController.h"
 
 static NSString *const JSONDirectoryPath = @"/RawJson";
 
@@ -346,7 +346,7 @@ static id instance;
     [contentUrl release];
 }
 
-- (void)getPathForRouteId:(NSString*)routeId
+- (void)getPathForRouteId:(NSString*)routeId callBack:(MapViewController*)callback
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"YYYY-MM-dd"];
@@ -354,15 +354,17 @@ static id instance;
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    __block MapViewController *mapVC = callback;
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         Path *path = [[Path alloc] init];
         MKCoordinateRegion region = [path addLines:(NSArray*)JSON];
-        if ([MapViewController sharedInstance].mapView) {
-            [[MapViewController sharedInstance].mapView setRegion:region];
-            [[MapViewController sharedInstance].mapView addOverlays:path.lines];
-        }
+//        if (mapVC) {
+//            [mapVC.mapView setRegion:region];
+//            [mapVC.mapView addOverlays:path.lines];
+            [_delegate loadPath:path forRegion:region];
+//        }
         [path release];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
@@ -381,7 +383,7 @@ static id instance;
 
 }
 
-- (void)loadPathForRoute:(NSString*)shortName
+- (void)loadPathForRoute:(NSString*)shortName callBack:(MapViewController*)callback
 {
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
     [dayFormatter setDateFormat:@"YYYY-MM-dd"];
@@ -392,15 +394,17 @@ static id instance;
     [timeFormatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    __block MapViewController *mapVC = callback;
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         if ([((NSArray*)JSON) count])
         {
-            [self getPathForRouteId:[((NSDictionary*)[((NSArray*)JSON) firstObject]) valueForKey:@"routeId"]];
+            [self getPathForRouteId:[((NSDictionary*)[((NSArray*)JSON) firstObject]) valueForKey:@"routeId"] callBack:mapVC];
         } else {
-            [[MapViewController sharedInstance] showRouteAlert];
+            [mapVC showRouteAlert];
         }
+        mapVC = nil;
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {

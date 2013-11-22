@@ -7,7 +7,7 @@
 //
 
 #import "StopAnnotation.h"
-#import "StopManagedObject.h"
+#import "WebApiInterface.h"
 
 @implementation StopAnnotation
 

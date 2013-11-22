@@ -7,9 +7,6 @@
 //
 
 #import "FavouritesViewController.h"
-#import "WebApiInterface.h"
-#import "FavouriteCell.h"
-#import "RoutesViewController.h"
 
 @interface FavouritesViewController ()
 
@@ -208,7 +205,7 @@
         }
         RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavouriteRoutes] objectAtIndex:indexPath.row];
         routeName = [[NSString alloc] initWithString:route.shortName];
-        [[WebApiInterface sharedInstance] loadPathForRoute:routeName];
+        [[WebApiInterface sharedInstance] loadPathForRoute:routeName callBack:_mapVC];
         _mapVC.isStops = YES;
         [_delegate loadViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
@@ -217,6 +214,7 @@
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:myRoute]]];
         [myRoute release];
         [_mapVC release];
+        _mapVC = nil;
     }
 }
 

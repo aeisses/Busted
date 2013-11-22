@@ -25,9 +25,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="az8-QY-IPt">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
+                    <rect key="frame" x="0.0" y="400" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="upToDownButton.png">
+                    <state key="normal" image="trackMeButtonSmall.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -35,10 +35,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6xi-NK-hMf">
-                    <rect key="frame" x="0.0" y="370" width="320" height="110"/>
+                    <rect key="frame" x="0.0" y="320" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="See you favorite stops" label="Favorites Screens"/>
-                    <state key="normal" image="myFavoriteButtonSmall.png">
+                    <state key="normal" image="myFavouritesButtonSmall.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -56,10 +56,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0WN-zd-KVe">
-                    <rect key="frame" x="0.0" y="265" width="320" height="110"/>
+                    <rect key="frame" x="0.0" y="240" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="See the stops around your current location" label="My Destination"/>
-                    <state key="normal" image="myDestinationButtonSmall.png">
+                    <state key="normal" image="myStopsButtonSmall.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -67,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jnc-cg-gk1">
-                    <rect key="frame" x="0.0" y="160" width="320" height="110"/>
+                    <rect key="frame" x="0.0" y="160" width="320" height="80"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="The button to track your bus" label="Track My Bus"/>
                     <state key="normal" image="trackMyBusButtonSmall.png">
@@ -77,17 +77,14 @@
                         <action selector="touchButton:" destination="-1" eventType="touchDown" id="wt2-c5-JOi"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upToDownButton.png" id="xrQ-fu-rEM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aboutScreenImage.jpg" id="OsO-WJ-gTb">
                     <rect key="frame" x="314" y="41" width="6" height="439"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z3s-LA-Zg9">
-                    <rect key="frame" x="7" y="18" width="74" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -97,9 +94,10 @@
         <image name="aboutButton.png" width="49" height="49"/>
         <image name="aboutScreenImage.jpg" width="6" height="439"/>
         <image name="backGroundMenuSmall.jpg" width="320" height="480"/>
-        <image name="myDestinationButtonSmall.png" width="320" height="110"/>
-        <image name="myFavoriteButtonSmall.png" width="320" height="110"/>
-        <image name="trackMyBusButtonSmall.png" width="320" height="110"/>
+        <image name="myFavouritesButtonSmall.png" width="320" height="80"/>
+        <image name="myStopsButtonSmall.png" width="320" height="80"/>
+        <image name="trackMeButtonSmall.png" width="320" height="80"/>
+        <image name="trackMyBusButtonSmall.png" width="320" height="80"/>
         <image name="upToDownButton.png" width="320" height="49"/>
     </resources>
 </document>

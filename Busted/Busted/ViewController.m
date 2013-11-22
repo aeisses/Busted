@@ -95,6 +95,7 @@
         mapVC.currentLocation = _trackVC.currentLocation;
     } else if ([vc isKindOfClass:[StopDisplayViewController class]]) {
         StopDisplayViewController *stopDisplayVC = (StopDisplayViewController*)vc;
+        stopDisplayVC.delegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:stopDisplayVC animated:YES];
         });
@@ -110,7 +111,8 @@
 
 - (void)exitTransitionVC
 {
-    [_trackVC dismissViewControllerAnimated:YES completion:^{}];
+//    [_trackVC dismissViewControllerAnimated:YES completion:^{}];
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 #pragma ParentViewControllerDelegate
@@ -150,14 +152,15 @@
         case UISwipeGestureRecognizerDirectionDown:
             if (![[self navigationController].topViewController isKindOfClass:[TrackViewController class]])
             {
-                NSString *ver = [[UIDevice currentDevice] systemVersion];
-                float ver_float = [ver floatValue];
-                if (ver_float >= 7.0)
-                {
-                    _trackVC.transitioningDelegate = self;
-                    _trackVC.modalPresentationStyle = UIModalPresentationCustom;
-                }
-                [self presentViewController:_trackVC animated:YES completion:^{}];
+//                NSString *ver = [[UIDevice currentDevice] systemVersion];
+//                float ver_float = [ver floatValue];
+//                if (ver_float >= 7.0)
+//                {
+//                    _trackVC.transitioningDelegate = self;
+//                    _trackVC.modalPresentationStyle = UIModalPresentationCustom;
+//                }
+//                [self presentViewController:_trackVC animated:YES completion:^{}];
+                [[self navigationController] pushViewController:_trackVC animated:YES];
             }
             break;
     }
@@ -213,6 +216,14 @@
 - (void)receivedStops
 {
     [self showMenuView];
+}
+
+- (void)loadPath:(Path*)path forRegion:(MKCoordinateRegion)region
+{
+    if ([[self navigationController].topViewController isKindOfClass:[MapViewController class]]) {
+        [((MapViewController*)[self navigationController].topViewController).mapView setRegion:region];
+        [((MapViewController*)[self navigationController].topViewController).mapView addOverlays:path.lines];
+    }
 }
 
 #pragma LoadingScreenViewControllerDelegate

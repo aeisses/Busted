@@ -15,10 +15,9 @@
 #import "Reachability.h"
 #import "StopDisplayViewController.h"
 #import "macros.h"
-#import "StopAnnotation.h"
 #import "Route.h"
-#import "WebApiInterface.h"
 #import "RouteManagedObject.h"
+#import "StopAnnotation.h"
 
 //#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 
@@ -46,6 +45,7 @@
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
+//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;
