@@ -101,7 +101,6 @@
 		043DAC731837D55100129145 /* StopTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC6A1837D55100129145 /* StopTimes.m */; };
 		043DAC781837D59800129145 /* RegionZoomData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC751837D59800129145 /* RegionZoomData.m */; };
 		043DAC791837D59800129145 /* WebApiInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC771837D59800129145 /* WebApiInterface.m */; };
-		043DAC7C1837D5A400129145 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC7A1837D5A400129145 /* DataModel.xcdatamodeld */; };
 		043DAC8D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC7D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib */; };
 		043DAC8E1837D5D200129145 /* BusRoutesCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC7E1837D5D200129145 /* BusRoutesCollectionViewController.xib */; };
 		043DAC8F1837D5D200129145 /* FavouritesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC7F1837D5D200129145 /* FavouritesViewController.xib */; };
@@ -142,6 +141,7 @@
 		048D5A75183EB8D900E8F05B /* myFavouritesButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D5A73183EB8D900E8F05B /* myFavouritesButton@2x.png */; };
 		048D5A76183EB8D900E8F05B /* trackMyBusButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D5A74183EB8D900E8F05B /* trackMyBusButton@2x.png */; };
 		048D5A78183EBB0000E8F05B /* upToDownButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 048D5A77183EBB0000E8F05B /* upToDownButton@2x.png */; };
+		04BEB26318415870006BAC6A /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BEB26118415870006BAC6A /* DataModel.xcdatamodeld */; };
 		04BF3CD6183EF2A5005B2E44 /* trackMeButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CD5183EF2A5005B2E44 /* trackMeButtonSmall@2x.png */; };
 		04BF3CD8183EF332005B2E44 /* myStopsButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CD7183EF332005B2E44 /* myStopsButtonSmall@2x.png */; };
 		04BF3CDA183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CD9183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png */; };
@@ -299,7 +299,6 @@
 		043DAC751837D59800129145 /* RegionZoomData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegionZoomData.m; path = DataFiles/RegionZoomData.m; sourceTree = "<group>"; };
 		043DAC761837D59800129145 /* WebApiInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebApiInterface.h; path = DataFiles/WebApiInterface.h; sourceTree = "<group>"; };
 		043DAC771837D59800129145 /* WebApiInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebApiInterface.m; path = DataFiles/WebApiInterface.m; sourceTree = "<group>"; };
-		043DAC7B1837D5A400129145 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		043DAC7D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusRouteCollectionViewControllerSmall.xib; path = ViewControllers/Nibs/BusRouteCollectionViewControllerSmall.xib; sourceTree = "<group>"; };
 		043DAC7E1837D5D200129145 /* BusRoutesCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BusRoutesCollectionViewController.xib; path = ViewControllers/Nibs/BusRoutesCollectionViewController.xib; sourceTree = "<group>"; };
 		043DAC7F1837D5D200129145 /* FavouritesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavouritesViewController.xib; path = ViewControllers/Nibs/FavouritesViewController.xib; sourceTree = "<group>"; };
@@ -351,6 +350,8 @@
 		048D5A73183EB8D900E8F05B /* myFavouritesButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myFavouritesButton@2x.png"; sourceTree = "<group>"; };
 		048D5A74183EB8D900E8F05B /* trackMyBusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMyBusButton@2x.png"; sourceTree = "<group>"; };
 		048D5A77183EBB0000E8F05B /* upToDownButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "upToDownButton@2x.png"; path = "HomePage/upToDownButton@2x.png"; sourceTree = "<group>"; };
+		04BEB26218415870006BAC6A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		04BF3CD5183EF2A5005B2E44 /* trackMeButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMeButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD7183EF332005B2E44 /* myStopsButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myStopsButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD9183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myFavouritesButtonSmall@2x.png"; sourceTree = "<group>"; };
@@ -761,7 +762,7 @@
 				043DAC751837D59800129145 /* RegionZoomData.m */,
 				043DAC761837D59800129145 /* WebApiInterface.h */,
 				043DAC771837D59800129145 /* WebApiInterface.m */,
-				043DAC7A1837D5A400129145 /* DataModel.xcdatamodeld */,
+				04BEB26118415870006BAC6A /* DataModel.xcdatamodeld */,
 			);
 			name = DataFiles;
 			sourceTree = "<group>";
@@ -1007,7 +1008,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E9588717F6340900DD72AD /* AFURLConnectionOperation.m in Sources */,
-				043DAC7C1837D5A400129145 /* DataModel.xcdatamodeld in Sources */,
 				04C7C28617E3D7D9001A9981 /* main.m in Sources */,
 				04E9588917F6340900DD72AD /* UIImageView+AFNetworking.m in Sources */,
 				04E9588117F6340900DD72AD /* AFHTTPClient.m in Sources */,
@@ -1019,6 +1019,7 @@
 				043DACB71837D64100129145 /* ParentViewController.m in Sources */,
 				043DACB11837D64100129145 /* BusRoutesCollectionViewController.m in Sources */,
 				043DAC4D1837D4DA00129145 /* FavouriteCell.m in Sources */,
+				04BEB26318415870006BAC6A /* DataModel.xcdatamodeld in Sources */,
 				04E9588217F6340900DD72AD /* AFHTTPRequestOperation.m in Sources */,
 				043DAC541837D4DA00129145 /* RouteSelectCell.m in Sources */,
 				043DAC6C1837D55100129145 /* Path.m in Sources */,
@@ -1200,14 +1201,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		043DAC7A1837D5A400129145 /* DataModel.xcdatamodeld */ = {
+		04BEB26118415870006BAC6A /* DataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				043DAC7B1837D5A400129145 /* DataModel.xcdatamodel */,
+				04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */,
+				04BEB26218415870006BAC6A /* DataModel.xcdatamodel */,
 			);
-			currentVersion = 043DAC7B1837D5A400129145 /* DataModel.xcdatamodel */;
-			name = DataModel.xcdatamodeld;
-			path = DataFiles/DataModel.xcdatamodeld;
+			currentVersion = 04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
