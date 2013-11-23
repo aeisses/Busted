@@ -1141,8 +1141,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/aeisses/Personal/IOS/Busted/Busted,
-					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
+					"$(SRCROOT)",
+					"$(SRCROOT)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1166,8 +1166,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/aeisses/Personal/IOS/Busted/Busted,
-					/Users/aeisses/Personal/IOS/Busted/Busted/Flurry,
+					"$(SRCROOT)",
+					"$(SRCROOT)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
