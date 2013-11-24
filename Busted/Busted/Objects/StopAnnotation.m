@@ -130,6 +130,7 @@
 {
     [super dealloc];
     [_title release]; _title = nil;
+    [_longTitle release]; _longTitle = nil;
     [_code release]; _code = nil;
     [_managedObjectContext release]; _managedObjectContext = nil;
     [_routesId release]; _routesId = nil;

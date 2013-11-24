@@ -33,6 +33,7 @@
 - (void)dealloc
 {
     [_routeNumber release]; _routeNumber = nil;
+    [_routeName release]; _routeName = nil;
     [_time release]; _time = nil;
     [_timeRemaining release]; _timeRemaining = nil;
     [_timeNext release]; _timeNext = nil;
