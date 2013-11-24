@@ -151,6 +151,9 @@
 		04BF3CE2183EF47D005B2E44 /* trackMyBusButtonSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CDE183EF47D005B2E44 /* trackMyBusButtonSmall.png */; };
 		04BF3CE4183EF654005B2E44 /* onMyWay.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CE3183EF654005B2E44 /* onMyWay.png */; };
 		04BF3CE6183EF73B005B2E44 /* upToDownButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 04BF3CE5183EF73B005B2E44 /* upToDownButton.png */; };
+		04C421DA184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C421D9184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib */; };
+		04C421DE1842728800A9114C /* HamburgerMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C421DC1842728800A9114C /* HamburgerMenuViewController.m */; };
+		04C421DF1842728800A9114C /* HamburgerMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04C421DD1842728800A9114C /* HamburgerMenuViewController.xib */; };
 		04C7C27A17E3D7D9001A9981 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27917E3D7D9001A9981 /* UIKit.framework */; };
 		04C7C27C17E3D7D9001A9981 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27B17E3D7D9001A9981 /* Foundation.framework */; };
 		04C7C27E17E3D7D9001A9981 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C7C27D17E3D7D9001A9981 /* CoreGraphics.framework */; };
@@ -351,7 +354,7 @@
 		048D5A74183EB8D900E8F05B /* trackMyBusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMyBusButton@2x.png"; sourceTree = "<group>"; };
 		048D5A77183EBB0000E8F05B /* upToDownButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "upToDownButton@2x.png"; path = "HomePage/upToDownButton@2x.png"; sourceTree = "<group>"; };
 		04BEB26218415870006BAC6A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		04BF3CD5183EF2A5005B2E44 /* trackMeButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMeButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD7183EF332005B2E44 /* myStopsButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myStopsButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD9183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myFavouritesButtonSmall@2x.png"; sourceTree = "<group>"; };
@@ -361,6 +364,10 @@
 		04BF3CDE183EF47D005B2E44 /* trackMyBusButtonSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackMyBusButtonSmall.png; sourceTree = "<group>"; };
 		04BF3CE3183EF654005B2E44 /* onMyWay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onMyWay.png; sourceTree = "<group>"; };
 		04BF3CE5183EF73B005B2E44 /* upToDownButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = upToDownButton.png; path = HomePage/upToDownButton.png; sourceTree = "<group>"; };
+		04C421D9184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HamburgerMenuViewControllerSmall.xib; path = ViewControllers/Nibs/HamburgerMenuViewControllerSmall.xib; sourceTree = "<group>"; };
+		04C421DB1842728800A9114C /* HamburgerMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HamburgerMenuViewController.h; path = ViewControllers/HamburgerMenuViewController.h; sourceTree = "<group>"; };
+		04C421DC1842728800A9114C /* HamburgerMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HamburgerMenuViewController.m; path = ViewControllers/HamburgerMenuViewController.m; sourceTree = "<group>"; };
+		04C421DD1842728800A9114C /* HamburgerMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HamburgerMenuViewController.xib; path = ViewControllers/HamburgerMenuViewController.xib; sourceTree = "<group>"; };
 		04C7C27617E3D7D9001A9981 /* Busted.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Busted.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C7C27917E3D7D9001A9981 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		04C7C27B17E3D7D9001A9981 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -741,6 +748,8 @@
 				043DACA41837D64100129145 /* LoadingScreenViewController.m */,
 				043DACA51837D64100129145 /* MapViewController.h */,
 				043DACA61837D64100129145 /* MapViewController.m */,
+				04C421DB1842728800A9114C /* HamburgerMenuViewController.h */,
+				04C421DC1842728800A9114C /* HamburgerMenuViewController.m */,
 				043DACA71837D64100129145 /* MenuViewController.h */,
 				043DACA81837D64100129145 /* MenuViewController.m */,
 				043DACA91837D64100129145 /* ParentViewController.h */,
@@ -778,6 +787,8 @@
 				043DAC821837D5D200129145 /* LoadingScreenViewControllerSmall.xib */,
 				043DAC831837D5D200129145 /* MapViewController.xib */,
 				043DAC841837D5D200129145 /* MapViewControllerSmall.xib */,
+				04C421DD1842728800A9114C /* HamburgerMenuViewController.xib */,
+				04C421D9184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib */,
 				043DAC851837D5D200129145 /* MenuViewController.xib */,
 				043DAC861837D5D200129145 /* MenuViewControllerSmall.xib */,
 				043DAC871837D5D200129145 /* RoutesViewController.xib */,
@@ -878,6 +889,7 @@
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
 				04BF3CE6183EF73B005B2E44 /* upToDownButton.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
+				04C421DA184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib in Resources */,
 				043DAC9A1837D5D200129145 /* StopDisplayViewControllerSmall.xib in Resources */,
 				043DAC1B1837D22E00129145 /* explaination@2x.png in Resources */,
 				043DAC111837D22E00129145 /* bus-icon@2x.png in Resources */,
@@ -967,6 +979,7 @@
 				048D5A75183EB8D900E8F05B /* myFavouritesButton@2x.png in Resources */,
 				043DAC9C1837D5D200129145 /* TrackViewControllerSmall.xib in Resources */,
 				043DAC211837D22E00129145 /* full-starblack@2x.png in Resources */,
+				04C421DF1842728800A9114C /* HamburgerMenuViewController.xib in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
 				043DAC2F1837D22E00129145 /* sendingzoom@2x.png in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,
@@ -1044,6 +1057,7 @@
 				043DAC711837D55100129145 /* StopAnnotation.m in Sources */,
 				043DAC4C1837D4DA00129145 /* AboutScreen.m in Sources */,
 				043DAC561837D4DA00129145 /* StopSelectCell.m in Sources */,
+				04C421DE1842728800A9114C /* HamburgerMenuViewController.m in Sources */,
 				043DAC781837D59800129145 /* RegionZoomData.m in Sources */,
 				043DAC6F1837D55100129145 /* RouteManagedObject.m in Sources */,
 				04E9588517F6340900DD72AD /* AFNetworkActivityIndicatorManager.m in Sources */,

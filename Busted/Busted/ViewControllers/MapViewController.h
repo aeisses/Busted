@@ -24,6 +24,7 @@
 @protocol MapViewControllerDelegate <NSObject>
 @optional
 - (void)loadViewController:(UIViewController*)vc;
+- (void)showHamburgerMenu;
 @end
 
 @interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate,CLLocationManagerDelegate>
@@ -45,10 +46,10 @@
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
-@property (retain, nonatomic) IBOutlet UIButton *aboutButton;
-@property (retain, nonatomic) IBOutlet UIButton *stopsButton;
-@property (retain, nonatomic) IBOutlet UIButton *favouriteScreenButton;
-@property (retain, nonatomic) IBOutlet UIButton *trackButton;
+@property (retain, nonatomic) IBOutlet UIButton *hamburgerButton;
+//@property (retain, nonatomic) IBOutlet UIButton *stopsButton;
+//@property (retain, nonatomic) IBOutlet UIButton *favouriteScreenButton;
+//@property (retain, nonatomic) IBOutlet UIButton *trackButton;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;
@@ -57,10 +58,10 @@
 - (void)addStop:(StopAnnotation*)busStop;
 - (IBAction)touchHomeButton:(id)sender;
 - (IBAction)touchFavouriteButton:(id)sender;
-- (IBAction)touchAboutButton:(id)sender;
-- (IBAction)touchStopsButton:(id)sender;
-- (IBAction)touchFavoriteScreenButton:(id)sender;
-- (IBAction)touchtTrackButton:(id)sender;
+- (IBAction)touchHamburgerButton:(id)sender;
+//- (IBAction)touchStopsButton:(id)sender;
+//- (IBAction)touchFavoriteScreenButton:(id)sender;
+//- (IBAction)touchtTrackButton:(id)sender;
 - (void)showRouteAlert;
 
 @end

@@ -174,21 +174,23 @@ static id instance;
         [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         _favouriteButton.selected = _route.isFavourite;
         //
-        _aboutButton.hidden = YES;
-        _favouriteScreenButton.hidden = YES;
-        _stopsButton.hidden = YES;
-        _trackButton.hidden = YES;
+//        _aboutButton.hidden = YES;
+//        _favouriteScreenButton.hidden = YES;
+//        _stopsButton.hidden = YES;
+//        _trackButton.hidden = YES;
+        _hamburgerButton.hidden = YES;
         _favouriteButton.hidden = NO;
         _homeButton.hidden = NO;
     } else {
-        _aboutButton.hidden = NO;
-        _favouriteScreenButton.hidden = NO;
-        _stopsButton.hidden = NO;
-        _trackButton.hidden = NO;
-        [self.view bringSubviewToFront:_aboutButton];
-        [self.view bringSubviewToFront:_favouriteScreenButton];
-        [self.view bringSubviewToFront:_stopsButton];
-        [self.view bringSubviewToFront:_trackButton];
+//        _aboutButton.hidden = NO;
+//        _favouriteScreenButton.hidden = NO;
+//        _stopsButton.hidden = NO;
+        _hamburgerButton.hidden = NO;
+//        _trackButton.hidden = NO;
+        [self.view bringSubviewToFront:_hamburgerButton];
+//        [self.view bringSubviewToFront:_favouriteScreenButton];
+//        [self.view bringSubviewToFront:_stopsButton];
+//        [self.view bringSubviewToFront:_trackButton];
         _favouriteButton.hidden = YES;
         _homeButton.hidden = YES;
         for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
@@ -498,50 +500,54 @@ static id instance;
     }
 }
 
-- (IBAction)touchAboutButton:(id)sender
+- (IBAction)touchHamburgerButton:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"This would show the about scree. I would like the Metro Transit twitter feed in somewhere" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [_delegate showHamburgerMenu];
 }
-
-- (IBAction)touchStopsButton:(id)sender
-{
-    if (shouldShowStops)
-    {
-        [_mapView addAnnotations:_annotations];
-    } else {
-        if (_annotations)
-        {
-            [_annotations release];
-            _annotations = nil;
-        }
-        _annotations = [[NSArray alloc] initWithArray:_mapView.annotations];
-        [_mapView removeAnnotations:_mapView.annotations];
-    }
-    shouldShowStops = !shouldShowStops;
-}
-
-- (IBAction)touchFavoriteScreenButton:(id)sender
-{
-    FavouritesViewController *favVC = nil;
-    if (IS_IPHONE_5)
-    {
-        favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewController" bundle:nil];
-    }
-    else
-    {
-        favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewControllerSmall" bundle:nil];
-    }
-    [_delegate loadViewController:favVC];
-    [favVC release];
-}
-
-- (IBAction)touchtTrackButton:(id)sender
-{
-    UISwipeGestureRecognizer *swipeGesture = [[[UISwipeGestureRecognizer alloc] init] autorelease];
-    swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
-    [self.superDelegate swipe:swipeGesture];
-}
+//- (IBAction)touchAboutButton:(id)sender
+//{
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"This would show the about scree. I would like the Metro Transit twitter feed in somewhere" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+//    [alert show];
+//    [alert release];
+//}
+//
+//- (IBAction)touchStopsButton:(id)sender
+//{
+//    if (shouldShowStops)
+//    {
+//        [_mapView addAnnotations:_annotations];
+//    } else {
+//        if (_annotations)
+//        {
+//            [_annotations release];
+//            _annotations = nil;
+//        }
+//        _annotations = [[NSArray alloc] initWithArray:_mapView.annotations];
+//        [_mapView removeAnnotations:_mapView.annotations];
+//    }
+//    shouldShowStops = !shouldShowStops;
+//}
+//
+//- (IBAction)touchFavoriteScreenButton:(id)sender
+//{
+//    FavouritesViewController *favVC = nil;
+//    if (IS_IPHONE_5)
+//    {
+//        favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewController" bundle:nil];
+//    }
+//    else
+//    {
+//        favVC = [[FavouritesViewController alloc] initWithNibName:@"FavouritesViewControllerSmall" bundle:nil];
+//    }
+//    [_delegate loadViewController:favVC];
+//    [favVC release];
+//}
+//
+//- (IBAction)touchtTrackButton:(id)sender
+//{
+//    UISwipeGestureRecognizer *swipeGesture = [[[UISwipeGestureRecognizer alloc] init] autorelease];
+//    swipeGesture.direction = UISwipeGestureRecognizerDirectionDown;
+//    [self.superDelegate swipe:swipeGesture];
+//}
 
 @end

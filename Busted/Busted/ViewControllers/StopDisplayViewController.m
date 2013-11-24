@@ -92,33 +92,6 @@ static id instance;
     [Flurry logEvent:@"Stops_View_Button_Pressed" withParameters:routesParams];
 }
 
-- (NSArray*)getBusRoutes
-{
-    NSArray *routes = [_delegate getRoutes];
-    NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
-    //    int counter = 0;
-    for (RouteManagedObject *route in routes)
-    {
-        Route *myRoute = [[Route alloc] init];
-        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
-        NSNumber *number = [numberFormatter numberFromString:route.shortName];
-        if (number != nil) {
-            myRoute.ident = [route.shortName integerValue];
-        } else {
-            //            myRoute.ident = counter + 10000;
-            //            counter++;
-            [myRoute release];
-            continue;
-        }
-        myRoute.longName = route.longName;
-        myRoute.shortName = route.shortName;
-        myRoute.isFavourite = [route.isFavourite boolValue];
-        [routesM addObject:myRoute];
-        [myRoute release];
-    }
-    return [(NSArray*)routesM autorelease];
-}
-
 - (void)viewDidLoad
 {
     [_tableView registerNib:[UINib nibWithNibName:@"StopSelectCell" bundle:nil] forCellReuseIdentifier:@"StopSelectCell"];

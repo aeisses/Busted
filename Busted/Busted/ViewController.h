@@ -13,14 +13,16 @@
 #import "WebApiInterface.h"
 #import "TLTransitionAnimator.h"
 #import "StopDisplayViewController.h"
+#import "HamburgerMenuViewController.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
 }
 
 @property (retain, nonatomic) MapViewController *mapViewController;
 @property (retain, nonatomic) MenuViewController *menuViewController;
+@property (retain, nonatomic) HamburgerMenuViewController *hamburgerMenuViewController;
 @property (retain, nonatomic) TrackViewController *trackVC;
 @property (retain, nonatomic) LoadingScreenViewController *loadingScreen;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

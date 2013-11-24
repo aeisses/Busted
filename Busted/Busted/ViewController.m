@@ -25,13 +25,19 @@
     if (IS_IPHONE_5)
     {
         _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
+        _hamburgerMenuViewController = [[HamburgerMenuViewController alloc] initWithNibName:@"HamburgerMenuViewController" bundle:nil];
     }
     else
     {
         _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
+        _hamburgerMenuViewController = [[HamburgerMenuViewController alloc] initWithNibName:@"HamburgerMenuViewControllerSmall" bundle:nil];
     }
     _mapViewController.delegate = self;
     _mapViewController.superDelegate = self;
+//    [[self navigationController] pushViewController:_hamburgerMenuViewController animated:NO];
+    _hamburgerMenuViewController.view.frame = (CGRect){0,0,320,568};
+    [[self navigationController] addChildViewController:_hamburgerMenuViewController];
+//    [_hamburgerMenuViewController addChildViewController:_mapViewController];
     [[self navigationController] pushViewController:_mapViewController animated:NO];
 }
 
@@ -116,6 +122,21 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:stopDisplayVC animated:YES];
         });
+    }
+}
+
+#pragma MapViewControllerDelegate
+- (void)showHamburgerMenu
+{
+    if (_mapViewController.view.frame.origin.x == 0)
+    {
+        [UIView animateWithDuration:0.25 animations:^{
+            _mapViewController.view.frame = (CGRect){110,_mapViewController.view.frame.origin.y,_mapViewController.view.frame.size};
+        }];
+    } else {
+        [UIView animateWithDuration:0.25 animations:^{
+            _mapViewController.view.frame = (CGRect){0,_mapViewController.view.frame.origin.y,_mapViewController.view.frame.size};
+        }];
     }
 }
 
