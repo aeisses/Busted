@@ -14,7 +14,7 @@
 #import "TLTransitionAnimator.h"
 #import "StopDisplayViewController.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,MapViewControllerDelegate,StopDisplayViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
 }

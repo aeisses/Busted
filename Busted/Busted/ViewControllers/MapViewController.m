@@ -49,6 +49,11 @@ static id instance;
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
     [_mapView removeFromSuperview];
+//    if (_spinner)
+//    {
+//        [_spinner release];
+//        _spinner = nil;
+//    }
     if (_annotations) {
         [_mapView removeAnnotations:_annotations];
         [_annotations release];
@@ -69,7 +74,10 @@ static id instance;
         _currentLocation = nil;
     }
     if (_locationManager)
+    {
+        [_locationManager stopUpdatingLocation];
         [_locationManager release];
+    }
     if (_currentLocation)
         [_currentLocation release];
     _mapView.delegate = nil;
@@ -144,6 +152,16 @@ static id instance;
     [super viewDidLoad];
 }
 
+//- (void)activateMap
+//{
+//    _mapView.scrollEnabled = YES;
+//    _mapView.zoomEnabled = YES;
+//    _homeButton.enabled = YES;
+//    [_spinner stopAnimating];
+//    [_spinner release];
+//    _spinner = nil;
+//}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [_mapView setShowsUserLocation:YES];
@@ -201,7 +219,6 @@ static id instance;
         displayLink = nil;
         [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
-    [_locationManager stopUpdatingLocation];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender

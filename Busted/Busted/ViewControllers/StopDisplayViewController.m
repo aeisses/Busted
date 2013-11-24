@@ -7,12 +7,7 @@
 //
 
 #import "StopDisplayViewController.h"
-#import "StopSelectCell.h"
-#import "StopAnnotation.h"
-#import "RouteWithTime.h"
-#import "StopTimes.h"
-#import "StopsHeader.h"
-#import "Flurry.h"
+#import "WebApiInterface.h"
 
 @interface StopDisplayViewController ()
 
@@ -97,6 +92,33 @@ static id instance;
     [Flurry logEvent:@"Stops_View_Button_Pressed" withParameters:routesParams];
 }
 
+- (NSArray*)getBusRoutes
+{
+    NSArray *routes = [_delegate getRoutes];
+    NSMutableArray *routesM = [[NSMutableArray alloc] initWithCapacity:[routes count]];
+    //    int counter = 0;
+    for (RouteManagedObject *route in routes)
+    {
+        Route *myRoute = [[Route alloc] init];
+        NSNumberFormatter *numberFormatter = [[[NSNumberFormatter alloc] init] autorelease];
+        NSNumber *number = [numberFormatter numberFromString:route.shortName];
+        if (number != nil) {
+            myRoute.ident = [route.shortName integerValue];
+        } else {
+            //            myRoute.ident = counter + 10000;
+            //            counter++;
+            [myRoute release];
+            continue;
+        }
+        myRoute.longName = route.longName;
+        myRoute.shortName = route.shortName;
+        myRoute.isFavourite = [route.isFavourite boolValue];
+        [routesM addObject:myRoute];
+        [myRoute release];
+    }
+    return [(NSArray*)routesM autorelease];
+}
+
 - (void)viewDidLoad
 {
     [_tableView registerNib:[UINib nibWithNibName:@"StopSelectCell" bundle:nil] forCellReuseIdentifier:@"StopSelectCell"];
@@ -149,6 +171,19 @@ static id instance;
     [super dealloc];
 }
 
+- (NSDate*)getStopDate:(NSString*)departTime withFromatter:(NSDateFormatter*)formatter andFormatter:(NSDateFormatter*)currentTimeFormatter
+{
+    NSDate *returnDate = nil;
+    NSArray *components = [departTime componentsSeparatedByString:@":"];
+    if ([components count] >= 2 && [(NSString*)[components objectAtIndex:0] integerValue] >= 24)
+    {
+        NSDate *tempDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@:%@",[currentTimeFormatter stringFromDate:[NSDate date]],@"00",(NSString*)[components objectAtIndex:1]]];
+        returnDate = [NSDate dateWithTimeIntervalSinceReferenceDate:([tempDate timeIntervalSinceReferenceDate] + 86400)];
+    } else {
+        returnDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],departTime]];
+    }
+    return returnDate;
+}
 
 #pragma UITableViewDelegate Methods
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,16 +213,18 @@ static id instance;
     cell.timeRemaining.text = @"unknown";
     int minDiff = 0;
     NSString *departTime = @"unknown";
+    
+    NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
+    [displayFormatter setDateFormat:@"h:mm"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
     [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSDateFormatter *displayFormatter = [[NSDateFormatter alloc] init];
-    [displayFormatter setDateFormat:@"h:mm"];
-    int counter = 0;
+
+    int counter = -1;
     for (StopTimes *times in route.times)
     {
-        NSDate *stopDate = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],times.departure]];
+        NSDate *stopDate = [self getStopDate:times.departure withFromatter:formatter andFormatter:currentTimeFormatter];
         int diff = [stopDate timeIntervalSinceNow];
         if (diff > 0 && (minDiff <= 0 || minDiff > diff))
         {
@@ -196,23 +233,24 @@ static id instance;
             counter = [route.times indexOfObject:times];
         }
     }
-
-    cell.timeRemaining.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
-    cell.time.text = departTime;
-    if (counter+1 >= [route.times count]) {
+    if (minDiff != 0) {
+        cell.timeRemaining.text = [NSString stringWithFormat:@"%i min",(int)minDiff/60];
+        cell.time.text = departTime;
+    }
+    if (counter+1 >= [route.times count] || counter == -1) {
         cell.timeNext.text = @"unknown";
         cell.timeNextNext.text = @"unknown";
         cell.timeRemainingNext.text = @"unknown";
         cell.timeRemainingNextNext.text = @"unknown";
     } else {
-        NSDate *stopDateNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+1]).departure]];
+        NSDate *stopDateNext = [self getStopDate:((StopTimes*)[route.times objectAtIndex:counter+1]).departure withFromatter:formatter andFormatter:currentTimeFormatter];
         cell.timeRemainingNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNext timeIntervalSinceNow]/60];
         cell.timeNext.text = [displayFormatter stringFromDate:stopDateNext];
         if (counter+2 >= [route.times count]) {
-            cell.timeRemainingNext.text = @"unknown";
+            cell.timeNextNext.text = @"unknown";
             cell.timeRemainingNextNext.text = @"unknown";
         } else {
-            NSDate *stopDateNextNext = [formatter dateFromString:[NSString stringWithFormat:@"%@ %@",[currentTimeFormatter stringFromDate:[NSDate date]],((StopTimes*)[route.times objectAtIndex:counter+2]).departure]];
+            NSDate *stopDateNextNext = [self getStopDate:((StopTimes*)[route.times objectAtIndex:counter+2]).departure withFromatter:formatter andFormatter:currentTimeFormatter];
             cell.timeRemainingNextNext.text = [NSString stringWithFormat:@"%i min",(int)[stopDateNextNext timeIntervalSinceNow]/60];
             cell.timeNextNext.text = [displayFormatter stringFromDate:stopDateNextNext];
         }
@@ -225,7 +263,7 @@ static id instance;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    StopSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopSelectCell" forIndexPath:indexPath];
+//    StopSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopSelectCell" forIndexPath:indexPath];
     MapViewController *mapVC = nil;
     if (IS_IPHONE_5)
     {
@@ -235,17 +273,18 @@ static id instance;
     {
         mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
     }
-    [[WebApiInterface sharedInstance] loadPathForRoute:cell.routeNumber.text];
+    RouteWithTime *routeWTime = [_routes objectAtIndex:indexPath.row];
+    [[WebApiInterface sharedInstance] loadPathForRoute:routeWTime.shortName callBack:mapVC];
     mapVC.isStops = YES;
     [_delegate loadViewController:mapVC];
     NSArray *routesArray = [self getBusRoutes];
     Route *route = [[Route alloc] init];
-    RouteWithTime *routeWTime = [_routes objectAtIndex:indexPath.row];
     route.shortName = routeWTime.shortName;
     [mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
     [route release];
     [mapVC release];
-    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", cell.routeNumber.text, nil];
+    mapVC = nil;
+    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", routeWTime.shortName, nil];
     [Flurry logEvent:@"Routes_View_Button_Pressed" withParameters:routesParams];
 }
 

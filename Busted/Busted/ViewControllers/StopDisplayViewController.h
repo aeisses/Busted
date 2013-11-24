@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
 #import "macros.h"
+#import "StopSelectCell.h"
+#import "RouteWithTime.h"
+#import "StopTimes.h"
+#import "StopsHeader.h"
+#import "Flurry.h"
+//#import "RouteManagedObject.h"
 
 @class StopAnnotation;
 

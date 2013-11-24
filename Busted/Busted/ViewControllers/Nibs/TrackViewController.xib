@@ -53,8 +53,9 @@
 					<object class="IBUIButton" id="994944785">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 531}, {320, 40}}</string>
+						<string key="NSFrameSize">{320, 56}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="173385359"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -71,7 +72,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">downToUp.png</string>
+							<string key="NSResourceName">homeButton.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="532573039">
 							<int key="type">2</int>
@@ -116,9 +117,8 @@
 					<object class="IBUIButton" id="533521634">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 301}, {320, 146}}</string>
+						<string key="NSFrame">{{0, 297}, {320, 146}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="994944785"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -167,7 +167,7 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 568}</string>
-				<reference key="NSNextKeyView" ref="173385359"/>
+				<reference key="NSNextKeyView" ref="994944785"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAwLjYgMAA</bytes>
@@ -265,12 +265,12 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="994944785"/>
 							<reference ref="173385359"/>
 							<reference ref="923544590"/>
 							<reference ref="533521634"/>
 							<reference ref="669276265"/>
 							<reference ref="727048352"/>
+							<reference ref="994944785"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -358,11 +358,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="Stop.png">{320, 147}</string>
+			<string key="Stop.png">{320, 146}</string>
 			<string key="backGroundOnMyWay.jpg">{320, 568}</string>
-			<string key="downToUp.png">{320, 34}</string>
+			<string key="homeButton.png">{320, 56}</string>
 			<string key="onMyWay.png">{320, 126}</string>
-			<string key="onMyWayButton.png">{320, 146}</string>
+			<string key="onMyWayButton.png">{320, 145}</string>
 			<string key="sending.png">{64, 21}</string>
 			<string key="sendingzoom.png">{320, 13}</string>
 		</dictionary>

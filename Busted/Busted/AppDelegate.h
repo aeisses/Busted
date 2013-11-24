@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "KNOWtimeNavigationController.h"
 #import "ViewController.h"
+#import "TrackViewController.h"
 
 #define FLURRY_API_KEY @"3S4TY9QJ4PSNRJSDT377"
 

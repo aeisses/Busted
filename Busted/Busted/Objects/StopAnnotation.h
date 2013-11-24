@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import <CoreData/CoreData.h>
-#import "WebApiInterface.h"
+#import "StopManagedObject.h"
 
 @interface StopAnnotation : NSObject <MKAnnotation>
 

@@ -15,10 +15,9 @@
 #import "Reachability.h"
 #import "StopDisplayViewController.h"
 #import "macros.h"
-#import "StopAnnotation.h"
 #import "Route.h"
-#import "WebApiInterface.h"
 #import "RouteManagedObject.h"
+#import "StopAnnotation.h"
 
 //#define SERVERHOSTNAME @"http://ertt.ca:8080/busted/buslocation/"
 

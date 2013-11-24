@@ -13,10 +13,12 @@
 #import "StopManagedObject.h"
 #import "MapViewController.h"
 #import "StopAnnotation.h"
+#import "Path.h"
 
 @protocol WebApiInterfaceDelegate <NSObject>
 - (void)receivedRoutes;
 - (void)receivedStops;
+- (void)loadPath:(Path*)path forRegion:(MKCoordinateRegion)region;
 @end
 
 @interface WebApiInterface : NSObject
@@ -48,6 +50,6 @@
 - (void)setFavourite:(BOOL)favourite forRoute:(NSString *)shortName;
 - (StopManagedObject*)getStopForCode:(NSNumber*)code;
 - (void)getRouteForIdent:(NSNumber*)ident;
-- (void)loadPathForRoute:(NSString*)shortName;
+- (void)loadPathForRoute:(NSString*)shortName callBack:(MapViewController*)callback;
 
 @end

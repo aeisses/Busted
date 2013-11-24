@@ -7,6 +7,7 @@
 //
 
 #import "RoutesViewController.h"
+#import "WebApiInterface.h"
 #import "Flurry.h"
 
 @interface RoutesViewController (PrivateMethods)
@@ -86,7 +87,7 @@ static id instance;
         {
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
-        [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text];
+        [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text callBack:_mapVC];
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
@@ -95,6 +96,7 @@ static id instance;
         [_mapVC addRoute:[routesArray objectAtIndex:[routesArray indexOfObject:route]]];
         [route release];
         [_mapVC release];
+        _mapVC = nil;
         NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", _routeButton.titleLabel.text, nil];
         [Flurry logEvent:@"Routes_View_Button_Pressed" withParameters:routesParams];
     }

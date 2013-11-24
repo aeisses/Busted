@@ -15,6 +15,7 @@
 #import "FavouritesViewController.h"
 #import "AboutScreen.h"
 #import "macros.h"
+#import "WebApiInterface.h"
 
 @protocol MenuViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;
