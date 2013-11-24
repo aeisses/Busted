@@ -29,7 +29,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39">
-                            <rect key="frame" x="0.0" y="383" width="320" height="93"/>
+                            <rect key="frame" x="0.0" y="476" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="See you favorite stops" label="Favorites Screens">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -55,7 +55,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJE-17-L8t">
-                            <rect key="frame" x="0.0" y="476" width="320" height="93"/>
+                            <rect key="frame" x="0.0" y="197" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="Show the track screen" label="Track button"/>
                             <state key="normal" image="trackMeButton.png">
@@ -66,7 +66,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36">
-                            <rect key="frame" x="0.0" y="290" width="320" height="93"/>
+                            <rect key="frame" x="0.0" y="383" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="See the stops around your current location" label="My Destination">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
@@ -80,7 +80,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33">
-                            <rect key="frame" x="0.0" y="197" width="320" height="93"/>
+                            <rect key="frame" x="0.0" y="290" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration" hint="The button to track your bus" label="Track My Bus">
                                 <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
