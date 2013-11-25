@@ -87,7 +87,11 @@ static id instance;
         {
             _mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         }
-        [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text callBack:_mapVC];
+        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
+        dispatch_async(dataQueue, ^{
+            [[WebApiInterface sharedInstance] loadPathForRoute:_routeButton.titleLabel.text callBack:_mapVC];
+        });
+        dispatch_release(dataQueue);
         _mapVC.isStops = YES;
         [_delegate loadMapViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];

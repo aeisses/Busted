@@ -247,7 +247,11 @@ static id instance;
         mapVC = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
     }
     RouteWithTime *routeWTime = [_routes objectAtIndex:indexPath.row];
-    [[WebApiInterface sharedInstance] loadPathForRoute:routeWTime.shortName callBack:mapVC];
+    dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
+    dispatch_async(dataQueue, ^{
+        [[WebApiInterface sharedInstance] loadPathForRoute:routeWTime.shortName callBack:mapVC];
+    });
+    dispatch_release(dataQueue);
     mapVC.isStops = YES;
     [_delegate loadViewController:mapVC];
     NSArray *routesArray = [self getBusRoutes];

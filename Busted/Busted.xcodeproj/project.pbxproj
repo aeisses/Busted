@@ -863,6 +863,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Aaron Eisses";
+				TargetAttributes = {
+					04C7C27517E3D7D9001A9981 = {
+						DevelopmentTeam = U9SQ38R7DC;
+					};
+				};
 			};
 			buildConfigurationList = 04C7C27117E3D7D9001A9981 /* Build configuration list for PBXProject "Busted" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1145,6 +1150,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1168,8 +1174,8 @@
 		04C7C29B17E3D7D9001A9981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iOS Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Eisses";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1185,8 +1191,8 @@
 					"$(SRCROOT)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "616516AB-EBDE-47AA-BC2F-1A6D49AEAEDF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -206,6 +206,7 @@
     _button1.enabled = NO;
     _button2.enabled = NO;
     _button3.enabled = NO;
+    _trackButton.enabled = NO;
 }
 
 - (void)enableButton
@@ -213,6 +214,7 @@
     _button1.enabled = YES;
     _button2.enabled = YES;
     _button3.enabled = YES;
+    _trackButton.enabled = YES;
 }
 
 #pragma RoutesViewControllerDelegate Methods

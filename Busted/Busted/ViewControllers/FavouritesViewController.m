@@ -205,7 +205,11 @@
         }
         RouteManagedObject *route = [[[WebApiInterface sharedInstance] getFavouriteRoutes] objectAtIndex:indexPath.row];
         routeName = [[NSString alloc] initWithString:route.shortName];
-        [[WebApiInterface sharedInstance] loadPathForRoute:routeName callBack:_mapVC];
+        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
+        dispatch_async(dataQueue, ^{
+            [[WebApiInterface sharedInstance] loadPathForRoute:routeName callBack:_mapVC];
+        });
+        dispatch_release(dataQueue);
         _mapVC.isStops = YES;
         [_delegate loadViewController:_mapVC];
         NSArray *routesArray = [self getBusRoutes];
