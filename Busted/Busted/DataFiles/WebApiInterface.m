@@ -354,17 +354,12 @@ static id instance;
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    __block MapViewController *mapVC = callback;
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
         Path *path = [[Path alloc] init];
         MKCoordinateRegion region = [path addLines:(NSArray*)JSON];
-//        if (mapVC) {
-//            [mapVC.mapView setRegion:region];
-//            [mapVC.mapView addOverlays:path.lines];
-            [_delegate loadPath:path forRegion:region];
-//        }
+        [_delegate loadPath:path forRegion:region];
         [path release];
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)

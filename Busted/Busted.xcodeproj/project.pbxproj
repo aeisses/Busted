@@ -351,7 +351,7 @@
 		048D5A74183EB8D900E8F05B /* trackMyBusButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMyBusButton@2x.png"; sourceTree = "<group>"; };
 		048D5A77183EBB0000E8F05B /* upToDownButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "upToDownButton@2x.png"; path = "HomePage/upToDownButton@2x.png"; sourceTree = "<group>"; };
 		04BEB26218415870006BAC6A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		04BEB264184158EE006BAC6A /* DataModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "DataModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		04BF3CD5183EF2A5005B2E44 /* trackMeButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackMeButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD7183EF332005B2E44 /* myStopsButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myStopsButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04BF3CD9183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myFavouritesButtonSmall@2x.png"; sourceTree = "<group>"; };
@@ -852,6 +852,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Aaron Eisses";
+				TargetAttributes = {
+					04C7C27517E3D7D9001A9981 = {
+						DevelopmentTeam = U9SQ38R7DC;
+					};
+				};
 			};
 			buildConfigurationList = 04C7C27117E3D7D9001A9981 /* Build configuration list for PBXProject "Busted" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1131,6 +1136,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1154,8 +1160,8 @@
 		04C7C29B17E3D7D9001A9981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iOS Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Aaron Eisses";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1171,8 +1177,8 @@
 					"$(SRCROOT)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "319C4945-60BF-4483-B1BB-9B96AD1D0489";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "616516AB-EBDE-47AA-BC2F-1A6D49AEAEDF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
