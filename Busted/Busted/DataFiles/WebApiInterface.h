@@ -23,7 +23,8 @@
 
 @interface WebApiInterface : NSObject
 
-#define SANGSTERBASEURL @"http://knowtime.ca/api/alpha_1/"
+//#define SANGSTERBASEURL @"http://knowtime.ca/api/alpha_1/"
+#define SANGSTERBASEURL @"http://api.knowtime.ca/alpha_1/"
 #define ENDURL          @"&all_routes=yes"
 #define STOPS           @"stops"
 #define ROUTES          @"routes"
