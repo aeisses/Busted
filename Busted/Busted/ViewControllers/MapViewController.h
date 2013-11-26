@@ -30,7 +30,7 @@
 @interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate,CLLocationManagerDelegate>
 {
     CADisplayLink *displayLink;
-    BOOL skipLoop;
+//    BOOL skipLoop;
     BOOL isStarting;
 }
 
@@ -45,6 +45,7 @@
 @property (assign, nonatomic) BOOL isStops;
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
+@property (assign, nonatomic) BOOL skipLoop;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 + (MapViewController*)sharedInstance;

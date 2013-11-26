@@ -9,8 +9,10 @@
 #import "MapViewController.h"
 #import "WebApiInterface.h"
 
-@interface MapViewController ()
-
+@interface MapViewController (PrivateMethods)
+- (void)startService;
+- (void)pollServer;
+- (void)frameIntervalLoop:(CADisplayLink *)sender;
 @end
 
 @implementation MapViewController
@@ -48,11 +50,6 @@ static id instance;
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
     [_mapView removeFromSuperview];
-//    if (_spinner)
-//    {
-//        [_spinner release];
-//        _spinner = nil;
-//    }
     if (_annotations) {
         [_mapView removeAnnotations:_annotations];
         [_annotations release];
@@ -106,83 +103,43 @@ static id instance;
 - (void)viewDidLoad
 {
     _locationManager = [[CLLocationManager alloc] init];
-    //            _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
-//    dispatch_queue_t loadingThread  = dispatch_queue_create("network queue", NULL);
-//    dispatch_async(loadingThread, ^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
-            [_mapView removeOverlays:_mapView.overlays];
-            [_mapView removeAnnotations:_mapView.annotations];
-            if (_isStops)
-            {
-                [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
-                [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-                [self.view bringSubviewToFront:_favouriteButton];
-                _favouriteButton.hidden = NO;
-            }
-            else
-            {
-                [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
-                [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-                if (_stops)
-                    [_stops release];
-                _stops = [[NSMutableArray alloc] initWithCapacity:0];
-                _favouriteButton.hidden = YES;
-            }
-            _mapView.scrollEnabled = YES;
-            _mapView.zoomEnabled = YES;
-            [self.view bringSubviewToFront:_homeButton];
-//        });
-//    });
-//    dispatch_release(loadingThread);
-//    if (!_isStops)
-//    {
-//        dispatch_queue_t dataQueue  = dispatch_queue_create("data queue", NULL);
-//        dispatch_async(dataQueue, ^{
-//            [[WebApiInterface sharedInstance] requestStopsForRegion:_mapView.region];
-//        });
-//        dispatch_release(dataQueue);
-//    }
-    skipLoop = NO;
+    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+    [_mapView removeOverlays:_mapView.overlays];
+    [_mapView removeAnnotations:_mapView.annotations];
+    if (_isStops)
+    {
+        [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
+        [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+        [self.view bringSubviewToFront:_favouriteButton];
+        _favouriteButton.hidden = NO;
+    }
+    else
+    {
+        [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
+        [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+        if (_stops)
+            [_stops release];
+        _stops = [[NSMutableArray alloc] initWithCapacity:0];
+        _favouriteButton.hidden = YES;
+    }
+    _mapView.scrollEnabled = YES;
+    _mapView.zoomEnabled = YES;
+    [self.view bringSubviewToFront:_homeButton];
+    _skipLoop = NO;
     [super viewDidLoad];
 }
-
-//- (void)activateMap
-//{
-//    _mapView.scrollEnabled = YES;
-//    _mapView.zoomEnabled = YES;
-//    _homeButton.enabled = YES;
-//    [_spinner stopAnimating];
-//    [_spinner release];
-//    _spinner = nil;
-//}
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [_mapView setShowsUserLocation:YES];
-    skipLoop =  NO;
+    _skipLoop =  NO;
     if (_isStops)
     {
-        displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-        [displayLink setFrameInterval:60];
-        [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        [self startService];
         _favouriteButton.selected = _route.isFavourite;
-//        _mapView.scrollEnabled = NO;
-//        _mapView.zoomEnabled = NO;
-//        _homeButton.enabled = NO;
-//        if (_spinner)
-//        {
-//            [_spinner release];
-//            _spinner = nil;
-//        }
-//        _spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//        _spinner.hidesWhenStopped = YES;
-//        _spinner.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2);
-//        [_spinner startAnimating];
-//        [self.mapView addSubview:_spinner];
     } else {
         for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
         {
@@ -198,7 +155,6 @@ static id instance;
         } else {
             [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
         }
-//        [_mapView setNeedsDisplay];
     }
 }
 
@@ -206,92 +162,135 @@ static id instance;
 {
     if (_isStops)
     {
-        [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-        [displayLink invalidate];
-        [displayLink release];
-        displayLink = nil;
+        if (displayLink)
+        {
+            [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+            [displayLink invalidate];
+            [displayLink release];
+            displayLink = nil;
+        }
         [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
 }
 
-- (void)frameIntervalLoop:(CADisplayLink *)sender
+- (void)startService
 {
-    if (skipLoop)
-    {
-        return;
-    }
-    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:HOSTNAME];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
-        // TODO: Might still have some memory issues here....
-        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-        dispatch_async(networkQueue, ^{
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
-//            NSLog(@"UrlString: %@",urlStr);
-            NSURL *url = [[NSURL alloc] initWithString:urlStr];
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-            NSError *error = nil;
-            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        [self pollServer];
+    } else {
+        // Internet connection is not valid
+        
+    }
+}
+
+- (void)pollServer
+{
+    __block BOOL blockSkipLoop = _skipLoop;
+    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(networkQueue, ^{
+        NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
+        NSLog(@"UrlString: %@",urlStr);
+        NSURL *url = [[NSURL alloc] initWithString:urlStr];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSError *error = nil;
+        // Need to add a check in for server errors, check status code.
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        if (!error) {
+            NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
             if (!error) {
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-                if (!error) {
-                    NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
-                    for (NSDictionary *dic in json) {
+                NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
+                if ([json isKindOfClass:[NSDictionary class]] && [(NSDictionary*)json objectForKey:@"status"] == nil)
+                {
+                    for (NSDictionary *dic in (NSDictionary*)json) {
                         NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                         if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                         {
                             BusAnnotation *bus = [[BusAnnotation alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
-                                                             latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
-                                                            longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
-                                                       timeToNextStop:[dic valueForKey:@"estimateArrival"]
-                                                       nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
+                                                                                 latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
+                                                                                longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
+                                                                           timeToNextStop:[dic valueForKey:@"estimateArrival"]
+                                                                           nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
                             [myAnnotations addObject:bus];
                             [bus release];
+                            if (displayLink == nil)
+                            {
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
+                                    [displayLink setFrameInterval:60];
+                                    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                                });
+                            }
                         }
                     }
-                    json = nil;
-                    if ([myAnnotations count] == 0)
+                }
+                json = nil;
+                if ([myAnnotations count] == 0)
+                {
+                    blockSkipLoop = YES;
+                    if (displayLink)
                     {
-                        skipLoop = YES;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
-                            [alert show];
-                            [alert release];
-                        });
-                        [myAnnotations release];
-                        myAnnotations = nil;
-                    } else {
-                        if (_annotations) {
-                            [_mapView removeAnnotations:_annotations];
-                            [_annotations release];
-                            _annotations = nil;
-                        }
-                        _annotations = [[NSArray alloc] initWithArray:myAnnotations];
-                        [myAnnotations release];
-                        myAnnotations = nil;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [_mapView addAnnotations:_annotations];
-                            [_mapView setNeedsDisplay]; // This might not be needed
-                        });
-                    }
-                } else {
-                    skipLoop = YES;
-                    dispatch_async(dispatch_get_main_queue(), ^{
                         [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                        [displayLink invalidate];
+                        [displayLink release];
+                        displayLink = nil;
+                    }
+                    dispatch_async(dispatch_get_main_queue(), ^{
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
                         [alert show];
                         [alert release];
                     });
+                    [myAnnotations release];
+                    myAnnotations = nil;
+                } else {
+                    if (_annotations) {
+                        [_mapView removeAnnotations:_annotations];
+                        [_annotations release];
+                        _annotations = nil;
+                    }
+                    _annotations = [[NSArray alloc] initWithArray:myAnnotations];
+                    [myAnnotations release];
+                    myAnnotations = nil;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [_mapView addAnnotations:_annotations];
+                        [_mapView setNeedsDisplay]; // This might not be needed
+                    });
+                }
+            } else {
+                if (!blockSkipLoop)
+                {
+                    blockSkipLoop = YES;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (displayLink)
+                        {
+                            [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                            [displayLink invalidate];
+                            [displayLink release];
+                            displayLink = nil;
+                        }
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
+                    });
+                    
                 }
             }
-            [request release];
-            [url release];
-            [urlStr release];
-        });
-        dispatch_release(networkQueue);
-    } else {
-        // The internet connection is not valid
+        }
+        [request release];
+        [url release];
+        [urlStr release];
+    });
+    dispatch_release(networkQueue);
+}
+
+- (void)frameIntervalLoop:(CADisplayLink *)sender
+{
+    if (_skipLoop)
+    {
+        return;
     }
+    [self pollServer];
 }
 
 - (void)addRoute:(Route*)route
@@ -362,12 +361,7 @@ static id instance;
             annotationView.image = [UIImage imageNamed:@"busStop.png"];
         }
         annotationView.canShowCallout = YES;
-//        if (![bus.subtitle isEqualToString:@"Next Bus: unknown"])
-//        {
-            annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-//        } else {
-//            annotationView.rightCalloutAccessoryView = nil;
-//        }
+        annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         annotationView.enabled = YES;
         bus = nil;
         return annotationView;
@@ -378,20 +372,8 @@ static id instance;
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay {
     
     MKPolylineView *polylineView = [[[MKPolylineView alloc] initWithPolyline:overlay] autorelease];
-//    if ([overlay.title isEqualToString:@"Black"]) {
-        polylineView.strokeColor = [UIColor blackColor];
-        polylineView.lineWidth = 2.0;
-/*    } else if ([overlay.title isEqualToString:@"Red"]) {
-        polylineView.strokeColor = [UIColor redColor];
-        polylineView.lineWidth = 4.0;
-    } else if ([overlay.title isEqualToString:@"Blue"]) {
-        polylineView.strokeColor = [UIColor blueColor];
-        polylineView.lineWidth = 4.0;
-    } else if ([overlay.title isEqualToString:@"Green"]) {
-        polylineView.strokeColor = [UIColor greenColor];
-        polylineView.lineWidth = 4.0;
-    }
- */
+    polylineView.strokeColor = [UIColor blackColor];
+    polylineView.lineWidth = 2.0;
     polylineView.lineJoin = kCGLineCapButt;
     
     return polylineView;
