@@ -57,7 +57,7 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJE-17-L8t">
                             <rect key="frame" x="0.0" y="197" width="320" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <accessibility key="accessibilityConfiguration" hint="Show the track screen" label="Track button"/>
+                            <accessibility key="accessibilityConfiguration" hint="Show the track screen and send you signal to the server." label="Track button"/>
                             <state key="normal" image="trackMeButton.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
