@@ -111,7 +111,7 @@ static id instance;
 
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     sendingLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(sendingIntervalLoop:)];
-    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:HOSTNAME];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
         NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@",SANGSTERBASEURL,@"pollrate"];
