@@ -191,7 +191,7 @@ static id instance;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
     dispatch_async(networkQueue, ^{
         NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
-        NSLog(@"UrlString: %@",urlStr);
+//        NSLog(@"UrlString: %@",urlStr);
         NSURL *url = [[NSURL alloc] initWithString:urlStr];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSError *error = nil;
@@ -201,9 +201,9 @@ static id instance;
             NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
             if (!error) {
                 NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
-                if ([json isKindOfClass:[NSDictionary class]] && [(NSDictionary*)json objectForKey:@"status"] == nil)
+                if (([json isKindOfClass:[NSDictionary class]] && [(NSDictionary*)json objectForKey:@"status"] == nil) || [json isKindOfClass:[NSArray class]])
                 {
-                    for (NSDictionary *dic in (NSDictionary*)json) {
+                    for (NSDictionary *dic in (NSArray*)json) {
                         NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                         if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                         {
