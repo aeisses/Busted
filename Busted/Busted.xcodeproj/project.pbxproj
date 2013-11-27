@@ -63,8 +63,8 @@
 		043DAC211837D22E00129145 /* full-starblack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFB1837D22E00129145 /* full-starblack@2x.png */; };
 		043DAC221837D22E00129145 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFC1837D22E00129145 /* Icon-Small.png */; };
 		043DAC231837D22E00129145 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFD1837D22E00129145 /* Icon-Small@2x.png */; };
-		043DAC241837D22E00129145 /* iconLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFE1837D22E00129145 /* iconLarge@2x.png */; };
-		043DAC251837D22E00129145 /* iconSmall@2x-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFF1837D22E00129145 /* iconSmall@2x-568.png */; };
+		043DAC241837D22E00129145 /* IconLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFE1837D22E00129145 /* IconLarge@2x.png */; };
+		043DAC251837D22E00129145 /* IconSmall@2x-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DABFF1837D22E00129145 /* IconSmall@2x-568.png */; };
 		043DAC261837D22E00129145 /* mailButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC001837D22E00129145 /* mailButton.png */; };
 		043DAC271837D22E00129145 /* mailButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC011837D22E00129145 /* mailButton@2x.png */; };
 		043DAC2C1837D22E00129145 /* routes.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC061837D22E00129145 /* routes.png */; };
@@ -77,8 +77,8 @@
 		043DAC331837D22E00129145 /* StopsHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC0D1837D22E00129145 /* StopsHeader@2x.png */; };
 		043DAC341837D22E00129145 /* twitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC0E1837D22E00129145 /* twitterButton.png */; };
 		043DAC351837D22E00129145 /* twitterButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC0F1837D22E00129145 /* twitterButton@2x.png */; };
-		043DAC381837D3D000129145 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC361837D3D000129145 /* icon.png */; };
-		043DAC391837D3D000129145 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC371837D3D000129145 /* icon@2x.png */; };
+		043DAC381837D3D000129145 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC361837D3D000129145 /* Icon.png */; };
+		043DAC391837D3D000129145 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC371837D3D000129145 /* Icon@2x.png */; };
 		043DAC4C1837D4DA00129145 /* AboutScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC3C1837D4DA00129145 /* AboutScreen.m */; };
 		043DAC4D1837D4DA00129145 /* FavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043DAC3E1837D4DA00129145 /* FavouriteCell.m */; };
 		043DAC4E1837D4DA00129145 /* AboutScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043DAC401837D4DA00129145 /* AboutScreen.xib */; };
@@ -244,8 +244,8 @@
 		043DABFB1837D22E00129145 /* full-starblack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full-starblack@2x.png"; sourceTree = "<group>"; };
 		043DABFC1837D22E00129145 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
 		043DABFD1837D22E00129145 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
-		043DABFE1837D22E00129145 /* iconLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconLarge@2x.png"; sourceTree = "<group>"; };
-		043DABFF1837D22E00129145 /* iconSmall@2x-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconSmall@2x-568.png"; sourceTree = "<group>"; };
+		043DABFE1837D22E00129145 /* IconLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconLarge@2x.png"; sourceTree = "<group>"; };
+		043DABFF1837D22E00129145 /* IconSmall@2x-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconSmall@2x-568.png"; sourceTree = "<group>"; };
 		043DAC001837D22E00129145 /* mailButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailButton.png; sourceTree = "<group>"; };
 		043DAC011837D22E00129145 /* mailButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mailButton@2x.png"; sourceTree = "<group>"; };
 		043DAC061837D22E00129145 /* routes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = routes.png; sourceTree = "<group>"; };
@@ -258,8 +258,8 @@
 		043DAC0D1837D22E00129145 /* StopsHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StopsHeader@2x.png"; sourceTree = "<group>"; };
 		043DAC0E1837D22E00129145 /* twitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitterButton.png; sourceTree = "<group>"; };
 		043DAC0F1837D22E00129145 /* twitterButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitterButton@2x.png"; sourceTree = "<group>"; };
-		043DAC361837D3D000129145 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		043DAC371837D3D000129145 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		043DAC361837D3D000129145 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		043DAC371837D3D000129145 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		043DAC3B1837D4DA00129145 /* AboutScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutScreen.h; sourceTree = "<group>"; };
 		043DAC3C1837D4DA00129145 /* AboutScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutScreen.m; sourceTree = "<group>"; };
 		043DAC3D1837D4DA00129145 /* FavouriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouriteCell.h; sourceTree = "<group>"; };
@@ -447,8 +447,8 @@
 				043DABEE1837D22D00129145 /* busStop.png */,
 				043DABEF1837D22D00129145 /* busStop@2x.png */,
 				043DABF01837D22D00129145 /* empty-star.png */,
-				043DAC361837D3D000129145 /* icon.png */,
-				043DAC371837D3D000129145 /* icon@2x.png */,
+				043DAC361837D3D000129145 /* Icon.png */,
+				043DAC371837D3D000129145 /* Icon@2x.png */,
 				043DABF11837D22D00129145 /* empty-star@2x.png */,
 				043DABF21837D22D00129145 /* empty-starblack.png */,
 				048D5A77183EBB0000E8F05B /* upToDownButton@2x.png */,
@@ -464,8 +464,8 @@
 				043DABFB1837D22E00129145 /* full-starblack@2x.png */,
 				043DABFC1837D22E00129145 /* Icon-Small.png */,
 				043DABFD1837D22E00129145 /* Icon-Small@2x.png */,
-				043DABFE1837D22E00129145 /* iconLarge@2x.png */,
-				043DABFF1837D22E00129145 /* iconSmall@2x-568.png */,
+				043DABFE1837D22E00129145 /* IconLarge@2x.png */,
+				043DABFF1837D22E00129145 /* IconSmall@2x-568.png */,
 				043DAC001837D22E00129145 /* mailButton.png */,
 				043DAC011837D22E00129145 /* mailButton@2x.png */,
 				043DAC061837D22E00129145 /* routes.png */,
@@ -927,7 +927,7 @@
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
 				043DAC351837D22E00129145 /* twitterButton@2x.png in Resources */,
-				043DAC391837D3D000129145 /* icon@2x.png in Resources */,
+				043DAC391837D3D000129145 /* Icon@2x.png in Resources */,
 				043DAC2D1837D22E00129145 /* routes@2x.png in Resources */,
 				043DAC1A1837D22E00129145 /* explaination.png in Resources */,
 				043DAC8E1837D5D200129145 /* BusRoutesCollectionViewController.xib in Resources */,
@@ -962,7 +962,7 @@
 				043DAC231837D22E00129145 /* Icon-Small@2x.png in Resources */,
 				043DAC8D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib in Resources */,
 				04E3E9121821E61B00A12F0A /* aboutScreenImage@2x.jpg in Resources */,
-				043DAC241837D22E00129145 /* iconLarge@2x.png in Resources */,
+				043DAC241837D22E00129145 /* IconLarge@2x.png in Resources */,
 				048D5A76183EB8D900E8F05B /* trackMyBusButton@2x.png in Resources */,
 				041902511800C93C00D79040 /* downToUp@2x.png in Resources */,
 				043DAC511837D4DA00129145 /* RouteSelectCell.xib in Resources */,
@@ -978,7 +978,7 @@
 				0419024E1800C93C00D79040 /* introImage1@2x.jpg in Resources */,
 				0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */,
 				0421092A181A043E004539B4 /* Stop@2x.png in Resources */,
-				043DAC251837D22E00129145 /* iconSmall@2x-568.png in Resources */,
+				043DAC251837D22E00129145 /* IconSmall@2x-568.png in Resources */,
 				0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */,
 				043DAC201837D22E00129145 /* full-starblack.png in Resources */,
 				0434394218257A1800FAB62E /* Stop.png in Resources */,
@@ -997,7 +997,7 @@
 				043DAC911837D5D200129145 /* LoadingScreenViewController.xib in Resources */,
 				043DAC1C1837D22E00129145 /* facebookButton.png in Resources */,
 				041902551800C93C00D79040 /* sending3.png in Resources */,
-				043DAC381837D3D000129145 /* icon.png in Resources */,
+				043DAC381837D3D000129145 /* Icon.png in Resources */,
 				043DAC901837D5D200129145 /* FavouritesViewControllerSmall.xib in Resources */,
 				043DAC1D1837D22E00129145 /* facebookButton@2x.png in Resources */,
 				041902541800C93C00D79040 /* sending2.png in Resources */,
@@ -1160,7 +1160,7 @@
 		04C7C29B17E3D7D9001A9981 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Heather McPeake (U9SQ38R7DC)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

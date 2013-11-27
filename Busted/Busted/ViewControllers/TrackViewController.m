@@ -107,6 +107,7 @@ static id instance;
     [_locationManager stopUpdatingLocation];
     _trackButton.selected = NO;
     _sendingImage.hidden = YES;
+    _connectedToServer.hidden = YES;
 //    _sendingImage.hidden = YES;
 
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
@@ -188,6 +189,7 @@ static id instance;
     [_trackButton release]; _trackButton = nil;
     [_locationManager release]; _locationManager = nil;
     [_sendingImage release]; _sendingImage = nil;
+    [_connectedToServer release]; _connectedToServer = nil;
     [_sendingZoom release]; _sendingZoom = nil;
     [_collection release]; _collection = nil;
     [_homeButton release]; _homeButton = nil;
@@ -222,6 +224,7 @@ static id instance;
         _isTracking = NO;
         [_locationManager stopUpdatingLocation];
         _sendingImage.hidden = YES;
+        _connectedToServer.hidden = YES;
         _sendingZoom.hidden = YES;
         currentFrame = 0;
         [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
@@ -283,6 +286,7 @@ static id instance;
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
+                _connectedToServer.hidden = YES;
                 _sendingZoom.hidden = YES;
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
                 [alert show];
@@ -293,6 +297,7 @@ static id instance;
             [_locationManager startUpdatingLocation];
             dispatch_async(dispatch_get_main_queue(), ^{
                 _sendingImage.hidden = NO;
+                _connectedToServer.hidden = NO;
                 _sendingZoom.hidden = NO;
                 _trackButton.selected = YES;
             });
@@ -364,6 +369,7 @@ static id instance;
             dispatch_async(dispatch_get_main_queue(), ^{
                 _trackButton.selected = NO;
                 _sendingImage.hidden = YES;
+                _connectedToServer.hidden = YES;
                 _sendingZoom.hidden = YES;
                 if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];

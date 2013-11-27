@@ -46,6 +46,7 @@
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (assign, nonatomic) BOOL skipLoop;
+@property (assign, nonatomic) BOOL isClearToSend;
 //@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 + (MapViewController*)sharedInstance;

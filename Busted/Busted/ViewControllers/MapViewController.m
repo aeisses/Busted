@@ -40,6 +40,7 @@ static id instance;
     if (self) {
         // Custom initialization
         isStarting = NO;
+        _isClearToSend = NO;
     }
     instance = self;
     return instance;
@@ -187,15 +188,14 @@ static id instance;
 
 - (void)pollServer
 {
-    __block BOOL blockSkipLoop = _skipLoop;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
     dispatch_async(networkQueue, ^{
         NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
-//        NSLog(@"UrlString: %@",urlStr);
         NSURL *url = [[NSURL alloc] initWithString:urlStr];
         NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSError *error = nil;
         // Need to add a check in for server errors, check status code.
+        _isClearToSend = NO;
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
         if (!error) {
             NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
@@ -225,10 +225,11 @@ static id instance;
                         }
                     }
                 }
+                _isClearToSend = YES;
                 json = nil;
                 if ([myAnnotations count] == 0)
                 {
-                    blockSkipLoop = YES;
+                    _skipLoop = YES;
                     if (displayLink)
                     {
                         [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
@@ -244,6 +245,7 @@ static id instance;
                     [myAnnotations release];
                     myAnnotations = nil;
                 } else {
+                    _isClearToSend = YES;
                     if (_annotations) {
                         [_mapView removeAnnotations:_annotations];
                         [_annotations release];
@@ -258,9 +260,10 @@ static id instance;
                     });
                 }
             } else {
-                if (!blockSkipLoop)
+                _isClearToSend = YES;
+                if (!_skipLoop)
                 {
-                    blockSkipLoop = YES;
+                    _skipLoop = YES;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         if (displayLink)
                         {
@@ -290,7 +293,10 @@ static id instance;
     {
         return;
     }
-    [self pollServer];
+    if (_isClearToSend)
+    {
+        [self pollServer];
+    }
 }
 
 - (void)addRoute:(Route*)route
