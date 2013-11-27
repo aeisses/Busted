@@ -32,6 +32,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *homeButton;
 @property (retain, nonatomic) IBOutlet UIImageView *sendingImage;
 @property (retain, nonatomic) IBOutlet UIImageView *sendingZoom;
+@property (retain, nonatomic) IBOutlet UILabel *connectedToServer;
 @property (retain, nonatomic) id <TrackViewControllerDelegate> delegate;
 @property (retain, nonatomic) CLLocationManager *locationManager;
 @property (retain, nonatomic) CLLocation *currentLocation;

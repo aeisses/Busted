@@ -50,6 +50,9 @@
 //@property (retain, nonatomic) IBOutlet UIButton *stopsButton;
 //@property (retain, nonatomic) IBOutlet UIButton *favouriteScreenButton;
 //@property (retain, nonatomic) IBOutlet UIButton *trackButton;
+@property (assign, nonatomic) BOOL skipLoop;
+@property (assign, nonatomic) BOOL isClearToSend;
+//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;

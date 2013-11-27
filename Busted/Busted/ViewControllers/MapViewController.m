@@ -39,6 +39,7 @@ static id instance;
     if (self) {
         // Custom initialization
         isStarting = NO;
+        _isClearToSend = NO;
     }
     instance = self;
     return instance;
@@ -232,20 +233,31 @@ static id instance;
     Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
-        // TODO: Might still have some memory issues here....
-        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-        dispatch_async(networkQueue, ^{
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
-//            NSLog(@"UrlString: %@",urlStr);
-            NSURL *url = [[NSURL alloc] initWithString:urlStr];
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
-            NSError *error = nil;
-            NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        [self pollServer];
+    } else {
+        // Internet connection is not valid
+        
+    }
+}
+
+- (void)pollServer
+{
+    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(networkQueue, ^{
+        NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
+        NSURL *url = [[NSURL alloc] initWithString:urlStr];
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSError *error = nil;
+        // Need to add a check in for server errors, check status code.
+        _isClearToSend = NO;
+        NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        if (!error) {
+            NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
             if (!error) {
-                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
-                if (!error) {
-                    NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
-                    for (NSDictionary *dic in json) {
+                NSMutableArray *myAnnotations = [[NSMutableArray alloc] initWithCapacity:0];
+                if (([json isKindOfClass:[NSDictionary class]] && [(NSDictionary*)json objectForKey:@"status"] == nil) || [json isKindOfClass:[NSArray class]])
+                {
+                    for (NSDictionary *dic in (NSArray*)json) {
                         NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                         if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                         {
@@ -258,8 +270,13 @@ static id instance;
                             [bus release];
                         }
                     }
-                    json = nil;
-                    if ([myAnnotations count] == 0)
+                }
+                _isClearToSend = YES;
+                json = nil;
+                if ([myAnnotations count] == 0)
+                {
+                    _skipLoop = YES;
+                    if (displayLink)
                     {
                         skipLoop = YES;
                         dispatch_async(dispatch_get_main_queue(), ^{
@@ -284,9 +301,33 @@ static id instance;
                         });
                     }
                 } else {
-                    skipLoop = YES;
+                    _isClearToSend = YES;
+                    if (_annotations) {
+                        [_mapView removeAnnotations:_annotations];
+                        [_annotations release];
+                        _annotations = nil;
+                    }
+                    _annotations = [[NSArray alloc] initWithArray:myAnnotations];
+                    [myAnnotations release];
+                    myAnnotations = nil;
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                        [_mapView addAnnotations:_annotations];
+                        [_mapView setNeedsDisplay]; // This might not be needed
+                    });
+                }
+            } else {
+                _isClearToSend = YES;
+                if (!_skipLoop)
+                {
+                    _skipLoop = YES;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (displayLink)
+                        {
+                            [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                            [displayLink invalidate];
+                            [displayLink release];
+                            displayLink = nil;
+                        }
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
                         [alert show];
                         [alert release];
@@ -300,6 +341,10 @@ static id instance;
         dispatch_release(networkQueue);
     } else {
         // The internet connection is not valid
+    }
+    if (_isClearToSend)
+    {
+        [self pollServer];
     }
 }
 
