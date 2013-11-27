@@ -30,7 +30,7 @@
 @interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate,CLLocationManagerDelegate>
 {
     CADisplayLink *displayLink;
-    BOOL skipLoop;
+//    BOOL skipLoop;
     BOOL isStarting;
     BOOL shouldShowStops;
 }
@@ -66,5 +66,6 @@
 //- (IBAction)touchFavoriteScreenButton:(id)sender;
 //- (IBAction)touchtTrackButton:(id)sender;
 - (void)showRouteAlert;
+- (void)showStopsButton;
 
 @end

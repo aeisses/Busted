@@ -14,8 +14,10 @@
 #import "TLTransitionAnimator.h"
 #import "StopDisplayViewController.h"
 #import "HamburgerMenuViewController.h"
+#import "MTTwitterViewController.h"
+#import "AboutViewController.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate>
+@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate,HamburgerMenuViewControllerDelegate,FavouritesViewControllerDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
 }

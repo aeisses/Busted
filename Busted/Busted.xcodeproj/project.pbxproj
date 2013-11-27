@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0407EAFE184582AA00C91DDC /* hamburgerMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407EAFC184582AA00C91DDC /* hamburgerMenu.png */; };
+		0407EAFF184582AA00C91DDC /* hamburgerMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */; };
+		0407EB0318458B7100C91DDC /* MTTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0407EB0118458B7100C91DDC /* MTTwitterViewController.m */; };
+		0407EB0418458B7100C91DDC /* MTTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB0218458B7100C91DDC /* MTTwitterViewController.xib */; };
+		0407EB0618458B9000C91DDC /* MTTwitterViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB0518458B9000C91DDC /* MTTwitterViewControllerSmall.xib */; };
+		0407EB0A1845908100C91DDC /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0407EB081845908100C91DDC /* AboutViewController.m */; };
+		0407EB0B1845908100C91DDC /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB091845908100C91DDC /* AboutViewController.xib */; };
+		0407EB0D184590A900C91DDC /* AboutViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB0C184590A900C91DDC /* AboutViewControllerSmall.xib */; };
 		041902481800C93C00D79040 /* backGroundMenu@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 041902241800C93C00D79040 /* backGroundMenu@2x.jpg */; };
 		0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0419022A1800C93C00D79040 /* Default-568h@2x.png */; };
 		0419024E1800C93C00D79040 /* introImage1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0419022B1800C93C00D79040 /* introImage1@2x.jpg */; };
@@ -190,6 +198,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0407EAFC184582AA00C91DDC /* hamburgerMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburgerMenu.png; sourceTree = "<group>"; };
+		0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerMenu@2x.png"; sourceTree = "<group>"; };
+		0407EB0018458B7100C91DDC /* MTTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTwitterViewController.h; sourceTree = "<group>"; };
+		0407EB0118458B7100C91DDC /* MTTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTwitterViewController.m; sourceTree = "<group>"; };
+		0407EB0218458B7100C91DDC /* MTTwitterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTwitterViewController.xib; sourceTree = "<group>"; };
+		0407EB0518458B9000C91DDC /* MTTwitterViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTwitterViewControllerSmall.xib; sourceTree = "<group>"; };
+		0407EB071845908100C91DDC /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = ViewControllers/AboutViewController.h; sourceTree = "<group>"; };
+		0407EB081845908100C91DDC /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = ViewControllers/AboutViewController.m; sourceTree = "<group>"; };
+		0407EB091845908100C91DDC /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = ViewControllers/AboutViewController.xib; sourceTree = "<group>"; };
+		0407EB0C184590A900C91DDC /* AboutViewControllerSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewControllerSmall.xib; path = ViewControllers/Nibs/AboutViewControllerSmall.xib; sourceTree = "<group>"; };
 		041902241800C93C00D79040 /* backGroundMenu@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundMenu@2x.jpg"; sourceTree = "<group>"; };
 		0419022A1800C93C00D79040 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0419022B1800C93C00D79040 /* introImage1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "introImage1@2x.jpg"; sourceTree = "<group>"; };
@@ -447,6 +465,8 @@
 		041902201800C93C00D79040 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0407EAFC184582AA00C91DDC /* hamburgerMenu.png */,
+				0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */,
 				043DABEA1837D22D00129145 /* bus-icon.png */,
 				043DABEB1837D22D00129145 /* bus-icon@2x.png */,
 				043DABEC1837D22D00129145 /* bus-number.png */,
@@ -760,6 +780,10 @@
 				043DACAE1837D64100129145 /* StopDisplayViewController.m */,
 				043DACAF1837D64100129145 /* TrackViewController.h */,
 				043DACB01837D64100129145 /* TrackViewController.m */,
+				0407EB0018458B7100C91DDC /* MTTwitterViewController.h */,
+				0407EB0118458B7100C91DDC /* MTTwitterViewController.m */,
+				0407EB071845908100C91DDC /* AboutViewController.h */,
+				0407EB081845908100C91DDC /* AboutViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -779,6 +803,8 @@
 		04C7C2B817E49F70001A9981 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				0407EB091845908100C91DDC /* AboutViewController.xib */,
+				0407EB0C184590A900C91DDC /* AboutViewControllerSmall.xib */,
 				043DAC7D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib */,
 				043DAC7E1837D5D200129145 /* BusRoutesCollectionViewController.xib */,
 				043DAC7F1837D5D200129145 /* FavouritesViewController.xib */,
@@ -795,6 +821,8 @@
 				043DAC881837D5D200129145 /* RoutesViewControllerSmall.xib */,
 				043DAC891837D5D200129145 /* StopDisplayViewController.xib */,
 				043DAC8A1837D5D200129145 /* StopDisplayViewControllerSmall.xib */,
+				0407EB0218458B7100C91DDC /* MTTwitterViewController.xib */,
+				0407EB0518458B9000C91DDC /* MTTwitterViewControllerSmall.xib */,
 				043DAC8B1837D5D200129145 /* TrackViewController.xib */,
 				043DAC8C1837D5D200129145 /* TrackViewControllerSmall.xib */,
 			);
@@ -898,11 +926,13 @@
 				043DAC9A1837D5D200129145 /* StopDisplayViewControllerSmall.xib in Resources */,
 				043DAC1B1837D22E00129145 /* explaination@2x.png in Resources */,
 				043DAC111837D22E00129145 /* bus-icon@2x.png in Resources */,
+				0407EAFE184582AA00C91DDC /* hamburgerMenu.png in Resources */,
 				041902571800C93C00D79040 /* backGroundTrack@2x.jpg in Resources */,
 				043DAC2C1837D22E00129145 /* routes.png in Resources */,
 				043DAC1F1837D22E00129145 /* full-star@2x.png in Resources */,
 				04D13F5A181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg in Resources */,
 				04D13F58181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg in Resources */,
+				0407EB0B1845908100C91DDC /* AboutViewController.xib in Resources */,
 				04343A1D1825D8A700FAB62E /* Default.png in Resources */,
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				043DAC971837D5D200129145 /* RoutesViewController.xib in Resources */,
@@ -943,10 +973,12 @@
 				043DAC2D1837D22E00129145 /* routes@2x.png in Resources */,
 				043DAC1A1837D22E00129145 /* explaination.png in Resources */,
 				043DAC8E1837D5D200129145 /* BusRoutesCollectionViewController.xib in Resources */,
+				0407EAFF184582AA00C91DDC /* hamburgerMenu@2x.png in Resources */,
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
 				043DAC501837D4DA00129145 /* FavouriteCell.xib in Resources */,
 				04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */,
 				046D31E618231B3E0038B3E3 /* backGround.jpg in Resources */,
+				0407EB0618458B9000C91DDC /* MTTwitterViewControllerSmall.xib in Resources */,
 				043DAC301837D22E00129145 /* stops.png in Resources */,
 				04E3E90F1821E59700A12F0A /* aboutScreenSmall.jpg in Resources */,
 				043DAC981837D5D200129145 /* RoutesViewControllerSmall.xib in Resources */,
@@ -955,6 +987,7 @@
 				043DAC101837D22E00129145 /* bus-icon.png in Resources */,
 				048D5A78183EBB0000E8F05B /* upToDownButton@2x.png in Resources */,
 				041902581800C93C00D79040 /* backGround@2x.jpg in Resources */,
+				0407EB0D184590A900C91DDC /* AboutViewControllerSmall.xib in Resources */,
 				043DAC9B1837D5D200129145 /* TrackViewController.xib in Resources */,
 				043DAC261837D22E00129145 /* mailButton.png in Resources */,
 				04E3E9131821E61B00A12F0A /* aboutScreenImage.jpg in Resources */,
@@ -983,6 +1016,7 @@
 				043DAC321837D22E00129145 /* StopsHeader.png in Resources */,
 				048D5A75183EB8D900E8F05B /* myFavouritesButton@2x.png in Resources */,
 				043DAC9C1837D5D200129145 /* TrackViewControllerSmall.xib in Resources */,
+				0407EB0418458B7100C91DDC /* MTTwitterViewController.xib in Resources */,
 				043DAC211837D22E00129145 /* full-starblack@2x.png in Resources */,
 				04C421DF1842728800A9114C /* HamburgerMenuViewController.xib in Resources */,
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
@@ -1026,6 +1060,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04E9588717F6340900DD72AD /* AFURLConnectionOperation.m in Sources */,
+				0407EB0318458B7100C91DDC /* MTTwitterViewController.m in Sources */,
 				04C7C28617E3D7D9001A9981 /* main.m in Sources */,
 				04E9588917F6340900DD72AD /* UIImageView+AFNetworking.m in Sources */,
 				04E9588117F6340900DD72AD /* AFHTTPClient.m in Sources */,
@@ -1035,6 +1070,7 @@
 				04C7C29317E3D7D9001A9981 /* ViewController.m in Sources */,
 				043DACB41837D64100129145 /* LoadingScreenViewController.m in Sources */,
 				043DACB71837D64100129145 /* ParentViewController.m in Sources */,
+				0407EB0A1845908100C91DDC /* AboutViewController.m in Sources */,
 				043DACB11837D64100129145 /* BusRoutesCollectionViewController.m in Sources */,
 				043DAC4D1837D4DA00129145 /* FavouriteCell.m in Sources */,
 				04BEB26318415870006BAC6A /* DataModel.xcdatamodeld in Sources */,
@@ -1192,7 +1228,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "616516AB-EBDE-47AA-BC2F-1A6D49AEAEDF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCBE4AF3-AE1D-4FB9-A576-9605AAFA2786";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

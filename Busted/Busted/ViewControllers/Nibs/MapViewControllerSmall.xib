@@ -9,11 +9,8 @@
             <connections>
                 <outlet property="aboutButton" destination="mNM-fW-V4A" id="Uws-rL-5tQ"/>
                 <outlet property="favouriteButton" destination="gIP-pJ-E5u" id="j2t-sJ-6wF"/>
-                <outlet property="favouriteScreenButton" destination="9al-2j-G9M" id="y5c-5a-lDh"/>
                 <outlet property="homeButton" destination="eRF-bX-Czo" id="rGT-xN-Fns"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
-                <outlet property="stopsButton" destination="eA7-7G-aa2" id="8Yt-Bt-1bk"/>
-                <outlet property="trackButton" destination="uhy-E1-jMp" id="tb2-lh-oKF"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
             </connections>
         </placeholder>
@@ -45,40 +42,13 @@
                         <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="GXr-dT-7hm"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mNM-fW-V4A">
-                    <rect key="frame" x="17" y="431" width="46" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mNM-fW-V4A">
+                    <rect key="frame" x="5" y="5" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="About"/>
+                    <state key="normal" image="hamburgerMenu.png"/>
                     <connections>
                         <action selector="touchAboutButton:" destination="-1" eventType="touchUpInside" id="10Q-7J-ZeA"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eA7-7G-aa2">
-                    <rect key="frame" x="75" y="431" width="46" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Stops"/>
-                    <connections>
-                        <action selector="touchStopsButton:" destination="-1" eventType="touchUpInside" id="zs1-Np-AKv"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9al-2j-G9M">
-                    <rect key="frame" x="135" y="431" width="46" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Fav"/>
-                    <connections>
-                        <action selector="touchFavoriteScreenButton:" destination="-1" eventType="touchUpInside" id="EVl-lb-CM1"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uhy-E1-jMp">
-                    <rect key="frame" x="194" y="431" width="46" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Track"/>
-                    <connections>
-                        <action selector="touchtTrackButton:" destination="-1" eventType="touchUpInside" id="mcb-1e-hg4"/>
                     </connections>
                 </button>
             </subviews>
@@ -92,6 +62,7 @@
     <resources>
         <image name="empty-starblack.png" width="35" height="35"/>
         <image name="full-starblack.png" width="35" height="35"/>
+        <image name="hamburgerMenu.png" width="50" height="50"/>
         <image name="homeButton.png" width="320" height="56"/>
         <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
     </resources>

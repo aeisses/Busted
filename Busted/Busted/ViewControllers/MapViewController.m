@@ -149,7 +149,7 @@ static id instance;
 //        });
 //        dispatch_release(dataQueue);
 //    }
-    skipLoop = NO;
+    _skipLoop = NO;
     [super viewDidLoad];
 }
 
@@ -166,7 +166,7 @@ static id instance;
 - (void)viewDidAppear:(BOOL)animated
 {
     [_mapView setShowsUserLocation:YES];
-    skipLoop =  NO;
+    _skipLoop =  NO;
     if (_isStops)
     {
         // switch this so it runs on both options.
@@ -226,11 +226,11 @@ static id instance;
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
-    if (skipLoop)
+    if (_skipLoop)
     {
         return;
     }
-    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:@"knowtime.ca"];
+    Reachability *remoteHostStatus = [Reachability reachabilityWithHostName:HOSTNAME];
     if (remoteHostStatus.currentReachabilityStatus != NotReachable)
     {
         [self pollServer];
@@ -278,7 +278,7 @@ static id instance;
                     _skipLoop = YES;
                     if (displayLink)
                     {
-                        skipLoop = YES;
+                        _skipLoop = YES;
                         dispatch_async(dispatch_get_main_queue(), ^{
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
                             [alert show];
@@ -334,14 +334,14 @@ static id instance;
                     });
                 }
             }
-            [request release];
-            [url release];
-            [urlStr release];
-        });
-        dispatch_release(networkQueue);
-    } else {
-        // The internet connection is not valid
-    }
+        } else {
+            
+        }
+        [request release];
+        [url release];
+        [urlStr release];
+    });
+    dispatch_release(networkQueue);
     if (_isClearToSend)
     {
         [self pollServer];
@@ -556,22 +556,22 @@ static id instance;
 //    [alert release];
 //}
 //
-//- (IBAction)touchStopsButton:(id)sender
-//{
-//    if (shouldShowStops)
-//    {
-//        [_mapView addAnnotations:_annotations];
-//    } else {
-//        if (_annotations)
-//        {
-//            [_annotations release];
-//            _annotations = nil;
-//        }
-//        _annotations = [[NSArray alloc] initWithArray:_mapView.annotations];
-//        [_mapView removeAnnotations:_mapView.annotations];
-//    }
-//    shouldShowStops = !shouldShowStops;
-//}
+- (void)showStopsButton
+{
+    if (shouldShowStops)
+    {
+        [_mapView addAnnotations:_annotations];
+    } else {
+        if (_annotations)
+        {
+            [_annotations release];
+            _annotations = nil;
+        }
+        _annotations = [[NSArray alloc] initWithArray:_mapView.annotations];
+        [_mapView removeAnnotations:_mapView.annotations];
+    }
+    shouldShowStops = !shouldShowStops;
+}
 //
 //- (IBAction)touchFavoriteScreenButton:(id)sender
 //{

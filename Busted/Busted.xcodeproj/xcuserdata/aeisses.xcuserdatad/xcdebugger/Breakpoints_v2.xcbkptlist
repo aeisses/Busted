@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/ViewController.m"
-            timestampString = "407010032.690289"
+            timestampString = "407212749.37662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "-showHamburgerMenu"
             landmarkType = "5">
          </BreakpointContent>

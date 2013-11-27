@@ -32,13 +32,19 @@
         _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         _hamburgerMenuViewController = [[HamburgerMenuViewController alloc] initWithNibName:@"HamburgerMenuViewControllerSmall" bundle:nil];
     }
+    _hamburgerMenuViewController.delegate = self;
+    _hamburgerMenuViewController.superDelegate = self;
     _mapViewController.delegate = self;
     _mapViewController.superDelegate = self;
 //    [[self navigationController] pushViewController:_hamburgerMenuViewController animated:NO];
     _hamburgerMenuViewController.view.frame = (CGRect){0,0,320,568};
-    [[self navigationController] addChildViewController:_hamburgerMenuViewController];
+    [_hamburgerMenuViewController.view addSubview:_mapViewController.view];
+    [_hamburgerMenuViewController addChildViewController:_mapViewController];
+    [_mapViewController didMoveToParentViewController:_hamburgerMenuViewController];
+//    _mapViewController.view.frame = [_hamburgerMenuViewController frameForContentController];
+//    [[self navigationController] addChildViewController:_hamburgerMenuViewController];
 //    [_hamburgerMenuViewController addChildViewController:_mapViewController];
-    [[self navigationController] pushViewController:_mapViewController animated:NO];
+    [[self navigationController] pushViewController:_hamburgerMenuViewController animated:NO];
 }
 
 - (void)showMenuView
@@ -105,8 +111,10 @@
     } else if ([vc isKindOfClass:[FavouritesViewController class]]) {
         FavouritesViewController *favVC = (FavouritesViewController*)vc;
         favVC.superDelegate = self;
+        favVC.delegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:favVC animated:YES];
+            [self showHamburgerMenu];
         });
     } else if ([vc isKindOfClass:[MapViewController class]]) {
         MapViewController *mapVC = (MapViewController*)vc;
@@ -121,6 +129,20 @@
         stopDisplayVC.delegate = self;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[self navigationController] pushViewController:stopDisplayVC animated:YES];
+        });
+    } else if ([vc isKindOfClass:[MTTwitterViewController class]]) {
+        MTTwitterViewController *mtTwitterVC = (MTTwitterViewController*)vc;
+        mtTwitterVC.superDelegate = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:mtTwitterVC animated:YES];
+            [self showHamburgerMenu];
+        });
+    } else if ([vc isKindOfClass:[AboutViewController class]]) {
+        AboutViewController *aboutVC = (AboutViewController*)vc;
+        aboutVC.superDelegate = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:aboutVC animated:YES];
+            [self showHamburgerMenu];
         });
     }
 }
@@ -199,6 +221,7 @@
 //                }
 //                [self presentViewController:_trackVC animated:YES completion:^{}];
                 [[self navigationController] pushViewController:_trackVC animated:YES];
+                [self showHamburgerMenu];
             }
             break;
     }
@@ -240,6 +263,12 @@
 - (void)addBusStop:(StopAnnotation*)busStop
 {
 //   [mapViewController addBusStop:busStop];
+}
+
+#pragma HamburgerMenuDelegate
+- (void)hideStops
+{
+    [_mapViewController showStopsButton];
 }
 
 #pragma WebApiInterfaceDelegate
