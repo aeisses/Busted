@@ -30,7 +30,6 @@
 @interface MapViewController : ParentViewController <MKMapViewDelegate,ParentViewControllerDelegate,CLLocationManagerDelegate>
 {
     CADisplayLink *displayLink;
-//    BOOL skipLoop;
     BOOL isStarting;
     BOOL shouldShowStops;
 }
@@ -47,12 +46,8 @@
 @property (retain, nonatomic) NSMutableArray *stops;
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (retain, nonatomic) IBOutlet UIButton *hamburgerButton;
-//@property (retain, nonatomic) IBOutlet UIButton *stopsButton;
-//@property (retain, nonatomic) IBOutlet UIButton *favouriteScreenButton;
-//@property (retain, nonatomic) IBOutlet UIButton *trackButton;
 @property (assign, nonatomic) BOOL skipLoop;
 @property (assign, nonatomic) BOOL isClearToSend;
-//@property (nonatomic, retain) UIActivityIndicatorView *spinner;
 
 + (MapViewController*)sharedInstance;
 - (void)addRoute:(Route*)route;
@@ -62,9 +57,6 @@
 - (IBAction)touchHomeButton:(id)sender;
 - (IBAction)touchFavouriteButton:(id)sender;
 - (IBAction)touchHamburgerButton:(id)sender;
-//- (IBAction)touchStopsButton:(id)sender;
-//- (IBAction)touchFavoriteScreenButton:(id)sender;
-//- (IBAction)touchtTrackButton:(id)sender;
 - (void)showRouteAlert;
 - (void)showStopsButton;
 
