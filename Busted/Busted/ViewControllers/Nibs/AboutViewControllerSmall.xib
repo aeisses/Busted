@@ -9,19 +9,20 @@
             <connections>
                 <outlet property="backButton" destination="QNp-yR-f4D" id="3KQ-xS-6qy"/>
                 <outlet property="backGroundImage" destination="9NQ-LT-F1B" id="Ebv-ef-ANy"/>
+                <outlet property="view" destination="1" id="ziM-YC-Mcu"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9NQ-LT-F1B">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="mtn-93-OwO">
-                    <rect key="frame" x="40" y="54" width="241" height="519"/>
+                    <rect key="frame" x="40" y="54" width="241" height="431"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="explaination.png" translatesAutoresizingMaskIntoConstraints="NO" id="i7H-Ly-Uk0">
@@ -110,7 +111,7 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

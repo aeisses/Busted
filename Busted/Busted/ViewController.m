@@ -26,18 +26,19 @@
     {
         _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController" bundle:nil];
         _hamburgerMenuViewController = [[HamburgerMenuViewController alloc] initWithNibName:@"HamburgerMenuViewController" bundle:nil];
+        _hamburgerMenuViewController.view.frame = (CGRect){0,0,320,568};
     }
     else
     {
         _mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewControllerSmall" bundle:nil];
         _hamburgerMenuViewController = [[HamburgerMenuViewController alloc] initWithNibName:@"HamburgerMenuViewControllerSmall" bundle:nil];
+        _hamburgerMenuViewController.view.frame = (CGRect){0,0,320,480};
     }
     _hamburgerMenuViewController.delegate = self;
     _hamburgerMenuViewController.superDelegate = self;
     _mapViewController.delegate = self;
     _mapViewController.superDelegate = self;
 //    [[self navigationController] pushViewController:_hamburgerMenuViewController animated:NO];
-    _hamburgerMenuViewController.view.frame = (CGRect){0,0,320,568};
     [_hamburgerMenuViewController.view addSubview:_mapViewController.view];
     [_hamburgerMenuViewController addChildViewController:_mapViewController];
     [_mapViewController didMoveToParentViewController:_hamburgerMenuViewController];

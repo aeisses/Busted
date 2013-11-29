@@ -65,10 +65,16 @@ static NSString *const kAllowTracking = @"allowTracking";
         [[TrackViewController sharedInstance].displayLink setPaused:YES];
 //        [[TrackViewController sharedInstance].locationManager startMonitoringSignificantLocationChanges];
         [Flurry setBackgroundSessionEnabled:YES];
-    }
-    if ([_navController.topViewController isKindOfClass:[MapViewController class]])
+    } else if ([_navController.topViewController isKindOfClass:[MapViewController class]])
     {
         [((MapViewController*)_navController.topViewController).locationManager stopUpdatingLocation];
+    } else if ([_navController.topViewController isKindOfClass:[HamburgerMenuViewController class]])
+    {
+        NSArray *children = ((HamburgerMenuViewController*)_navController.topViewController).childViewControllers;
+        if ([children count] > 0 && [[children firstObject] isKindOfClass:[MapViewController class]])
+        {
+            [((MapViewController*)[children firstObject]).locationManager stopUpdatingLocation];
+        }
     }
 }
 

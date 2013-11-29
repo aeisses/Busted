@@ -1185,7 +1185,7 @@
 		04C7C29A17E3D7D9001A9981 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Aaron Eisses (XHJP78J932)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1202,7 +1202,7 @@
 					"$(SRCROOT)/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "7A11E1EE-D403-4C9B-BF6D-999C725EF889";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1228,7 +1228,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CCBE4AF3-AE1D-4FB9-A576-9605AAFA2786";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8D27F623-2F93-4689-AD6D-38B39D9895D5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

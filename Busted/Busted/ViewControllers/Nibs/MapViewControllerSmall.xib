@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="aboutButton" destination="mNM-fW-V4A" id="Uws-rL-5tQ"/>
                 <outlet property="favouriteButton" destination="gIP-pJ-E5u" id="j2t-sJ-6wF"/>
+                <outlet property="hamburgerButton" destination="mNM-fW-V4A" id="dD3-sU-ySe"/>
                 <outlet property="homeButton" destination="eRF-bX-Czo" id="rGT-xN-Fns"/>
                 <outlet property="mapView" destination="1" id="9te-7f-QDY"/>
                 <outlet property="view" destination="1" id="PE1-hF-U3y"/>
@@ -48,7 +48,7 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" image="hamburgerMenu.png"/>
                     <connections>
-                        <action selector="touchAboutButton:" destination="-1" eventType="touchUpInside" id="10Q-7J-ZeA"/>
+                        <action selector="touchHamburgerButton:" destination="-1" eventType="touchUpInside" id="bwi-xw-cau"/>
                     </connections>
                 </button>
             </subviews>

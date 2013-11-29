@@ -143,6 +143,7 @@ static id instance;
     [super viewDidAppear:animated];
     [_mapView setShowsUserLocation:YES];
     _skipLoop =  NO;
+    [_locationManager startUpdatingLocation];
     if (_isStops)
     {
         [self startService];
@@ -168,6 +169,7 @@ static id instance;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [_locationManager stopUpdatingLocation];
     if (_isStops)
     {
         if (displayLink)
