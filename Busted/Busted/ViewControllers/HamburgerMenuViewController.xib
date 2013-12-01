@@ -8,11 +8,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HamburgerMenuViewController">
             <connections>
                 <outlet property="aboutButton" destination="hIl-xt-Yw3" id="HR9-Ce-iT5"/>
+                <outlet property="aboutImage" destination="VMu-w3-lVg" id="Cj9-1e-92O"/>
                 <outlet property="backGroundImage" destination="dtb-Zo-NPM" id="fMo-ro-IdS"/>
                 <outlet property="favourtiesButton" destination="fOW-1H-IMj" id="oYW-Rz-FFN"/>
+                <outlet property="favourtiesImage" destination="pOj-If-iEt" id="aV9-n4-COc"/>
                 <outlet property="metroTransitTwitter" destination="G4W-Hy-EYf" id="ubE-5V-LL3"/>
+                <outlet property="mtImage" destination="MDw-ca-d5v" id="ia9-yQ-K6h"/>
                 <outlet property="shareButton" destination="RAp-1t-IZo" id="sbj-wv-Pte"/>
+                <outlet property="shareImage" destination="tx0-nF-4Mw" id="9aA-j4-cWF"/>
                 <outlet property="stopsButton" destination="EFi-si-gyq" id="qjQ-AK-0z3"/>
+                <outlet property="stopsImage" destination="9cG-UM-INh" id="dPK-8W-M3d"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

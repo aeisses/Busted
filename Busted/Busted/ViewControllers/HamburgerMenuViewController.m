@@ -116,6 +116,11 @@
     [_stopsButton release]; _stopsButton = nil;
     [_favourtiesButton release]; _favourtiesButton = nil;
     [_metroTransitTwitter release]; _metroTransitTwitter = nil;
+    [_aboutImage release]; _aboutImage = nil;
+    [_shareImage release]; _shareImage = nil;
+    [_stopsImage release]; _stopsImage = nil;
+    [_favourtiesImage release]; _favourtiesImage = nil;
+    [_mtImage release]; _mtImage = nil;
     _delegate = nil;
 }
 

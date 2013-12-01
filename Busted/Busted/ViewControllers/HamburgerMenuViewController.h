@@ -25,6 +25,11 @@
 @property (retain, nonatomic) IBOutlet UIButton *stopsButton;
 @property (retain, nonatomic) IBOutlet UIButton *favourtiesButton;
 @property (retain, nonatomic) IBOutlet UIButton *metroTransitTwitter;
+@property (retain, nonatomic) IBOutlet UIImageView *aboutImage;
+@property (retain, nonatomic) IBOutlet UIImageView *shareImage;
+@property (retain, nonatomic) IBOutlet UIImageView *stopsImage;
+@property (retain, nonatomic) IBOutlet UIImageView *favourtiesImage;
+@property (retain, nonatomic) IBOutlet UIImageView *mtImage;
 @property (retain, nonatomic) id <HamburgerMenuViewControllerDelegate> delegate;
 
 - (IBAction)touchShareButton:(id)sender;
