@@ -21,16 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-Zo-NPM">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hamburgerMenuBackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="dtb-Zo-NPM">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.0078431372550000003" green="0.85882352939999995" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-1t-IZo">
-                    <rect key="frame" x="14" y="38" width="80" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAp-1t-IZo">
+                    <rect key="frame" x="12" y="150" width="74" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Share Me">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="shareMeButton.png">
                         <color key="titleColor" red="1" green="0.63448324548192769" blue="0.067606362951807233" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -38,11 +38,11 @@
                         <action selector="touchShareButton:" destination="-1" eventType="touchUpInside" id="1DB-t5-ZT7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-xt-Yw3">
-                    <rect key="frame" x="14" y="86" width="80" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-xt-Yw3">
+                    <rect key="frame" x="12" y="195" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="About">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="aboutButton.png">
                         <color key="titleColor" red="1" green="0.63448324548192769" blue="0.067606362951807233" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -50,11 +50,11 @@
                         <action selector="touchAboutButton:" destination="-1" eventType="touchUpInside" id="POQ-Mu-1A7"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFi-si-gyq">
-                    <rect key="frame" x="14" y="135" width="80" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFi-si-gyq">
+                    <rect key="frame" x="12" y="240" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Stops">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="stopsButton.png">
                         <color key="titleColor" red="1" green="0.63448324548192769" blue="0.067606362951807233" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -62,11 +62,11 @@
                         <action selector="touchStopsButton:" destination="-1" eventType="touchUpInside" id="Pf1-Om-NTy"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-1H-IMj">
-                    <rect key="frame" x="14" y="184" width="80" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fOW-1H-IMj">
+                    <rect key="frame" x="12" y="285" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Favourites">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="favouritesButton.png">
                         <color key="titleColor" red="1" green="0.63448324548192769" blue="0.067606362951807233" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -74,11 +74,11 @@
                         <action selector="touchFavouritesButton:" destination="-1" eventType="touchUpInside" id="Inc-5L-IiA"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4W-Hy-EYf">
-                    <rect key="frame" x="14" y="235" width="80" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G4W-Hy-EYf">
+                    <rect key="frame" x="12" y="330" width="81" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="MT Twitter">
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="hfxtransitButton.png">
                         <color key="titleColor" red="1" green="0.63448324548192769" blue="0.067606362951807233" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -86,6 +86,26 @@
                         <action selector="touchMetroTransitTwitter:" destination="-1" eventType="touchUpInside" id="IQM-9b-UKT"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangleshareme.png" translatesAutoresizingMaskIntoConstraints="NO" id="tx0-nF-4Mw">
+                    <rect key="frame" x="103" y="158" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangleabout.png" translatesAutoresizingMaskIntoConstraints="NO" id="VMu-w3-lVg">
+                    <rect key="frame" x="103" y="203" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglesstops.png" translatesAutoresizingMaskIntoConstraints="NO" id="9cG-UM-INh">
+                    <rect key="frame" x="103" y="248" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglefavourites.png" translatesAutoresizingMaskIntoConstraints="NO" id="pOj-If-iEt">
+                    <rect key="frame" x="103" y="293" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglehfxtransit.png" translatesAutoresizingMaskIntoConstraints="NO" id="MDw-ca-d5v">
+                    <rect key="frame" x="103" y="338" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -93,6 +113,16 @@
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
+        <image name="aboutButton.png" width="82" height="28"/>
+        <image name="favouritesButton.png" width="82" height="28"/>
+        <image name="hamburgerMenuBackground.png" width="110" height="568"/>
+        <image name="hfxtransitButton.png" width="81" height="28"/>
+        <image name="shareMeButton.png" width="73" height="28"/>
+        <image name="stopsButton.png" width="82" height="28"/>
+        <image name="triangleabout.png" width="6" height="12"/>
+        <image name="trianglefavourites.png" width="6" height="12"/>
+        <image name="trianglehfxtransit.png" width="6" height="12"/>
+        <image name="triangleshareme.png" width="6" height="12"/>
+        <image name="trianglesstops.png" width="6" height="12"/>
     </resources>
 </document>

@@ -21,16 +21,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7ll-fl-L75">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hamburgerMenuBGSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="7ll-fl-L75">
                     <rect key="frame" x="0.0" y="0.0" width="110" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e12-za-yF0">
-                    <rect key="frame" x="11" y="30" width="80" height="40"/>
+                    <rect key="frame" x="12" y="143" width="73" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Share Me">
+                    <state key="normal" image="shareMeButton.png">
                         <color key="titleColor" red="1" green="0.63448324550000001" blue="0.067606362949999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -39,11 +39,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5a-rR-UHP">
-                    <rect key="frame" x="11" y="79" width="80" height="40"/>
+                    <rect key="frame" x="12" y="188" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="About">
+                    <state key="normal" image="aboutButton.png">
                         <color key="titleColor" red="1" green="0.63448324550000001" blue="0.067606362949999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -52,11 +52,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Utt-Mr-Zh6">
-                    <rect key="frame" x="11" y="128" width="80" height="40"/>
+                    <rect key="frame" x="12" y="233" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Stops">
+                    <state key="normal" image="stopsButton.png">
                         <color key="titleColor" red="1" green="0.63448324550000001" blue="0.067606362949999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -65,11 +65,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zys-pj-HMf">
-                    <rect key="frame" x="11" y="178" width="80" height="40"/>
+                    <rect key="frame" x="12" y="278" width="82" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Favourites">
+                    <state key="normal" image="favouritesButton.png">
                         <color key="titleColor" red="1" green="0.63448324550000001" blue="0.067606362949999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -78,11 +78,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WwM-NI-85j">
-                    <rect key="frame" x="11" y="227" width="80" height="40"/>
+                    <rect key="frame" x="12" y="323" width="81" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="MT Twitter">
+                    <state key="normal" image="hfxtransitButton.png">
                         <color key="titleColor" red="1" green="0.63448324550000001" blue="0.067606362949999999" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -90,11 +90,41 @@
                         <action selector="touchMetroTransitTwitter:" destination="-1" eventType="touchUpInside" id="93o-A2-yCn"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangleshareme.png" translatesAutoresizingMaskIntoConstraints="NO" id="ADX-dy-Wt7">
+                    <rect key="frame" x="103" y="151" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangleabout.png" translatesAutoresizingMaskIntoConstraints="NO" id="hRa-5r-pxx">
+                    <rect key="frame" x="103" y="196" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglesstops.png" translatesAutoresizingMaskIntoConstraints="NO" id="XdQ-bm-Pec">
+                    <rect key="frame" x="103" y="241" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglefavourites.png" translatesAutoresizingMaskIntoConstraints="NO" id="s0r-dB-50J">
+                    <rect key="frame" x="103" y="286" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="trianglehfxtransit.png" translatesAutoresizingMaskIntoConstraints="NO" id="83w-FF-5tn">
+                    <rect key="frame" x="103" y="331" width="7" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
+        <image name="aboutButton.png" width="82" height="28"/>
+        <image name="favouritesButton.png" width="82" height="28"/>
+        <image name="hamburgerMenuBGSmall.png" width="110" height="480"/>
+        <image name="hfxtransitButton.png" width="81" height="28"/>
+        <image name="shareMeButton.png" width="73" height="28"/>
+        <image name="stopsButton.png" width="82" height="28"/>
+        <image name="triangleabout.png" width="6" height="12"/>
+        <image name="trianglefavourites.png" width="6" height="12"/>
+        <image name="trianglehfxtransit.png" width="6" height="12"/>
+        <image name="triangleshareme.png" width="6" height="12"/>
+        <image name="trianglesstops.png" width="6" height="12"/>
     </resources>
 </document>

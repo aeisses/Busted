@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0407EAFE184582AA00C91DDC /* hamburgerMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407EAFC184582AA00C91DDC /* hamburgerMenu.png */; };
-		0407EAFF184582AA00C91DDC /* hamburgerMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */; };
 		0407EB0318458B7100C91DDC /* MTTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0407EB0118458B7100C91DDC /* MTTwitterViewController.m */; };
 		0407EB0418458B7100C91DDC /* MTTwitterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB0218458B7100C91DDC /* MTTwitterViewController.xib */; };
 		0407EB0618458B9000C91DDC /* MTTwitterViewControllerSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0407EB0518458B9000C91DDC /* MTTwitterViewControllerSmall.xib */; };
@@ -36,7 +34,6 @@
 		041902621800C93C00D79040 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902431800C93C00D79040 /* route@2x.png */; };
 		041902631800C93C00D79040 /* submitButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902441800C93C00D79040 /* submitButton@2x.png */; };
 		041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */; };
-		041902681800CF6300D79040 /* aboutButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902651800CF6300D79040 /* aboutButton@2x.png */; };
 		041902691800CF6300D79040 /* aboutButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902661800CF6300D79040 /* aboutButtonHighlighted@2x.png */; };
 		0419026A1800CF6300D79040 /* aboutScreen@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 041902671800CF6300D79040 /* aboutScreen@2x.jpg */; };
 		041902731800F40700D79040 /* TLTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041902721800F40700D79040 /* TLTransitionAnimator.m */; };
@@ -138,6 +135,26 @@
 		044EE46B1829B09500685CEE /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */; };
 		044EE46D1829B0DD00685CEE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46C1829B0DD00685CEE /* Security.framework */; };
 		044EE46F1829B0E900685CEE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46E1829B0E900685CEE /* AdSupport.framework */; };
+		045DB84D184BA0C300B872EF /* hamburgerMenuBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB84C184BA0C300B872EF /* hamburgerMenuBackground@2x.png */; };
+		045DB850184BA0F600B872EF /* hamburgerMenuButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB84E184BA0F600B872EF /* hamburgerMenuButton.png */; };
+		045DB851184BA0F600B872EF /* hamburgerMenuButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB84F184BA0F600B872EF /* hamburgerMenuButton@2x.png */; };
+		045DB854184BA15D00B872EF /* hamburgerMenuBGSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB852184BA15D00B872EF /* hamburgerMenuBGSmall.png */; };
+		045DB855184BA15D00B872EF /* hamburgerMenuBGSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB853184BA15D00B872EF /* hamburgerMenuBGSmall@2x.png */; };
+		045DB860184BB97400B872EF /* aboutButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB856184BB97400B872EF /* aboutButton.png */; };
+		045DB861184BB97400B872EF /* aboutButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB857184BB97400B872EF /* aboutButton@2x.png */; };
+		045DB862184BB97400B872EF /* favouritesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB858184BB97400B872EF /* favouritesButton.png */; };
+		045DB863184BB97400B872EF /* favouritesButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB859184BB97400B872EF /* favouritesButton@2x.png */; };
+		045DB864184BB97400B872EF /* hfxtransitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85A184BB97400B872EF /* hfxtransitButton.png */; };
+		045DB865184BB97400B872EF /* hfxtransitButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85B184BB97400B872EF /* hfxtransitButton@2x.png */; };
+		045DB866184BB97400B872EF /* shareMeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85C184BB97400B872EF /* shareMeButton.png */; };
+		045DB867184BB97400B872EF /* shareMeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85D184BB97400B872EF /* shareMeButton@2x.png */; };
+		045DB868184BB97400B872EF /* stopsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85E184BB97400B872EF /* stopsButton.png */; };
+		045DB869184BB97400B872EF /* stopsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB85F184BB97400B872EF /* stopsButton@2x.png */; };
+		045DB86F184BBC0300B872EF /* triangleabout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB86A184BBC0300B872EF /* triangleabout@2x.png */; };
+		045DB870184BBC0300B872EF /* trianglefavourites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB86B184BBC0300B872EF /* trianglefavourites@2x.png */; };
+		045DB871184BBC0300B872EF /* trianglehfxtransit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB86C184BBC0300B872EF /* trianglehfxtransit@2x.png */; };
+		045DB872184BBC0300B872EF /* triangleshareme@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB86D184BBC0300B872EF /* triangleshareme@2x.png */; };
+		045DB873184BBC0300B872EF /* trianglesstops@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 045DB86E184BBC0300B872EF /* trianglesstops@2x.png */; };
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E118231B330038B3E3 /* buttonGround.jpg */; };
 		046D31E418231B330038B3E3 /* buttonGround@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E218231B330038B3E3 /* buttonGround@2x.jpg */; };
@@ -198,8 +215,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0407EAFC184582AA00C91DDC /* hamburgerMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburgerMenu.png; sourceTree = "<group>"; };
-		0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerMenu@2x.png"; sourceTree = "<group>"; };
 		0407EB0018458B7100C91DDC /* MTTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTTwitterViewController.h; sourceTree = "<group>"; };
 		0407EB0118458B7100C91DDC /* MTTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTTwitterViewController.m; sourceTree = "<group>"; };
 		0407EB0218458B7100C91DDC /* MTTwitterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MTTwitterViewController.xib; sourceTree = "<group>"; };
@@ -229,7 +244,6 @@
 		041902431800C93C00D79040 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
 		041902441800C93C00D79040 /* submitButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButton@2x.png"; sourceTree = "<group>"; };
 		041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButtonHighlighted@2x.png"; sourceTree = "<group>"; };
-		041902651800CF6300D79040 /* aboutButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutButton@2x.png"; sourceTree = "<group>"; };
 		041902661800CF6300D79040 /* aboutButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		041902671800CF6300D79040 /* aboutScreen@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aboutScreen@2x.jpg"; sourceTree = "<group>"; };
 		041902711800F40700D79040 /* TLTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTransitionAnimator.h; sourceTree = "<group>"; };
@@ -360,6 +374,26 @@
 		044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		044EE46C1829B0DD00685CEE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		044EE46E1829B0E900685CEE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		045DB84C184BA0C300B872EF /* hamburgerMenuBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerMenuBackground@2x.png"; sourceTree = "<group>"; };
+		045DB84E184BA0F600B872EF /* hamburgerMenuButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburgerMenuButton.png; sourceTree = "<group>"; };
+		045DB84F184BA0F600B872EF /* hamburgerMenuButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerMenuButton@2x.png"; sourceTree = "<group>"; };
+		045DB852184BA15D00B872EF /* hamburgerMenuBGSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hamburgerMenuBGSmall.png; sourceTree = "<group>"; };
+		045DB853184BA15D00B872EF /* hamburgerMenuBGSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburgerMenuBGSmall@2x.png"; sourceTree = "<group>"; };
+		045DB856184BB97400B872EF /* aboutButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aboutButton.png; sourceTree = "<group>"; };
+		045DB857184BB97400B872EF /* aboutButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutButton@2x.png"; sourceTree = "<group>"; };
+		045DB858184BB97400B872EF /* favouritesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouritesButton.png; sourceTree = "<group>"; };
+		045DB859184BB97400B872EF /* favouritesButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favouritesButton@2x.png"; sourceTree = "<group>"; };
+		045DB85A184BB97400B872EF /* hfxtransitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hfxtransitButton.png; sourceTree = "<group>"; };
+		045DB85B184BB97400B872EF /* hfxtransitButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hfxtransitButton@2x.png"; sourceTree = "<group>"; };
+		045DB85C184BB97400B872EF /* shareMeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareMeButton.png; sourceTree = "<group>"; };
+		045DB85D184BB97400B872EF /* shareMeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shareMeButton@2x.png"; sourceTree = "<group>"; };
+		045DB85E184BB97400B872EF /* stopsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopsButton.png; sourceTree = "<group>"; };
+		045DB85F184BB97400B872EF /* stopsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stopsButton@2x.png"; sourceTree = "<group>"; };
+		045DB86A184BBC0300B872EF /* triangleabout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangleabout@2x.png"; sourceTree = "<group>"; };
+		045DB86B184BBC0300B872EF /* trianglefavourites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglefavourites@2x.png"; sourceTree = "<group>"; };
+		045DB86C184BBC0300B872EF /* trianglehfxtransit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglehfxtransit@2x.png"; sourceTree = "<group>"; };
+		045DB86D184BBC0300B872EF /* triangleshareme@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "triangleshareme@2x.png"; sourceTree = "<group>"; };
+		045DB86E184BBC0300B872EF /* trianglesstops@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trianglesstops@2x.png"; sourceTree = "<group>"; };
 		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		046D31E118231B330038B3E3 /* buttonGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buttonGround.jpg; sourceTree = "<group>"; };
 		046D31E218231B330038B3E3 /* buttonGround@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "buttonGround@2x.jpg"; sourceTree = "<group>"; };
@@ -465,8 +499,26 @@
 		041902201800C93C00D79040 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0407EAFC184582AA00C91DDC /* hamburgerMenu.png */,
-				0407EAFD184582AA00C91DDC /* hamburgerMenu@2x.png */,
+				045DB86A184BBC0300B872EF /* triangleabout@2x.png */,
+				045DB86B184BBC0300B872EF /* trianglefavourites@2x.png */,
+				045DB86C184BBC0300B872EF /* trianglehfxtransit@2x.png */,
+				045DB86D184BBC0300B872EF /* triangleshareme@2x.png */,
+				045DB86E184BBC0300B872EF /* trianglesstops@2x.png */,
+				045DB856184BB97400B872EF /* aboutButton.png */,
+				045DB857184BB97400B872EF /* aboutButton@2x.png */,
+				045DB858184BB97400B872EF /* favouritesButton.png */,
+				045DB859184BB97400B872EF /* favouritesButton@2x.png */,
+				045DB85A184BB97400B872EF /* hfxtransitButton.png */,
+				045DB85B184BB97400B872EF /* hfxtransitButton@2x.png */,
+				045DB85C184BB97400B872EF /* shareMeButton.png */,
+				045DB85D184BB97400B872EF /* shareMeButton@2x.png */,
+				045DB85E184BB97400B872EF /* stopsButton.png */,
+				045DB85F184BB97400B872EF /* stopsButton@2x.png */,
+				045DB852184BA15D00B872EF /* hamburgerMenuBGSmall.png */,
+				045DB853184BA15D00B872EF /* hamburgerMenuBGSmall@2x.png */,
+				045DB84E184BA0F600B872EF /* hamburgerMenuButton.png */,
+				045DB84F184BA0F600B872EF /* hamburgerMenuButton@2x.png */,
+				045DB84C184BA0C300B872EF /* hamburgerMenuBackground@2x.png */,
 				043DABEA1837D22D00129145 /* bus-icon.png */,
 				043DABEB1837D22D00129145 /* bus-icon@2x.png */,
 				043DABEC1837D22D00129145 /* bus-number.png */,
@@ -528,7 +580,6 @@
 				048D5A68183EB7FA00E8F05B /* myStopsButton@2x.png */,
 				048D5A64183EB7EE00E8F05B /* trackMeButton@2x.png */,
 				04D13F4B181DF2CD002F0398 /* backGroundMenuSmall@2x.jpg */,
-				041902651800CF6300D79040 /* aboutButton@2x.png */,
 				041902661800CF6300D79040 /* aboutButtonHighlighted@2x.png */,
 				04D13F4F181DF479002F0398 /* trackMyBusButtonSmall@2x.png */,
 				04E3E9101821E61B00A12F0A /* aboutScreenImage@2x.jpg */,
@@ -919,14 +970,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045DB850184BA0F600B872EF /* hamburgerMenuButton.png in Resources */,
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
 				04BF3CE6183EF73B005B2E44 /* upToDownButton.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
 				04C421DA184271BF00A9114C /* HamburgerMenuViewControllerSmall.xib in Resources */,
 				043DAC9A1837D5D200129145 /* StopDisplayViewControllerSmall.xib in Resources */,
+				045DB861184BB97400B872EF /* aboutButton@2x.png in Resources */,
 				043DAC1B1837D22E00129145 /* explaination@2x.png in Resources */,
 				043DAC111837D22E00129145 /* bus-icon@2x.png in Resources */,
-				0407EAFE184582AA00C91DDC /* hamburgerMenu.png in Resources */,
 				041902571800C93C00D79040 /* backGroundTrack@2x.jpg in Resources */,
 				043DAC2C1837D22E00129145 /* routes.png in Resources */,
 				043DAC1F1837D22E00129145 /* full-star@2x.png in Resources */,
@@ -937,10 +989,11 @@
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				043DAC971837D5D200129145 /* RoutesViewController.xib in Resources */,
 				048D5A66183EB7EE00E8F05B /* trackMeButton@2x.png in Resources */,
+				045DB873184BBC0300B872EF /* trianglesstops@2x.png in Resources */,
 				04BF3CE2183EF47D005B2E44 /* trackMyBusButtonSmall.png in Resources */,
+				045DB870184BBC0300B872EF /* trianglefavourites@2x.png in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				043DAC131837D22E00129145 /* bus-number@2x.png in Resources */,
-				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
 				04E3E90E1821E59700A12F0A /* aboutScreenSmall@2x.jpg in Resources */,
 				043DAC1E1837D22E00129145 /* full-star.png in Resources */,
 				043DAC961837D5D200129145 /* MenuViewControllerSmall.xib in Resources */,
@@ -949,6 +1002,7 @@
 				04343A1E1825D8A700FAB62E /* Default@2x.png in Resources */,
 				04E3E90B1821E4F700A12F0A /* aboutScreen.jpg in Resources */,
 				043DAC951837D5D200129145 /* MenuViewController.xib in Resources */,
+				045DB871184BBC0300B872EF /* trianglehfxtransit@2x.png in Resources */,
 				043DAC4F1837D4DA00129145 /* AboutScreenSmall.xib in Resources */,
 				043DAC341837D22E00129145 /* twitterButton.png in Resources */,
 				043DAC271837D22E00129145 /* mailButton@2x.png in Resources */,
@@ -964,16 +1018,19 @@
 				043DAC941837D5D200129145 /* MapViewControllerSmall.xib in Resources */,
 				04D13F55181DF796002F0398 /* homeButtonHighlightedSmall@2x.png in Resources */,
 				046D31E418231B330038B3E3 /* buttonGround@2x.jpg in Resources */,
+				045DB864184BB97400B872EF /* hfxtransitButton.png in Resources */,
 				04BF3CE0183EF47D005B2E44 /* myStopsButtonSmall.png in Resources */,
 				041902531800C93C00D79040 /* sending1.png in Resources */,
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
 				043DAC351837D22E00129145 /* twitterButton@2x.png in Resources */,
 				043DAC391837D3D000129145 /* Icon@2x.png in Resources */,
+				045DB868184BB97400B872EF /* stopsButton.png in Resources */,
 				043DAC2D1837D22E00129145 /* routes@2x.png in Resources */,
 				043DAC1A1837D22E00129145 /* explaination.png in Resources */,
+				045DB84D184BA0C300B872EF /* hamburgerMenuBackground@2x.png in Resources */,
 				043DAC8E1837D5D200129145 /* BusRoutesCollectionViewController.xib in Resources */,
-				0407EAFF184582AA00C91DDC /* hamburgerMenu@2x.png in Resources */,
+				045DB854184BA15D00B872EF /* hamburgerMenuBGSmall.png in Resources */,
 				041902521800C93C00D79040 /* onMyWay@2x.png in Resources */,
 				043DAC501837D4DA00129145 /* FavouriteCell.xib in Resources */,
 				04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */,
@@ -986,14 +1043,17 @@
 				04BF3CDF183EF47D005B2E44 /* myFavouritesButtonSmall.png in Resources */,
 				043DAC101837D22E00129145 /* bus-icon.png in Resources */,
 				048D5A78183EBB0000E8F05B /* upToDownButton@2x.png in Resources */,
+				045DB851184BA0F600B872EF /* hamburgerMenuButton@2x.png in Resources */,
 				041902581800C93C00D79040 /* backGround@2x.jpg in Resources */,
 				0407EB0D184590A900C91DDC /* AboutViewControllerSmall.xib in Resources */,
 				043DAC9B1837D5D200129145 /* TrackViewController.xib in Resources */,
 				043DAC261837D22E00129145 /* mailButton.png in Resources */,
 				04E3E9131821E61B00A12F0A /* aboutScreenImage.jpg in Resources */,
 				041902561800C93C00D79040 /* sending@2x.png in Resources */,
+				045DB867184BB97400B872EF /* shareMeButton@2x.png in Resources */,
 				04BF3CE4183EF654005B2E44 /* onMyWay.png in Resources */,
 				04343A1A1825D7EE00FAB62E /* introImage2Small.jpg in Resources */,
+				045DB860184BB97400B872EF /* aboutButton.png in Resources */,
 				043DAC191837D22E00129145 /* empty-starblack@2x.png in Resources */,
 				043DAC311837D22E00129145 /* stops@2x.png in Resources */,
 				043DABE71837D0F100129145 /* introImage1Small.jpg in Resources */,
@@ -1003,6 +1063,7 @@
 				04BF3CDA183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png in Resources */,
 				0419025B1800C93C00D79040 /* homeButton@2x.png in Resources */,
 				043DAC121837D22E00129145 /* bus-number.png in Resources */,
+				045DB863184BB97400B872EF /* favouritesButton@2x.png in Resources */,
 				043DAC2E1837D22E00129145 /* sendingzoom.png in Resources */,
 				043DAC231837D22E00129145 /* Icon-Small@2x.png in Resources */,
 				043DAC8D1837D5D200129145 /* BusRouteCollectionViewControllerSmall.xib in Resources */,
@@ -1022,7 +1083,11 @@
 				0419024F1800C93C00D79040 /* introImage2@2x.jpg in Resources */,
 				043DAC2F1837D22E00129145 /* sendingzoom@2x.png in Resources */,
 				0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */,
+				045DB862184BB97400B872EF /* favouritesButton.png in Resources */,
+				045DB869184BB97400B872EF /* stopsButton@2x.png in Resources */,
+				045DB872184BBC0300B872EF /* triangleshareme@2x.png in Resources */,
 				0419024E1800C93C00D79040 /* introImage1@2x.jpg in Resources */,
+				045DB855184BA15D00B872EF /* hamburgerMenuBGSmall@2x.png in Resources */,
 				0419025C1800C93C00D79040 /* homeButtonHighlighted@2x.png in Resources */,
 				0421092A181A043E004539B4 /* Stop@2x.png in Resources */,
 				043DAC251837D22E00129145 /* IconSmall@2x-568.png in Resources */,
@@ -1030,9 +1095,11 @@
 				043DAC201837D22E00129145 /* full-starblack.png in Resources */,
 				0434394218257A1800FAB62E /* Stop.png in Resources */,
 				043DAC991837D5D200129145 /* StopDisplayViewController.xib in Resources */,
+				045DB865184BB97400B872EF /* hfxtransitButton@2x.png in Resources */,
 				043DAC931837D5D200129145 /* MapViewController.xib in Resources */,
 				046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */,
 				043DAC221837D22E00129145 /* Icon-Small.png in Resources */,
+				045DB86F184BBC0300B872EF /* triangleabout@2x.png in Resources */,
 				043DAC141837D22E00129145 /* busStop.png in Resources */,
 				041902501800C93C00D79040 /* backGroundOnMyWay@2x.jpg in Resources */,
 				0419025F1800C93C00D79040 /* routeButton@2x.png in Resources */,
@@ -1047,6 +1114,7 @@
 				043DAC381837D3D000129145 /* Icon.png in Resources */,
 				043DAC901837D5D200129145 /* FavouritesViewControllerSmall.xib in Resources */,
 				043DAC1D1837D22E00129145 /* facebookButton@2x.png in Resources */,
+				045DB866184BB97400B872EF /* shareMeButton.png in Resources */,
 				041902541800C93C00D79040 /* sending2.png in Resources */,
 				043DAC4E1837D4DA00129145 /* AboutScreen.xib in Resources */,
 			);
