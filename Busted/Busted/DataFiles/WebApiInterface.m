@@ -10,6 +10,9 @@
 #import "RouteWithTime.h"
 #import "StopTimes.h"
 #import "MapViewController.h"
+#import "StopTimeManagedObject.h"
+#import "RouteTimeManagedObject.h"
+#import "TimeManagedObject.h"
 
 static NSString *const JSONDirectoryPath = @"/RawJson";
 
@@ -296,8 +299,80 @@ static id instance;
     return nil;
 }
 
+- (BOOL)isToday:(NSDate*)date
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *currentDate = [[NSString alloc] initWithFormat:@"%@ 3:00",[formatter stringFromDate:[NSDate date]]];
+    NSDateFormatter *formatterFull = [[NSDateFormatter alloc] init];
+    [formatterFull setDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSTimeInterval morning = [[formatter dateFromString:currentDate] timeIntervalSinceReferenceDate];
+    NSTimeInterval evening = morning + 86400;
+    NSTimeInterval checkTime = [date timeIntervalSinceReferenceDate];
+    [formatter release];
+    [formatterFull release];
+    if (checkTime > morning && checkTime < evening)
+    {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSArray*)getRoutes:(StopTimeManagedObject*)stopTime
+{
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[stopTime.routes count]];
+    for (RouteTimeManagedObject *routeMO in stopTime.routes)
+    {
+        RouteWithTime *route = [[RouteWithTime alloc] init];
+        route.routeId = routeMO.routeId;
+        route.shortName = routeMO.shortName;
+        route.longName = routeMO.longName;
+        NSMutableArray *timesArray = [[NSMutableArray alloc] initWithCapacity:[routeMO.times count]];
+        for (TimeManagedObject *timeMO in routeMO.times)
+        {
+            StopTimes *times = [[StopTimes alloc] init];
+            times.arrival = timeMO.arrival;
+            times.departure = timeMO.departure;
+            [timesArray addObject:times];
+            [times release];
+        }
+        route.times = timesArray;
+        [timesArray release];
+        [array addObject:route];
+        [route release];
+    }
+    return array;
+}
+
 - (void)getRouteForIdent:(NSNumber*)ident
 {
+    NSManagedObjectContext *context = [self createNewManagedObjectContext];
+    NSEntityDescription *myEntity = [NSEntityDescription entityForName:@"StopTime" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.entity = myEntity;
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"stopId == %@",ident];
+    NSArray *fetchedObject = [context executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    if ([fetchedObject count])
+    {
+        StopTimeManagedObject *stopTime = [fetchedObject lastObject];
+        if ([self isToday:stopTime.date])
+        {
+            [[StopDisplayViewController sharedInstance] setRoutes:[self getRoutes:stopTime]];
+            return;
+        } else {
+            for (RouteTimeManagedObject *route in stopTime.routes)
+            {
+                for (TimeManagedObject *time in route.times)
+                {
+                    [context deleteObject:time];
+                }
+                [context deleteObject:route];
+            }
+            [context deleteObject:stopTime];
+            [context save:nil];
+        }
+    }
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i/%@", SANGSTERBASEURL, STOPTIME, [ident integerValue], [formatter stringFromDate:[NSDate date]]];
@@ -307,7 +382,38 @@ static id instance;
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request
                                                                                         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON)
     {
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[(NSArray*)JSON count]];
+//        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[(NSArray*)JSON count]];
+        StopTimeManagedObject *stopTime = [NSEntityDescription insertNewObjectForEntityForName:@"StopTime" inManagedObjectContext:context];
+        stopTime.date = [NSDate date];
+        stopTime.stopId = [NSNumber numberWithInteger:[ident integerValue]];
+        NSMutableSet *routes = [[NSMutableSet alloc] init];
+        for (NSDictionary *routeJSON in JSON)
+        {
+            RouteTimeManagedObject *routeTime = [NSEntityDescription insertNewObjectForEntityForName:@"RouteTime" inManagedObjectContext:context];
+            routeTime.routeId = [routeJSON valueForKey:@"routeId"];
+            routeTime.shortName = [routeJSON valueForKey:@"shortName"];
+            routeTime.longName = [routeJSON valueForKey:@"longName"];
+            NSMutableOrderedSet *times = [[NSMutableOrderedSet alloc] init];
+            for (NSDictionary *timesJSON in [routeJSON valueForKey:@"stopTimes"])
+            {
+                TimeManagedObject *time = [NSEntityDescription insertNewObjectForEntityForName:@"Time" inManagedObjectContext:context];
+                time.arrival = [timesJSON valueForKey:@"arrival"];
+                time.departure = [timesJSON valueForKey:@"departure"];
+                time.routetime = routeTime;
+                [times addObject:time];
+//                [time release];
+            }
+            routeTime.times = times;
+            [times release];
+            routeTime.stopTime = stopTime;
+            [routes addObject:routeTime];
+        }
+        stopTime.routes = routes;
+        [routes release];
+        [[StopDisplayViewController sharedInstance] setRoutes:[self getRoutes:stopTime]];
+        [context save:nil];
+//        [array release];
+/*        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[(NSArray*)JSON count]];
         for (NSDictionary *routeJSON in JSON)
         {
             RouteWithTime *route = [[RouteWithTime alloc] init];
@@ -330,6 +436,7 @@ static id instance;
         }
         [[StopDisplayViewController sharedInstance] setRoutes:array];
         [array release];
+ */
     }
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {

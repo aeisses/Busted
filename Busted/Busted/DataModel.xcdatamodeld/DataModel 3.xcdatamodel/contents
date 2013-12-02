@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Route" syncable="YES">
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RouteTime" syncable="YES">
+        <attribute name="longName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shortName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="stopTime" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StopTime" inverseName="routes" inverseEntity="StopTime" syncable="YES"/>
+        <relationship name="times" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Time" inverseName="routetime" inverseEntity="Time" syncable="YES"/>
+    </entity>
+    <entity name="Stop" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFavourite" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="lng" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="StopTime" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="stopId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="routes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RouteTime" inverseName="stopTime" inverseEntity="RouteTime" syncable="YES"/>
+    </entity>
+    <entity name="Time" syncable="YES">
+        <attribute name="arrival" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="departure" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="routetime" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="RouteTime" inverseName="times" inverseEntity="RouteTime" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Route" positionX="-281" positionY="-405" width="128" height="90"/>
+        <element name="RouteTime" positionX="-306" positionY="-264" width="128" height="118"/>
+        <element name="Stop" positionX="-432" positionY="-405" width="128" height="120"/>
+        <element name="StopTime" positionX="-477" positionY="-261" width="128" height="88"/>
+        <element name="Time" positionX="-108" positionY="-252" width="128" height="88"/>
+    </elements>
+</model>

@@ -7,6 +7,7 @@
 //
 
 #import "MTTwitterViewController.h"
+#import "STTwitter.h"
 
 @interface MTTwitterViewController ()
 
@@ -27,6 +28,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@""
+                                                          consumerSecret:@""];
+    
+    [twitter verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
+        
+        NSLog(@"Access granted with %@", bearerToken);
+        
+        [twitter getUserTimelineWithScreenName:@"hfxtransit" successBlock:^(NSArray *statuses) {
+            NSLog(@"-- statuses: %@", statuses);
+        } errorBlock:^(NSError *error) {
+            NSLog(@"-- error: %@", error);
+        }];
+        
+    } errorBlock:^(NSError *error) {
+        NSLog(@"-- error %@", error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning
