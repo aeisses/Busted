@@ -13,6 +13,8 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
 @property (retain, nonatomic) IBOutlet UIButton *backButton;
+@property (retain, nonatomic) IBOutlet UIImageView *aboutScreenBacckGround;
+@property (retain, nonatomic) IBOutlet UITextView *asTextView;
 
 - (IBAction)touchBackButton:(id)sender;
 

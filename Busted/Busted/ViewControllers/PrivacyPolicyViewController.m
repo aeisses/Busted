@@ -1,18 +1,18 @@
 //
-//  AboutViewController.m
+//  PrivacyPolicyViewController.m
 //  Busted
 //
-//  Created by Aaron Eisses on 2013-11-26.
+//  Created by Aaron Eisses on 2013-12-02.
 //  Copyright (c) 2013 Aaron Eisses. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "PrivacyPolicyViewController.h"
 
-@interface AboutViewController ()
+@interface PrivacyPolicyViewController ()
 
 @end
 
-@implementation AboutViewController
+@implementation PrivacyPolicyViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +35,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)touchBackButton:(id)sender
+- (IBAction)touchHomeButton:(id)sender
 {
     dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
     dispatch_async(menuQueue, ^{
@@ -47,10 +47,10 @@
 - (void)dealloc
 {
     [super dealloc];
-    [_backButton release]; _backButton = nil;
-    [_backGroundImage release]; _backGroundImage = nil;
-    [_aboutScreenBacckGround release]; _aboutScreenBacckGround = nil;
-    [_asTextView release]; _asTextView = nil;
+    [_backGround release]; _backGround = nil;
+    [_homeButton release]; _homeButton = nil;
+    [_aboutBG release]; _aboutBG = nil;
+    [_ppTexView release]; _ppTexView = nil;
 }
 
 @end

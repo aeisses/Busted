@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PrivacyPolicyViewController">
+            <connections>
+                <outlet property="aboutBG" destination="tCu-rr-Giq" id="qGK-UI-CmH"/>
+                <outlet property="backGround" destination="C2Z-8N-TnG" id="EAR-u3-fzc"/>
+                <outlet property="homeButton" destination="1jI-xl-3GP" id="9DV-hy-0MV"/>
+                <outlet property="ppTexView" destination="bSc-JM-42s" id="zlI-es-fI3"/>
+                <outlet property="view" destination="1" id="3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-8N-TnG">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tCu-rr-Giq">
+                    <rect key="frame" x="-7" y="54" width="327" height="517"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jI-xl-3GP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="homeButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="gYL-39-lQt"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSc-JM-42s">
+                    <rect key="frame" x="20" y="88" width="280" height="469"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <mutableString key="text">KNOWtime Transit© End User License Agreement, Privacy Policy and Disclaimer
+
+Your use of the KNOWtime Transit app (the “App”) is subject to Apple’s standard End User License Agreement (EULA) and this Privacy Policy and this Disclaimer and indicates your consent to them.
+
+KNOWtime Commuter Technology Development (“KNOWtime”) respects your privacy.
+
+While the purpose of the App is to track the location of the bus being ridden by the App user (the “User”) via the User’s GPS-enabled device’s (the “Device”) location services, no personal, personally identifying or Device data is collected or maintained.
+
+A Device running the App will – when explicitly initiated by the User – send GPS locations in an anonymous form to KNOWtime to be used for building our real-time, crowd-sourced bus tracking service (the “Service”). The crowd-sourced location data gathered by KNOWtime doesn’t and can’t personally identify you or your Device.
+
+KNOWtime maintains a randomly generated, numeric ID that is tied to a unique GPS signal when the User ‘s Device begins sending its location information. However, KNOWtime is only aware of the Device’s location while this tracking data is being sent, which is an action controlled by the User. Once tracking has been stopped, that ID is no longer maintained and if the same Device starts tracking again, a new randomly generated numeric ID will be created and tied to it, with no connection to the previous ID.
+
+For diagnostic purposes, KNOWtime is collecting anonymous usage data on button presses and tracking time. These analytics also do not collect or maintain any personal, personally identifying or Device information.
+
+Disclaimer: As the App uses User data to build our real-time, crowd-sourced bus tracking service, the accuracy of the Service and the information provided via the App can only ever be as accurate as the data provided by the Users. Therefore, the App and Service are provided “as is” without warranty of any kind, either expressed or implied, including limitation warranties of merchantability, fitness for a particular purpose, and noninfringement. KNOWtime, through the Service and App, uses reasonable efforts to provide accurate information; it does not, however, make any warranties or representations as to its accuracy or completeness. KNOWtime assumes no liability or responsibility for any errors in the information provided by the Service via the App. Your use of the Service and App is at your own risk. Under no circumstances and under no legal theory shall KNOWtime, its suppliers, or any other party involved in creating, producing, or delivering the Service and App be liable to you or any other person or persons for any indirect, direct, special, incidental, or consequential damages arising from your access to, or use of, the Service and App.
+
+KNOWtime may from time to time change the terms of this Privacy Policy and Disclaimer, and choose to develop its own End User License Agreement (EULA). Changes will be made in-app and distributed as an update, as well as being made to this website.
+
+You agree to be bound by any of the changes made in the terms of this Privacy Policy and Disclaimer and EULA. Continuing to use the Service and App will indicate your acceptance of the amended terms. If you do not agree with any of the amended terms, you must avoid any further use of the Services.
+
+Last modified: 27th November 2013</mutableString>
+                    <color key="textColor" white="0.9984939759" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="aboutScreen.jpg" width="241" height="518"/>
+        <image name="backGround.jpg" width="640" height="1038"/>
+        <image name="homeButton.png" width="320" height="56"/>
+    </resources>
+</document>

@@ -16,6 +16,7 @@
 #import "HamburgerMenuViewController.h"
 #import "MTTwitterViewController.h"
 #import "AboutViewController.h"
+#import "PrivacyPolicyViewController.h"
 
 @interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate,HamburgerMenuViewControllerDelegate,FavouritesViewControllerDelegate>
 {

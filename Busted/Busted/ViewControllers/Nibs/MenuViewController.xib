@@ -110,7 +110,7 @@
         </view>
     </objects>
     <resources>
-        <image name="aboutButton.png" width="49" height="49"/>
+        <image name="aboutButton.png" width="82" height="28"/>
         <image name="aboutButtonHighlighted.png" width="49" height="49"/>
         <image name="aboutScreenImage.jpg" width="6" height="439"/>
         <image name="backGroundMenu.jpg" width="320" height="568"/>

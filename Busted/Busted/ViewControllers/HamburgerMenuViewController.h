@@ -11,6 +11,7 @@
 #import "ParentViewController.h"
 #import "MTTwitterViewController.h"
 #import "AboutViewController.h"
+#import "PrivacyPolicyViewController.h"
 
 @protocol HamburgerMenuViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;
@@ -30,6 +31,8 @@
 @property (retain, nonatomic) IBOutlet UIImageView *stopsImage;
 @property (retain, nonatomic) IBOutlet UIImageView *favourtiesImage;
 @property (retain, nonatomic) IBOutlet UIImageView *mtImage;
+@property (retain, nonatomic) IBOutlet UIButton *privacyPolicyButton;
+
 @property (retain, nonatomic) id <HamburgerMenuViewControllerDelegate> delegate;
 
 - (IBAction)touchShareButton:(id)sender;
@@ -37,5 +40,5 @@
 - (IBAction)touchStopsButton:(id)sender;
 - (IBAction)touchFavouritesButton:(id)sender;
 - (IBAction)touchMetroTransitTwitter:(id)sender;
-
+- (IBAction)touchPrivacyButton:(id)sender;
 @end

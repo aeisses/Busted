@@ -145,6 +145,13 @@
             [[self navigationController] pushViewController:aboutVC animated:YES];
             [self showHamburgerMenu];
         });
+    } else if ([vc isKindOfClass:[PrivacyPolicyViewController class]]) {
+        PrivacyPolicyViewController *ppViewController = (PrivacyPolicyViewController*)vc;
+        ppViewController.superDelegate = self;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[self navigationController] pushViewController:ppViewController animated:YES];
+            [self showHamburgerMenu];
+        });
     }
 }
 

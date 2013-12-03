@@ -107,6 +107,26 @@
     [Flurry logEvent:@"MetroTransitTwitter_Button_Pressed"];
 }
 
+- (IBAction)touchPrivacyButton:(id)sender
+{
+    dispatch_queue_t menuQueue  = dispatch_queue_create("menu queue", NULL);
+    dispatch_async(menuQueue, ^{
+        PrivacyPolicyViewController *ppVC = nil;
+        if (IS_IPHONE_5)
+        {
+            ppVC = [[PrivacyPolicyViewController alloc] initWithNibName:@"PrivacyPolicyViewController" bundle:nil];
+        }
+        else
+        {
+            ppVC = [[PrivacyPolicyViewController alloc] initWithNibName:@"PrivacyPolicyViewControllerSmall" bundle:nil];
+        }
+        [_delegate loadViewController:ppVC];
+        [ppVC release];
+    });
+    dispatch_release(menuQueue);
+    [Flurry logEvent:@"Privacy_Policy_Button_Pressed"];
+}
+
 - (void)dealloc
 {
     [super dealloc];
@@ -121,6 +141,7 @@
     [_stopsImage release]; _stopsImage = nil;
     [_favourtiesImage release]; _favourtiesImage = nil;
     [_mtImage release]; _mtImage = nil;
+    [_privacyPolicyButton release]; _privacyPolicyButton = nil;
     _delegate = nil;
 }
 

@@ -14,6 +14,7 @@
                 <outlet property="favourtiesImage" destination="pOj-If-iEt" id="aV9-n4-COc"/>
                 <outlet property="metroTransitTwitter" destination="G4W-Hy-EYf" id="ubE-5V-LL3"/>
                 <outlet property="mtImage" destination="MDw-ca-d5v" id="ia9-yQ-K6h"/>
+                <outlet property="privacyPolicyButton" destination="NK7-4j-ziU" id="Lft-ec-953"/>
                 <outlet property="shareButton" destination="RAp-1t-IZo" id="sbj-wv-Pte"/>
                 <outlet property="shareImage" destination="tx0-nF-4Mw" id="9aA-j4-cWF"/>
                 <outlet property="stopsButton" destination="EFi-si-gyq" id="qjQ-AK-0z3"/>
@@ -111,6 +112,17 @@
                     <rect key="frame" x="103" y="338" width="7" height="12"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NK7-4j-ziU">
+                    <rect key="frame" x="12" y="370" width="82" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" title="Privacy Policy">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchPrivacyButton:" destination="-1" eventType="touchUpInside" id="CRn-pG-k53"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

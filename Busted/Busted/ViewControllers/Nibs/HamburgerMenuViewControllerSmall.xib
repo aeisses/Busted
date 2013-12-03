@@ -14,6 +14,7 @@
                 <outlet property="favourtiesImage" destination="s0r-dB-50J" id="npY-MA-sQL"/>
                 <outlet property="metroTransitTwitter" destination="WwM-NI-85j" id="yHK-ej-i3U"/>
                 <outlet property="mtImage" destination="83w-FF-5tn" id="jSx-TW-Pnt"/>
+                <outlet property="privacyPolicyButton" destination="i8x-Wm-q0s" id="JAb-EV-fO7"/>
                 <outlet property="shareButton" destination="e12-za-yF0" id="CD6-Xp-aoN"/>
                 <outlet property="shareImage" destination="ADX-dy-Wt7" id="yA9-2H-E0h"/>
                 <outlet property="stopsButton" destination="Utt-Mr-Zh6" id="tTK-4I-rJj"/>
@@ -30,6 +31,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="110" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8x-Wm-q0s">
+                    <rect key="frame" x="14" y="359" width="82" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" title="Privacy Policy">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchPrivacyButton:" destination="-1" eventType="touchUpInside" id="hmr-GV-WsD"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e12-za-yF0">
                     <rect key="frame" x="12" y="143" width="73" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,6 +130,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7AQ-FV-cEA">
+            <rect key="frame" x="0.0" y="0.0" width="82" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="9"/>
+            <state key="normal" title="Privacy Policy">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+        </button>
     </objects>
     <resources>
         <image name="aboutButton.png" width="82" height="28"/>
