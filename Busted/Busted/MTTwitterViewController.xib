@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="backButton" destination="N8a-pj-tiJ" id="cVg-vX-88g"/>
                 <outlet property="backGroundImage" destination="dls-Hj-iz5" id="hAL-Xk-zfV"/>
+                <outlet property="twitterTable" destination="3Yq-Cq-stG" id="SoE-RN-KjT"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -31,6 +32,16 @@
                         <action selector="touchBackButton:" destination="-1" eventType="touchUpInside" id="z2q-wU-sKB"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3Yq-Cq-stG">
+                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="6rw-VC-CDY"/>
+                        <outlet property="delegate" destination="-1" id="Riv-QN-1YU"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

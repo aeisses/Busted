@@ -13,10 +13,6 @@
 @end
 
 @interface LoadingScreenViewController : UIViewController
-{
-    CADisplayLink *displayLink;
-    BOOL isOne;
-}
 
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
 @property (retain, nonatomic) id <LoadingScreenViewControllerDelegate> delegate;

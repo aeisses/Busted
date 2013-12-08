@@ -113,8 +113,6 @@ static id instance;
     [_mapView removeAnnotations:_mapView.annotations];
     if (_isStops)
     {
-        [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
-        [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
         [self.view bringSubviewToFront:_favouriteButton];
         _homeButton.hidden = NO;
         _hamburgerButton.hidden = YES;

@@ -10,7 +10,6 @@
 #import "macros.h"
 
 @interface LoadingScreenViewController ()
-- (void)frameIntervalLoop:(CADisplayLink *)sender;
 @end
 
 @implementation LoadingScreenViewController
@@ -26,7 +25,6 @@
 
 - (void)viewDidLoad
 {
-    isOne = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -41,9 +39,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-//    [displayLink setFrameInterval:15];
-//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [_indicator startAnimating];
     [_delegate loadScreenLoaded];
     [super viewDidAppear:animated];
@@ -51,33 +46,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-//    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-//    [displayLink invalidate];
-//    [displayLink release];
-//    displayLink = nil;
     [_indicator stopAnimating];
     [super viewDidDisappear:animated];
-}
-
-- (void)frameIntervalLoop:(CADisplayLink *)sender
-{
-//    if (isOne) {
-//        if (IS_IPHONE_5)
-//        {
-//            _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
-//        } else {
-//            _animationImage.image = [UIImage imageNamed:@"introImage2Small.jpg"];
-//        }
-//        isOne = NO;
-//    } else {
-//        if (IS_IPHONE_5)
-//        {
-//            _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
-//        } else {
-//            _animationImage.image = [UIImage imageNamed:@"introImage1Small.jpg"];
-//        }
-//        isOne = YES;
-//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,7 +61,6 @@
     [_backGroundImage release]; _backGroundImage = nil;
     [_indicator removeFromSuperview];
     [_indicator release];
-//    [_animationImage release]; _animationImage = nil;
     [super dealloc];
 }
 @end
