@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
-                <outlet property="aboutScreenBacckGround" destination="LWP-ry-yHj" id="Rmb-Vq-PEI"/>
                 <outlet property="asTextView" destination="HdH-B9-lTT" id="8Nr-qR-7K9"/>
                 <outlet property="backButton" destination="Upx-Eg-Cb2" id="P7j-Nz-h3t"/>
                 <outlet property="backGroundImage" destination="xvE-mb-6fi" id="p4Y-6D-r3U"/>
@@ -19,44 +18,40 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xvE-mb-6fi">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="xvE-mb-6fi">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LWP-ry-yHj">
-                    <rect key="frame" x="-7" y="54" width="327" height="517"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syU-6g-kF1">
-                    <rect key="frame" x="192" y="62" width="40" height="40"/>
+                    <rect key="frame" x="107" y="508" width="107" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Post information to facebook" label="Facebook button"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="facebookButton.png">
+                    <state key="normal" image="facebook.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ok-LE-0Yr">
-                    <rect key="frame" x="153" y="62" width="40" height="40"/>
+                    <rect key="frame" x="0.0" y="508" width="107" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="post information to twitter" label="twitter button"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="twitterButton.png">
+                    <state key="normal" image="twitter.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TRN-Pi-hem">
-                    <rect key="frame" x="231" y="62" width="40" height="40"/>
+                    <rect key="frame" x="213" y="508" width="107" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" image="mailButton.png">
+                    <state key="normal" image="feedback.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upx-Eg-Cb2">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -64,10 +59,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdH-B9-lTT">
-                    <rect key="frame" x="20" y="110" width="280" height="448"/>
+                    <rect key="frame" x="12" y="113" width="295" height="395"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <mutableString key="text">Hi there, HRM: Does relying on public transit get you down?
+                    <string key="text">Hi there, HRM: Does relying on public transit get you down?
 
 Have you been frustrated by unreliable schedule times, waiting for your bus in bad weather, or being uncertain if you’ll arrive at your destination on time?
 
@@ -87,22 +82,28 @@ KNOWtime runs on “crowd power” – the greater the crowd, the greater the po
 
 So connect your friends, track your ride, and help us help you by growing our *live* local network.
 
-When you join our community, we’ll get you where you want to go in KNOWtime.</mutableString>
+When you join our community, we’ll get you where you want to go in KNOWtime.</string>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIP-9o-qjP">
+                    <rect key="frame" x="16" y="82" width="83" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
-        <image name="aboutScreen.jpg" width="241" height="518"/>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="facebookButton.png" width="24" height="24"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="mailButton.png" width="24" height="24"/>
-        <image name="twitterButton.png" width="24" height="24"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="background.png" width="320" height="568"/>
+        <image name="facebook.png" width="108" height="60"/>
+        <image name="feedback.png" width="108" height="60"/>
+        <image name="twitter.png" width="107" height="60"/>
     </resources>
 </document>

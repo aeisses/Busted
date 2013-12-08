@@ -40,7 +40,7 @@
     [_collectionView setDelegate:self];
   
     [_collectionView registerNib:[UINib nibWithNibName:@"RouteSelectCell" bundle:nil] forCellWithReuseIdentifier:@"cellView"];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backGround.jpg"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backGroundSelector.png"]];
     [_collectionView setBackgroundView:imageView];
     [imageView release];
     

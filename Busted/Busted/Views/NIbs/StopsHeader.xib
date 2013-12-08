@@ -32,6 +32,6 @@
         </view>
     </objects>
     <resources>
-        <image name="StopsHeader.png" width="320" height="32"/>
+        <image name="StopsHeader.png" width="320" height="55"/>
     </resources>
 </document>

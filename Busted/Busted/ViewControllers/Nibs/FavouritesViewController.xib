@@ -17,26 +17,25 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-Ll-OrS">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-Ll-OrS">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bc-0i-1CT">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Return to the menu screen" label="Return Button">
                         <accessibilityTraits key="traits" none="YES" button="YES" playsSound="YES"/>
                     </accessibility>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" image="homeButtonHighlighted.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="4LI-pH-VLd"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="UwZ-yQ-LtU">
-                    <rect key="frame" x="0.0" y="54" width="320" height="514"/>
+                    <rect key="frame" x="0.0" y="60" width="320" height="507"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -50,8 +49,7 @@
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="homeButtonHighlighted.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="background.png" width="320" height="568"/>
     </resources>
 </document>

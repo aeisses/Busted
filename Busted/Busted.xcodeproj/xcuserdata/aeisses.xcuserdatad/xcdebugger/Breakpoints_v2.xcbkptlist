@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/ViewController.m"
-            timestampString = "407730204.12454"
+            timestampString = "408150902.383495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-showHamburgerMenu"
             landmarkType = "5">
          </BreakpointContent>
@@ -67,7 +67,7 @@
                   symbolName = "-[WebApiInterface getRoutes:]"
                   moduleName = "Busted"
                   urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/DataFiles/WebApiInterface.m"
-                  timestampString = "407730932.832819"
+                  timestampString = "408150087.015421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "331"
@@ -81,7 +81,7 @@
                   symbolName = "-[WebApiInterface getRoutes:]"
                   moduleName = "Busted"
                   urlString = "file://localhost/Users/aeisses/Personal/IOS/Busted/Busted/Busted/DataFiles/WebApiInterface.m"
-                  timestampString = "407730932.833097"
+                  timestampString = "408150087.015743"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "331"
@@ -140,7 +140,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Busted/DataFiles/WebApiInterface.m"

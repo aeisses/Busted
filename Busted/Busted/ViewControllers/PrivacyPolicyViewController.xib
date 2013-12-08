@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PrivacyPolicyViewController">
             <connections>
-                <outlet property="aboutBG" destination="tCu-rr-Giq" id="qGK-UI-CmH"/>
                 <outlet property="backGround" destination="C2Z-8N-TnG" id="EAR-u3-fzc"/>
                 <outlet property="homeButton" destination="1jI-xl-3GP" id="9DV-hy-0MV"/>
                 <outlet property="ppTexView" destination="bSc-JM-42s" id="zlI-es-fI3"/>
@@ -19,18 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-8N-TnG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="C2Z-8N-TnG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="tCu-rr-Giq">
-                    <rect key="frame" x="-7" y="54" width="327" height="517"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jI-xl-3GP">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -38,10 +33,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSc-JM-42s">
-                    <rect key="frame" x="20" y="88" width="280" height="469"/>
+                    <rect key="frame" x="17" y="107" width="286" height="461"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <mutableString key="text">KNOWtime Transit© End User License Agreement, Privacy Policy and Disclaimer
+                    <string key="text">KNOWtime Transit© End User License Agreement, Privacy Policy and Disclaimer
 
 Your use of the KNOWtime Transit app (the “App”) is subject to Apple’s standard End User License Agreement (EULA) and this Privacy Policy and this Disclaimer and indicates your consent to them.
 
@@ -61,11 +56,18 @@ KNOWtime may from time to time change the terms of this Privacy Policy and Discl
 
 You agree to be bound by any of the changes made in the terms of this Privacy Policy and Disclaimer and EULA. Continuing to use the Service and App will indicate your acceptance of the amended terms. If you do not agree with any of the amended terms, you must avoid any further use of the Services.
 
-Last modified: 27th November 2013</mutableString>
+Last modified: 27th November 2013</string>
                     <color key="textColor" white="0.9984939759" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUp-nb-TSu">
+                    <rect key="frame" x="21" y="77" width="121" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -73,8 +75,7 @@ Last modified: 27th November 2013</mutableString>
         </view>
     </objects>
     <resources>
-        <image name="aboutScreen.jpg" width="241" height="518"/>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="background.png" width="320" height="568"/>
     </resources>
 </document>

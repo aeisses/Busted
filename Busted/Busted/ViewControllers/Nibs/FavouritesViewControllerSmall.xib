@@ -18,15 +18,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-nj-jii">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="bl8-nj-jii">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fky-zC-bBN">
-                    <rect key="frame" x="0.0" y="-5" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="homeButtonHighlightedSmall.png"/>
@@ -35,7 +35,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ebo-wn-KXJ">
-                    <rect key="frame" x="0.0" y="49" width="320" height="431"/>
+                    <rect key="frame" x="0.0" y="59" width="320" height="421"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -49,8 +49,8 @@
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="backgroundSmall.png" width="320" height="480"/>
         <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
     </resources>
 </document>

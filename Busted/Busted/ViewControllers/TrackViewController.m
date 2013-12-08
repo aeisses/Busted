@@ -71,29 +71,29 @@ static id instance;
 - (void)viewDidLoad
 {
     viewIsVisable = NO;
-    int height = 225;
+    int height = 277;
     if (IS_IPHONE_5)
     {
-        height = 255;
+        height = 277;
     }
     frames = [[NSArray alloc] initWithObjects:
-                [NSValue valueWithCGRect:(CGRect){160,height,0,12}],
-                [NSValue valueWithCGRect:(CGRect){150,height,20,12}],
-                [NSValue valueWithCGRect:(CGRect){140,height,40,12}],
-                [NSValue valueWithCGRect:(CGRect){130,height,60,12}],
-                [NSValue valueWithCGRect:(CGRect){120,height,80,12}],
-                [NSValue valueWithCGRect:(CGRect){110,height,100,12}],
-                [NSValue valueWithCGRect:(CGRect){100,height,120,12}],
-                [NSValue valueWithCGRect:(CGRect){90,height,140,12}],
-                [NSValue valueWithCGRect:(CGRect){80,height,160,12}],
-                [NSValue valueWithCGRect:(CGRect){70,height,180,12}],
-                [NSValue valueWithCGRect:(CGRect){60,height,200,12}],
-                [NSValue valueWithCGRect:(CGRect){50,height,220,12}],
-                [NSValue valueWithCGRect:(CGRect){40,height,240,12}],
-                [NSValue valueWithCGRect:(CGRect){30,height,260,12}],
-                [NSValue valueWithCGRect:(CGRect){20,height,280,12}],
-                [NSValue valueWithCGRect:(CGRect){10,height,300,12}],
-                [NSValue valueWithCGRect:(CGRect){0,height,320,12}],
+                [NSValue valueWithCGRect:(CGRect){160,height,0,5}],
+                [NSValue valueWithCGRect:(CGRect){150,height,20,5}],
+                [NSValue valueWithCGRect:(CGRect){140,height,40,5}],
+                [NSValue valueWithCGRect:(CGRect){130,height,60,5}],
+                [NSValue valueWithCGRect:(CGRect){120,height,80,5}],
+                [NSValue valueWithCGRect:(CGRect){110,height,100,5}],
+                [NSValue valueWithCGRect:(CGRect){100,height,120,5}],
+                [NSValue valueWithCGRect:(CGRect){90,height,140,5}],
+                [NSValue valueWithCGRect:(CGRect){80,height,160,5}],
+                [NSValue valueWithCGRect:(CGRect){70,height,180,5}],
+                [NSValue valueWithCGRect:(CGRect){60,height,200,5}],
+                [NSValue valueWithCGRect:(CGRect){50,height,220,5}],
+                [NSValue valueWithCGRect:(CGRect){40,height,240,5}],
+                [NSValue valueWithCGRect:(CGRect){30,height,260,5}],
+                [NSValue valueWithCGRect:(CGRect){20,height,280,5}],
+                [NSValue valueWithCGRect:(CGRect){10,height,300,5}],
+                [NSValue valueWithCGRect:(CGRect){0,height,320,5}],
                   nil];
 
     currentFrame = 0;
@@ -108,7 +108,6 @@ static id instance;
     _trackButton.selected = NO;
     _sendingImage.hidden = YES;
     _connectedToServer.hidden = YES;
-//    _sendingImage.hidden = YES;
 
     _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)];
     sendingLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(sendingIntervalLoop:)];

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenuViewController.h"
 #import "TrackViewController.h"
 #import "LoadingScreenViewController.h"
 #import "WebApiInterface.h"
@@ -18,13 +17,12 @@
 #import "AboutViewController.h"
 #import "PrivacyPolicyViewController.h"
 
-@interface ViewController : UIViewController <MenuViewControllerDelegate,ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate,HamburgerMenuViewControllerDelegate,FavouritesViewControllerDelegate>
+@interface ViewController : UIViewController <ParentViewControllerDelegate,TrackViewControllerDelegate,WebApiInterfaceDelegate,LoadingScreenViewControllerDelegate,StopDisplayViewControllerDelegate,MapViewControllerDelegate,HamburgerMenuViewControllerDelegate,FavouritesViewControllerDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
 }
 
 @property (retain, nonatomic) MapViewController *mapViewController;
-@property (retain, nonatomic) MenuViewController *menuViewController;
 @property (retain, nonatomic) HamburgerMenuViewController *hamburgerMenuViewController;
 @property (retain, nonatomic) TrackViewController *trackVC;
 @property (retain, nonatomic) LoadingScreenViewController *loadingScreen;

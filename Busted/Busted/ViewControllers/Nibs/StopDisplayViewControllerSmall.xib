@@ -18,16 +18,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ek1-2h-abT">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="ek1-2h-abT">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jiy-Ta-UMw">
-                    <rect key="frame" x="0.0" y="-5" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="Button" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -35,17 +35,17 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="43" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="t0a-vp-LUS">
-                    <rect key="frame" x="0.0" y="49" width="320" height="436"/>
+                    <rect key="frame" x="0.0" y="59" width="320" height="421"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFc-1k-mH7">
-                    <rect key="frame" x="270" y="435" width="36" height="35"/>
+                    <rect key="frame" x="273" y="435" width="36" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="empty-star.png">
+                    <state key="normal" image="favourite-line-star.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="full-star.png"/>
+                    <state key="selected" image="favourite-star.png"/>
                     <connections>
                         <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="fAr-Wx-fPl"/>
                     </connections>
@@ -56,9 +56,9 @@
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="empty-star.png" width="35" height="35"/>
-        <image name="full-star.png" width="35" height="35"/>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="backgroundSmall.png" width="320" height="480"/>
+        <image name="favourite-line-star.png" width="36" height="35"/>
+        <image name="favourite-star.png" width="36" height="35"/>
     </resources>
 </document>

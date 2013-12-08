@@ -48,22 +48,6 @@
     [[self navigationController] pushViewController:_hamburgerMenuViewController animated:NO];
 }
 
-- (void)showMenuView
-{
-    [[self navigationController] popViewControllerAnimated:NO];
-    if (IS_IPHONE_5)
-    {
-        _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    }
-    else
-    {
-        _menuViewController = [[MenuViewController alloc] initWithNibName:@"MenuViewControllerSmall" bundle:nil];
-    }
-    _menuViewController.delegate = self;
-    _menuViewController.superDelegate = self;
-    [[self navigationController] pushViewController:_menuViewController animated:NO];
-}
-
 - (void)viewDidLoad
 {
     _webApiInterface = [[WebApiInterface alloc] init];
@@ -103,13 +87,7 @@
 #pragma MenuViewControllerDelegate
 - (void)loadViewController:(UIViewController*)vc
 {
-    if ([vc isKindOfClass:[RoutesViewController class]]) {
-        RoutesViewController *routesVC = (RoutesViewController*)vc;
-        routesVC.superDelegate = self;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[self navigationController] pushViewController:routesVC animated:YES];
-        });
-    } else if ([vc isKindOfClass:[FavouritesViewController class]]) {
+    if ([vc isKindOfClass:[FavouritesViewController class]]) {
         FavouritesViewController *favVC = (FavouritesViewController*)vc;
         favVC.superDelegate = self;
         favVC.delegate = self;
@@ -189,7 +167,7 @@
     if (isAll)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [[self navigationController] popToViewController:_menuViewController animated:YES];
+//            [[self navigationController] popToViewController:_menuViewController animated:YES];
         });
     } else {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -202,18 +180,18 @@
 {
     switch (swipeGesture.direction) {
         case UISwipeGestureRecognizerDirectionLeft:
-            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
+//            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
 //                [UIView animateWithDuration:0.75 animations:^{
 //                    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 //                    [[self navigationController] popViewControllerAnimated:YES];
 //                    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:[self navigationController].view cache:NO];
 //                }];
-            }
+//            }
             break;
         case UISwipeGestureRecognizerDirectionRight:
-            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
-                [[self navigationController] popViewControllerAnimated:YES];
-            }
+//            if (![[self navigationController].topViewController isKindOfClass:[MenuViewController class]]) {
+//                [[self navigationController] popViewControllerAnimated:YES];
+//            }
             break;
         case UISwipeGestureRecognizerDirectionUp: 
             break;

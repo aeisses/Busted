@@ -10,7 +10,6 @@
 #import "MapViewController.h"
 #import "WebApiInterface.h"
 #import "FavouriteCell.h"
-#import "RoutesViewController.h"
 
 @protocol FavouritesViewControllerDelegate <NSObject>
 - (void)loadViewController:(UIViewController*)vc;

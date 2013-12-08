@@ -16,15 +16,15 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ECf-eX-c5D">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="buttonBackGround.png" translatesAutoresizingMaskIntoConstraints="NO" id="ECf-eX-c5D">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TT0-5L-LbF">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" image="upToDownButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -37,7 +37,7 @@
         </view>
     </objects>
     <resources>
-        <image name="buttonGround.jpg" width="640" height="98"/>
-        <image name="upToDownButton.png" width="320" height="49"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="buttonBackGround.png" width="320" height="59"/>
     </resources>
 </document>

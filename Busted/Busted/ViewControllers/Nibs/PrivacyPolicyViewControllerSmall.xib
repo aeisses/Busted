@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PrivacyPolicyViewController">
             <connections>
-                <outlet property="aboutBG" destination="0T1-ff-SJp" id="MVl-5Q-aJm"/>
                 <outlet property="backGround" destination="sfu-I6-mOJ" id="dnT-AD-4YT"/>
                 <outlet property="homeButton" destination="dDl-mg-amS" id="hyu-Dd-GaC"/>
                 <outlet property="ppTexView" destination="8Sf-ou-Lso" id="8Dj-HS-VWn"/>
@@ -16,21 +15,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-I6-mOJ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="0T1-ff-SJp">
-                    <rect key="frame" x="-7" y="54" width="327" height="517"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="sfu-I6-mOJ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDl-mg-amS">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -38,10 +33,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-ou-Lso">
-                    <rect key="frame" x="20" y="101" width="280" height="447"/>
+                    <rect key="frame" x="15" y="113" width="288" height="367"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <mutableString key="text">KNOWtime Transit© End User License Agreement, Privacy Policy and Disclaimer
+                    <string key="text">KNOWtime Transit© End User License Agreement, Privacy Policy and Disclaimer
 
 Your use of the KNOWtime Transit app (the “App”) is subject to Apple’s standard End User License Agreement (EULA) and this Privacy Policy and this Disclaimer and indicates your consent to them.
 
@@ -61,20 +56,26 @@ KNOWtime may from time to time change the terms of this Privacy Policy and Discl
 
 You agree to be bound by any of the changes made in the terms of this Privacy Policy and Disclaimer and EULA. Continuing to use the Service and App will indicate your acceptance of the amended terms. If you do not agree with any of the amended terms, you must avoid any further use of the Services.
 
-Last modified: 27th November 2013</mutableString>
+Last modified: 27th November 2013</string>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpD-zx-gJi">
+                    <rect key="frame" x="20" y="84" width="139" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="aboutScreen.jpg" width="241" height="518"/>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="backgroundSmall.png" width="320" height="480"/>
     </resources>
 </document>

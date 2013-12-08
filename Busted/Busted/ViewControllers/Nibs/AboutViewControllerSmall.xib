@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
-                <outlet property="aboutScreenBacckGround" destination="mtn-93-OwO" id="LIA-wh-hqE"/>
                 <outlet property="asTextView" destination="Hlp-Sh-Ejf" id="O0m-dt-gpk"/>
                 <outlet property="backButton" destination="QNp-yR-f4D" id="3KQ-xS-6qy"/>
                 <outlet property="backGroundImage" destination="9NQ-LT-F1B" id="Ebv-ef-ANy"/>
@@ -19,12 +18,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="9NQ-LT-F1B">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="9NQ-LT-F1B">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aboutScreen.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="mtn-93-OwO">
-                    <rect key="frame" x="-11" y="54" width="331" height="431"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="explaination.png" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-DI-s3V">
@@ -32,18 +27,18 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fb2-c0-ybG">
-                    <rect key="frame" x="197" y="62" width="40" height="40"/>
+                    <rect key="frame" x="107" y="420" width="106" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Post information to facebook" label="Facebook button"/>
-                    <state key="normal" image="facebookButton.png">
+                    <state key="normal" image="facebook.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yms-lY-mpE">
-                    <rect key="frame" x="158" y="62" width="40" height="40"/>
+                    <rect key="frame" x="0.0" y="420" width="107" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="post information to twitter" label="twitter button"/>
-                    <state key="normal" image="twitterButton.png">
+                    <state key="normal" image="twitter.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -55,16 +50,16 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEs-xU-Jwt">
-                    <rect key="frame" x="236" y="62" width="40" height="40"/>
+                    <rect key="frame" x="213" y="420" width="107" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="mailButton.png">
+                    <state key="normal" image="feedback.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNp-yR-f4D">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -72,10 +67,10 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlp-Sh-Ejf">
-                    <rect key="frame" x="20" y="103" width="280" height="364"/>
+                    <rect key="frame" x="25" y="106" width="280" height="314"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <mutableString key="text">Hi there, HRM: Does relying on public transit get you down?
+                    <string key="text">Hi there, HRM: Does relying on public transit get you down?
 
 Have you been frustrated by unreliable schedule times, waiting for your bus in bad weather, or being uncertain if you’ll arrive at your destination on time?
 
@@ -95,23 +90,29 @@ KNOWtime runs on “crowd power” – the greater the crowd, the greater the po
 
 So connect your friends, track your ride, and help us help you by growing our *live* local network.
 
-When you join our community, we’ll get you where you want to go in KNOWtime.</mutableString>
+When you join our community, we’ll get you where you want to go in KNOWtime.</string>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yj8-dN-YYP">
+                    <rect key="frame" x="30" y="75" width="90" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="aboutScreen.jpg" width="241" height="518"/>
-        <image name="backGround.jpg" width="640" height="1038"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="backgroundSmall.png" width="320" height="480"/>
         <image name="explaination.png" width="29" height="60"/>
-        <image name="facebookButton.png" width="24" height="24"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="mailButton.png" width="24" height="24"/>
-        <image name="twitterButton.png" width="24" height="24"/>
+        <image name="facebook.png" width="108" height="60"/>
+        <image name="feedback.png" width="108" height="60"/>
+        <image name="twitter.png" width="107" height="60"/>
     </resources>
 </document>

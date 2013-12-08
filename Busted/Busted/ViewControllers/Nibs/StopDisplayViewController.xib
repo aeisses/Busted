@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGround.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="A06-kg-v2p">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="A06-kg-v2p">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -27,7 +27,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -43,10 +43,10 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlM-0E-5Hw">
                     <rect key="frame" x="277" y="525" width="36" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="empty-star.png">
+                    <state key="normal" image="favourite-line-star.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="full-star.png"/>
+                    <state key="selected" image="favourite-star.png"/>
                     <connections>
                         <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="vXt-QU-RtC"/>
                     </connections>
@@ -57,9 +57,9 @@
         </view>
     </objects>
     <resources>
-        <image name="backGround.jpg" width="640" height="1038"/>
-        <image name="empty-star.png" width="35" height="35"/>
-        <image name="full-star.png" width="35" height="35"/>
-        <image name="homeButton.png" width="320" height="56"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="background.png" width="320" height="568"/>
+        <image name="favourite-line-star.png" width="36" height="35"/>
+        <image name="favourite-star.png" width="36" height="35"/>
     </resources>
 </document>

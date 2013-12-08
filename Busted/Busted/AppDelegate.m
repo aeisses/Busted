@@ -81,12 +81,6 @@ static NSString *const kAllowTracking = @"allowTracking";
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    if ([_navController.topViewController isKindOfClass:[MenuViewController class]] && _navController.topViewController.presentedViewController == nil && ![[NSUserDefaults standardUserDefaults] boolForKey:@"showalerttwice"])
-    {
-        [((MenuViewController*)_navController.topViewController) showTrackingAlert];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showalerttwice"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
     if ([TrackViewController sharedInstance].isTracking)
     {
         [[TrackViewController sharedInstance].displayLink setPaused:NO];

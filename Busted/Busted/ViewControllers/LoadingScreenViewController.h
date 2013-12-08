@@ -19,7 +19,7 @@
 }
 
 @property (retain, nonatomic) IBOutlet UIImageView *backGroundImage;
-@property (retain, nonatomic) IBOutlet UIImageView *animationImage;
 @property (retain, nonatomic) id <LoadingScreenViewControllerDelegate> delegate;
+@property (retain, nonatomic) UIActivityIndicatorView *indicator;
 
 @end

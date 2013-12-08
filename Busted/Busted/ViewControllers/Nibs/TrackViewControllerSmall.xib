@@ -19,26 +19,22 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGroundOnMyWaySmall.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="OTd-cA-kmK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backGroundOnMyWaySmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="OTd-cA-kmK">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connected to Server" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0p-HO-0qW">
-                    <rect key="frame" x="82" y="438" width="156" height="20"/>
+                    <rect key="frame" x="82" y="447" width="156" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="onMyWay.png" translatesAutoresizingMaskIntoConstraints="NO" id="PGW-xj-Eg5">
-                    <rect key="frame" x="0.0" y="165" width="320" height="126"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Tj-C5-r9Z">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="close the track window" label="Close button"/>
-                    <state key="normal" image="homeButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -46,7 +42,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQ1-b3-6bV">
-                    <rect key="frame" x="0.0" y="264" width="320" height="146"/>
+                    <rect key="frame" x="0.0" y="289" width="320" height="146"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <accessibility key="accessibilityConfiguration" hint="close the track window" label="Close button"/>
                     <state key="normal" image="onMyWayButton.png">
@@ -58,11 +54,11 @@
                     </connections>
                 </button>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sendingzoom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bqf-05-EOA">
-                    <rect key="frame" x="0.0" y="225" width="320" height="12"/>
+                    <rect key="frame" x="1" y="277" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sending.png" translatesAutoresizingMaskIntoConstraints="NO" id="54R-t1-fzD">
-                    <rect key="frame" x="128" y="186" width="64" height="21"/>
+                    <rect key="frame" x="121" y="240" width="80" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -71,12 +67,11 @@
         </view>
     </objects>
     <resources>
-        <image name="Stop.png" width="320" height="146"/>
-        <image name="backGroundOnMyWaySmall.jpg" width="320" height="480"/>
-        <image name="homeButton.png" width="320" height="56"/>
-        <image name="onMyWay.png" width="320" height="126"/>
-        <image name="onMyWayButton.png" width="320" height="145"/>
-        <image name="sending.png" width="64" height="21"/>
-        <image name="sendingzoom.png" width="320" height="13"/>
+        <image name="Stop.png" width="320" height="144"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="backGroundOnMyWaySmall.png" width="320" height="480"/>
+        <image name="onMyWayButton.png" width="320" height="144"/>
+        <image name="sending.png" width="80" height="20"/>
+        <image name="sendingzoom.png" width="320" height="5"/>
     </resources>
 </document>

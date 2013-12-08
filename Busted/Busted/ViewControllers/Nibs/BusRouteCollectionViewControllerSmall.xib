@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonGround.jpg" id="YQl-Y4-jFi">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonBackGround.png" id="YQl-Y4-jFi">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qRV-8Z-oaW">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="upToDownButton.png">
+                    <state key="normal" image="backButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -36,7 +36,7 @@
         </view>
     </objects>
     <resources>
-        <image name="buttonGround.jpg" width="640" height="98"/>
-        <image name="upToDownButton.png" width="320" height="49"/>
+        <image name="backButton.png" width="320" height="59"/>
+        <image name="buttonBackGround.png" width="320" height="59"/>
     </resources>
 </document>

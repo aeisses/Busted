@@ -29,45 +29,55 @@
     isOne = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    if (IS_IPHONE_5)
+    {
+        _indicator.center = (CGPoint){self.view.frame.size.width/2,450};
+    } else {
+        _indicator.center = (CGPoint){self.view.frame.size.width/2,410};
+    }
+    [self.view addSubview:_indicator];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-    [displayLink setFrameInterval:15];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+//    displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
+//    [displayLink setFrameInterval:15];
+//    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+    [_indicator startAnimating];
     [_delegate loadScreenLoaded];
     [super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [displayLink invalidate];
-    [displayLink release];
-    displayLink = nil;
+//    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+//    [displayLink invalidate];
+//    [displayLink release];
+//    displayLink = nil;
+    [_indicator stopAnimating];
     [super viewDidDisappear:animated];
 }
 
 - (void)frameIntervalLoop:(CADisplayLink *)sender
 {
-    if (isOne) {
-        if (IS_IPHONE_5)
-        {
-            _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
-        } else {
-            _animationImage.image = [UIImage imageNamed:@"introImage2Small.jpg"];
-        }
-        isOne = NO;
-    } else {
-        if (IS_IPHONE_5)
-        {
-            _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
-        } else {
-            _animationImage.image = [UIImage imageNamed:@"introImage1Small.jpg"];
-        }
-        isOne = YES;
-    }
+//    if (isOne) {
+//        if (IS_IPHONE_5)
+//        {
+//            _animationImage.image = [UIImage imageNamed:@"introImage2.jpg"];
+//        } else {
+//            _animationImage.image = [UIImage imageNamed:@"introImage2Small.jpg"];
+//        }
+//        isOne = NO;
+//    } else {
+//        if (IS_IPHONE_5)
+//        {
+//            _animationImage.image = [UIImage imageNamed:@"introImage1.jpg"];
+//        } else {
+//            _animationImage.image = [UIImage imageNamed:@"introImage1Small.jpg"];
+//        }
+//        isOne = YES;
+//    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,7 +89,9 @@
 - (void)dealloc
 {
     [_backGroundImage release]; _backGroundImage = nil;
-    [_animationImage release]; _animationImage = nil;
+    [_indicator removeFromSuperview];
+    [_indicator release];
+//    [_animationImage release]; _animationImage = nil;
     [super dealloc];
 }
 @end
