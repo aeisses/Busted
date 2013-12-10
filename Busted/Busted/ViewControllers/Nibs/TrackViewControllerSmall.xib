@@ -53,6 +53,10 @@
                         <action selector="touchTrackButton:" destination="-1" eventType="touchUpInside" id="Njg-IU-ASe"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sending-line.png" translatesAutoresizingMaskIntoConstraints="NO" id="dbj-7m-uoU">
+                    <rect key="frame" x="0.0" y="279" width="320" height="1"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sendingzoom.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bqf-05-EOA">
                     <rect key="frame" x="1" y="277" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -71,6 +75,7 @@
         <image name="backButton.png" width="320" height="59"/>
         <image name="backGroundOnMyWaySmall.png" width="320" height="480"/>
         <image name="onMyWayButton.png" width="320" height="144"/>
+        <image name="sending-line.png" width="320" height="1"/>
         <image name="sending.png" width="80" height="20"/>
         <image name="sendingzoom.png" width="320" height="5"/>
     </resources>

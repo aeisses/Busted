@@ -19,13 +19,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eRF-bX-Czo">
+                <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eRF-bX-Czo">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <accessibility key="accessibilityConfiguration" hint="Return to the previous screen" label="Return button"/>
-                    <state key="normal" image="backButton.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
+                    <state key="normal" image="backButton.png"/>
                     <state key="selected" image="homeButtonHighlightedSmall.png"/>
                     <connections>
                         <action selector="touchHomeButton:" destination="-1" eventType="touchUpInside" id="UDL-ye-7rA"/>
@@ -34,10 +33,10 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gIP-pJ-E5u">
                     <rect key="frame" x="275" y="434" width="36" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="favourite-line-star.png">
+                    <state key="normal" image="favourite-line-star-black.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="favourite-star.png"/>
+                    <state key="selected" image="favourite-star-black.png"/>
                     <connections>
                         <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="GXr-dT-7hm"/>
                     </connections>
@@ -61,8 +60,8 @@
     </objects>
     <resources>
         <image name="backButton.png" width="320" height="59"/>
-        <image name="favourite-line-star.png" width="36" height="35"/>
-        <image name="favourite-star.png" width="36" height="35"/>
+        <image name="favourite-line-star-black.png" width="36" height="35"/>
+        <image name="favourite-star-black.png" width="36" height="35"/>
         <image name="hamburgerMenuButton.png" width="50" height="50"/>
         <image name="homeButtonHighlightedSmall.png" width="320" height="47"/>
     </resources>

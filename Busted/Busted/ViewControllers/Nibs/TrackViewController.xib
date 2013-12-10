@@ -88,9 +88,9 @@
 					<object class="IBUIImageView" id="669276265">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{120, 245}, {80, 20}}</string>
+						<string key="NSFrame">{{120, 242}, {80, 20}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="727048352"/>
+						<reference key="NSNextKeyView" ref="603431500"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="NSHuggingPriority">{251, 251}</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -103,7 +103,7 @@
 					<object class="IBUIButton" id="533521634">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 297}, {320, 144}}</string>
+						<string key="NSFrame">{{0, 298}, {320, 144}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="745313882"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -137,10 +137,25 @@
 						<reference key="IBUIFontDescription" ref="532573039"/>
 						<reference key="IBUIFont" ref="207460942"/>
 					</object>
+					<object class="IBUIImageView" id="603431500">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{0, 279}, {320, 1}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="727048352"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<string key="NSHuggingPriority">{251, 251}</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">sending-line.png</string>
+						</object>
+					</object>
 					<object class="IBUIImageView" id="727048352">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">-2147483356</int>
-						<string key="NSFrame">{{0, 277}, {320, 5}}</string>
+						<string key="NSFrame">{{0, 279}, {320, 5}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="533521634"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -291,10 +306,11 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="533521634"/>
-							<reference ref="669276265"/>
 							<reference ref="727048352"/>
 							<reference ref="994944785"/>
 							<reference ref="745313882"/>
+							<reference ref="669276265"/>
+							<reference ref="603431500"/>
 							<reference ref="173385359"/>
 						</array>
 						<reference key="parent" ref="0"/>
@@ -345,6 +361,11 @@
 						<reference key="object" ref="745313882"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">289</int>
+						<reference key="object" ref="603431500"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -358,6 +379,7 @@
 				<string key="182.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="257.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="287.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="289.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="2" key="4.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
@@ -366,7 +388,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">288</int>
+			<int key="maxID">289</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -387,6 +409,7 @@
 			<string key="backButton.png">{320, 59}</string>
 			<string key="backGroundOnMyWay.png">{320, 568}</string>
 			<string key="onMyWayButton.png">{320, 144}</string>
+			<string key="sending-line.png">{320, 1}</string>
 			<string key="sending.png">{80, 20}</string>
 			<string key="sendingzoom.png">{320, 5}</string>
 		</dictionary>

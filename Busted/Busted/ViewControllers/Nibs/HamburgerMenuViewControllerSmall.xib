@@ -31,11 +31,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="110" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8x-Wm-q0s">
-                    <rect key="frame" x="14" y="359" width="82" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8x-Wm-q0s">
+                    <rect key="frame" x="6" y="408" width="94" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                    <state key="normal" title="Privacy Policy">
+                    <state key="normal" image="privacyPolicyButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -144,6 +144,7 @@
         <image name="favouritesButton.png" width="82" height="28"/>
         <image name="hamburgerMenuBGSmall.png" width="110" height="480"/>
         <image name="hfxtransitButton.png" width="81" height="28"/>
+        <image name="privacyPolicyButton.png" width="94" height="26"/>
         <image name="shareMeButton.png" width="73" height="28"/>
         <image name="stopsButton.png" width="82" height="28"/>
         <image name="triangleabout.png" width="6" height="12"/>

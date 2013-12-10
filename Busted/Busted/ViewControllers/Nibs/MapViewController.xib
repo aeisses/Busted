@@ -47,12 +47,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bd3-mU-z74">
-                    <rect key="frame" x="272" y="519" width="36" height="35"/>
+                    <rect key="frame" x="274" y="523" width="36" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" image="favourite-line-star.png">
+                    <state key="normal" image="favourite-line-star-black.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="favourite-star.png"/>
+                    <state key="selected" image="favourite-star-black.png"/>
                     <connections>
                         <action selector="touchFavouriteButton:" destination="-1" eventType="touchUpInside" id="ZVU-nW-cbU"/>
                     </connections>
@@ -67,8 +67,8 @@
     </objects>
     <resources>
         <image name="backButton.png" width="320" height="59"/>
-        <image name="favourite-line-star.png" width="36" height="35"/>
-        <image name="favourite-star.png" width="36" height="35"/>
+        <image name="favourite-line-star-black.png" width="36" height="35"/>
+        <image name="favourite-star-black.png" width="36" height="35"/>
         <image name="hamburgerMenuButton.png" width="50" height="50"/>
     </resources>
 </document>
