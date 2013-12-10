@@ -416,7 +416,7 @@ static id instance;
     if (!_isStops && !shouldShowStops) {
         for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
         {
-            if ([stop isInsideSquare:_mapView.region])
+            if ([stop isInsideSquare:_mapView.region] && mapView.region.span.latitudeDelta < 0.035)
             {
                 if (![_stops containsObject:stop]) {
                     [_mapView addAnnotation:stop];

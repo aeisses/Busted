@@ -107,6 +107,7 @@
     NSDate *date = [formatter dateFromString:[status valueForKey:@"created_at"]];
     [formatter setDateFormat:@"MMM MM"];
     cell.date.text = [formatter stringFromDate:date];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
