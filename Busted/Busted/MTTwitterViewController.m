@@ -95,7 +95,7 @@
     TwitterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TwitterCell"];
     
     if(cell == nil) {
-        cell = [[TwitterCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TwitterCell"];
+        cell = [[[TwitterCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TwitterCell"] autorelease];
     }
     
     NSDictionary *status = [self.statuses objectAtIndex:indexPath.row];
@@ -108,6 +108,7 @@
     [formatter setDateFormat:@"MMM MM"];
     cell.date.text = [formatter stringFromDate:date];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [formatter release];
     return cell;
 }
 

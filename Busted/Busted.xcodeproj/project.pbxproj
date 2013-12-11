@@ -16,9 +16,6 @@
 		0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0419022A1800C93C00D79040 /* Default-568h@2x.png */; };
 		041902561800C93C00D79040 /* sending.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902341800C93C00D79040 /* sending.png */; };
 		0419025A1800C93C00D79040 /* cellBackGround@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0419023A1800C93C00D79040 /* cellBackGround@2x.png */; };
-		041902621800C93C00D79040 /* route@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902431800C93C00D79040 /* route@2x.png */; };
-		041902631800C93C00D79040 /* submitButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902441800C93C00D79040 /* submitButton@2x.png */; };
-		041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */; };
 		041902731800F40700D79040 /* TLTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041902721800F40700D79040 /* TLTransitionAnimator.m */; };
 		041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 041902741800FD5700D79040 /* onMyWayButton@2x.png */; };
 		0421092A181A043E004539B4 /* Stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04210929181A043E004539B4 /* Stop@2x.png */; };
@@ -207,9 +204,6 @@
 		0419022A1800C93C00D79040 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		041902341800C93C00D79040 /* sending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sending.png; sourceTree = "<group>"; };
 		0419023A1800C93C00D79040 /* cellBackGround@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellBackGround@2x.png"; sourceTree = "<group>"; };
-		041902431800C93C00D79040 /* route@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route@2x.png"; sourceTree = "<group>"; };
-		041902441800C93C00D79040 /* submitButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButton@2x.png"; sourceTree = "<group>"; };
-		041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "submitButtonHighlighted@2x.png"; sourceTree = "<group>"; };
 		041902711800F40700D79040 /* TLTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTransitionAnimator.h; sourceTree = "<group>"; };
 		041902721800F40700D79040 /* TLTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTransitionAnimator.m; sourceTree = "<group>"; };
 		041902741800FD5700D79040 /* onMyWayButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "onMyWayButton@2x.png"; sourceTree = "<group>"; };
@@ -540,9 +534,6 @@
 			isa = PBXGroup;
 			children = (
 				041902371800C93C00D79040 /* BusNumberPage */,
-				041902431800C93C00D79040 /* route@2x.png */,
-				041902441800C93C00D79040 /* submitButton@2x.png */,
-				041902451800C93C00D79040 /* submitButtonHighlighted@2x.png */,
 			);
 			path = Trackmybus;
 			sourceTree = "<group>";
@@ -996,7 +987,6 @@
 				044C860C1853DF10004B7E19 /* StopsHeader@2x.png in Resources */,
 				04B947D21856A2DA005BF684 /* favourite-line-star-black@2x.png in Resources */,
 				044C86101853DF6A004B7E19 /* bus-number@2x.png in Resources */,
-				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				044C86471853EA5D004B7E19 /* backGroundOnMyWaySmall@2x.png in Resources */,
 				04B947EF1856A344005BF684 /* hamburgerMenuBGSmall.png in Resources */,
 				044C85F91853DBA5004B7E19 /* facebook.png in Resources */,
@@ -1016,11 +1006,9 @@
 				04B947ED1856A344005BF684 /* favouritesButton@2x.png in Resources */,
 				043DAC921837D5D200129145 /* LoadingScreenViewControllerSmall.xib in Resources */,
 				04B947F31856A344005BF684 /* hfxtransitButton.png in Resources */,
-				041902631800C93C00D79040 /* submitButton@2x.png in Resources */,
 				043DAC8F1837D5D200129145 /* FavouritesViewController.xib in Resources */,
 				04B947FD1856A344005BF684 /* trianglesstops@2x.png in Resources */,
 				04B947FC1856A344005BF684 /* triangleshareme@2x.png in Resources */,
-				041902621800C93C00D79040 /* route@2x.png in Resources */,
 				044C85FC1853DBA5004B7E19 /* feedback@2x.png in Resources */,
 				043DAC941837D5D200129145 /* MapViewControllerSmall.xib in Resources */,
 				04B947EE1856A344005BF684 /* hamburgerMenuBackground@2x.png in Resources */,

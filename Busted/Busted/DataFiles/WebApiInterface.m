@@ -307,6 +307,7 @@ static id instance;
     NSDateFormatter *formatterFull = [[NSDateFormatter alloc] init];
     [formatterFull setDateFormat:@"yyyy-MM-dd HH:mm"];
     NSTimeInterval morning = [[formatter dateFromString:currentDate] timeIntervalSinceReferenceDate];
+    [currentDate release];
     NSTimeInterval evening = morning + 86400;
     NSTimeInterval checkTime = [date timeIntervalSinceReferenceDate];
     [formatter release];
@@ -320,7 +321,7 @@ static id instance;
 
 - (NSArray*)getRoutes:(StopTimeManagedObject*)stopTime
 {
-    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:[stopTime.routes count]];
+    NSMutableArray *array = [[[NSMutableArray alloc] initWithCapacity:[stopTime.routes count]] autorelease];
     for (RouteTimeManagedObject *routeMO in stopTime.routes)
     {
         RouteWithTime *route = [[RouteWithTime alloc] init];
