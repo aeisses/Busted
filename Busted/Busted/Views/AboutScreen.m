@@ -30,18 +30,18 @@
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             NSString *output;
             switch (result) {
-                case SLComposeViewControllerResultCancelled:
-                    output = NSLocalizedStringFromTable(@"As it seems you didn't want to post to Facebook", @"ATLocalizable", @"");
-                    break;
+//                case SLComposeViewControllerResultCancelled:
+//                    output = NSLocalizedStringFromTable(@"As it seems you didn't want to post to Facebook", @"ATLocalizable", @"");
+//                    break;
                 case SLComposeViewControllerResultDone:
                     output = NSLocalizedStringFromTable(@"You succesfully posted to Facebook", @"ATLocalizable", @"");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
                     break;
                 default:
                     break;
             } //check if everythink worked properly. Give out a message on the state.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
         }];
         [_delegate showSocialMedia:mySLComposerSheet];
     }
@@ -57,18 +57,18 @@
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             NSString *output;
             switch (result) {
-                case SLComposeViewControllerResultCancelled:
-                    output = NSLocalizedStringFromTable(@"As it seems you didn't want to post to Twitter", @"ATLocalizable", @"");
-                    break;
+//                case SLComposeViewControllerResultCancelled:
+//                    output = NSLocalizedStringFromTable(@"As it seems you didn't want to post to Twitter", @"ATLocalizable", @"");
+//                    break;
                 case SLComposeViewControllerResultDone:
                     output = NSLocalizedStringFromTable(@"You succesfully posted to Twitter", @"ATLocalizable", @"");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
                     break;
                 default:
                     break;
             } //check if everythink worked properly. Give out a message on the state.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
         }];
         [_delegate showSocialMedia:mySLComposerSheet];
     }

@@ -16,7 +16,6 @@
 @protocol TrackViewControllerDelegate <NSObject>
 - (NSArray*)getRoutes;
 - (void)exitTransitionVC;
-- (void)showSocialMedia:(SLComposeViewController*)mySLComposerSheet;
 @end
 
 @interface TrackViewController : UIViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>

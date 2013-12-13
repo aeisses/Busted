@@ -253,28 +253,26 @@ static id instance;
         if(NSClassFromString(@"SLComposeViewController") != nil)
         {
             SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"Sharing bus number %i #KNOWtime",currentRoute]];
+            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %i sharing my ride with #KNOWtime #apps4hfx",currentRoute]];
             [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
             [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
                 NSString *output;
                 switch (result) {
-                    case SLComposeViewControllerResultCancelled:
-                        output = NSLocalizedStringFromTable(@"As it seems you didn't want to post to Twitter", @"ATLocalizable", @"");
-                        break;
                     case SLComposeViewControllerResultDone:
                         output = NSLocalizedStringFromTable(@"You succesfully posted to Twitter", @"ATLocalizable", @"");
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
                         break;
                     default:
                         break;
-                } //check if everythink worked properly. Give out a message on the state.
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-                [alert show];
-                [alert release];
+                }
+   
             }];
             [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         }
     } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice" message:@"Please share your route by touching the ON MY WAY button, you can then tweet that information." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"Please share your ride before you Tweet." delegate:nil cancelButtonTitle:@"thanks" otherButtonTitles:nil];
         [alert show];
         [alert release];
     }
