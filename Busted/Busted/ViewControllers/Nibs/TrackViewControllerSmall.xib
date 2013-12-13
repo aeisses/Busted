@@ -7,10 +7,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrackViewController">
             <connections>
+                <outlet property="connectedToServer" destination="W0p-HO-0qW" id="MJ6-OT-1iH"/>
                 <outlet property="homeButton" destination="5Tj-C5-r9Z" id="EVf-g1-NOF"/>
                 <outlet property="sendingImage" destination="54R-t1-fzD" id="h12-As-WWY"/>
                 <outlet property="sendingZoom" destination="Bqf-05-EOA" id="EMd-Mp-U4B"/>
                 <outlet property="trackButton" destination="vQ1-b3-6bV" id="LFx-kg-XFc"/>
+                <outlet property="twitterButton" destination="JHm-lc-h7l" id="clg-cb-bmh"/>
                 <outlet property="view" destination="1" id="sbo-qk-I9v"/>
             </connections>
         </placeholder>
@@ -23,6 +25,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JHm-lc-h7l">
+                    <rect key="frame" x="270" y="64" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" image="twitterButton.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="touchTwitterButton:" destination="-1" eventType="touchUpInside" id="yax-NS-9oD"/>
+                    </connections>
+                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connected to Server" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0p-HO-0qW">
                     <rect key="frame" x="82" y="438" width="156" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,5 +91,6 @@
         <image name="onMyWayButton.png" width="320" height="145"/>
         <image name="sending.png" width="64" height="21"/>
         <image name="sendingzoom.png" width="320" height="13"/>
+        <image name="twitterButton.png" width="24" height="24"/>
     </resources>
 </document>

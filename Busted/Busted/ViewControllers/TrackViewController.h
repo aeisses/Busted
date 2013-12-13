@@ -10,10 +10,13 @@
 #import "BusRoutesCollectionViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <QuartzCore/QuartzCore.h>
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 
 @protocol TrackViewControllerDelegate <NSObject>
 - (NSArray*)getRoutes;
 - (void)exitTransitionVC;
+- (void)showSocialMedia:(SLComposeViewController*)mySLComposerSheet;
 @end
 
 @interface TrackViewController : UIViewController <CLLocationManagerDelegate,BusRouteCollectionViewControllerDelegate>
@@ -41,9 +44,11 @@
 @property (retain, nonatomic) NSString *locationString;
 @property (assign, nonatomic) BOOL isTracking;
 @property (retain, nonatomic) NSDate *backGroundTime;
+@property (retain, nonatomic) IBOutlet UIButton *twitterButton;
 
 + (TrackViewController*)sharedInstance;
 - (IBAction)touchTrackButton:(id)sender;
 - (IBAction)touchHomeButton:(id)sender;
+- (IBAction)touchTwitterButton:(id)sender;
 
 @end

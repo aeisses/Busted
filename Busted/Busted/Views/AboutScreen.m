@@ -24,7 +24,7 @@
     if(NSClassFromString(@"SLComposeViewController") != nil)
     {
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:@"I'm tracking my bus in real time with KNOWtime. Get the app. Join the community."];
+        [mySLComposerSheet setInitialText:@""];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"knowtime.ca"]];
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -52,7 +52,7 @@
     if(NSClassFromString(@"SLComposeViewController") != nil)
     {
         SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet setInitialText:@"Tracking my bus with #KNOWtime. Get the app. Join the community. #crowdpowered #realtimetransit #hrm http://knowtime.ca"];
+        [mySLComposerSheet setInitialText:@"Sharing my bus ride with #KNOWtime. Get the app. Join the community. #crowdpowered #realtimetransit #hrm http://knowtime.ca"];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             NSString *output;
