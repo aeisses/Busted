@@ -68,7 +68,7 @@ static id instance;
 
 - (void)createStopRecordsWithStops:(NSArray*)stopsArray context:(NSManagedObjectContext*)context
 {
-    NSLog(@"Stops: %i",stopsArray.count);
+//    NSLog(@"Stops: %i",stopsArray.count);
     for (NSDictionary *stopItem in stopsArray)
     {
         StopManagedObject *stop = [NSEntityDescription insertNewObjectForEntityForName:@"Stop" inManagedObjectContext:context];
@@ -299,7 +299,7 @@ static id instance;
 - (void)getRouteForIdent:(NSNumber*)ident
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i/%@", SANGSTERBASEURL, STOPTIME, [ident integerValue], [formatter stringFromDate:[NSDate date]]];
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
@@ -349,7 +349,7 @@ static id instance;
 - (void)getPathForRouteId:(NSString*)routeId callBack:(MapViewController*)callback
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%@/%@", SANGSTERBASEURL, PATHS, [formatter stringFromDate:[NSDate date]], routeId];
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
@@ -381,7 +381,7 @@ static id instance;
 - (void)loadPathForRoute:(NSString*)shortName callBack:(MapViewController*)callback
 {
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
-    [dayFormatter setDateFormat:@"YYYY-MM-dd"];
+    [dayFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDateFormatter *timeFormatter = [[NSDateFormatter alloc] init];
     [timeFormatter setDateFormat:@"HH:MM"];
     NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@/%@:%@/%@%@/%@", SANGSTERBASEURL, ROUTES, SHORTS, shortName, HEADSIGNS, [dayFormatter stringFromDate:[NSDate date]], [timeFormatter stringFromDate:[NSDate date]]];
