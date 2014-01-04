@@ -40,7 +40,7 @@
         NSLog(@"Access granted with %@", bearerToken);
         
         [twitter getUserTimelineWithScreenName:@"hfxtransit"
-                                         count:20
+                                         count:10
                                   successBlock:^(NSArray *statuses)
         {
             _statuses = [statuses copy];
@@ -79,7 +79,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 116;
 }
 
 #pragma mark UITableViewDataSource
@@ -105,10 +105,30 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"EEE MMM dd HH:mm:ss zzzzz yyyy"];
     NSDate *date = [formatter dateFromString:[status valueForKey:@"created_at"]];
-    [formatter setDateFormat:@"MMM MM"];
-    cell.date.text = [formatter stringFromDate:date];
+    [formatter setDateFormat:@"d MMM"];
+    NSTimeInterval dateDiff = [date timeIntervalSinceNow];
+    int min = (int)(dateDiff/-60);
+    int hours = (int)(dateDiff/-3600);
+    if (hours > 0)
+    {
+        if (hours < 24)
+        {
+            cell.date.text = [NSString stringWithFormat:@"%i h",hours];
+        }
+        else
+        {
+            cell.date.text = [formatter stringFromDate:date];
+        }
+    }
+    else
+    {
+        cell.date.text = [NSString stringWithFormat:@"%i m",min];
+    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [formatter release];
+    NSDictionary *user = [status objectForKey:@"user"];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[user valueForKey:@"profile_image_url_https"]]]];
+    cell.iconImage.image = image;
     return cell;
 }
 

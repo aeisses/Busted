@@ -19,14 +19,20 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (IBAction)touchRetweetButton:(id)sender
 {
-    // Drawing code
+    
 }
-*/
+
+- (IBAction)touchReplyButton:(id)sender
+{
+    
+}
+
+- (IBAction)touchFavouriteButton:(id)sender
+{
+    
+}
 
 - (void)dealloc
 {
@@ -34,5 +40,9 @@
     [_nameInfo release]; _nameInfo = nil;
     [_tweet release]; _tweet = nil;
     [_date release]; _date = nil;
+    [_iconImage release]; _iconImage = nil;
+    [_replyButton release]; _replyButton = nil;
+    [_retweetButton release]; _retweetButton = nil;
+    [_favouriteButton release]; _favouriteButton = nil;
 }
 @end
