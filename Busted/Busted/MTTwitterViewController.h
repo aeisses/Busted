@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ParentViewController.h"
 #import "TwitterCell.h"
+#import "STTwitter.h"
 
-@interface MTTwitterViewController : ParentViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MTTwitterViewController : ParentViewController <UITableViewDataSource, UITableViewDelegate, TwitterCellDelegate>
+{
+    STTwitterAPI *twitter;
+}
 
 @property (nonatomic, strong) NSArray *statuses;
 

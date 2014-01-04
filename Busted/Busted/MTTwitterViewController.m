@@ -7,7 +7,6 @@
 //
 
 #import "MTTwitterViewController.h"
-#import "STTwitter.h"
 
 @interface MTTwitterViewController ()
 
@@ -30,10 +29,10 @@
     // Do any additional setup after loading the view from its nib.
     [_twitterTable registerNib:[UINib nibWithNibName:@"TwitterCell" bundle:nil] forCellReuseIdentifier:@"TwitterCell"];
 
-    STTwitterAPI *twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@"4nCDEefDi54ErZd3qtpZ7g"
-                                                          consumerSecret:@"q4Fq2xLFFEh7TPfTTVPGGRivx99BD0Hjzou7HieECI"
-                                                              oauthToken:@"1969214929-dWw75ztFDOXTzlTvDxtkdpUZC2PuRSiEdYFkcZI"
-                                                        oauthTokenSecret:@"3HRCrTu0tN4M4IqpbRJMxk5YLNqDaA77ywibDTPH8wHvK"];
+    twitter = [STTwitterAPI twitterAPIWithOAuthConsumerKey:@"4nCDEefDi54ErZd3qtpZ7g"
+                                            consumerSecret:@"q4Fq2xLFFEh7TPfTTVPGGRivx99BD0Hjzou7HieECI"
+                                                oauthToken:@"1969214929-dWw75ztFDOXTzlTvDxtkdpUZC2PuRSiEdYFkcZI"
+                                          oauthTokenSecret:@"3HRCrTu0tN4M4IqpbRJMxk5YLNqDaA77ywibDTPH8wHvK"];
     
     [twitter verifyCredentialsWithSuccessBlock:^(NSString *bearerToken) {
         
@@ -93,6 +92,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TwitterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TwitterCell"];
+    cell.delegate = self;
     
     if(cell == nil) {
         cell = [[[TwitterCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TwitterCell"] autorelease];
@@ -100,11 +100,14 @@
     
     NSDictionary *status = [self.statuses objectAtIndex:indexPath.row];
     
+    cell.statusId = [status objectForKey:@"id_str"];
+    cell.replyStatusId = [status objectForKey:@"in_reply_to_user_id_str"];
+    cell.favourited = [status objectForKey:@"favorited"];
     cell.nameInfo.text = [NSString stringWithFormat:@"%@ @%@",[status valueForKeyPath:@"user.name"],[status valueForKeyPath:@"user.screen_name"]];
-    cell.tweet.text = [status valueForKey:@"text"];
+    cell.tweet.text = [status objectForKey:@"text"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"EEE MMM dd HH:mm:ss zzzzz yyyy"];
-    NSDate *date = [formatter dateFromString:[status valueForKey:@"created_at"]];
+    NSDate *date = [formatter dateFromString:[status objectForKey:@"created_at"]];
     [formatter setDateFormat:@"d MMM"];
     NSTimeInterval dateDiff = [date timeIntervalSinceNow];
     int min = (int)(dateDiff/-60);
@@ -130,6 +133,35 @@
     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[user valueForKey:@"profile_image_url_https"]]]];
     cell.iconImage.image = image;
     return cell;
+}
+
+#pragma TwitterCellDelegate
+- (void)touchReplyButton:(NSString*)statusId
+{
+    
+}
+
+- (void)touchRetweetButton:(NSString*)statusId
+{
+    [twitter postStatusRetweetWithID:statusId
+                        successBlock:^(NSDictionary *status)
+    {
+    }
+                          errorBlock:^(NSError *error)
+    {
+    }];
+}
+
+- (void)touchFavouriteButton:(NSString*)statusId isFavourite:(BOOL)favourite
+{
+    [twitter postFavoriteState:favourite
+                   forStatusID:statusId
+                  successBlock:^(NSDictionary *status)
+     {
+     }
+                    errorBlock:^(NSError *error)
+     {
+     }];
 }
 
 @end

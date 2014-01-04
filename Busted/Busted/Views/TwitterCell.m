@@ -21,17 +21,17 @@
 
 - (IBAction)touchRetweetButton:(id)sender
 {
-    
+    [_delegate touchRetweetButton:_statusId];
 }
 
 - (IBAction)touchReplyButton:(id)sender
 {
-    
+    [_delegate touchReplyButton:_statusId];
 }
 
 - (IBAction)touchFavouriteButton:(id)sender
 {
-    
+    [_delegate touchFavouriteButton:_statusId isFavourite:!_favourited];
 }
 
 - (void)dealloc
@@ -44,5 +44,8 @@
     [_replyButton release]; _replyButton = nil;
     [_retweetButton release]; _retweetButton = nil;
     [_favouriteButton release]; _favouriteButton = nil;
+    [_statusId release]; _statusId = nil;
+    [_replyStatusId release]; _replyStatusId = nil;
+    _delegate = nil;
 }
 @end
