@@ -32,6 +32,7 @@
     CADisplayLink *displayLink;
 //    BOOL skipLoop;
     BOOL isStarting;
+    BOOL hasExited;
 }
 
 @property (retain, nonatomic) Route *route;

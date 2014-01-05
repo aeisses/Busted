@@ -70,6 +70,7 @@ static id instance;
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     viewIsVisable = NO;
     int height = 225;
     if (IS_IPHONE_5)
@@ -143,11 +144,11 @@ static id instance;
     [sendingLink setFrameInterval:15];
     [sendingLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
     [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [super viewDidLoad];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
     viewIsVisable = YES;
     if (_isTracking) {
         _sendingImage.hidden = NO;
@@ -162,14 +163,13 @@ static id instance;
     [self.view addGestureRecognizer:_swipeUp];
     self.swipeUp.enabled = YES;
     [Flurry logEvent:@"Track_View_Did_Appear"];
-    [super viewDidAppear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     viewIsVisable = NO;
     [self.view removeGestureRecognizer:_swipeUp];
-    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning

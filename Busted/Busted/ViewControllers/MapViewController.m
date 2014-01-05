@@ -135,6 +135,7 @@ static id instance;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    hasExited = NO;
     [_mapView setShowsUserLocation:YES];
     _skipLoop =  NO;
     if (_isStops)
@@ -165,6 +166,7 @@ static id instance;
     {
         if (displayLink)
         {
+            hasExited = YES;
             [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
             [displayLink invalidate];
             [displayLink release];
@@ -196,7 +198,9 @@ static id instance;
         NSError *error = nil;
         // Need to add a check in for server errors, check status code.
         _isClearToSend = NO;
+        NSLog(@"Sending Request");
         NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+        NSLog(@"Got it");
         if (!error) {
             NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
             if (!error) {
@@ -214,7 +218,7 @@ static id instance;
                                                                            nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
                             [myAnnotations addObject:bus];
                             [bus release];
-                            if (displayLink == nil)
+                            if (displayLink == nil && !hasExited)
                             {
                                 dispatch_async(dispatch_get_main_queue(), ^{
                                     displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
