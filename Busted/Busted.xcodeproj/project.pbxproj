@@ -132,6 +132,12 @@
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		046D31F018233ECC0038B3E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 046D31EF18233ECC0038B3E3 /* MessageUI.framework */; };
 		047443F517F74EBB00436B4B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 047443F417F74EBB00436B4B /* CoreData.framework */; };
+		04ABAB1F187B81ED00EC1F36 /* favouriteTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB19187B81ED00EC1F36 /* favouriteTwitter.png */; };
+		04ABAB20187B81ED00EC1F36 /* favouriteTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB1A187B81ED00EC1F36 /* favouriteTwitter@2x.png */; };
+		04ABAB21187B81ED00EC1F36 /* replyTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB1B187B81ED00EC1F36 /* replyTwitter.png */; };
+		04ABAB22187B81ED00EC1F36 /* replyTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB1C187B81ED00EC1F36 /* replyTwitter@2x.png */; };
+		04ABAB23187B81ED00EC1F36 /* retweetTwitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB1D187B81ED00EC1F36 /* retweetTwitter.png */; };
+		04ABAB24187B81ED00EC1F36 /* retweetTwitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04ABAB1E187B81ED00EC1F36 /* retweetTwitter@2x.png */; };
 		04B947D11856A2DA005BF684 /* favourite-line-star-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B947CD1856A2DA005BF684 /* favourite-line-star-black.png */; };
 		04B947D21856A2DA005BF684 /* favourite-line-star-black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B947CE1856A2DA005BF684 /* favourite-line-star-black@2x.png */; };
 		04B947D31856A2DA005BF684 /* favourite-star-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B947CF1856A2DA005BF684 /* favourite-star-black.png */; };
@@ -365,6 +371,12 @@
 		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		046D31EF18233ECC0038B3E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		047443F417F74EBB00436B4B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		04ABAB19187B81ED00EC1F36 /* favouriteTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favouriteTwitter.png; sourceTree = "<group>"; };
+		04ABAB1A187B81ED00EC1F36 /* favouriteTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favouriteTwitter@2x.png"; sourceTree = "<group>"; };
+		04ABAB1B187B81ED00EC1F36 /* replyTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replyTwitter.png; sourceTree = "<group>"; };
+		04ABAB1C187B81ED00EC1F36 /* replyTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "replyTwitter@2x.png"; sourceTree = "<group>"; };
+		04ABAB1D187B81ED00EC1F36 /* retweetTwitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retweetTwitter.png; sourceTree = "<group>"; };
+		04ABAB1E187B81ED00EC1F36 /* retweetTwitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "retweetTwitter@2x.png"; sourceTree = "<group>"; };
 		04B947CD1856A2DA005BF684 /* favourite-line-star-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favourite-line-star-black.png"; sourceTree = "<group>"; };
 		04B947CE1856A2DA005BF684 /* favourite-line-star-black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favourite-line-star-black@2x.png"; sourceTree = "<group>"; };
 		04B947CF1856A2DA005BF684 /* favourite-star-black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favourite-star-black.png"; sourceTree = "<group>"; };
@@ -473,6 +485,7 @@
 		041902201800C93C00D79040 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				04ABAB18187B81ED00EC1F36 /* Twitter buttons */,
 				044C86421853E78D004B7E19 /* backgroundSmall.png */,
 				044C86431853E78D004B7E19 /* backgroundSmall@2x.png */,
 				044C85E51853D068004B7E19 /* background@2x.png */,
@@ -705,6 +718,19 @@
 				045DB893184BD85400B872EF /* STHTTPRequest.m */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		04ABAB18187B81ED00EC1F36 /* Twitter buttons */ = {
+			isa = PBXGroup;
+			children = (
+				04ABAB19187B81ED00EC1F36 /* favouriteTwitter.png */,
+				04ABAB1A187B81ED00EC1F36 /* favouriteTwitter@2x.png */,
+				04ABAB1B187B81ED00EC1F36 /* replyTwitter.png */,
+				04ABAB1C187B81ED00EC1F36 /* replyTwitter@2x.png */,
+				04ABAB1D187B81ED00EC1F36 /* retweetTwitter.png */,
+				04ABAB1E187B81ED00EC1F36 /* retweetTwitter@2x.png */,
+			);
+			path = "Twitter buttons";
 			sourceTree = "<group>";
 		};
 		04B947D51856A343005BF684 /* Menu */ = {
@@ -972,6 +998,7 @@
 			files = (
 				04B947D11856A2DA005BF684 /* favourite-line-star-black.png in Resources */,
 				041902761800FD5700D79040 /* onMyWayButton@2x.png in Resources */,
+				04ABAB20187B81ED00EC1F36 /* favouriteTwitter@2x.png in Resources */,
 				04C7C28417E3D7D9001A9981 /* InfoPlist.strings in Resources */,
 				044C85EB1853D296004B7E19 /* backGroundOnMyWay@2x.png in Resources */,
 				04B947F61856A344005BF684 /* shareMeButton@2x.png in Resources */,
@@ -980,6 +1007,7 @@
 				044C863D1853E506004B7E19 /* favourite-star@2x.png in Resources */,
 				043DAC111837D22E00129145 /* bus-icon@2x.png in Resources */,
 				044C85E21853CFDE004B7E19 /* buttonBackGround.png in Resources */,
+				04ABAB24187B81ED00EC1F36 /* retweetTwitter@2x.png in Resources */,
 				04E73FAA184D6F3B00E85B0E /* PrivacyPolicyViewController.xib in Resources */,
 				0407EB0B1845908100C91DDC /* AboutViewController.xib in Resources */,
 				04343A1D1825D8A700FAB62E /* Default.png in Resources */,
@@ -1009,6 +1037,7 @@
 				043DAC8F1837D5D200129145 /* FavouritesViewController.xib in Resources */,
 				04B947FD1856A344005BF684 /* trianglesstops@2x.png in Resources */,
 				04B947FC1856A344005BF684 /* triangleshareme@2x.png in Resources */,
+				04ABAB1F187B81ED00EC1F36 /* favouriteTwitter.png in Resources */,
 				044C85FC1853DBA5004B7E19 /* feedback@2x.png in Resources */,
 				043DAC941837D5D200129145 /* MapViewControllerSmall.xib in Resources */,
 				04B947EE1856A344005BF684 /* hamburgerMenuBackground@2x.png in Resources */,
@@ -1024,6 +1053,7 @@
 				043DAC8E1837D5D200129145 /* BusRoutesCollectionViewController.xib in Resources */,
 				044C85FE1853DBA5004B7E19 /* twitter@2x.png in Resources */,
 				043DAC501837D4DA00129145 /* FavouriteCell.xib in Resources */,
+				04ABAB23187B81ED00EC1F36 /* retweetTwitter.png in Resources */,
 				0407EB0618458B9000C91DDC /* MTTwitterViewControllerSmall.xib in Resources */,
 				044C85F11853D844004B7E19 /* sendingzoom@2x.png in Resources */,
 				044C86401853E554004B7E19 /* favourite-line-star.png in Resources */,
@@ -1033,6 +1063,7 @@
 				0407EB0D184590A900C91DDC /* AboutViewControllerSmall.xib in Resources */,
 				043DAC9B1837D5D200129145 /* TrackViewController.xib in Resources */,
 				044C86071853DF00004B7E19 /* stops@2x.png in Resources */,
+				04ABAB22187B81ED00EC1F36 /* replyTwitter@2x.png in Resources */,
 				041902561800C93C00D79040 /* sending.png in Resources */,
 				044C860B1853DF10004B7E19 /* StopsHeader.png in Resources */,
 				043DAC151837D22E00129145 /* busStop@2x.png in Resources */,
@@ -1072,6 +1103,7 @@
 				043DAC911837D5D200129145 /* LoadingScreenViewController.xib in Resources */,
 				043DAC381837D3D000129145 /* Icon.png in Resources */,
 				043DAC901837D5D200129145 /* FavouritesViewControllerSmall.xib in Resources */,
+				04ABAB21187B81ED00EC1F36 /* replyTwitter.png in Resources */,
 				04B947EC1856A344005BF684 /* favouritesButton.png in Resources */,
 				043DAC4E1837D4DA00129145 /* AboutScreen.xib in Resources */,
 				04B947F51856A344005BF684 /* shareMeButton.png in Resources */,
