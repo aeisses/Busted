@@ -44,6 +44,7 @@
 @property (assign, nonatomic) BOOL isTracking;
 @property (retain, nonatomic) NSDate *backGroundTime;
 @property (retain, nonatomic) IBOutlet UIButton *twitterButton;
+@property (retain, nonatomic) IBOutlet UILabel *routeLabel;
 
 + (TrackViewController*)sharedInstance;
 - (IBAction)touchTrackButton:(id)sender;

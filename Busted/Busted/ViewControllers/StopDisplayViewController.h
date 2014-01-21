@@ -35,6 +35,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *favouriteButton;
 @property (retain, nonatomic) NSArray *routes;
 @property (retain, nonatomic) id <StopDisplayViewControllerDelegate> delegate;
+@property (retain, nonatomic) UIActivityIndicatorView *activityMonitor;
 
 + (StopDisplayViewController*)sharedInstance;
 - (IBAction)touchHomeButton:(id)sender;

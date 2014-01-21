@@ -36,6 +36,8 @@ static id instance;
     if (self) {
         // Custom initialization
 //        expandedSections = [[NSMutableIndexSet alloc] init];
+        _activityMonitor = [[UIActivityIndicatorView alloc] initWithFrame:(CGRect){135,225,50,50}];
+        _activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     }
     instance = self;
     return instance;
@@ -50,6 +52,8 @@ static id instance;
         [alert show];
         [alert release];
     }
+    [_activityMonitor stopAnimating];
+    [_activityMonitor removeFromSuperview];
     [_tableView reloadData];
 }
 
@@ -98,6 +102,8 @@ static id instance;
     _tableView.delegate = self;
     [_tableView setDataSource:self];
     _tableView.backgroundColor = [UIColor clearColor];
+    [_tableView addSubview:_activityMonitor];
+    [_activityMonitor startAnimating];
     [super viewDidLoad];
 }
 
@@ -140,6 +146,7 @@ static id instance;
     [_homeButton release]; _homeButton = nil;
     [_tableView release]; _tableView = nil;
     [_favouriteButton release]; _favouriteButton = nil;
+    [_activityMonitor release]; _activityMonitor = nil;
     [super dealloc];
 }
 

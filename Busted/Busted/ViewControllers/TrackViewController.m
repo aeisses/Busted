@@ -153,9 +153,12 @@ static id instance;
     if (_isTracking) {
         _sendingImage.hidden = NO;
         _sendingZoom.hidden = NO;
+        _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",currentRoute];
+        [_routeLabel setNeedsDisplay];
     } else {
         _sendingImage.hidden = YES;
         _sendingZoom.hidden = YES;
+        _routeLabel.text = @"";
         currentRoute = 0;
     }
     
@@ -195,6 +198,7 @@ static id instance;
     [_homeButton release]; _homeButton = nil;
     [_swipeUp release]; _swipeUp = nil;
     [_locationString release]; _locationString = nil;
+    [_routeLabel release]; _routeLabel = nil;
     [frames release];
     _delegate = nil;
     if (uudi)
@@ -228,6 +232,7 @@ static id instance;
         _sendingZoom.hidden = YES;
         currentFrame = 0;
         [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
+        _routeLabel.text = @"";
     } else {
         if (IS_IPHONE_5)
         {
@@ -303,118 +308,124 @@ static id instance;
 {
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
     dispatch_async(networkQueue, ^{
-        NSError *error = nil;
+        @autoreleasepool {
+            NSError *error = nil;
 
-        NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%i",SANGSTERBASEURL,USERS,NEW,currentRoute];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-        [urlStr release];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        NSHTTPURLResponse *response;
-        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        if ([response statusCode] != 201) {
-            _isTracking = NO;
-            [_locationManager stopUpdatingLocation];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _trackButton.selected = NO;
-                _sendingImage.hidden = YES;
-                _connectedToServer.hidden = YES;
-                _sendingZoom.hidden = YES;
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                [alert show];
-                [alert release];
-            });
-        } else {
-            _isTracking = YES;
-            [_locationManager startUpdatingLocation];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _sendingImage.hidden = NO;
-                _connectedToServer.hidden = NO;
-                _sendingZoom.hidden = NO;
-                _trackButton.selected = YES;
-            });
-            NSDictionary *header = response.allHeaderFields;
-            if (_locationString) {
-                [_locationString release];
-                _locationString = nil;
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%i",SANGSTERBASEURL,USERS,NEW,currentRoute];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+            [urlStr release];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            if ([response statusCode] != 201) {
+                _isTracking = NO;
+                [_locationManager stopUpdatingLocation];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _trackButton.selected = NO;
+                    _sendingImage.hidden = YES;
+                    _connectedToServer.hidden = YES;
+                    _sendingZoom.hidden = YES;
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
+                });
+            } else {
+                _isTracking = YES;
+                [_locationManager startUpdatingLocation];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _sendingImage.hidden = NO;
+                    _connectedToServer.hidden = NO;
+                    _sendingZoom.hidden = NO;
+                    _trackButton.selected = YES;
+                });
+                NSDictionary *header = response.allHeaderFields;
+                if (_locationString) {
+                    [_locationString release];
+                    _locationString = nil;
+                }
+                _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
+                _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",currentRoute];
+                [_routeLabel setNeedsDisplay];
+                NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",currentRoute], nil];
+                [Flurry logEvent:@"Tracking_Location_For_Route" withParameters:routesParams timed:YES];
             }
-            _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
-            NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",currentRoute], nil];
-            [Flurry logEvent:@"Tracking_Location_For_Route" withParameters:routesParams timed:YES];
+            request = nil;
+            response = nil;
         }
-        request = nil;
-        response = nil;
     });
     dispatch_release(networkQueue);
 }
 
 - (void)sendLocationToServer
 {
-    if (![self isCurrentLocaitonInHRM]) {
-        if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive)
-        {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to be located in Halifax Regional Municipality, Nova Scotia Canada to send your location data to our server." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
-        }
-        _isTracking = NO;
-        [_locationManager stopUpdatingLocation];
-        return;
-    }
-    if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive)
-    {
-        
-    }
-    __block NSString *blockLocationString = _locationString;
-    __block CLLocation *blockCurrentLocation = _currentLocation;
-    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-    dispatch_async(networkQueue, ^{
-        NSError *error = nil;
-        NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
-                              [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"lat",
-                              [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"lng", nil];
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
-        [info release];
-        NSString *urlStr = [[NSString alloc] initWithString:blockLocationString];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-        [urlStr release];
-        [request setHTTPMethod:@"POST"];
-        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [request setHTTPBody:jsonData];
-        NSHTTPURLResponse *response;
-        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-        
-        if (!_isTracking)
-        {
+//    if (![self isCurrentLocaitonInHRM]) {
+//        if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive)
+//        {
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"You need to be located in Halifax Regional Municipality, Nova Scotia Canada to send your location data to our server." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//            [alert show];
+//            [alert release];
+//        }
+//        _isTracking = NO;
+//        [_locationManager stopUpdatingLocation];
+//        return;
+//    }
+//    if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive)
+//    {
+//        
+//    }
+    @autoreleasepool {
+        __block NSString *blockLocationString = _locationString;
+        __block CLLocation *blockCurrentLocation = _currentLocation;
+        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+        dispatch_async(networkQueue, ^{
+            NSError *error = nil;
+            NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                  [NSNumber numberWithFloat:blockCurrentLocation.coordinate.latitude], @"lat",
+                                  [NSNumber numberWithFloat:blockCurrentLocation.coordinate.longitude], @"lng", nil];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:info options:NSJSONWritingPrettyPrinted error:&error];
+            [info release];
+            NSString *urlStr = [[NSString alloc] initWithString:blockLocationString];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+            [urlStr release];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:jsonData];
+            NSHTTPURLResponse *response;
+            [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+            
+            if (!_isTracking)
+            {
+                jsonData = nil;
+                request = nil;
+                response = nil;
+                error  = nil;
+                return;
+            }
+            NSLog(@"Response StatusCode: %i",[response statusCode]);
+            if ([response statusCode] != 200) {
+                _isTracking = NO;
+                [_locationManager stopUpdatingLocation];
+                startTrackingTime = [NSDate date];
+                [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _trackButton.selected = NO;
+                    _sendingImage.hidden = YES;
+                    _connectedToServer.hidden = YES;
+                    _sendingZoom.hidden = YES;
+                    if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+                        [alert show];
+                        [alert release];
+                    }
+                });
+            }
             jsonData = nil;
             request = nil;
             response = nil;
-            error  = nil;
-            return;
-        }
-        NSLog(@"Response StatusCode: %i",[response statusCode]);
-        if ([response statusCode] != 200) {
-            _isTracking = NO;
-            [_locationManager stopUpdatingLocation];
-            startTrackingTime = [NSDate date];
-            [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                _trackButton.selected = NO;
-                _sendingImage.hidden = YES;
-                _connectedToServer.hidden = YES;
-                _sendingZoom.hidden = YES;
-                if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                    [alert show];
-                    [alert release];
-                }
-            });
-        }
-        jsonData = nil;
-        request = nil;
-        response = nil;
-    });
-    dispatch_release(networkQueue);
+        });
+        dispatch_release(networkQueue);
+    }
 }
 
 - (void)updatePoint
@@ -436,6 +447,9 @@ static id instance;
         [self sendLocationToServer];
         if (_backGroundTime && [_backGroundTime timeIntervalSinceNow] > 1800.0)
         {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The things timed out, it should not have" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
             [_locationManager stopUpdatingLocation];
             [Flurry setBackgroundSessionEnabled:NO];
             _backGroundTime = nil;
