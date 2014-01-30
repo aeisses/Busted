@@ -153,13 +153,13 @@ static id instance;
     if (_isTracking) {
         _sendingImage.hidden = NO;
         _sendingZoom.hidden = NO;
-        _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",currentRoute];
+        _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",_currentRoute];
         [_routeLabel setNeedsDisplay];
     } else {
         _sendingImage.hidden = YES;
         _sendingZoom.hidden = YES;
         _routeLabel.text = @"";
-        currentRoute = 0;
+        _currentRoute = 0;
     }
     
     _trackButton.selected = _isTracking;
@@ -258,16 +258,18 @@ static id instance;
         if(NSClassFromString(@"SLComposeViewController") != nil)
         {
             SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %i sharing my ride with #KNOWtime #apps4hfx",currentRoute]];
+            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %i sharing my ride with #KNOWtime #apps4hfx",_currentRoute]];
             [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
             [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
                 NSString *output;
                 switch (result) {
                     case SLComposeViewControllerResultDone:
+                    {
                         output = NSLocalizedStringFromTable(@"You succesfully posted to Twitter", @"ATLocalizable", @"");
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter" message:output delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
                         [alert show];
                         [alert release];
+                    }
                         break;
                     default:
                         break;
@@ -311,7 +313,7 @@ static id instance;
         @autoreleasepool {
             NSError *error = nil;
 
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%i",SANGSTERBASEURL,USERS,NEW,currentRoute];
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%i",SANGSTERBASEURL,USERS,NEW,_currentRoute];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [urlStr release];
             [request setHTTPMethod:@"POST"];
@@ -345,9 +347,9 @@ static id instance;
                     _locationString = nil;
                 }
                 _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
-                _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",currentRoute];
+                _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",_currentRoute];
                 [_routeLabel setNeedsDisplay];
-                NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",currentRoute], nil];
+                NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",_currentRoute], nil];
                 [Flurry logEvent:@"Tracking_Location_For_Route" withParameters:routesParams timed:YES];
             }
             request = nil;
@@ -403,23 +405,23 @@ static id instance;
                 return;
             }
             NSLog(@"Response StatusCode: %i",[response statusCode]);
-            if ([response statusCode] != 200) {
-                _isTracking = NO;
-                [_locationManager stopUpdatingLocation];
-                startTrackingTime = [NSDate date];
-                [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    _trackButton.selected = NO;
-                    _sendingImage.hidden = YES;
-                    _connectedToServer.hidden = YES;
-                    _sendingZoom.hidden = YES;
-                    if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-                        [alert show];
-                        [alert release];
-                    }
-                });
-            }
+//            if ([response statusCode] != 200) {
+//                _isTracking = NO;
+//                [_locationManager stopUpdatingLocation];
+//                startTrackingTime = [NSDate date];
+//                [Flurry endTimedEvent:@"Tracking_Location_For_Route" withParameters:nil];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    _trackButton.selected = NO;
+//                    _sendingImage.hidden = YES;
+//                    _connectedToServer.hidden = YES;
+//                    _sendingZoom.hidden = YES;
+//                    if (UIApplication.sharedApplication.applicationState == UIApplicationStateActive) {
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"It appears our server is having some trouble at the moment, please try back later." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
+//                        [alert show];
+//                        [alert release];
+//                    }
+//                });
+//            }
             jsonData = nil;
             request = nil;
             response = nil;
@@ -489,7 +491,7 @@ static id instance;
 
 - (void)setBusRoute:(NSString*)route
 {
-    currentRoute = [route integerValue];
+    _currentRoute = [route integerValue];
     [self createNewUser];
     [_collection dismissViewControllerAnimated:YES completion:^{}];
     _collection.delegate = nil;

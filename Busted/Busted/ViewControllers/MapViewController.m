@@ -115,6 +115,9 @@ static id instance;
         [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
         [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
         [self.view bringSubviewToFront:_favouriteButton];
+        _favouriteButton.layer.shadowOpacity = 1.0;
+        _favouriteButton.layer.shadowOffset = (CGSize){0,0};
+        _favouriteButton.layer.shadowRadius = 5.0;
         _favouriteButton.hidden = NO;
     }
     else
@@ -241,7 +244,7 @@ static id instance;
                             displayLink = nil;
                         }
                         dispatch_async(dispatch_get_main_queue(), ^{
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
                             [alert show];
                             [alert release];
                         });
@@ -275,7 +278,7 @@ static id instance;
                                 [displayLink release];
                                 displayLink = nil;
                             }
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"No buses can currently be found. This can be because no one is sending a signal or a server issue." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
                             [alert show];
                             [alert release];
                         });

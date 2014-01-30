@@ -22,7 +22,6 @@
 {
     CADisplayLink *sendingLink;
     NSString *uudi;
-    NSInteger currentRoute;
     int currentFrame;
     NSArray *frames;
     NSDate *startTrackingTime;
@@ -45,6 +44,7 @@
 @property (retain, nonatomic) NSDate *backGroundTime;
 @property (retain, nonatomic) IBOutlet UIButton *twitterButton;
 @property (retain, nonatomic) IBOutlet UILabel *routeLabel;
+@property (nonatomic, assign) NSInteger currentRoute;
 
 + (TrackViewController*)sharedInstance;
 - (IBAction)touchTrackButton:(id)sender;

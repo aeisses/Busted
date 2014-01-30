@@ -168,6 +168,10 @@
 		04D13F56181DF796002F0398 /* homeButtonSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F54181DF796002F0398 /* homeButtonSmall@2x.png */; };
 		04D13F58181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */; };
 		04D13F5A181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04D13F59181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg */; };
+		04D79ED0189898EC00E80B35 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D79ECC189898EC00E80B35 /* star.png */; };
+		04D79ED2189898EC00E80B35 /* top-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D79ECE189898EC00E80B35 /* top-bar.png */; };
+		04D79ED3189898EC00E80B35 /* route-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D79ECF189898EC00E80B35 /* route-button.png */; };
+		04D79ED5189899E300E80B35 /* full_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D79ED4189899E300E80B35 /* full_star.png */; };
 		04E3E9051821DF7E00A12F0A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E3E9041821DF7E00A12F0A /* Social.framework */; };
 		04E3E90B1821E4F700A12F0A /* aboutScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E90A1821E4F700A12F0A /* aboutScreen.jpg */; };
 		04E3E90E1821E59700A12F0A /* aboutScreenSmall@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 04E3E90C1821E59700A12F0A /* aboutScreenSmall@2x.jpg */; };
@@ -383,6 +387,10 @@
 		04D13F54181DF796002F0398 /* homeButtonSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homeButtonSmall@2x.png"; sourceTree = "<group>"; };
 		04D13F57181DF98D002F0398 /* backGroundOnMyWaySmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundOnMyWaySmall@2x.jpg"; sourceTree = "<group>"; };
 		04D13F59181DF9B5002F0398 /* backGroundTrackSmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "backGroundTrackSmall@2x.jpg"; sourceTree = "<group>"; };
+		04D79ECC189898EC00E80B35 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		04D79ECE189898EC00E80B35 /* top-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "top-bar.png"; sourceTree = "<group>"; };
+		04D79ECF189898EC00E80B35 /* route-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "route-button.png"; sourceTree = "<group>"; };
+		04D79ED4189899E300E80B35 /* full_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_star.png; sourceTree = "<group>"; };
 		04E3E9041821DF7E00A12F0A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		04E3E90A1821E4F700A12F0A /* aboutScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aboutScreen.jpg; sourceTree = "<group>"; };
 		04E3E90C1821E59700A12F0A /* aboutScreenSmall@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "aboutScreenSmall@2x.jpg"; sourceTree = "<group>"; };
@@ -440,6 +448,10 @@
 		041902201800C93C00D79040 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				04D79ECC189898EC00E80B35 /* star.png */,
+				04D79ED4189899E300E80B35 /* full_star.png */,
+				04D79ECE189898EC00E80B35 /* top-bar.png */,
+				04D79ECF189898EC00E80B35 /* route-button.png */,
 				043DABEA1837D22D00129145 /* bus-icon.png */,
 				043DABEB1837D22D00129145 /* bus-icon@2x.png */,
 				043DABEC1837D22D00129145 /* bus-number.png */,
@@ -854,7 +866,7 @@
 				ORGANIZATIONNAME = "Aaron Eisses";
 				TargetAttributes = {
 					04C7C27517E3D7D9001A9981 = {
-						DevelopmentTeam = U9SQ38R7DC;
+						DevelopmentTeam = LK2576GXKT;
 					};
 				};
 			};
@@ -894,11 +906,13 @@
 				04343A1D1825D8A700FAB62E /* Default.png in Resources */,
 				04C7C29617E3D7D9001A9981 /* ViewController.xib in Resources */,
 				043DAC971837D5D200129145 /* RoutesViewController.xib in Resources */,
+				04D79ED5189899E300E80B35 /* full_star.png in Resources */,
 				048D5A66183EB7EE00E8F05B /* trackMeButton@2x.png in Resources */,
 				04BF3CE2183EF47D005B2E44 /* trackMyBusButtonSmall.png in Resources */,
 				041902641800C93C00D79040 /* submitButtonHighlighted@2x.png in Resources */,
 				043DAC131837D22E00129145 /* bus-number@2x.png in Resources */,
 				041902681800CF6300D79040 /* aboutButton@2x.png in Resources */,
+				04D79ED2189898EC00E80B35 /* top-bar.png in Resources */,
 				04E3E90E1821E59700A12F0A /* aboutScreenSmall@2x.jpg in Resources */,
 				043DAC1E1837D22E00129145 /* full-star.png in Resources */,
 				043DAC961837D5D200129145 /* MenuViewControllerSmall.xib in Resources */,
@@ -957,6 +971,7 @@
 				04343A121825D74C00FAB62E /* introImage2Small@2x.jpg in Resources */,
 				04BF3CDA183EF3DB005B2E44 /* myFavouritesButtonSmall@2x.png in Resources */,
 				0419025B1800C93C00D79040 /* homeButton@2x.png in Resources */,
+				04D79ED0189898EC00E80B35 /* star.png in Resources */,
 				043DAC121837D22E00129145 /* bus-number.png in Resources */,
 				043DAC2E1837D22E00129145 /* sendingzoom.png in Resources */,
 				043DAC231837D22E00129145 /* Icon-Small@2x.png in Resources */,
@@ -966,6 +981,7 @@
 				048D5A76183EB8D900E8F05B /* trackMyBusButton@2x.png in Resources */,
 				041902511800C93C00D79040 /* downToUp@2x.png in Resources */,
 				043DAC511837D4DA00129145 /* RouteSelectCell.xib in Resources */,
+				04D79ED3189898EC00E80B35 /* route-button.png in Resources */,
 				041902771800FD5700D79040 /* onMyWayHighlighted@2x.png in Resources */,
 				04BF3CD6183EF2A5005B2E44 /* trackMeButtonSmall@2x.png in Resources */,
 				043DAC321837D22E00129145 /* StopsHeader.png in Resources */,
@@ -1153,6 +1169,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1179,6 +1196,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02F12FA8-C423-4BBF-B682-3F200820D3C6";
+				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
