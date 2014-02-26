@@ -404,7 +404,7 @@ static id instance;
                 error  = nil;
                 return;
             }
-            NSLog(@"Response StatusCode: %i",[response statusCode]);
+//            NSLog(@"Response StatusCode: %i",[response statusCode]);
 //            if ([response statusCode] != 200) {
 //                _isTracking = NO;
 //                [_locationManager stopUpdatingLocation];

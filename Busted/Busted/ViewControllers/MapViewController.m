@@ -103,11 +103,11 @@ static id instance;
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
     [_locationManager startUpdatingLocation];
-    [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
     if (_isStops)
@@ -133,7 +133,12 @@ static id instance;
     _mapView.zoomEnabled = YES;
     [self.view bringSubviewToFront:_homeButton];
     _skipLoop = NO;
-    [super viewDidLoad];
+    if (_currentLocation)
+    {
+        [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+    } else {
+        [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -153,12 +158,6 @@ static id instance;
                 [_mapView addAnnotation:stop];
                 [_stops addObject:stop];
             }
-        }
-        if (_currentLocation)
-        {
-            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
-        } else {
-            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
         }
     }
 }
@@ -414,20 +413,43 @@ static id instance;
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
     if (!_isStops) {
-        for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
+        if ([self isToBigZoom])
         {
-            if ([stop isInsideSquare:_mapView.region])
+//            for (StopAnnotation *stop in _stops)
+//            {
+//                [_mapView removeAnnotation:stop];
+//                [_stops removeObject:stop];
+//            }
+            [_mapView removeAnnotations:_stops];
+        }
+        else
+        {
+            for (StopAnnotation *stop in [WebApiInterface sharedInstance].stops)
             {
-                if (![_stops containsObject:stop]) {
-                    [_mapView addAnnotation:stop];
-                    [_stops addObject:stop];
+                if ([stop isInsideSquare:_mapView.region])
+                {
+                    if (![_stops containsObject:stop])
+                    {
+                        [_mapView addAnnotation:stop];
+                        [_stops addObject:stop];
+                    }
                 }
-            } else if ([_stops containsObject:stop]) {
-                [_mapView removeAnnotation:stop];
-                [_stops removeObject:stop];
+                else if ([_stops containsObject:stop])
+                {
+                    [_mapView removeAnnotation:stop];
+                    [_stops removeObject:stop];
+                }
             }
         }
     }
+}
+
+- (BOOL)isToBigZoom
+{
+//    NSLog(@"Span Lat: %f Long: %f",_mapView.region.span.latitudeDelta,_mapView.region.span.longitudeDelta);
+    if (_mapView.region.span.latitudeDelta > 0.030 || _mapView.region.span.longitudeDelta > 0.027)
+        return YES;
+    return NO;
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view
