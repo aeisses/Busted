@@ -415,11 +415,6 @@ static id instance;
     if (!_isStops) {
         if ([self isToBigZoom])
         {
-//            for (StopAnnotation *stop in _stops)
-//            {
-//                [_mapView removeAnnotation:stop];
-//                [_stops removeObject:stop];
-//            }
             [_mapView removeAnnotations:_stops];
         }
         else
