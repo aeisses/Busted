@@ -63,7 +63,7 @@ static NSString *const kAllowTracking = @"allowTracking";
     if ([TrackViewController sharedInstance].isTracking)
     {
         [[TrackViewController sharedInstance].displayLink setPaused:YES];
-//        [[TrackViewController sharedInstance].locationManager startMonitoringSignificantLocationChanges];
+        [[TrackViewController sharedInstance].locationManager startMonitoringSignificantLocationChanges];
         [Flurry setBackgroundSessionEnabled:YES];
     }
     if ([_navController.topViewController isKindOfClass:[MapViewController class]])

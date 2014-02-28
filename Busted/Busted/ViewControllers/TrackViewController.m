@@ -324,6 +324,7 @@ static id instance;
                 _isTracking = NO;
                 [_locationManager stopUpdatingLocation];
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    [self sendLocalNotification];
                     _trackButton.selected = NO;
                     _sendingImage.hidden = YES;
                     _connectedToServer.hidden = YES;
@@ -449,9 +450,7 @@ static id instance;
         [self sendLocationToServer];
         if (_backGroundTime && [_backGroundTime timeIntervalSinceNow] > 1800.0)
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"The things timed out, it should not have" delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil];
-            [alert show];
-            [alert release];
+            [self sendLocalNotification];
             [_locationManager stopUpdatingLocation];
             [Flurry setBackgroundSessionEnabled:NO];
             _backGroundTime = nil;
@@ -515,6 +514,17 @@ static id instance;
             _isTracking = YES;
         }
     }
+}
+
+- (void)sendLocalNotification
+{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    if (notification == nil)
+        return;
+    notification.alertBody = @"Sharing of your bus route has stopped. Please confirm this is expected.";
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 
 @end
