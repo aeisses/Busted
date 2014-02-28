@@ -130,6 +130,7 @@
 		044EE46B1829B09500685CEE /* libFlurry_4.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */; };
 		044EE46D1829B0DD00685CEE /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46C1829B0DD00685CEE /* Security.framework */; };
 		044EE46F1829B0E900685CEE /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044EE46E1829B0E900685CEE /* AdSupport.framework */; };
+		0453508818C01EE6008E267A /* cellBackGroundGreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0453508718C01EE6008E267A /* cellBackGroundGreen@2x.png */; };
 		04602CE217EF6C2E002BE30D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */; };
 		046D31E318231B330038B3E3 /* buttonGround.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E118231B330038B3E3 /* buttonGround.jpg */; };
 		046D31E418231B330038B3E3 /* buttonGround@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 046D31E218231B330038B3E3 /* buttonGround@2x.jpg */; };
@@ -343,6 +344,7 @@
 		044EE46A1829B09500685CEE /* libFlurry_4.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.0.a; sourceTree = "<group>"; };
 		044EE46C1829B0DD00685CEE /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		044EE46E1829B0E900685CEE /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		0453508718C01EE6008E267A /* cellBackGroundGreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cellBackGroundGreen@2x.png"; sourceTree = "<group>"; };
 		04602CE117EF6C2E002BE30D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		046D31E118231B330038B3E3 /* buttonGround.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = buttonGround.jpg; sourceTree = "<group>"; };
 		046D31E218231B330038B3E3 /* buttonGround@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "buttonGround@2x.jpg"; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 		041902371800C93C00D79040 /* BusNumberPage */ = {
 			isa = PBXGroup;
 			children = (
+				0453508718C01EE6008E267A /* cellBackGroundGreen@2x.png */,
 				046D31E518231B3E0038B3E3 /* backGround.jpg */,
 				046D31E118231B330038B3E3 /* buttonGround.jpg */,
 				046D31E218231B330038B3E3 /* buttonGround@2x.jpg */,
@@ -941,6 +944,7 @@
 				0419024D1800C93C00D79040 /* Default-568h@2x.png in Resources */,
 				04D13F52181DF479002F0398 /* trackMyBusButtonSmall@2x.png in Resources */,
 				043DAC351837D22E00129145 /* twitterButton@2x.png in Resources */,
+				0453508818C01EE6008E267A /* cellBackGroundGreen@2x.png in Resources */,
 				043DAC391837D3D000129145 /* Icon@2x.png in Resources */,
 				043DAC2D1837D22E00129145 /* routes@2x.png in Resources */,
 				043DAC1A1837D22E00129145 /* explaination.png in Resources */,

@@ -22,6 +22,7 @@
 @property (retain, nonatomic) UICollectionView *collectionView;
 @property (retain, nonatomic) id <BusRouteCollectionViewControllerDelegate> delegate;
 @property (retain, nonatomic) IBOutlet UIButton *exitButton;
+@property (retain, nonatomic) NSArray *activeRoutesArray;
 
 - (IBAction)touchExitButton:(id)sender;
 

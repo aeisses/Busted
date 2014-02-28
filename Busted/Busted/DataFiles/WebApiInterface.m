@@ -219,6 +219,26 @@ static id instance;
     [contentUrl release];
 }
 
+- (NSArray*)getActiveRoutes
+{
+    NSString *urlStr = [[NSString alloc] initWithString:@"http://api.knowtime.ca/alpha_1/estimates/activelines"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+    [urlStr release];
+    NSError *error = nil;
+    NSArray *returnArray = nil;
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:&error];
+    if (!error) {
+        NSObject *json = [NSJSONSerialization JSONObjectWithData:response options:kNilOptions error:nil];
+        if (!error) {
+            if ([json isKindOfClass:[NSArray class]])
+            {
+                returnArray = (NSArray*)json;
+            }
+        }
+    }
+    return returnArray;
+}
+
 - (NSArray*)getFavouriteStops
 {
     NSManagedObjectContext *context = [self createNewManagedObjectContext];

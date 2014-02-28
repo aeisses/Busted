@@ -19,6 +19,11 @@
     return self;
 }
 
+- (void)setToRed
+{
+    _backGround.image = [UIImage imageNamed:@"cellBackGroundGreen"];
+}
+
 - (void)dealloc
 {
     [_backGround release]; _backGround = nil;

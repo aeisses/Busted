@@ -7,6 +7,7 @@
 //
 
 #import "BusRoutesCollectionViewController.h"
+#import "WebApiInterface.h"
 
 @interface BusRoutesCollectionViewController ()
 
@@ -45,6 +46,13 @@
     [imageView release];
     
     [self.view addSubview:_collectionView];
+    _activeRoutesArray = [NSArray new];
+    __block typeof(self) blockSelf = self;
+    dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+    dispatch_async(networkQueue, ^{
+        blockSelf.activeRoutesArray = [[WebApiInterface sharedInstance] getActiveRoutes];
+        [blockSelf.collectionView reloadData];
+    });
     [super viewDidLoad];
 }
 
@@ -80,6 +88,10 @@
     RouteSelectCell *cell = [cv dequeueReusableCellWithReuseIdentifier:@"cellView" forIndexPath:indexPath];
     cell.number.text = ((Route*)[_routes objectAtIndex:indexPath.row]).shortName;
     cell.number.accessibilityLabel = ((Route*)[_routes objectAtIndex:indexPath.row]).shortName;
+    if ([_activeRoutesArray containsObject:((Route*)[_routes objectAtIndex:indexPath.row]).shortName])
+    {
+        [cell setToRed];
+    }
     return cell;
 }
 

@@ -13,4 +13,6 @@
 @property (retain, nonatomic) IBOutlet UIImageView *backGround;
 @property (retain, nonatomic) IBOutlet UILabel *number;
 
+- (void)setToRed;
+
 @end

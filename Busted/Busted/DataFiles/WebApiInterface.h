@@ -47,6 +47,7 @@
 - (NSArray*)requestAllRoutes;
 - (void)fetchAllRoutes;
 - (void)fetchAllStops;
+- (NSArray*)getActiveRoutes;
 - (NSArray*)getFavouriteStops;
 - (NSArray*)getFavouriteRoutes;
 - (void)setFavourite:(BOOL)favourite forStop:(NSNumber*)code;
