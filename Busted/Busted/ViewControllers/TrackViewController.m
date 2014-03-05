@@ -448,12 +448,18 @@ static id instance;
     if (UIApplication.sharedApplication.applicationState != UIApplicationStateActive && _isTracking)
     {
         [self sendLocationToServer];
-        if (_backGroundTime && [_backGroundTime timeIntervalSinceNow] > 1800.0)
+        if (_backGroundTime && [_backGroundTime timeIntervalSinceNow] < -1800.0)
         {
             [self sendLocalNotification];
             [_locationManager stopUpdatingLocation];
             [Flurry setBackgroundSessionEnabled:NO];
+            _isTracking = NO;
             _backGroundTime = nil;
+            _trackButton.selected = NO;
+            _sendingImage.hidden = YES;
+            _connectedToServer.hidden = YES;
+            _sendingZoom.hidden = YES;
+            _routeLabel.text = @"";
         }
     }
 }
@@ -525,6 +531,7 @@ static id instance;
     notification.soundName = UILocalNotificationDefaultSoundName;
     
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    [notification release];
 }
 
 @end
