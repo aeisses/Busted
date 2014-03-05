@@ -51,7 +51,9 @@
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
     dispatch_async(networkQueue, ^{
         blockSelf.activeRoutesArray = [[WebApiInterface sharedInstance] getActiveRoutes];
-        [blockSelf.collectionView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [blockSelf.collectionView reloadData];
+        });
     });
     [super viewDidLoad];
 }

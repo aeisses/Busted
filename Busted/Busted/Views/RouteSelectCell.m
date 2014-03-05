@@ -19,6 +19,12 @@
     return self;
 }
 
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    _backGround.image = [UIImage imageNamed:@"cellBackGround"];
+}
+
 - (void)setToRed
 {
     _backGround.image = [UIImage imageNamed:@"cellBackGroundGreen"];
