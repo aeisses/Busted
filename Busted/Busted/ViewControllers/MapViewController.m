@@ -9,10 +9,16 @@
 #import "MapViewController.h"
 #import "WebApiInterface.h"
 
-@interface MapViewController (PrivateMethods)
+@interface MapViewController ()
+{
+    NSMutableArray *cellToThread;
+}
 - (void)startService;
 - (void)pollServer;
 - (void)frameIntervalLoop:(CADisplayLink *)sender;
+
+@property (retain, nonatomic) NSOperationQueue *queue;
+
 @end
 
 @implementation MapViewController
@@ -41,6 +47,7 @@ static id instance;
         // Custom initialization
         isStarting = NO;
         _isClearToSend = NO;
+        cellToThread = [[NSMutableArray alloc] init];
     }
     instance = self;
     return instance;
@@ -81,6 +88,8 @@ static id instance;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;
     [_favouriteButton release]; _favouriteButton = nil;
+    [_queue release]; _queue = nil;
+    [cellToThread release]; cellToThread = nil;
     [super dealloc];
 }
 
@@ -107,6 +116,7 @@ static id instance;
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     _locationManager.delegate = self;
+    _queue = [[NSOperationQueue alloc] init];
     [_locationManager startUpdatingLocation];
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
@@ -174,6 +184,14 @@ static id instance;
             [displayLink release];
             displayLink = nil;
         }
+        if ([cellToThread count] > 0)
+        {
+            for (NSOperation *operation in cellToThread)
+            {
+                [operation cancel];
+                [cellToThread removeObject:operation];
+            }
+        }
         [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
 }
@@ -193,8 +211,11 @@ static id instance;
 - (void)pollServer
 {
     @autoreleasepool {
-        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-        dispatch_async(networkQueue, ^{
+        NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+        __block NSBlockOperation *blockOperation = operation;
+        [operation addExecutionBlock:^{
+//        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
+//        dispatch_async(networkQueue, ^{
             NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
@@ -242,11 +263,15 @@ static id instance;
                             [displayLink release];
                             displayLink = nil;
                         }
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
-                            [alert show];
-                            [alert release];
-                        });
+                        NSLog(@"Two");
+                        if (![blockOperation isCancelled])
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                                [alert show];
+                                [alert release];
+                            });
+                        }
                         [myAnnotations release];
                         myAnnotations = nil;
                     } else {
@@ -269,27 +294,34 @@ static id instance;
                     if (!_skipLoop)
                     {
                         _skipLoop = YES;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            if (displayLink)
-                            {
-                                [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-                                [displayLink invalidate];
-                                [displayLink release];
-                                displayLink = nil;
-                            }
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
-                            [alert show];
-                            [alert release];
-                        });
-                        
+                        if (![blockOperation isCancelled])
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                if (displayLink)
+                                {
+                                    [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                                    [displayLink invalidate];
+                                    [displayLink release];
+                                    displayLink = nil;
+                                }
+                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+                                [alert show];
+                                [alert release];
+                            });
+                        }
                     }
                 }
             }
             [request release];
             [url release];
             [urlStr release];
-        });
-        dispatch_release(networkQueue);
+//        });
+        }];
+        [_queue addOperation:operation];
+        [cellToThread addObject:operation];
+        [operation release];
+//        operation = nil;
+         //        dispatch_release(networkQueue);
     }
 }
 

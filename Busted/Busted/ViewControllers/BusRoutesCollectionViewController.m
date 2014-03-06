@@ -55,6 +55,7 @@
             [blockSelf.collectionView reloadData];
         });
     });
+    dispatch_release(networkQueue);
     [super viewDidLoad];
 }
 
