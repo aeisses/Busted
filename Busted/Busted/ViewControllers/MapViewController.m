@@ -186,7 +186,7 @@ static id instance;
         }
         if ([cellToThread count] > 0)
         {
-            for (NSOperation *operation in cellToThread)
+            for (NSBlockOperation *operation in cellToThread)
             {
                 [operation cancel];
                 [cellToThread removeObject:operation];
@@ -315,6 +315,7 @@ static id instance;
             [request release];
             [url release];
             [urlStr release];
+            [cellToThread removeObject:blockOperation];
 //        });
         }];
         [_queue addOperation:operation];
@@ -386,7 +387,7 @@ static id instance;
         if (annotationView == nil) {
             annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]] autorelease];
             annotationView.enabled = YES;
-            annotationView.canShowCallout = YES;
+//            annotationView.canShowCallout = YES;
             NSString *imageName = @"bus-icon.png";
             annotationView.image = [UIImage imageNamed:imageName];//here we use a nice image instead of the default pins
         } else {
