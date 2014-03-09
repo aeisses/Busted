@@ -27,7 +27,7 @@
 
 - (void)setToRed
 {
-    _backGround.image = [UIImage imageNamed:@"cellBackGroundGreen"];
+    _backGround.image = [UIImage imageNamed:@"cellBackGroundSelected"];
 }
 
 - (void)dealloc
