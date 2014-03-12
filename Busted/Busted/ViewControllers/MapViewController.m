@@ -55,6 +55,7 @@ static id instance;
 
 - (void)dealloc
 {
+    [super dealloc];
     [_mapView removeOverlays:_mapView.overlays];
     [_mapView removeAnnotations:_mapView.annotations];
     [_mapView removeFromSuperview];
@@ -90,7 +91,6 @@ static id instance;
     [_favouriteButton release]; _favouriteButton = nil;
     [_queue release]; _queue = nil;
     [cellToThread release]; cellToThread = nil;
-    [super dealloc];
 }
 
 - (void)showRouteAlert
@@ -153,6 +153,7 @@ static id instance;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     hasExited = NO;
     [_mapView setShowsUserLocation:YES];
     _skipLoop =  NO;
@@ -174,6 +175,7 @@ static id instance;
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     if (_isStops)
     {
         if (displayLink)
@@ -189,8 +191,8 @@ static id instance;
             for (NSBlockOperation *operation in cellToThread)
             {
                 [operation cancel];
-                [cellToThread removeObject:operation];
             }
+            [cellToThread removeAllObjects];
         }
         [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
@@ -233,20 +235,23 @@ static id instance;
                             NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                             if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                             {
-                                BusAnnotation *bus = [[BusAnnotation alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
-                                                                                     latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
-                                                                                    longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
-                                                                               timeToNextStop:[dic valueForKey:@"estimateArrival"]
-                                                                               nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
-                                [myAnnotations addObject:bus];
-                                [bus release];
-                                if (displayLink == nil && !hasExited)
+                                if (![operation isCancelled])
                                 {
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
-                                        [displayLink setFrameInterval:60];
-                                        [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-                                    });
+                                    BusAnnotation *bus = [[BusAnnotation alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
+                                                                                         latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
+                                                                                        longitude:[(NSNumber*)[location objectForKey:@"lng"] floatValue]
+                                                                                   timeToNextStop:[dic valueForKey:@"estimateArrival"]
+                                                                                   nextStopNumber:[(NSNumber*)[dic valueForKey:@"nextStopNumber"] integerValue]];
+                                    [myAnnotations addObject:bus];
+                                    [bus release];
+                                    if (displayLink == nil && !hasExited)
+                                    {
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            displayLink = [[CADisplayLink displayLinkWithTarget:self selector:@selector(frameIntervalLoop:)] retain];
+                                            [displayLink setFrameInterval:60];
+                                            [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                                        });
+                                    }
                                 }
                             }
                         }
@@ -263,8 +268,7 @@ static id instance;
                             [displayLink release];
                             displayLink = nil;
                         }
-                        NSLog(@"Two");
-                        if (![blockOperation isCancelled])
+                        if (![operation isCancelled])
                         {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
@@ -284,17 +288,20 @@ static id instance;
                         _annotations = [[NSArray alloc] initWithArray:myAnnotations];
                         [myAnnotations release];
                         myAnnotations = nil;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [_mapView addAnnotations:_annotations];
-                            [_mapView setNeedsDisplay]; // This might not be needed
-                        });
+                        if (![operation isCancelled])
+                        {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [_mapView addAnnotations:_annotations];
+                                [_mapView setNeedsDisplay]; // This might not be needed
+                            });
+                        }
                     }
                 } else {
                     _isClearToSend = YES;
                     if (!_skipLoop)
                     {
                         _skipLoop = YES;
-                        if (![blockOperation isCancelled])
+                        if (![operation isCancelled])
                         {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 if (displayLink)
@@ -315,7 +322,7 @@ static id instance;
             [request release];
             [url release];
             [urlStr release];
-            [cellToThread removeObject:blockOperation];
+            [cellToThread removeObject:operation];
 //        });
         }];
         [_queue addOperation:operation];

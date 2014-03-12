@@ -31,7 +31,8 @@
 
 - (void)viewDidLoad
 {
-   NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ident" ascending:YES];
+    [super viewDidLoad];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"ident" ascending:YES];
     _routes = [[[_delegate getBusRoutes] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]] retain];
 
     UICollectionViewFlowLayout *layout= [[UICollectionViewFlowLayout alloc] init];
@@ -47,16 +48,15 @@
     
     [self.view addSubview:_collectionView];
     _activeRoutesArray = [NSArray new];
-    __block typeof(self) blockSelf = self;
+//    __block typeof(self) blockSelf = self;
     dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
     dispatch_async(networkQueue, ^{
-        blockSelf.activeRoutesArray = [[WebApiInterface sharedInstance] getActiveRoutes];
+        self.activeRoutesArray = [[WebApiInterface sharedInstance] getActiveRoutes];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [blockSelf.collectionView reloadData];
+            [self.collectionView reloadData];
         });
     });
     dispatch_release(networkQueue);
-    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning
