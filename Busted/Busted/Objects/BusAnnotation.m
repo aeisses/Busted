@@ -29,7 +29,7 @@
             _title = @"";
         }
         if (!nextStop == 0) {
-            _subtitle = [[NSString alloc] initWithFormat:@"Next Stop: %i",nextStop];
+            _subtitle = [[NSString alloc] initWithFormat:@"Next Stop: %li",(long)nextStop];
         } else {
             _subtitle = @"";
         }

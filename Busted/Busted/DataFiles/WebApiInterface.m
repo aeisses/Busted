@@ -11,7 +11,7 @@
 #import "StopTimes.h"
 #import "MapViewController.h"
 
-static NSString *const JSONDirectoryPath = @"/RawJson";
+//static NSString *const JSONDirectoryPath = @"/RawJson";
 
 @interface WebApiInterface (PrivateMethods)
 - (void)createRoutesRecordWithRoute:(NSArray*)routesArray context:(NSManagedObjectContext*)context;
@@ -320,7 +320,7 @@ static id instance;
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%i/%@", SANGSTERBASEURL, STOPTIME, [ident integerValue], [formatter stringFromDate:[NSDate date]]];
+    NSString *contentUrl = [[NSString alloc] initWithFormat:@"%@%@%li/%@", SANGSTERBASEURL, STOPTIME, (long)[ident integerValue], [formatter stringFromDate:[NSDate date]]];
     [formatter release];
     NSURL *url = [[NSURL alloc] initWithString:contentUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

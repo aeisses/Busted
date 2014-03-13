@@ -153,7 +153,7 @@ static id instance;
     if (_isTracking) {
         _sendingImage.hidden = NO;
         _sendingZoom.hidden = NO;
-        _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",_currentRoute];
+        _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %li",(long)_currentRoute];
         [_routeLabel setNeedsDisplay];
     } else {
         _sendingImage.hidden = YES;
@@ -258,7 +258,7 @@ static id instance;
         if(NSClassFromString(@"SLComposeViewController") != nil)
         {
             SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %i sharing my ride with #KNOWtime #apps4hfx",_currentRoute]];
+            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %lii sharing my ride with #KNOWtime #apps4hfx",(long)_currentRoute]];
             [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
             [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
                 NSString *output;
@@ -313,7 +313,7 @@ static id instance;
         @autoreleasepool {
             NSError *error = nil;
 
-            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%i",SANGSTERBASEURL,USERS,NEW,_currentRoute];
+            NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@%li",SANGSTERBASEURL,USERS,NEW,(long)_currentRoute];
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
             [urlStr release];
             [request setHTTPMethod:@"POST"];
@@ -348,9 +348,9 @@ static id instance;
                     _locationString = nil;
                 }
                 _locationString = [[NSString alloc] initWithString:[[header valueForKey:@"Location"] stringByReplacingOccurrencesOfString:@"buserver" withString:@"api"]];
-                _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %i",_currentRoute];
+                _routeLabel.text = [NSString stringWithFormat:@"Sharing route: %li",(long)_currentRoute];
                 [_routeLabel setNeedsDisplay];
-                NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",_currentRoute], nil];
+                NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%li",(long)_currentRoute], nil];
                 [Flurry logEvent:@"Tracking_Location_For_Route" withParameters:routesParams timed:YES];
             }
             request = nil;

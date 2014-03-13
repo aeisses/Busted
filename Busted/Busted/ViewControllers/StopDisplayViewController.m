@@ -65,7 +65,7 @@ static id instance;
     }
     _busStop = [busStop retain];
     [[WebApiInterface sharedInstance] getRouteForIdent:_busStop.code];
-    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%i",[_busStop.code integerValue]], nil];
+    NSDictionary *routesParams = [NSDictionary dictionaryWithObjectsAndKeys:@"Route", [NSString stringWithFormat:@"%li",(long)[_busStop.code integerValue]], nil];
     [Flurry logEvent:@"Stops_View_Button_Pressed" withParameters:routesParams];
 }
 
@@ -200,7 +200,7 @@ static id instance;
     NSDateFormatter *currentTimeFormatter = [[NSDateFormatter alloc] init];
     [currentTimeFormatter setDateFormat:@"yyyy-MM-dd"];
 
-    int counter = -1;
+    long counter = -1;
     for (StopTimes *times in route.times)
     {
         NSDate *stopDate = [self getStopDate:times.departure withFromatter:formatter andFormatter:currentTimeFormatter];

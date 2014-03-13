@@ -214,7 +214,7 @@ static id instance;
 {
     @autoreleasepool {
         NSBlockOperation *operation = [[NSBlockOperation alloc] init];
-        __block NSBlockOperation *blockOperation = operation;
+//        __block NSBlockOperation *blockOperation = operation;
         [operation addExecutionBlock:^{
 //        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
 //        dispatch_async(networkQueue, ^{
@@ -390,9 +390,9 @@ static id instance;
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     if ([annotation isKindOfClass:[BusAnnotation class]]) {
         BusAnnotation *bus = (BusAnnotation*)annotation;
-        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]];
+        MKAnnotationView *annotationView = (MKAnnotationView *) [_mapView dequeueReusableAnnotationViewWithIdentifier:[NSString stringWithFormat:@"%li%@",(long)bus.num,bus.title]];
         if (annotationView == nil) {
-            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%i%@",bus.num,bus.title]] autorelease];
+            annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:[NSString stringWithFormat:@"%li%@",(long)bus.num,bus.title]] autorelease];
             annotationView.enabled = YES;
 //            annotationView.canShowCallout = YES;
             NSString *imageName = @"bus-icon.png";
