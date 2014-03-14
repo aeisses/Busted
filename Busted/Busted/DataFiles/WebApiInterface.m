@@ -424,7 +424,7 @@ static id instance;
                                                                                         failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON)
     {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving Content"
-                                                     message:@"To get the path the bus will travel requires internet access. Please ensure your internet is enabled."
+                                                     message:@"KNOWtime needs web access to function properly. Please ensure your Internet access is enabled on your device."
                                                     delegate:nil
                                            cancelButtonTitle:@"Thanks"
                                            otherButtonTitles:nil];

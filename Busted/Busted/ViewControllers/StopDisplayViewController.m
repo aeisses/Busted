@@ -48,7 +48,7 @@ static id instance;
     _routes = [[NSArray alloc] initWithArray:routes];
     if (_routes && [_routes count] == 0)
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"There are currently no buses servicing this stop at the moment." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"There are no buses scheduled to service this stop today at this time." delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
         [alert show];
         [alert release];
     }
