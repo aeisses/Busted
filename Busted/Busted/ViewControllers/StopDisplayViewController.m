@@ -170,6 +170,8 @@ static id instance;
     if (!_routes)
         return nil;
     StopSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StopSelectCell" forIndexPath:indexPath];
+    if (_routes.count < indexPath.row) // Check to see if 
+        return nil;
     RouteWithTime *route = [_routes objectAtIndex:indexPath.row];
     cell.routeNumber.text = route.shortName;
     cell.routeName.text = route.longName;

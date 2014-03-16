@@ -258,7 +258,7 @@ static id instance;
         if(NSClassFromString(@"SLComposeViewController") != nil)
         {
             SLComposeViewController *mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %lii sharing my ride with #KNOWtime #apps4hfx",(long)_currentRoute]];
+            [mySLComposerSheet setInitialText:[NSString stringWithFormat:@"I'm on bus %li sharing my ride with #KNOWtime #apps4hfx",(long)_currentRoute]];
             [mySLComposerSheet addImage:[UIImage imageNamed:@"icon.png"]];
             [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
                 NSString *output;
@@ -527,7 +527,7 @@ static id instance;
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     if (notification == nil)
         return;
-    notification.alertBody = @"Sharing of your bus route has stopped. Please confirm this is expected.";
+    notification.alertBody = @"Oops! Looks like your GPS signal has been interrupted – please reset the app to continue sharing your ride.";
     notification.soundName = UILocalNotificationDefaultSoundName;
     
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
