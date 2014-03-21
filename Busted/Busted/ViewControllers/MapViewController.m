@@ -85,6 +85,7 @@ static id instance;
     }
     if (_currentLocation)
         [_currentLocation release];
+    _mapView.mapType = MKMapTypeStandard;
     _mapView.delegate = nil;
     [_mapView release]; _mapView = nil;
     [_homeButton release]; _homeButton = nil;
@@ -113,41 +114,43 @@ static id instance;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _locationManager = [[CLLocationManager alloc] init];
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    _locationManager.delegate = self;
-    _queue = [[NSOperationQueue alloc] init];
-    [_locationManager startUpdatingLocation];
-    [_mapView removeOverlays:_mapView.overlays];
-    [_mapView removeAnnotations:_mapView.annotations];
-    if (_isStops)
-    {
-        [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
-        [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-        [self.view bringSubviewToFront:_favouriteButton];
-        _favouriteButton.layer.shadowOpacity = 1.0;
-        _favouriteButton.layer.shadowOffset = (CGSize){0,0};
-        _favouriteButton.layer.shadowRadius = 5.0;
-        _favouriteButton.hidden = NO;
-    }
-    else
-    {
-        [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
-        [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
-        if (_stops)
-            [_stops release];
-        _stops = [[NSMutableArray alloc] initWithCapacity:0];
-        _favouriteButton.hidden = YES;
-    }
-    _mapView.scrollEnabled = YES;
-    _mapView.zoomEnabled = YES;
-    [self.view bringSubviewToFront:_homeButton];
-    _skipLoop = NO;
-    if (_currentLocation)
-    {
-        [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
-    } else {
-        [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+    @autoreleasepool {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.delegate = self;
+        _queue = [[NSOperationQueue alloc] init];
+        [_locationManager startUpdatingLocation];
+        [_mapView removeOverlays:_mapView.overlays];
+        [_mapView removeAnnotations:_mapView.annotations];
+        if (_isStops)
+        {
+            [_homeButton setImage:[UIImage imageNamed:@"routeButton.png"] forState:UIControlStateNormal];
+            [_homeButton setImage:[UIImage imageNamed:@"routeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+            [self.view bringSubviewToFront:_favouriteButton];
+            _favouriteButton.layer.shadowOpacity = 1.0;
+            _favouriteButton.layer.shadowOffset = (CGSize){0,0};
+            _favouriteButton.layer.shadowRadius = 5.0;
+            _favouriteButton.hidden = NO;
+        }
+        else
+        {
+            [_homeButton setImage:[UIImage imageNamed:@"homeButton.png"] forState:UIControlStateNormal];
+            [_homeButton setImage:[UIImage imageNamed:@"homeButtonHighlighted.png"] forState:UIControlStateHighlighted];
+            if (_stops)
+                [_stops release];
+            _stops = [[NSMutableArray alloc] initWithCapacity:0];
+            _favouriteButton.hidden = YES;
+        }
+        _mapView.scrollEnabled = YES;
+        _mapView.zoomEnabled = YES;
+        [self.view bringSubviewToFront:_homeButton];
+        _skipLoop = NO;
+        if (_currentLocation)
+        {
+            [_mapView setRegion:(MKCoordinateRegion){_currentLocation.coordinate.latitude,_currentLocation.coordinate.longitude,0.014200, 0.011654}];
+        } else {
+            [_mapView setRegion:[RegionZoomData getRegion:Halifax]];
+        }
     }
 }
 
@@ -176,25 +179,30 @@ static id instance;
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    if (_isStops)
-    {
-        if (displayLink)
+    @autoreleasepool {
+        if (_isStops)
         {
-            hasExited = YES;
-            [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-            [displayLink invalidate];
-            [displayLink release];
-            displayLink = nil;
-        }
-        if ([cellToThread count] > 0)
-        {
-            for (NSBlockOperation *operation in cellToThread)
+            if (displayLink)
             {
-                [operation cancel];
+                hasExited = YES;
+                [displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                [displayLink invalidate];
+                [displayLink release];
+                displayLink = nil;
             }
-            [cellToThread removeAllObjects];
+            if ([cellToThread count] > 0)
+            {
+                for (NSBlockOperation *operation in cellToThread)
+                {
+                    [operation cancel];
+                }
+                [cellToThread removeAllObjects];
+            }
+    //        cellToThread = nil;
+            [_queue cancelAllOperations];
+            
+            [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
         }
-        [[WebApiInterface sharedInstance] setFavourite:_favouriteButton.selected forRoute:_route.shortName];
     }
 }
 
@@ -214,10 +222,8 @@ static id instance;
 {
     @autoreleasepool {
         NSBlockOperation *operation = [[NSBlockOperation alloc] init];
-//        __block NSBlockOperation *blockOperation = operation;
+        __block NSBlockOperation *blockOperation = operation;
         [operation addExecutionBlock:^{
-//        dispatch_queue_t networkQueue  = dispatch_queue_create("network queue", NULL);
-//        dispatch_async(networkQueue, ^{
             NSString *urlStr = [[NSString alloc] initWithFormat:@"%@%@%@:%@",SANGSTERBASEURL,ESTIMATE,SHORTS,_route.shortName];
             NSURL *url = [[NSURL alloc] initWithString:urlStr];
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
@@ -235,7 +241,7 @@ static id instance;
                             NSDictionary *location = (NSDictionary*)[dic valueForKey:@"location"];
                             if ([(NSNumber*)[location objectForKey:@"lat"] floatValue] != 0.0 && [(NSNumber*)[location objectForKey:@"lng"] floatValue] != 0.0)
                             {
-                                if (![operation isCancelled])
+                                if (![blockOperation isCancelled])
                                 {
                                     BusAnnotation *bus = [[BusAnnotation alloc] initWithBusNumber:[[dic objectForKey:@"busNumber"] integerValue]
                                                                                          latitude:[(NSNumber*)[location objectForKey:@"lat"] floatValue]
@@ -268,7 +274,7 @@ static id instance;
                             [displayLink release];
                             displayLink = nil;
                         }
-                        if (![operation isCancelled])
+                        if (![blockOperation isCancelled])
                         {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Sorry, no one is sharing their ride for this route. Share yours and be a transit hero!" delegate:nil cancelButtonTitle:@"Thanks" otherButtonTitles:nil];
@@ -288,7 +294,7 @@ static id instance;
                         _annotations = [[NSArray alloc] initWithArray:myAnnotations];
                         [myAnnotations release];
                         myAnnotations = nil;
-                        if (![operation isCancelled])
+                        if (![blockOperation isCancelled])
                         {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 [_mapView addAnnotations:_annotations];
@@ -301,7 +307,7 @@ static id instance;
                     if (!_skipLoop)
                     {
                         _skipLoop = YES;
-                        if (![operation isCancelled])
+                        if (![blockOperation isCancelled])
                         {
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 if (displayLink)
@@ -322,14 +328,12 @@ static id instance;
             [request release];
             [url release];
             [urlStr release];
-            [cellToThread removeObject:operation];
-//        });
+            [cellToThread removeObject:blockOperation];
+            [blockOperation cancel];
         }];
         [_queue addOperation:operation];
         [cellToThread addObject:operation];
         [operation release];
-//        operation = nil;
-         //        dispatch_release(networkQueue);
     }
 }
 
